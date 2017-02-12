@@ -1,0 +1,11 @@
+commit 625c5e945adc0987b080ecc1aa687035ceb7ef1e
+Author: Max Starling <17.max.starling@gmail.com>
+Date:   Sun Feb 12 15:24:11 2017 +0300
+
+    "status.txt" was added.
+
+commit d2c596323f14b1bbf17d09f1ba5f108da00178e3
+Author: Max Starling <17.max.starling@gmail.com>
+Date:   Sun Feb 12 15:05:55 2017 +0300
+
+    ".gitignore" was added.
