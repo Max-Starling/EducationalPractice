@@ -291,18 +291,6 @@ function getNews(skip, top, filterConfig) {
     }
     return out.slice(skip, skip + top);
 }
-var  next = 21;
-addNew(
-    {
-        id: '00' + next.toString(),
-        title: "Title",
-        summary: "Summary",
-        createdAt: new Date('1970-01-01T00:00'),
-        author: "You",
-        content: "Content"
-    }
-);
-
 function addNew(n) {
     if (validateNew(n)){
         news.push(n);
@@ -322,11 +310,6 @@ function removeNew(ID) {
     news.splice(index, 1);
 }
 
-news.forEach(
-    function (n){
-        console.log(validateNew(n));
-    }
-);
 function editNew(ID, n) {
     var i = 0;
     for (; news.articles[i].ID != ID; i++) {
