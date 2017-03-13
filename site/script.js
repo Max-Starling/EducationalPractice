@@ -1,4 +1,4 @@
-var articleModel = (function () {
+var newModel = (function () {
     var news = [
         {
 			ID: '0001',
@@ -9,7 +9,7 @@ var articleModel = (function () {
 			content: 'Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: ' +
 			'once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, ' +
 			'and what is the use of a book, thought Alice without pictures or conversation?',
-			img: 'images/picture2.png'
+			img: "images/picture1.jpg"
         },
         {
             ID: '0002',
@@ -19,7 +19,7 @@ var articleModel = (function () {
             author: 'Lewis Carroll',
             content: 'Curiouser and curiouser! cried Alice (she was so much surprised, that for the moment she quite forgot how ' +
             'to speak good English); now I am opening out like the largest telescope that ever was!',
-			img: 'images/picture1.png'
+			img: "images/picture2.jpg"
         },
         {
             ID: '0003',
@@ -29,7 +29,7 @@ var articleModel = (function () {
             author: 'Lewis Carroll',
             content: 'They were indeed a queer-looking party that assembled on the bank—the birds with draggled feathers, the ' +
             'animals with their fur clinging close to them, and all dripping wet, cross, and uncomfortable.',
-			img: 'images/picture2.png'
+			img: "images/picture3.jpg"
         },
         {
             ID: '0004',
@@ -39,7 +39,7 @@ var articleModel = (function () {
             author: 'Lewis Carroll',
             content: 'It was the White Rabbit, trotting slowly back again, and looking anxiously about as it went, as if it had ' +
             'lost something; and she heard it muttering to itself.',
-			img: 'images/picture1.png'
+			img: "images/picture4.jpg"
         },
         {
             ID: '0005',
@@ -49,7 +49,7 @@ var articleModel = (function () {
             author: 'Lewis Carroll',
             content: 'The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the ' +
             'hookah out of its mouth, and addressed her in a languid, sleepy voice.',
-			img: 'images/picture2.png'
+			img: "images/picture5.jpg"
         },
         {
             ID: '0006',
@@ -62,7 +62,7 @@ var articleModel = (function () {
             'house, and wondering what to do next, when suddenly a footman in livery came running out of the wood—(she considered ' +
             'him to be a footman because he was in livery: otherwise, judging by his face only, she would have called him a fish)' +
             '—and rapped loudly at the door with his knuckles.',
-			img: 'images/picture1.png'
+			img: "images/picture6.jpg"
         },
         {
             ID: '0007',
@@ -73,7 +73,7 @@ var articleModel = (function () {
             content: 'There was a table set out under a tree in front of the house, and the March Hare and the Hatter were having ' +
             'tea at it: a Dormouse was sitting between them, fast asleep, and the other two were using it as a cushion, resting their ' +
             'elbows on it, and talking over its head.',
-			img: 'images/picture2.png'
+			img: "images/picture7.jpg"
         },
         {
             ID: '0008',
@@ -83,7 +83,7 @@ var articleModel = (function () {
             author: 'Lewis Carroll',
             content: 'A large rose-tree stood near the entrance of the garden: the roses growing on it were white, but there were ' +
             'three gardeners at it, busily painting them red.',
-			img: 'images/picture1.png'
+			img: "images/picture8.jpg"
         },
         {
             ID: '0009',
@@ -93,7 +93,7 @@ var articleModel = (function () {
             author: 'Lewis Carroll',
             content: 'You cant think how glad I am to see you again, you dear old thing! said the Duchess, as she tucked her arm ' +
             'affectionately into Alices, and they walked off together.',
-			img: 'images/picture2.png'
+			img: "images/picture9.jpg"
         },
         {
             ID: '0010',
@@ -103,7 +103,7 @@ var articleModel = (function () {
             author: 'Lewis Carroll',
             content: 'The Mock Turtle sighed deeply, and drew the back of one flapper across his eyes. He looked at Alice, and tried ' +
             'to speak, but for a minute or two sobs choked his voice.',
-			img: 'images/picture1.png'
+			img: "images/picture10.jpg"
         },
         {
             ID: '0011',
@@ -115,7 +115,7 @@ var articleModel = (function () {
             'them—all sorts of little birds and beasts, as well as the whole pack of cards: the Knave was standing before them, in ' +
             'chains, with a soldier on each side to guard him; and near the King was the White Rabbit, with a trumpet in one hand, ' +
             'and a scroll of parchment in the other.',
-			img: 'images/picture2.png'
+			img: "images/picture11.jpg"
         },
         {
             ID: '0012',
@@ -127,7 +127,7 @@ var articleModel = (function () {
             'and she jumped up in such a hurry that she tipped over the jury-box with the edge of her skirt, upsetting all the jurymen ' +
             'on to the heads of the crowd below, and there they lay sprawling about, reminding her very much of a globe of goldfish ' +
             'she had accidentally upset the week before.',
-			img: 'images/picture2.png'
+			img: "images/picture12.jpg"
         },
         {
             ID: '0013',
@@ -137,7 +137,7 @@ var articleModel = (function () {
             author: 'Antoine de Saint-Exupery',
             content: 'Once when I was six years old I saw a magnificent picture in a book, called True Stories from Nature, about ' +
             'the primeval forest. ',
-			img: 'images/picture2.png'
+			img: "images/picture13.jpg"
         },
         {
             ID: '0014',
@@ -147,7 +147,7 @@ var articleModel = (function () {
             author: 'Antoine de Saint-Exupery',
             content: 'So I lived my life alone, without anyone that I could really talk to, until I had an accident with my plane ' +
             'in the Desert of Sahara, six years ago.  ',
-			img: 'images/picture2.png'
+			img: "images/picture14.jpg"
         },
         {
             ID: '0015',
@@ -157,7 +157,7 @@ var articleModel = (function () {
             author: 'Antoine de Saint-Exupery',
             content: 'It took me a long time to learn where he came from. The little prince, who asked me so many questions, never ' +
             'seemed to hear the ones I asked him. ',
-			img: 'images/picture1.png'
+			img: "images/picture15.jpg"
         },
         {
             ID: '0016',
@@ -167,7 +167,7 @@ var articleModel = (function () {
             author: 'Antoine de Saint-Exupery',
             content: 'I had thus learned a second fact of great importance: this was that the planet the little prince came from ' +
             'was scarcely any larger than a house!',
-			img: 'images/picture1.png'
+			img: "images/picture16.jpg"
         },
         {
             ID: '0017',
@@ -177,7 +177,7 @@ var articleModel = (function () {
             author: 'Antoine de Saint-Exupery',
             content: 'As each day passed I would learn, in our talk, something about the little princes planet, his departure from ' +
             'it, his journey. ',
-			img: 'images/picture2.png'
+			img: "images/picture17.jpg"
         },
         {
             ID: '0018',
@@ -186,7 +186,7 @@ var articleModel = (function () {
             createdAt: new Date("2017-04-19T18:18:18"),
             author: 'Antoine de Saint-Exupery',
             content: 'Oh, little prince! Bit by bit I came to understand the secrets of your sad little life...',
-			img: 'images/picture2.png'
+			img: "images/picture18.jpg"
         },
         {
             ID: '0019',
@@ -196,7 +196,7 @@ var articleModel = (function () {
             author: 'Antoine de Saint-Exupery',
             content: 'On the fifth day—again, as always, it was thanks to the sheep—the secret of the little princes life was ' +
             'revealed to me.',
-			img: 'images/picture2.png'
+			img: "images/19.jpg"
         },
         {
             ID: '0020',
@@ -206,7 +206,7 @@ var articleModel = (function () {
             author: 'Antoine de Saint-Exupery',
             content: 'I soon learned to know this flower better. On the little princes planet the flowers had always been very simple. ' +
             'They had only one ring of petals; they took up no room at all; they were a trouble to nobody. ',
-			img: 'images/picture2.png'
+			img: "images/picture20.jpg"
         }
         ];
     function validateNew(n) {
@@ -359,14 +359,14 @@ var articleModel = (function () {
         return false;
     }
     return {
-        getNews: getNews
-        /*editNew: editNew
-        removeNew:removeNew
-        addNew: addNew*/
+        getNews: getNews,
+        editNew: editNew,
+        removeNew:removeNew,
+        addNew: addNew
     };
 }())
 
-var articleRenderer = (
+var newRenderer =(
     function (){
         var ARTICLE_TEMPLATE;
         var ARTICLE_LIST_NODE;
@@ -376,9 +376,9 @@ var articleRenderer = (
             ARTICLE_LIST_NODE = document.querySelector('.article-list');
         }
 
-        function insertArticlesInDOM(articles){
-            var articlesNodes = renderArticles(articles);
-            articlesNodes.forEach(
+        function insertNewsInDOM(news){
+            var newsNodes = renderNews(news);
+            newsNodes.forEach(
                 function (node){
                     ARTICLE_LIST_NODE.appendChild(node);
                 }
@@ -389,29 +389,27 @@ var articleRenderer = (
             ARTICLE_LIST_NODE.innerHTML = '';
         }
 
-        function renderArticles(articles){
-            return articles.map(
-                function (article){
-                    return renderArticle(article);
+        function renderNews(news){
+            return news.map(
+                function (n){
+                    return renderNew(n);
                 }
             );
         }
 
-    function renderArticle(n){
+    function renderNew(n){
         var template = ARTICLE_TEMPLATE;
         template.content.querySelector('.article-list-item').dataset.ID = n.ID;
         template.content.querySelector('.article-list-item-title').textContent = n.title;
         template.content.querySelector('.article-list-item-summary').textContent = n.summary;
         template.content.querySelector('.article-list-item-author').textContent = n.author;
+		template.content.querySelector('.article-list-item-img').src = n.img;
         template.content.querySelector('.article-list-item-date').textContent = formatDate(n.createdAt);
         return template.content.querySelector('.article-list-item').cloneNode(true);
     }
 
     function formatDate(d) {
 		var month = "Jan";
-		if((d.getMonth()+1)==3){
-			month = "Feb";
-		}
 		switch(d.getMonth()){
 			case 0: month = "Jan"; break;
 			case 1: month = "Feb"; break;
@@ -428,10 +426,9 @@ var articleRenderer = (
 		}
         return d.getHours() + ':' + d.getMinutes() + ' ' + month + ', ' + d.getDate();
     }
-
     return {
         init: init,
-        insertArticlesInDOM: insertArticlesInDOM,
+        insertNewsInDOM: insertNewsInDOM,
         removeNewsFromDom: removeNewsFromDom
     };
 }());
@@ -439,13 +436,14 @@ var articleRenderer = (
 document.addEventListener('DOMContentLoaded', startApp);
 
 function startApp() {
-   articleRenderer.init();
-   renderArticles();
+   newRenderer.init();
+   renderNews();
 }
-function renderArticles(skip, top) {
-    articleRenderer.removeNewsFromDom();
-    var articles = articleModel.getNews(skip, top, {author: "Lewis Carroll"});
-    articleRenderer.insertArticlesInDOM(articles);
+
+function renderNews(skip, top) {
+    newRenderer.removeNewsFromDom();
+    var news = newModel.getNews(skip, top, {author: "Lewis Carroll"});
+    newRenderer.insertNewsInDOM(news);
 }
 
 

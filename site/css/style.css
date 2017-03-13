@@ -161,11 +161,13 @@ div {
 } 
 [for="button"] { 
 	position: absolute; 
+	margin-top: 1vw;
+	margin-left: 0.62vw;
 	display: block; 
-	width: 3vh; 
-	height: 3vh;
-	max-width: 3vw;
-	max-height: 3vw; 
+	width: 2vw; 
+	height: 2vw;
+	max-width: 2vh;
+	max-height: 2vh; 
 	background: #ddd linear-gradient(#6b6a6a, #b6b6b6); 
 	box-shadow: 
 		inset 0 2px 1px rgba(0,0,0,.15), 
@@ -255,10 +257,26 @@ div {
 	margin:0 auto;
 	width:100%;
 	height:100%;
-	overflow:hidden;
+	overflow:scroll;
+}
+::-webkit-scrollbar {
+    width: 0.7vw;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
+    border-radius: 6px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 14px;
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-corner {
+	display:none;
 }
 .article-list-item{
 	font-size: 80%;
+	margin-bottom: -0.08vw; 
+	margin-right: -0.08vw; 
 	border: 0.1vw solid #b3b3b3;
 	float: left;
     width: 50%;
@@ -267,3 +285,19 @@ div {
 	background: radial-gradient(circle at 20% 33%, #f0f0f0, #eeeeee);
 	color: darkgray;
 }			
+
+.pair{
+	opacity:0.9;
+	height: 2vw;
+}
+.button-container{
+	height: 2vw;
+	width: 2.4vw;
+	float:left;
+}
+.button-text{
+	text-align:left;
+	height: 2vw;
+	width: 60%;
+	font-size: 1.8vw;
+}

@@ -27,7 +27,25 @@
 			</div>
 		</div>
 		<div id="left_panel">
-				<input type="checkbox" id="button"><label for="button"></label>
+			<input type="text" placeholder="Search">
+			<div class="pair">
+				<div class="button-container">
+					<input type="checkbox" id="button"><label for="button"></label>
+				</div>
+				<p class="button-text"> Date </p>
+			</div>
+			<div class="pair">
+				<div class="button-container">
+					<input type="checkbox" id="button"><label for="button"></label>
+				</div>
+				<p class="button-text"> Author </p>
+			</div>
+			<div class="pair">
+				<div class="button-container">
+					<input type="checkbox" id="button"><label for="button"></label>
+				</div>
+				<p class="button-text"> ID </p>
+			</div>
 		</div>
 		<div id="container">
 			<div class="header">
@@ -46,7 +64,10 @@
 	</div> 	
 	<!-- templates -->
         <template id="template-article-list-item">
-            <div class="article-list-item" data-id="id">
+            <div class="article-list-item" data-id="id">				
+				<div class="picture">
+					<img class="article-list-item-img" style="height:15.5vmin;padding:1.3vh;max-height:10vw;">
+				</div>	
 				<div class="text">
 					<div class="title">
 						<h3 class="article-list-item-title">
