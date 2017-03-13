@@ -1,59 +1,75 @@
 <!DOCTYPE html">
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>STARLING NEWS</title>
-		<link href="https://fonts.googleapis.com/css?family=Aladin" rel="stylesheet" />
-		<link href="css/style.css" type="text/css" rel="stylesheet" />
-	</head>
-	<body>
-		<div id="wrapper">
-			<div id="header">
-				<div id="quote">
-					
-				</div>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>STARLING NEWS</title>
+	<link href="https://fonts.googleapis.com/css?family=Aladin" rel="stylesheet" />
+	<link href="css/style.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<div class="wrapper">
+		<div id="right_panel">  
+			<div class="menu">
+				 <ul>
+					<li><a href="#">Log out</a></li>
+					<li><a href="#">Profile</a></li>
+					<div class="divider"></div>
+					<li><a href="#">Settings</a></li>
+					<div class="divider"></div>
+					<li><a href="#">Contact us</a></li>
+					<div class="divider"></div>
+				 </ul>      
 			</div>
-			<div id="right_panel">		
-				<div id="menu">
-					<ul>
-						<li><a class="current" href="#">Log out</a></li>
-						<div id="divider"></div>
-						<li><a href="#">Profile</a></li>
-						<div id="divider"></div>
-						<li><a href="#">Settings</a></li>
-						<div id="divider"></div>
-						<li><a href="#">Contact us</a></li>
-						<div id="divider"></div>
-					</ul>						
-				</div>
-				<div id="user_info">
-					<img src="images/user_photo.png" alt="User photo">
-					<p>Max Starling</p>
-					<p style="font-size:115%;margin-top:-10px;color:rgb(150,0,0)">Administrator</p>
-				</div>
+			<div id="user_info">
+				<img src="images/user_photo.png" style="height:26vh;padding:1vh;max-height:12vw;" alt="User photo" >
+				<p style="font-size:2.3vw"> Max Starling</p>
+				<p style="font-size:2.2vw;margin-top:-1vw;color:rgb(150,0,0);">Administrator</p>
 			</div>
-			<div id="left_panel">				
-				<div id="search">
-					<img src="images/search.png" style="display:inline-block;" alt="Search">
-					<ul>
-						<div id="divider"></div>
-						<li><a href="#">Autor</a></li>
-						<div id="divider"></div>
-						<li><a href="#">Titile</a></li>
-						<div id="divider"></div>
-						<li><a href="#">Date</a></li>
-						<div id="divider"></div>
-					</ul>
-				</div>
-
-			</div>
-			<div id="content">
-				<img src="images/group.png" style="display:inline-block;" alt="News block">
-			</div>
-			<div id="footer">
-				<h1> by Max Starling </h1>
-			</div>
-		</div>	
-		
-	</body>
+		</div>
+		<div id="left_panel">
+				<input type="checkbox" id="button"><label for="button"></label>
+		</div>
+		<div id="container">
+			<div class="header">
+				<div id="logo"></div>
+				<div id="quote"></div>
+			</div>	
+				<div class="news-block">
+					<div class="article-list">
+					</div>
+				</div>							
+		</div>
+		<div class="footer">
+			<p class="creator">This site was created by @MaxStarling.</p>
+			<p class="email">17.max.starling@gmail.com</p>
+		</div>
+	</div> 	
+	<!-- templates -->
+        <template id="template-article-list-item">
+            <div class="article-list-item" data-id="id">
+				<div class="text">
+					<div class="title">
+						<h3 class="article-list-item-title">
+							Title
+						</h3>
+					</div>
+					<div class="description">
+						<p class="article-list-item-summary">
+							Short description
+						</p>
+					</div>
+					<div class="article-list-item-meta">
+						<div class="author">
+							<span class="article-list-item-author">Max Starling</span>
+						</div>
+						<div class="date">
+							<span class="article-list-item-date">04:35 Feb, 17</span>
+						</div>
+					</div>
+				</div>	
+            </div>
+        </template>
+    <!-- scripts -->
+		<script src="script.js" type="text/javascript"></script>
+ </body>
 </html>
