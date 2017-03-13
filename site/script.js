@@ -442,7 +442,7 @@ function startApp() {
 
 function renderNews(skip, top) {
     newRenderer.removeNewsFromDom();
-    var news = newModel.getNews(skip, top, {author: "Lewis Carroll"});
+    var news = newModel.getNews(0, 15, {author: "Lewis Carroll"});
     newRenderer.insertNewsInDOM(news);
 }
 
