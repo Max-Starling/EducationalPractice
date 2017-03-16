@@ -407,7 +407,12 @@ var newRenderer =(
         template.content.querySelector('.article-list-item-date').textContent = formatDate(n.createdAt);
         return template.content.querySelector('.article-list-item').cloneNode(true);
     }
-
+	function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
     function formatDate(d) {
 		var month = "Jan";
 		switch(d.getMonth()){
@@ -424,7 +429,8 @@ var newRenderer =(
 			case 10: month = "Nov"; break;
 			case 11: month = "Dec"; break;
 		}
-        return d.getHours() + ':' + d.getMinutes() + ' ' + month + ', ' + d.getDate();
+		var m = addZero(d.getHours());
+        return d.getHours() + ':' + m + ' ' + month + ', ' + d.getDate();
     }
     return {
         init: init,

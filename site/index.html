@@ -1,14 +1,15 @@
 <!DOCTYPE html">
-<html lang="en">
+<html>
 <head>
 	<meta charset="UTF-8">
 	<title>STARLING NEWS</title>
 	<link href="https://fonts.googleapis.com/css?family=Aladin" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Underdog" rel="stylesheet">
 	<link href="css/style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<div class="wrapper">
-		<div id="right_panel">  
+		<div id="right-panel">  
 			<div class="menu">
 				 <ul>
 					<li><a href="#">Log out</a></li>
@@ -20,46 +21,50 @@
 					<div class="divider"></div>
 				 </ul>      
 			</div>
-			<div id="user_info">
-				<img src="images/user_photo.png" style="height:26vh;padding:1vh;max-height:12vw;" alt="User photo" >
-				<p style="font-size:2.3vw"> Max Starling</p>
-				<p style="font-size:2.2vw;margin-top:-1vw;color:rgb(150,0,0);">Administrator</p>
+			<div class="user-info">
+				<img src="images/user_photo.png" style="height:26vh;padding:1vh;max-height:12vw;">
+				<p class="user-info-name"> Max Starling</p>
+				<p class="user-info-rank">Administrator</p>
+			</div>
+			<div href="http://max-starling.github.io/Starling-News/" class="github">
+				<img src="images/github-mark2.png" style="height:26vh;padding:1vh;max-height:8vw;margin-top:5vw;opacity:0.25">
 			</div>
 		</div>
-		<div id="left_panel">
-			<input type="text" placeholder="Search">
+		<div id="left-panel">
+			<input type="text" placeholder="search">
 			<div class="pair">
 				<div class="button-container">
-					<input type="checkbox" id="button"><label for="button"></label>
+					<input type="checkbox" id="checkbox-id1" /> <label for="checkbox-id1"></label>
 				</div>
 				<p class="button-text"> Date </p>
 			</div>
 			<div class="pair">
 				<div class="button-container">
-					<input type="checkbox" id="button"><label for="button"></label>
+					<input type="checkbox" id="checkbox-id2" /> <label for="checkbox-id2"></label>
 				</div>
 				<p class="button-text"> Author </p>
 			</div>
 			<div class="pair">
 				<div class="button-container">
-					<input type="checkbox" id="button"><label for="button"></label>
+					<input type="checkbox" id="checkbox-id3" /> <label for="checkbox-id3"></label>
 				</div>
 				<p class="button-text"> ID </p>
 			</div>
 		</div>
-		<div id="container">
-			<div class="header">
-				<div id="logo"></div>
-				<div id="quote"></div>
-			</div>	
+		<div class="large-container">
+			<div class="small-container">
+				<div class="header">
+					<div id="logo"></div>
+					<div id="quote"></div>
+				</div>	
 				<div class="news-block">
-					<div class="article-list">
-					</div>
+					<div class="article-list"></div>
 				</div>							
-		</div>
-		<div class="footer">
-			<p class="creator">This site was created by @MaxStarling.</p>
-			<p class="email">17.max.starling@gmail.com</p>
+			</div>
+			<div class="footer">
+				<p class="creator">This site was created by @MaxStarling.</p>
+				<p class="email">17.max.starling@gmail.com</p>
+			</div>
 		</div>
 	</div> 	
 	<!-- templates -->
