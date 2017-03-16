@@ -9,42 +9,45 @@
 </head>
 <body>
 	<div class="wrapper">
-		<div id="right-panel">  
+		<div class="right-panel">  
 			<div class="menu">
 				 <ul>
-					<li><a href="#">Log out</a></li>
-					<li><a href="#">Profile</a></li>
-					<div class="divider"></div>
-					<li><a href="#">Settings</a></li>
-					<div class="divider"></div>
-					<li><a href="#">Contact us</a></li>
-					<div class="divider"></div>
+					<li><a>Log out</a></li>
+					<li><a>Profile</a></li>
+					<li><a>Settings</a></li>
+					<li><a>Contact us</a></li>
 				 </ul>      
 			</div>
 			<div class="user-info">
-				<img src="images/user_photo.png" style="height:26vh;padding:1vh;max-height:12vw;">
-				<p class="user-info-name"> Max Starling</p>
+				<img class="user-info-photo" src="images/user_photo.png">
+				<p class="user-info-name">Max Starling</p>
 				<p class="user-info-rank">Administrator</p>
 			</div>
-			<div href="http://max-starling.github.io/Starling-News/" class="github">
-				<img src="images/github-mark2.png" style="height:26vh;padding:1vh;max-height:8vw;margin-top:5vw;opacity:0.25">
+			<div>
+				<img class="github" src="images/github.png">
 			</div>
 		</div>
-		<div id="left-panel">
-			<input type="text" placeholder="search">
-			<div class="pair">
+		<div class="left-panel">
+			<p class="menu-item">Search</p>
+			<div class="divider"></div>
+			<div class="search">
+				<img class="search-img" src="images/search.png" >
+				<input type="text" placeholder="search"> 
+			</div>
+				      
+			<div class="button-pair">
 				<div class="button-container">
 					<input type="checkbox" id="checkbox-id1" /> <label for="checkbox-id1"></label>
 				</div>
 				<p class="button-text"> Date </p>
 			</div>
-			<div class="pair">
+			<div class="button-pair">
 				<div class="button-container">
 					<input type="checkbox" id="checkbox-id2" /> <label for="checkbox-id2"></label>
 				</div>
 				<p class="button-text"> Author </p>
 			</div>
-			<div class="pair">
+			<div class="button-pair">
 				<div class="button-container">
 					<input type="checkbox" id="checkbox-id3" /> <label for="checkbox-id3"></label>
 				</div>
@@ -54,8 +57,8 @@
 		<div class="large-container">
 			<div class="small-container">
 				<div class="header">
-					<div id="logo"></div>
-					<div id="quote"></div>
+					<div class="logo"></div>
+					<div class="quote"></div>
 				</div>	
 				<div class="news-block">
 					<div class="article-list"></div>
@@ -71,7 +74,7 @@
         <template id="template-article-list-item">
             <div class="article-list-item" data-id="id">				
 				<div class="picture">
-					<img class="article-list-item-img" style="height:15.5vmin;padding:1.3vh;max-height:10vw;">
+					<img class="article-list-item-img">
 				</div>	
 				<div class="text">
 					<div class="title">
