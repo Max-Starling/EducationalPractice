@@ -375,7 +375,7 @@ var userInfo = (function() {
     var username = document.getElementsByClassName("user-info-name")[0].textContent; 
     function getUserName(){
         //username 
-         console.log(username + "");
+        console.log(username + "");
         alert(username  + "");
     }
     function setUserName(usrnm){
@@ -475,6 +475,21 @@ function startApp() {
 function renderNews(skip, top) {
     newRenderer.removeNewsFromDom();
     var news = newModel.getNews(0, 15, {author: "Lewis Carroll"});
+    newRenderer.insertNewsInDOM(news);
+}
+
+//document.addEventListener('DOMContentLoaded', searchResultNews);
+function startSearch(){
+     newRenderer.init();
+     searchResultNews();
+}
+var searchForm = document.getElementById("searchform");
+var searchInput = document.querySelector("searchin");
+
+//alert(searchForm.text);
+function searchResultNews() {
+    newRenderer.removeNewsFromDom();
+    var news = newModel.getNews(0, 15, {author: searchInput.textContent});
     newRenderer.insertNewsInDOM(news);
 }
 
