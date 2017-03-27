@@ -6,22 +6,23 @@
 	<link href="https://fonts.googleapis.com/css?family=Aladin" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css?family=Underdog" rel="stylesheet">
 	<link href="css/style.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="css/modal.css" />
 </head>
 <body>
 	<div class="wrapper">
-		<div class="right-panel">  
+		<div class="right-panel">	
 			<div class="menu">
 				 <ul>
-					<li><a>Log out</a></li>
-					<li><a>Profile</a></li>
+					<li id="log"><a>Log in</a></li>
+					<li id="register"><a>Register</a></li>
 					<li><a>Settings</a></li>
 					<li><a>Contact us</a></li>
 				 </ul>      
 			</div>
 			<div class="user-info">
-				<img class="user-info-photo" src="images/user_photo.png">
-				<p class="user-info-name">Max Starling</p>
-				<p class="user-info-rank">Administrator</p>
+				<img class="user-info-photo" src="images/guest_photo.jpg">
+				<p class="user-info-name">Unknown</p>
+				<p class="user-info-rank">Guest</p>
 			</div>
 			<div>
 				<img class="github" src="images/github.png">
@@ -59,7 +60,10 @@
 				<div class="header">
 					<div class="logo"></div>
 					<div class="quote"></div>
-				</div>	
+				</div>
+				<div class="button-panel">
+					<img class="add-new-button modal-trigger" src="images/add.png" onmousedown="addNew()" data-modal="modal-1"> <img>
+				</div>
 				<div class="news-block">
 					<div class="article-list"></div>
 				</div>							
@@ -72,8 +76,8 @@
 	</div> 	
 	<!-- templates -->
         <template id="template-article-list-item">
-            <div class="article-list-item" data-id="id">				
-				<div class="picture">
+            <div class="article-list-item modal-trigger" data-id="id" onmousedown="newDetailShow()" data-modal="modal-1">
+				<div class="picture modal-trigger" data-modal="modal-1">
 					<img class="article-list-item-img">
 				</div>	
 				<div class="text">
@@ -87,6 +91,11 @@
 							Short description
 						</p>
 					</div>
+					<div class="content">
+						<p class="article-list-item-content">
+							Content
+						</p>
+					</div>
 					<div class="article-list-item-meta">
 						<div class="author">
 							<span class="article-list-item-author">Max Starling</span>
@@ -98,7 +107,33 @@
 				</div>	
             </div>
         </template>
+		<div class="modal modal-effect" id="modal-1">
+				<div class="modal-content">	
+					<div class="modal-text">
+						<div class="title">
+							<p class="modal-list-item-title">
+								Title
+							</p>
+						</div>
+						<div class="content">
+							<p class="modal-list-item-content">
+								Content
+							</p>
+						</div>
+						<div class="article-list-item-meta">
+							<div class="author">
+								<span class="article-list-item-author">Max Starling</span>
+							</div>
+							<div class="date">
+								<span class="article-list-item-date">04:35 Feb, 17</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div class="modal-overlay"></div>
     <!-- scripts -->
-		<script src="script.js" type="text/javascript"></script>
+		<script src="js/classie.js"></script>	
+		<script src="js/script.js" type="text/javascript"></script>
  </body>
 </html>

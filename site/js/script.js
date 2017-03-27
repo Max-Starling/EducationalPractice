@@ -114,6 +114,12 @@ var newModel = (function () {
             content: 'The King and Queen of Hearts were seated on their throne when they arrived, with a great crowd assembled about ' +
             'them—all sorts of little birds and beasts, as well as the whole pack of cards: the Knave was standing before them, in ' +
             'chains, with a soldier on each side to guard him; and near the King was the White Rabbit, with a trumpet in one hand, ' +
+            'and a scroll of parchment in the other.The King and Queen of Hearts were seated on their throne when they arrived, with a great crowd assembled about ' +
+            'them—all sorts of little birds and beasts, as well as the whole pack of cards: the Knave was standing before them, in ' +
+            'chains, with a soldier on each side to guard him; and near the King was the White Rabbit, with a trumpet in one hand, ' +
+            'and a scroll of parchment in the other.The King and Queen of Hearts were seated on their throne when they arrived, with a great crowd assembled about ' +
+            'them—all sorts of little birds and beasts, as well as the whole pack of cards: the Knave was standing before them, in ' +
+            'chains, with a soldier on each side to guard him; and near the King was the White Rabbit, with a trumpet in one hand, ' +
             'and a scroll of parchment in the other.',
 			img: "images/picture11.jpg"
         },
@@ -257,12 +263,11 @@ var newModel = (function () {
         return true;
     }
     function getNew(ID) {
-        for (i = 0; i < news.length; i++) {
-            if (news[i].ID == ID) {
+        for (i = 0; i < news.length; i++){
+            if (news[i].ID == ID){
                 return news[i];
             }
         }
-        return undefined;
     }
     function sortNews(few){
         few.sort(
@@ -308,7 +313,7 @@ var newModel = (function () {
         }
         return out.slice(skip, skip + top);
     }
-    function addNew(n) {
+    function addNew(n){
         if (validateNew(n)){
             news.push(n);
             return true;
@@ -316,10 +321,10 @@ var newModel = (function () {
             return false;
         }
     }
-    function removeNew(ID) {
+    function removeNew(ID){
         var tmp = 0;
         for(var i = 0; i < news.length; i++){
-            if(news[i].ID == ID) {
+            if(news[i].ID === ID){
                 tmp = i;
             }
         }
@@ -359,18 +364,35 @@ var newModel = (function () {
         return false;
     }
     return {
+        getNew: getNew,
         getNews: getNews,
         editNew: editNew,
         removeNew:removeNew,
         addNew: addNew
     };
 }())
-
+var userInfo = (function() {
+    var username = document.getElementsByClassName("user-info-name")[0].textContent; 
+    function getUserName(){
+        //username 
+         console.log(username + "");
+        alert(username  + "");
+    }
+    function setUserName(usrnm){
+         username=usrnm;
+    }
+    return {
+        getUserName: getUserName,
+        setUserName: setUserName,
+        /*short*/
+        getn: getUserName,
+        setn: setUserName
+    };
+}());
 var newRenderer =(
     function (){
         var ARTICLE_TEMPLATE;
         var ARTICLE_LIST_NODE;
-
         function init(){
             ARTICLE_TEMPLATE = document.querySelector('#template-article-list-item');
             ARTICLE_LIST_NODE = document.querySelector('.article-list');
@@ -388,7 +410,9 @@ var newRenderer =(
         function removeNewsFromDom (){
             ARTICLE_LIST_NODE.innerHTML = '';
         }
-
+        function removeNewFromDom (){
+            ARTICLE_LIST_NODE.removeChild(node);
+        }
         function renderNews(news){
             return news.map(
                 function (n){
@@ -403,9 +427,10 @@ var newRenderer =(
         template.content.querySelector('.article-list-item-title').textContent = n.title;
         template.content.querySelector('.article-list-item-summary').textContent = n.summary;
         template.content.querySelector('.article-list-item-author').textContent = n.author;
+        template.content.querySelector('.article-list-item-content').textContent = n.content;
 		template.content.querySelector('.article-list-item-img').src = n.img;
         template.content.querySelector('.article-list-item-date').textContent = formatDate(n.createdAt);
-        return template.content.querySelector('.article-list-item').cloneNode(true);
+        return template.content.querySelector('.article-list-item').cloneNode(true); 
     }
 	function addZero(i) {
     if (i < 10) {
@@ -442,8 +467,9 @@ var newRenderer =(
 document.addEventListener('DOMContentLoaded', startApp);
 
 function startApp() {
-   newRenderer.init();
-   renderNews();
+    //userInfo.getUserName();
+    newRenderer.init();
+    renderNews();
 }
 
 function renderNews(skip, top) {
@@ -452,4 +478,140 @@ function renderNews(skip, top) {
     newRenderer.insertNewsInDOM(news);
 }
 
+    document.getElementById("register").addEventListener('click', register, true);
+    document.getElementById("log").addEventListener('click', log, true);
+    var username;
+    var userphoto;
+    function log() {
+        username = document.getElementsByClassName("user-info-name")[0];
+        userphoto =  document.getElementsByClassName("user-info-photo")[0];
+        var body = document.getElementsByTagName("body")[0];
+        var div = document.createElement("div");
+        /*if(!body.contains(div)){
+            console.log("re");
+        }*/
+        //var div = document.createElement("div");
+        div.className = "authorization";
+        var form = div.appendChild(createForm("Username"));
+        div.appendChild(createForm("Password"));      
+     // var form = div.appendChild(getFormForAutorize());
+        var sub = document.createElement("button");
+        sub.style.visibility = "hidden";
+        //sub.type = "submit";
+        form.appendChild(sub);
+        sub.addEventListener('click', 
+             function ffpls(){
+                //console.log(form.in.value);
+                //alert(form.in.value);
+                username.textContent = form.in.value;
+                userphoto.src = "images/user_photo.jpg";
+                userInfo.setn(form.in.value + "");
+                //userInfo.getUserName();
+                //sub.removeEventListener('click', removeModalHandler);
+            }, true
+        );
+        body.appendChild(div);
+        //userInfo.setn(form.in.value + "");
+        /* function() {
+            username.textContent = form.in.value;
+            userphoto.src = "images/user_photo.jpg";
+        };*/
+        //sub.removeEventListener('click', alert("re"));
+        //alert(username.textContent);
+        //console.log(form.in.value);
+    }
+    //alert(JSON.stringify(tmp));
+    //userInfo.getn();
+    //userInfo.getn();
+    function register(event) {
+        var body = document.getElementsByTagName("body")[0];
+        var div = document.createElement("div");
+        div.className = "authorization";
+        div.appendChild(createForm("Email"));
+        div.appendChild(createForm("Username"));
+        div.appendChild(createForm("Password")); 
+        body.appendChild(div);
+    }
+    function createForm(text) {
+        var form = document.createElement("form");
+        var p = document.createElement("p");
+        p.className="p";
+        p.textContent = text + ":";
+        var input = document.createElement("input");
+        input.className = "form-style";        
+        input.required = "true";
+        input.placeholder = text;
+        if(text === "Username"){
+            input.placeholder = "@Max-Starling";
+            form.name = "uname";
+            input.name = "in";
+        }
+        if(text === "Password"){
+            input.type="password";
+            input.placeholder = "yourpassword";
+        }
+        if(text === "Email"){
+            input.placeholder = "17.max.starling@gmail.com";
+        }
+        form.appendChild(p);
+        form.appendChild(input);
+        return form;
+    }
+    
+	function newDetailShow(){
+		    var overlay = document.querySelector('.modal-overlay');
+            var modalText = document.getElementsByClassName("modal-text")[0];
+            var title = modalText.getElementsByClassName("title")[0];
+            var content = modalText.getElementsByClassName("content")[0];
+            var author = modalText.getElementsByClassName("author")[0];
+            var date = modalText.getElementsByClassName("date")[0];
+            var t = event.currentTarget.getElementsByClassName("title")[0].textContent;
+            var c = event.currentTarget.getElementsByClassName("content")[0].textContent;
+            var a = event.currentTarget.getElementsByClassName("author")[0].textContent;
+            var d = event.currentTarget.getElementsByClassName("date")[0].textContent;
+            title.textContent = t;
+            content.textContent = c;
+            date.textContent = d;
+            author.textContent = a;      
+         [].slice.call(document.querySelectorAll('.modal-trigger')).forEach( 				
+			function(el, i){
+				var modal = document.querySelector('#' + el.getAttribute('data-modal'));
+                var close = modal.querySelector('.modal-close');
+				function removeModalHandler(){
+					classie.remove(modal,'modal-show');
+				}
+				el.addEventListener('click', 
+					function(ev){
+						classie.add(modal, 'modal-show');
+						overlay.removeEventListener('click', removeModalHandler);
+						overlay.addEventListener('click', removeModalHandler);
+					}
+		        );
+			} 
+		);
+    }
 
+    function addNew(){
+		    var overlay = document.querySelector('.modal-overlay');
+            var modalText = document.getElementsByClassName("modal-text")[0];
+            var title = modalText.getElementsByClassName("title")[0];
+            var content = modalText.getElementsByClassName("content")[0];
+            title.textContent = "Title";
+            content.textContent = "Content";      
+         [].slice.call(document.querySelectorAll('.modal-trigger')).forEach( 				
+			function(el, i){
+				var modal = document.querySelector('#' + el.getAttribute('data-modal'));
+                var close = modal.querySelector('.modal-close');
+				function removeModalHandler(){
+					classie.remove(modal,'modal-show');
+				}
+				el.addEventListener('click', 
+					function(ev){
+						classie.add(modal, 'modal-show');
+						overlay.removeEventListener('click', removeModalHandler);
+						overlay.addEventListener('click', removeModalHandler);
+					}
+		        );
+			} 
+		);
+    }
