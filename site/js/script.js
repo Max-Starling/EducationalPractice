@@ -169,7 +169,7 @@ var newModel = (function () {
             ID: '0016',
             title: 'IV',
             summary: 'I',
-            createdAt: new Date("2017-6-17T16:16:16"),
+            createdAt: new Date("2017-06-17T16:16:16"),
             author: 'Antoine Exupery',
             content: 'I had thus learned a second fact of great importance: this was that the planet the little prince came from ' +
             'was scarcely any larger than a house!',
@@ -261,6 +261,9 @@ var newModel = (function () {
             return false;
         }
         return true;
+    }
+    function getLength(){
+        return news.length;
     }
     function getNew(ID) {
         for (i = 0; i < news.length; i++){
@@ -372,7 +375,8 @@ var newModel = (function () {
         editNew: editNew,
         removeNew:removeNew,
         addNew: addNew,
-        getAuthors: getAuthors
+        getAuthors: getAuthors,
+        getLength: getLength
     };
 }())
 var userInfo = (function() {
@@ -458,11 +462,12 @@ var newRenderer =(
 			case 10: month = "Nov"; break;
 			case 11: month = "Dec"; break;
 		}
-		var m = addZero(d.getHours());
+		var m = addZero(d.getMinutes());
         return d.getHours() + ':' + m + ' ' + month + ', ' + d.getDate();
     }
     return {
         init: init,
+        formatDate: formatDate,
         insertNewsInDOM: insertNewsInDOM,
         removeNewsFromDom: removeNewsFromDom
     };
@@ -478,7 +483,7 @@ function startApp() {
 
 function renderNews(skip, top) {
     newRenderer.removeNewsFromDom();
-    var news = newModel.getNews(0, 15, {author: ""});
+    var news = newModel.getNews(0, newModel.getLength(), {author: ""});
     newRenderer.insertNewsInDOM(news);
 }
 
@@ -490,7 +495,7 @@ function startSearch(v){
 
 function searchResultNews(v) {
     newRenderer.removeNewsFromDom();
-    var news = newModel.getNews(0, 15, {author: v});
+    var news = newModel.getNews(0, newModel.getLength(), {author: v});
     newRenderer.insertNewsInDOM(news);
 }
 
@@ -649,18 +654,93 @@ searchForm.onsubmit = function(event){
 
     function addNew(){
 		var overlay = document.querySelector('.modal-overlay');
-        var modalText = document.getElementsByClassName("modal-text")[0];
-        var title = modalText.getElementsByClassName("title")[0];
-        var content = modalText.getElementsByClassName("content")[0];
-        title.textContent = "Title";
-        content.textContent = "Content";      
-        [].slice.call(document.querySelectorAll('.modal-trigger')).forEach( 				
+        var modalContent = document.getElementsByClassName("modal-content1")[0]; 
+        var form = document.getElementsByClassName("add-new-form")[0];
+        var inputURL = document.getElementsByClassName("add-new-input")[0];
+        inputURL.placeholder = "Image URL";
+        inputURL.type = "text";
+        var inputTitle = document.getElementsByClassName("add-new-input")[1];
+        inputTitle.style.marginTop = "0.5vw"     
+        inputTitle.placeholder = "Title";
+        inputTitle.type = "text";
+        inputTitle.maxLength = "30";
+        var inputShortDescription = document.getElementsByClassName("add-new-textarea")[0];
+        inputShortDescription.style.marginTop = "0.5vw"
+        inputShortDescription.maxLength = "160";
+        var inputContent = document.getElementsByClassName("add-new-textarea")[1];
+        inputContent.style.height = "9.6vw";
+        inputContent.style.marginTop = "0.5vw";
+        inputContent.maxLength = "640";
+        form.spellcheck = false;
+        //var state1 = false;
+        form.onsubmit = function(event){
+            event.preventDefault();
+            //alert(inputContent.value);
+            var n = {
+                ID: (newModel.getLength() + 1) + '',
+                title: "",
+                summary: "",
+                createdAt: new Date(),
+                author: "You",
+                content: "",
+                img: ""
+            }
+            var ID = newModel.getLength() + 1;
+            var correctID = "";
+            if(ID >= 10){
+                correctID = "00" + ID;
+            }else if(ID >= 100){
+                correctID = "0" + ID;
+            }else if(ID >= 1000){
+                correctID = ID;
+            }else{
+                correcID = "000" + ID;
+            }
+            //alert(correctID);
+            n.img = inputURL.value.toString();
+            n.title = inputTitle.value.toString();
+            n.summary = inputShortDescription.value.toString();
+            n.content = inputContent.value.toString();
+            //n.img = "https://pp.userapi.com/c628221/v628221405/3c0c6/TADPnB-YZjI.jpg";
+            //n.createdAt = newRenderer.formatDate(new Date());
+            newModel.addNew(n);
+            newRenderer.removeNewsFromDom();
+            var news = newModel.getNews(0, newModel.getLength());
+            newRenderer.insertNewsInDOM(news);
+            inputURL.value = "";
+            inputContent.value = "";
+            inputShortDescription.value = "";
+            inputTitle.value = "";
+            /*if(n.title, n.summare, n.content != ""){
+                n.img = "";
+                n.title = "";
+                n.summary = "";
+                n.content = "";
+                state1 = true;
+            }*/
+            //inputContent.value = "";
+            //alert(newModel.getLength());
+        };        
+        [].slice.call(document.querySelectorAll('.modal-trigger1')).forEach( 				
             function(el, i){
                 var modal = document.querySelector('#' + el.getAttribute('data-modal'));
-                    var close = modal.querySelector('.modal-close');
                     function removeModalHandler(){
-                        classie.remove(modal,'modal-show');
+                        classie.remove(modal,'modal-show1');
                     }
-                } 
-		    );
+                    el.addEventListener('click', 
+                        function(){
+                            classie.add(modal, 'modal-show1');
+                            overlay.removeEventListener('click', removeModalHandler);
+                            overlay.addEventListener('click', removeModalHandler);
+                        }
+ 		            );
+                    var close = modal.querySelector( '.md-close' );
+					close.addEventListener('click', function(ev){
+						ev.stopPropagation(); //Прекращает дальнейшую передачу текущего события.
+                        //if(state1 == true){
+						    removeModalHandler();
+                      //  }
+					});
+            }
+	    );
 }

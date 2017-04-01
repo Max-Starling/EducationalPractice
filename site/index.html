@@ -7,6 +7,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Underdog" rel="stylesheet">
 	<link href="css/style.css" type="text/css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="css/modal.css" />
+	<link rel="stylesheet" type="text/css" href="css/modal2.css" />
 </head>
 <body>
 	<div class="wrapper">
@@ -33,7 +34,7 @@
 			<div class="divider"></div>
 			<div class="search">
 				<img class="search-img" src="images/elements/search.png">
-				<form id = "searchform">
+				<form id = "searchform" autocomplete="off">
 					<input type="text" placeholder="search" name="searchin">
 				</form> 
 			</div>
@@ -64,7 +65,7 @@
 					<div class="quote"></div>
 				</div>
 				<div class="button-panel">
-					<img class="add-new-button modal-trigger" src="images/elements/add.png" onmousedown="addNew()" data-modal="modal-1"> <img>
+					<img class="add-new-button modal-trigger1" src="images/elements/add.png" onmousedown="addNew()" data-modal="modal-2"> <img>
 				</div>
 				<div class="news-block">
 					<div class="article-list"></div>
@@ -131,6 +132,25 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+			<div class="modal1 modal-effect1" id="modal-2">
+				<div class="modal-content1">
+					<div class="modal-text1">
+						<div class="title">
+							ADD NEW
+						</div>
+					</div>
+					<form class="add-new-form"> 
+						<input class="add-new-input">
+						<input class="add-new-input">
+						<textarea class="add-new-textarea" placeholder="Short description"></textarea>
+						<textarea class="add-new-textarea" placeholder="Content"></textarea>
+						<div>
+							<button type="submit" class="md-close">Post</button>
+						</div>
+					</form>
+					</div>					
 				</div>
 			</div>
 		<div class="modal-overlay"></div>

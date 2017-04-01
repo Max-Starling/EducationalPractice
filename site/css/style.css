@@ -182,21 +182,14 @@ input{
 				/*-----------------Search-----------------*/
 .search-img{
 		/*Size & Position */
-	height:1.1vw;
-	position:relative;
-	right:5.4vw;
-	top:1.4vw;
+	height: 1.1vw;
+	position: relative;
+	right: 5.4vw;
+	top: 1.4vw;
 }				
-input[type="text"] {
-		/*Size & Position */
-	height: 1.6vw;	
-		/*Margin, Border & Padding*/
-	border: 0.14vw solid #cecece;
-	margin: 0 1vw;
+#searchform input[type="text"] {
+	height: 1.6vw;
 	padding-left: 1.8vw;
-		/*Other*/
-	background: radial-gradient(circle at 50% 33%, white, #e7e7e7);
-	cursor: url(../images/elements/PF3C_zlk_IBream.cur), text;
 }
 				/*-----------------Button-----------------*/						
 .button-pair{
@@ -359,9 +352,7 @@ input[type="checkbox"]:checked + label:before {
 ::-webkit-scrollbar-track-piece{
 		/*Other*/
 	border-radius: 2vh;
-	box-shadow: 
-		0 3vw 5vw rgba(0,0,0,.25);
-		opacity: 0.5;
+	opacity: 0.5;
 }
 ::-webkit-scrollbar-thumb {
 		/*Other*/
@@ -482,5 +473,37 @@ input[type="checkbox"]:checked + label:before {
     height: 65%;
 }
 input[type="text"]:focus{ 
-	outline: none;
+	outline-color: #ada77c;
+}
+
+input[type="text"] {
+		/*Size & Position */
+	height: auto;	
+		/*Margin, Border & Padding*/
+	border: 0.14vw solid #cecece;
+	margin: 0 1vw;
+	padding-left: 0.6vw;
+		/*Other*/
+	background: radial-gradient(circle at 50% 33%, white, #e7e7e7);
+	cursor: url(../images/elements/PF3C_zlk_IBream.cur), text;
+}
+textarea{
+		/*Size & Position */
+	height: 6.4vw;
+	resize: none; 
+	width: 86%;
+		/*Margin, Border & Padding*/
+	border: 0.14vw solid #cecece;
+	margin: 0 1vw;
+	padding-left: 0.6vw;
+		/*Text*/
+	color: #aaaaaa;
+    font-family: Aladin, 'Underdog', cursive;
+    font-size: 1.3vw;
+		/*Other*/
+	background: radial-gradient(circle at 50% 33%, white, #e7e7e7);
+	cursor: url(../images/elements/PF3C_zlk_IBream.cur), text;
+}
+textarea:focus{
+	outline-color: #ada77c;
 }
