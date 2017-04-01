@@ -5,6 +5,7 @@ body {
 	font: 5vh/1.5 Aladin,Lobster;
 		/*Other*/
 	background: radial-gradient(circle at 50% 33%, #dfdfdf, #b6b6b6);
+   	cursor: url(../images/elements/PF3C_zlk_Arrow.cur), default;
 }
 div {
 		/*Display*/	
@@ -61,7 +62,7 @@ input{
 	height: 80%;
 	width: 80%;
 		/*Other*/
-	background: url(../images/logo.png) no-repeat;
+	background: url(../images/elements/logo.png) no-repeat;
 	background-size: 88%;
 	opacity:0.95;
 }
@@ -72,7 +73,7 @@ input{
 	height: 20%;
 	width: 90%;
 		/*Other*/
-	background: url(../images/quote.png) no-repeat;
+	background: url(../images/elements/quote.png) no-repeat;
 	background-position: top;
 	background-size: 74%;
 }
@@ -84,7 +85,7 @@ input{
 	margin: 0 auto;
 	width: 100%;
 		/*Other*/
-	cursor: pointer; 
+	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
 }
 .picture{
 		/*Size & Position*/
@@ -195,6 +196,7 @@ input[type="text"] {
 	padding-left: 1.8vw;
 		/*Other*/
 	background: radial-gradient(circle at 50% 33%, white, #e7e7e7);
+	cursor: url(../images/elements/PF3C_zlk_IBream.cur), text;
 }
 				/*-----------------Button-----------------*/						
 .button-pair{
@@ -231,8 +233,8 @@ input[type="checkbox"] + label:before {
 	margin: 0.6vw auto;
 		/*Other*/
     content: "";
-	cursor: pointer;
-	background: url(../images/button.png) no-repeat;
+	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
+	background: url(../images/elements/button.png) no-repeat;
 	background-size: 1.2vw;
 }
 input[type="checkbox"]:checked + label:before {
@@ -259,7 +261,7 @@ input[type="checkbox"]:checked + label:before {
 		/*Margin, Border & Padding*/
 	border-bottom: 0.1vmin solid #888888;
 		/*Other*/
-	cursor: pointer;
+	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
 }
 .menu ul li a{
 		/*Text*/
@@ -475,4 +477,10 @@ input[type="checkbox"]:checked + label:before {
 .article-list-item-content{
 	font-size: 100%;
 	color: black;
+}
+.article-list-item-author{
+    height: 65%;
+}
+input[type="text"]:focus{ 
+	outline: none;
 }

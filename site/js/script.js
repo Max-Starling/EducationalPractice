@@ -9,7 +9,7 @@ var newModel = (function () {
 			content: 'Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: ' +
 			'once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, ' +
 			'and what is the use of a book, thought Alice without pictures or conversation?',
-			img: "images/picture1.jpg"
+			img: "images/pics/picture1.jpg"
         },
         {
             ID: '0002',
@@ -19,7 +19,7 @@ var newModel = (function () {
             author: 'Lewis Carroll',
             content: 'Curiouser and curiouser! cried Alice (she was so much surprised, that for the moment she quite forgot how ' +
             'to speak good English); now I am opening out like the largest telescope that ever was!',
-			img: "images/picture2.jpg"
+			img: "images/pics/picture2.jpg"
         },
         {
             ID: '0003',
@@ -29,7 +29,7 @@ var newModel = (function () {
             author: 'Lewis Carroll',
             content: 'They were indeed a queer-looking party that assembled on the bank—the birds with draggled feathers, the ' +
             'animals with their fur clinging close to them, and all dripping wet, cross, and uncomfortable.',
-			img: "images/picture3.jpg"
+			img: "images/pics/picture3.jpg"
         },
         {
             ID: '0004',
@@ -39,7 +39,7 @@ var newModel = (function () {
             author: 'Lewis Carroll',
             content: 'It was the White Rabbit, trotting slowly back again, and looking anxiously about as it went, as if it had ' +
             'lost something; and she heard it muttering to itself.',
-			img: "images/picture4.jpg"
+			img: "images/pics/picture4.jpg"
         },
         {
             ID: '0005',
@@ -49,7 +49,7 @@ var newModel = (function () {
             author: 'Lewis Carroll',
             content: 'The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the ' +
             'hookah out of its mouth, and addressed her in a languid, sleepy voice.',
-			img: "images/picture5.jpg"
+			img: "images/pics/picture5.jpg"
         },
         {
             ID: '0006',
@@ -62,7 +62,7 @@ var newModel = (function () {
             'house, and wondering what to do next, when suddenly a footman in livery came running out of the wood—(she considered ' +
             'him to be a footman because he was in livery: otherwise, judging by his face only, she would have called him a fish)' +
             '—and rapped loudly at the door with his knuckles.',
-			img: "images/picture6.jpg"
+			img: "images/pics/picture6.jpg"
         },
         {
             ID: '0007',
@@ -73,7 +73,7 @@ var newModel = (function () {
             content: 'There was a table set out under a tree in front of the house, and the March Hare and the Hatter were having ' +
             'tea at it: a Dormouse was sitting between them, fast asleep, and the other two were using it as a cushion, resting their ' +
             'elbows on it, and talking over its head.',
-			img: "images/picture7.jpg"
+			img: "images/pics/picture7.jpg"
         },
         {
             ID: '0008',
@@ -83,7 +83,7 @@ var newModel = (function () {
             author: 'Lewis Carroll',
             content: 'A large rose-tree stood near the entrance of the garden: the roses growing on it were white, but there were ' +
             'three gardeners at it, busily painting them red.',
-			img: "images/picture8.jpg"
+			img: "images/pics/picture8.jpg"
         },
         {
             ID: '0009',
@@ -93,7 +93,7 @@ var newModel = (function () {
             author: 'Lewis Carroll',
             content: 'You cant think how glad I am to see you again, you dear old thing! said the Duchess, as she tucked her arm ' +
             'affectionately into Alices, and they walked off together.',
-			img: "images/picture9.jpg"
+			img: "images/pics/picture9.jpg"
         },
         {
             ID: '0010',
@@ -103,7 +103,7 @@ var newModel = (function () {
             author: 'Lewis Carroll',
             content: 'The Mock Turtle sighed deeply, and drew the back of one flapper across his eyes. He looked at Alice, and tried ' +
             'to speak, but for a minute or two sobs choked his voice.',
-			img: "images/picture10.jpg"
+			img: "images/pics/picture10.jpg"
         },
         {
             ID: '0011',
@@ -121,7 +121,7 @@ var newModel = (function () {
             'them—all sorts of little birds and beasts, as well as the whole pack of cards: the Knave was standing before them, in ' +
             'chains, with a soldier on each side to guard him; and near the King was the White Rabbit, with a trumpet in one hand, ' +
             'and a scroll of parchment in the other.',
-			img: "images/picture11.jpg"
+			img: "images/pics/picture11.jpg"
         },
         {
             ID: '0012',
@@ -133,86 +133,86 @@ var newModel = (function () {
             'and she jumped up in such a hurry that she tipped over the jury-box with the edge of her skirt, upsetting all the jurymen ' +
             'on to the heads of the crowd below, and there they lay sprawling about, reminding her very much of a globe of goldfish ' +
             'she had accidentally upset the week before.',
-			img: "images/picture12.jpg"
+			img: "images/pics/picture12.jpg"
         },
         {
             ID: '0013',
             title: 'I',
             summary: 'Once',
             createdAt: new Date("2017-09-14T13:13:13"),
-            author: 'Antoine de Saint-Exupery',
+            author: 'Antoine Exupery',
             content: 'Once when I was six years old I saw a magnificent picture in a book, called True Stories from Nature, about ' +
             'the primeval forest. ',
-			img: "images/picture13.jpg"
+			img: "images/pics/picture13.jpg"
         },
         {
             ID: '0014',
             title: 'II',
             summary: 'So',
             createdAt: new Date("2017-08-15T14:14:14"),
-            author: 'Antoine de Saint-Exupery',
+            author: 'Antoine Exupery',
             content: 'So I lived my life alone, without anyone that I could really talk to, until I had an accident with my plane ' +
             'in the Desert of Sahara, six years ago.  ',
-			img: "images/picture14.jpg"
+			img: "images/pics/picture14.jpg"
         },
         {
             ID: '0015',
             title: 'III',
             summary: 'It',
             createdAt: new Date("2017-07-16T15:15:15"),
-            author: 'Antoine de Saint-Exupery',
+            author: 'Antoine Exupery',
             content: 'It took me a long time to learn where he came from. The little prince, who asked me so many questions, never ' +
             'seemed to hear the ones I asked him. ',
-			img: "images/picture15.jpg"
+			img: "images/pics/picture15.jpg"
         },
         {
             ID: '0016',
             title: 'IV',
             summary: 'I',
             createdAt: new Date("2017-6-17T16:16:16"),
-            author: 'Antoine de Saint-Exupery',
+            author: 'Antoine Exupery',
             content: 'I had thus learned a second fact of great importance: this was that the planet the little prince came from ' +
             'was scarcely any larger than a house!',
-			img: "images/picture16.jpg"
+			img: "images/pics/picture16.jpg"
         },
         {
             ID: '0017',
             title: 'V',
             summary: 'As',
             createdAt: new Date("2017-05-18T17:17:17"),
-            author: 'Antoine de Saint-Exupery',
+            author: 'Antoine Exupery',
             content: 'As each day passed I would learn, in our talk, something about the little princes planet, his departure from ' +
             'it, his journey. ',
-			img: "images/picture17.jpg"
+			img: "images/pics/picture17.jpg"
         },
         {
             ID: '0018',
             title: 'VI',
             summary: 'Oh',
             createdAt: new Date("2017-04-19T18:18:18"),
-            author: 'Antoine de Saint-Exupery',
+            author: 'Antoine Exupery',
             content: 'Oh, little prince! Bit by bit I came to understand the secrets of your sad little life...',
-			img: "images/picture18.jpg"
+			img: "images/pics/picture18.jpg"
         },
         {
             ID: '0019',
             title: 'VII',
             summary: 'Always',
             createdAt: new Date("2017-03-20T19:19:19"),
-            author: 'Antoine de Saint-Exupery',
+            author: 'Antoine Exupery',
             content: 'On the fifth day—again, as always, it was thanks to the sheep—the secret of the little princes life was ' +
             'revealed to me.',
-			img: "images/19.jpg"
+			img: "images/pics/picture19.jpg"
         },
         {
             ID: '0020',
             title: 'VIII',
             summary: 'Soon',
             createdAt: new Date("2017-02-21T20:20:20"),
-            author: 'Antoine de Saint-Exupery',
+            author: 'Antoine Exupery',
             content: 'I soon learned to know this flower better. On the little princes planet the flowers had always been very simple. ' +
             'They had only one ring of petals; they took up no room at all; they were a trouble to nobody. ',
-			img: "images/picture20.jpg"
+			img: "images/pics/picture20.jpg"
         }
         ];
     function validateNew(n) {
@@ -281,13 +281,16 @@ var newModel = (function () {
             }
         );
     }
-    function getNews(skip, top, filterConfig) {
+    function getAuthors(){
+        return news.map(x => x.author);
+    }
+    function getNews(skip, top, filterConfig) {       
         /*Default*/
         if (skip === undefined){
             skip = 0;
         }
         if (top === undefined){
-            top = 10;
+            top = news.length;
         }
         var out = news.slice();
         sortNews(out);
@@ -368,7 +371,8 @@ var newModel = (function () {
         getNews: getNews,
         editNew: editNew,
         removeNew:removeNew,
-        addNew: addNew
+        addNew: addNew,
+        getAuthors: getAuthors
     };
 }())
 var userInfo = (function() {
@@ -474,70 +478,104 @@ function startApp() {
 
 function renderNews(skip, top) {
     newRenderer.removeNewsFromDom();
-    var news = newModel.getNews(0, 15, {author: "Lewis Carroll"});
+    var news = newModel.getNews(0, 15, {author: ""});
     newRenderer.insertNewsInDOM(news);
 }
 
 //document.addEventListener('DOMContentLoaded', searchResultNews);
-function startSearch(){
+function startSearch(v){
      newRenderer.init();
-     searchResultNews();
+     searchResultNews(v);
 }
-var searchForm = document.getElementById("searchform");
-var searchInput = document.querySelector("searchin");
 
-//alert(searchForm.text);
-function searchResultNews() {
+function searchResultNews(v) {
     newRenderer.removeNewsFromDom();
-    var news = newModel.getNews(0, 15, {author: searchInput.textContent});
+    var news = newModel.getNews(0, 15, {author: v});
     newRenderer.insertNewsInDOM(news);
 }
 
+var searchForm = document.getElementById("searchform");
+searchForm.onsubmit = function(event){
+            event.preventDefault();
+            var searchIn = document.forms.searchform.searchin;
+            var authors = newModel.getAuthors();
+            var news;
+            if(searchIn.value === ""){
+                newRenderer.removeNewsFromDom();
+                news = newModel.getNews();
+                newRenderer.insertNewsInDOM(news);
+            }else{
+                var i;
+                for(i = 0; i < authors.length; i++){
+                    if(authors[i].toString().toLowerCase().indexOf(searchIn.value.toString().toLowerCase()) + 1){
+                        startSearch(authors[i]);
+                        break;
+                    }
+                }
+                if(i === authors.length){
+                    newRenderer.removeNewsFromDom();
+                    news = newModel.getNews();
+                    newRenderer.insertNewsInDOM(news);
+                }
+            }
+    searchIn.value = "";
+};   
+
     document.getElementById("register").addEventListener('click', register, true);
     document.getElementById("log").addEventListener('click', log, true);
-    var username;
-    var userphoto;
+    var correctUsername = false;
+    var correctPassword = false;
     function log() {
-        username = document.getElementsByClassName("user-info-name")[0];
-        userphoto =  document.getElementsByClassName("user-info-photo")[0];
+        var username = document.getElementsByClassName("user-info-name")[0];
+        var userphoto =  document.getElementsByClassName("user-info-photo")[0];
         var body = document.getElementsByTagName("body")[0];
         var div = document.createElement("div");
-        /*if(!body.contains(div)){
-            console.log("re");
-        }*/
-        //var div = document.createElement("div");
         div.className = "authorization";
-        var form = div.appendChild(createForm("Username"));
-        div.appendChild(createForm("Password"));      
-     // var form = div.appendChild(getFormForAutorize());
+        
+        var form1 = div.appendChild(createForm("Username"));
+        form1.onsubmit = function(event){
+            event.preventDefault();
+            correctUsername = false;
+            form1.in.style.color = "#aaaaaa";
+            if(form1.in.value.length > 0 && form1.in.value.length <= 16){
+                correctUsername = true;
+            }else if(form1.in.value.length > 10 || form1.in.value.length < 0){
+                form1.in.style.color = "#8b1500";
+            }
+            alert(correctUsername);
+        };
+        
+        var form2 = div.appendChild(createForm("Password"));
+        form2.onsubmit = function(event){
+            event.preventDefault();
+            var correctPassword = false;
+            form2.in.style.color = "#aaaaaa";
+            if(form2.in.value.length >= 4 && form2.in.value.length <= 16){
+                correctPassword = true;
+            }else if(form2.in.value.length > 16 || form2.in.value.length < 4){
+                form2.in.style.color = "#8b1500";
+            }
+            alert(correctPassword);
+        };
+        alert("cu " + correctUsername);
+        alert("cp " + correctPassword);
         var sub = document.createElement("button");
-        sub.style.visibility = "hidden";
-        //sub.type = "submit";
-        form.appendChild(sub);
+        //sub.style.visibility = "hidden";
+        //form1.appendChild(sub);
+        form1.appendChild(sub);
         sub.addEventListener('click', 
-             function ffpls(){
-                //console.log(form.in.value);
-                //alert(form.in.value);
-                username.textContent = form.in.value;
-                userphoto.src = "images/user_photo.jpg";
-                userInfo.setn(form.in.value + "");
-                //userInfo.getUserName();
-                //sub.removeEventListener('click', removeModalHandler);
+            function ffpls(){ 
+           // alert("cu " + correctUsername);
+           // alert("cp " + correctPassword);
+                if(correctUsername === true && correctPassword === true){
+                    userphoto.src = "images/pics/user_photo.jpg";
+                    userInfo.setn(form1.in.value + "");
+                    body.removeChild(div);  
+                }
             }, true
         );
         body.appendChild(div);
-        //userInfo.setn(form.in.value + "");
-        /* function() {
-            username.textContent = form.in.value;
-            userphoto.src = "images/user_photo.jpg";
-        };*/
-        //sub.removeEventListener('click', alert("re"));
-        //alert(username.textContent);
-        //console.log(form.in.value);
     }
-    //alert(JSON.stringify(tmp));
-    //userInfo.getn();
-    //userInfo.getn();
     function register(event) {
         var body = document.getElementsByTagName("body")[0];
         var div = document.createElement("div");
@@ -547,14 +585,16 @@ function searchResultNews() {
         div.appendChild(createForm("Password")); 
         body.appendChild(div);
     }
-    function createForm(text) {
-        var form = document.createElement("form");
+    var state = true;
+    function createForm(text, form) {
+        state = false;
+        //ar form = document.createElement("form");
         var p = document.createElement("p");
         p.className="p";
         p.textContent = text + ":";
         var input = document.createElement("input");
         input.className = "form-style";        
-        input.required = "true";
+        //input.required = "true";
         input.placeholder = text;
         if(text === "Username"){
             input.placeholder = "@Max-Starling";
@@ -564,6 +604,7 @@ function searchResultNews() {
         if(text === "Password"){
             input.type="password";
             input.placeholder = "yourpassword";
+            input.name = "in";
         }
         if(text === "Email"){
             input.placeholder = "17.max.starling@gmail.com";
@@ -607,26 +648,19 @@ function searchResultNews() {
     }
 
     function addNew(){
-		    var overlay = document.querySelector('.modal-overlay');
-            var modalText = document.getElementsByClassName("modal-text")[0];
-            var title = modalText.getElementsByClassName("title")[0];
-            var content = modalText.getElementsByClassName("content")[0];
-            title.textContent = "Title";
-            content.textContent = "Content";      
-         [].slice.call(document.querySelectorAll('.modal-trigger')).forEach( 				
-			function(el, i){
-				var modal = document.querySelector('#' + el.getAttribute('data-modal'));
-                var close = modal.querySelector('.modal-close');
-				function removeModalHandler(){
-					classie.remove(modal,'modal-show');
-				}
-				el.addEventListener('click', 
-					function(ev){
-						classie.add(modal, 'modal-show');
-						overlay.removeEventListener('click', removeModalHandler);
-						overlay.addEventListener('click', removeModalHandler);
-					}
-		        );
-			} 
-		);
-    }
+		var overlay = document.querySelector('.modal-overlay');
+        var modalText = document.getElementsByClassName("modal-text")[0];
+        var title = modalText.getElementsByClassName("title")[0];
+        var content = modalText.getElementsByClassName("content")[0];
+        title.textContent = "Title";
+        content.textContent = "Content";      
+        [].slice.call(document.querySelectorAll('.modal-trigger')).forEach( 				
+            function(el, i){
+                var modal = document.querySelector('#' + el.getAttribute('data-modal'));
+                    var close = modal.querySelector('.modal-close');
+                    function removeModalHandler(){
+                        classie.remove(modal,'modal-show');
+                    }
+                } 
+		    );
+}
