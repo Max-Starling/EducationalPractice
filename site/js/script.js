@@ -693,6 +693,7 @@ searchForm.onsubmit = function(event){
         var modalContent = document.getElementsByClassName("modal-content1")[0]; 
         var form = document.getElementsByClassName("add-new-form")[0];
         var inputURL = document.getElementsByClassName("add-new-input")[0];
+        document.getElementsByClassName("modal-title")[0].textContent = "ADD NEW";
         inputURL.placeholder = "Image URL";
         inputURL.type = "text";
         var inputTitle = document.getElementsByClassName("add-new-input")[1];
@@ -783,6 +784,9 @@ function editNew(){
         var modalContent = document.getElementsByClassName("modal-content1")[0]; 
         var form = document.getElementsByClassName("add-new-form")[0];
         var inputURL = document.getElementsByClassName("add-new-input")[0];
+        var modalTitle = document.getElementsByClassName("modal-title")[0].textContent;
+        //alert(modalTitle);
+        document.getElementsByClassName("modal-title")[0].textContent = "EDIT NEW";
         inputURL.placeholder = "Image URL";
         inputURL.type = "text";
         var inputTitle = document.getElementsByClassName("add-new-input")[1];
