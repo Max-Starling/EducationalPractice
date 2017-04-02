@@ -69,8 +69,16 @@
 	padding: 10px 0;
 }
 
-.delete-new-button{
+.new-button{
 	float: right;
 	padding-right: 0.7vw;
 	padding-top: 0.7vw;
+	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
+}
+.modal-text .content{
+	display: inline;
+	color: 	#565656;
+}
+.modal-text{
+	word-wrap: break-word;
 }

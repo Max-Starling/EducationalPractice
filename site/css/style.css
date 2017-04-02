@@ -2,7 +2,7 @@
 body {
 		/*Text*/
     text-align: center;
-	font: 5vh/1.5 Aladin,Lobster;
+	font: 5vh/1.5 Aladin,Lobster, 'Underdog';
 		/*Other*/
 	background: radial-gradient(circle at 50% 33%, #dfdfdf, #b6b6b6);
    	cursor: url(../images/elements/PF3C_zlk_Arrow.cur), default;
@@ -394,6 +394,8 @@ input[type="checkbox"]:checked + label:before {
 		/*Size & Position*/
 	height:15.5vmin;
 	max-height:10vw;
+	width:15.5vmin;
+	max-width:10vw;
 		/*Margin, Border & Padding*/
 	padding:1.3vh;
 }
@@ -463,6 +465,7 @@ input[type="checkbox"]:checked + label:before {
 }
 .modal-text .content{
 	display: inline;
+	word-wrap: break-word;
 	color: 	#565656;
 }
 .article-list-item-content{
