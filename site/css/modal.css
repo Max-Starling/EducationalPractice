@@ -58,7 +58,7 @@
 }
 
 .modal-content > div {
-	padding: 2vw;
+	padding: 1vw;
 	margin: 0;
 	font-weight: 300;
 	font-size: 1.15em;
@@ -67,4 +67,10 @@
 .modal-content > div p {
 	margin: 0;
 	padding: 10px 0;
+}
+
+.delete-new-button{
+	float: right;
+	padding-right: 0.7vw;
+	padding-top: 0.7vw;
 }

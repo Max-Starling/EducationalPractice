@@ -58,7 +58,7 @@
 }
 
 .modal-content1 > div {
-	padding: 2vw;
+	padding: 0.5vw;
 	margin: 0;
 	font-weight: 300;
 	font-size: 1.15em;
@@ -86,7 +86,7 @@
   transition: 0.2s;
 }*/
 .md-close {
-	border: none;
+	border: 0.1vw solid #999898;
 	padding: 0.4vw 1.2vw;
 	background: radial-gradient(circle at 50% 33%, #c4c1c1, #a9abad);
 	color: #fff;
@@ -94,15 +94,14 @@
 	font-size: 1em;
 	letter-spacing: 1px;
 	text-transform: uppercase;
-	cursor: pointer;
+	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
 	display: inline-block;
-	margin-top: 0.6vw;
-	border-radius: 2px;
-	opacity: 0.8;
+	margin-top: 0.56vw;
+	opacity: 0.9;
 	transition: 0.2s;
 }
 
 .md-close:hover {
-	opacity: 0.6;
+	opacity: 0.65;
 	transition: 0.2s;
 }

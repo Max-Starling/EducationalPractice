@@ -15,7 +15,7 @@ var newModel = (function () {
             ID: '0002',
             title: 'CHAPTER II',
             summary: 'The Pool of Tears',
-            createdAt: new Date("2017-02-04T01:01:01"),
+            createdAt: new Date("2017-01-10T01:01:01"),
             author: 'Lewis Carroll',
             content: 'Curiouser and curiouser! cried Alice (she was so much surprised, that for the moment she quite forgot how ' +
             'to speak good English); now I am opening out like the largest telescope that ever was!',
@@ -25,7 +25,7 @@ var newModel = (function () {
             ID: '0003',
             title: 'CHAPTER III',
             summary: 'A Caucus-Race and a Long Tale',
-            createdAt: new Date("2017-03-03T02:02:02"),
+            createdAt: new Date("2017-01-15T02:02:02"),
             author: 'Lewis Carroll',
             content: 'They were indeed a queer-looking party that assembled on the bank—the birds with draggled feathers, the ' +
             'animals with their fur clinging close to them, and all dripping wet, cross, and uncomfortable.',
@@ -35,7 +35,7 @@ var newModel = (function () {
             ID: '0004',
             title: 'CHAPTER IV',
             summary: 'The Rabbit Sends in a Little Bill',
-            createdAt: new Date("2017-04-02T03:03:03"),
+            createdAt: new Date("2017-01-18T03:03:03"),
             author: 'Lewis Carroll',
             content: 'It was the White Rabbit, trotting slowly back again, and looking anxiously about as it went, as if it had ' +
             'lost something; and she heard it muttering to itself.',
@@ -45,7 +45,7 @@ var newModel = (function () {
             ID: '0005',
             title: 'CHAPTER V',
             summary: 'Advice from a Caterpillar',
-            createdAt: new Date("2017-05-06T05:05:05"),
+            createdAt: new Date("2017-01-21T05:05:05"),
             author: 'Lewis Carroll',
             content: 'The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the ' +
             'hookah out of its mouth, and addressed her in a languid, sleepy voice.',
@@ -55,7 +55,7 @@ var newModel = (function () {
             ID: '0006',
             title: 'CHAPTER VI',
             summary: 'Pig and Pepper',
-            createdAt: new Date("2017-06-07T06:06:06"),
+            createdAt: new Date("2017-01-26T06:06:06"),
             author: 'Lewis Carroll',
             content: 'The Caterpillar and Alice looked at each other for some time in silence: at last the Caterpillar took the ' +
             'hookah out of its mouth, and addressed her in a languid, sleepy voice.For a minute or two she stood looking at the ' +
@@ -68,7 +68,7 @@ var newModel = (function () {
             ID: '0007',
             title: 'CHAPTER VII',
             summary: 'A Mad Tea-Party',
-            createdAt: new Date("2017-07-08T07:07:07"),
+            createdAt: new Date("2017-01-31T07:07:07"),
             author: 'Lewis Carroll',
             content: 'There was a table set out under a tree in front of the house, and the March Hare and the Hatter were having ' +
             'tea at it: a Dormouse was sitting between them, fast asleep, and the other two were using it as a cushion, resting their ' +
@@ -79,7 +79,7 @@ var newModel = (function () {
             ID: '0008',
             title: 'CHAPTER VIII',
             summary: 'The Queens Croquet-Ground',
-            createdAt: new Date("2017-08-09T08:08:08"),
+            createdAt: new Date("2017-02-02T08:08:08"),
             author: 'Lewis Carroll',
             content: 'A large rose-tree stood near the entrance of the garden: the roses growing on it were white, but there were ' +
             'three gardeners at it, busily painting them red.',
@@ -89,7 +89,7 @@ var newModel = (function () {
             ID: '0009',
             title: 'CHAPTER IX',
             summary: 'The Mock Turtles Story',
-            createdAt: new Date("2017-09-10T09:09:09"),
+            createdAt: new Date("2017-02-07T09:09:09"),
             author: 'Lewis Carroll',
             content: 'You cant think how glad I am to see you again, you dear old thing! said the Duchess, as she tucked her arm ' +
             'affectionately into Alices, and they walked off together.',
@@ -99,7 +99,7 @@ var newModel = (function () {
             ID: '0010',
             title: 'CHAPTER X',
             summary: 'The Lobster Quadrille',
-            createdAt: new Date("2017-10-11T10:10:10"),
+            createdAt: new Date("2017-02-14T10:10:10"),
             author: 'Lewis Carroll',
             content: 'The Mock Turtle sighed deeply, and drew the back of one flapper across his eyes. He looked at Alice, and tried ' +
             'to speak, but for a minute or two sobs choked his voice.',
@@ -109,7 +109,7 @@ var newModel = (function () {
             ID: '0011',
             title: 'CHAPTER XI',
             summary: 'Who Stole the Tarts?',
-            createdAt: new Date("2017-11-12T11:11:11"),
+            createdAt: new Date("2017-02-17T11:11:11"),
             author: 'Lewis Carroll',
             content: 'The King and Queen of Hearts were seated on their throne when they arrived, with a great crowd assembled about ' +
             'them—all sorts of little birds and beasts, as well as the whole pack of cards: the Knave was standing before them, in ' +
@@ -127,7 +127,7 @@ var newModel = (function () {
             ID: '0012',
             title: 'CHAPTER XII',
             summary: 'Alices Evidence',
-            createdAt: new Date("2017-10-13T12:12:12"),
+            createdAt: new Date("2017-02-18T12:12:12"),
             author: 'Lewis Carroll',
             content: 'Here! cried Alice, quite forgetting in the flurry of the moment how large she had grown in the last few minutes, ' +
             'and she jumped up in such a hurry that she tipped over the jury-box with the edge of her skirt, upsetting all the jurymen ' +
@@ -139,7 +139,7 @@ var newModel = (function () {
             ID: '0013',
             title: 'I',
             summary: 'Once',
-            createdAt: new Date("2017-09-14T13:13:13"),
+            createdAt: new Date("2017-02-22T13:13:13"),
             author: 'Antoine Exupery',
             content: 'Once when I was six years old I saw a magnificent picture in a book, called True Stories from Nature, about ' +
             'the primeval forest. ',
@@ -149,7 +149,7 @@ var newModel = (function () {
             ID: '0014',
             title: 'II',
             summary: 'So',
-            createdAt: new Date("2017-08-15T14:14:14"),
+            createdAt: new Date("2017-02-27T14:14:14"),
             author: 'Antoine Exupery',
             content: 'So I lived my life alone, without anyone that I could really talk to, until I had an accident with my plane ' +
             'in the Desert of Sahara, six years ago.  ',
@@ -159,7 +159,7 @@ var newModel = (function () {
             ID: '0015',
             title: 'III',
             summary: 'It',
-            createdAt: new Date("2017-07-16T15:15:15"),
+            createdAt: new Date("2017-03-05T15:15:15"),
             author: 'Antoine Exupery',
             content: 'It took me a long time to learn where he came from. The little prince, who asked me so many questions, never ' +
             'seemed to hear the ones I asked him. ',
@@ -169,7 +169,7 @@ var newModel = (function () {
             ID: '0016',
             title: 'IV',
             summary: 'I',
-            createdAt: new Date("2017-06-17T16:16:16"),
+            createdAt: new Date("2017-03-07T16:16:16"),
             author: 'Antoine Exupery',
             content: 'I had thus learned a second fact of great importance: this was that the planet the little prince came from ' +
             'was scarcely any larger than a house!',
@@ -179,7 +179,7 @@ var newModel = (function () {
             ID: '0017',
             title: 'V',
             summary: 'As',
-            createdAt: new Date("2017-05-18T17:17:17"),
+            createdAt: new Date("2017-03-09T17:17:17"),
             author: 'Antoine Exupery',
             content: 'As each day passed I would learn, in our talk, something about the little princes planet, his departure from ' +
             'it, his journey. ',
@@ -189,7 +189,7 @@ var newModel = (function () {
             ID: '0018',
             title: 'VI',
             summary: 'Oh',
-            createdAt: new Date("2017-04-19T18:18:18"),
+            createdAt: new Date("2017-03-16T18:18:18"),
             author: 'Antoine Exupery',
             content: 'Oh, little prince! Bit by bit I came to understand the secrets of your sad little life...',
 			img: "images/pics/picture18.jpg"
@@ -198,7 +198,7 @@ var newModel = (function () {
             ID: '0019',
             title: 'VII',
             summary: 'Always',
-            createdAt: new Date("2017-03-20T19:19:19"),
+            createdAt: new Date("2017-03-24T19:19:19"),
             author: 'Antoine Exupery',
             content: 'On the fifth day—again, as always, it was thanks to the sheep—the secret of the little princes life was ' +
             'revealed to me.',
@@ -208,7 +208,7 @@ var newModel = (function () {
             ID: '0020',
             title: 'VIII',
             summary: 'Soon',
-            createdAt: new Date("2017-02-21T20:20:20"),
+            createdAt: new Date("2017-03-31T20:20:20"),
             author: 'Antoine Exupery',
             content: 'I soon learned to know this flower better. On the little princes planet the flowers had always been very simple. ' +
             'They had only one ring of petals; they took up no room at all; they were a trouble to nobody. ',
@@ -626,10 +626,19 @@ searchForm.onsubmit = function(event){
             var content = modalText.getElementsByClassName("content")[0];
             var author = modalText.getElementsByClassName("author")[0];
             var date = modalText.getElementsByClassName("date")[0];
+            var ID = event.currentTarget.dataset.ID;
             var t = event.currentTarget.getElementsByClassName("title")[0].textContent;
             var c = event.currentTarget.getElementsByClassName("content")[0].textContent;
             var a = event.currentTarget.getElementsByClassName("author")[0].textContent;
             var d = event.currentTarget.getElementsByClassName("date")[0].textContent;
+           
+            function tmp(){
+                newRenderer.removeNewsFromDom();
+                newModel.removeNew(ID.toString());
+                var news = newModel.getNews(0, newModel.getLength());
+                newRenderer.insertNewsInDOM(news);
+            }
+            document.getElementsByClassName("delete-new-button")[0].addEventListener('click', tmp);
             title.textContent = t;
             content.textContent = c;
             date.textContent = d;
@@ -663,14 +672,14 @@ searchForm.onsubmit = function(event){
         inputTitle.style.marginTop = "0.5vw"     
         inputTitle.placeholder = "Title";
         inputTitle.type = "text";
-        inputTitle.maxLength = "30";
+        inputTitle.maxLength = "20";
         var inputShortDescription = document.getElementsByClassName("add-new-textarea")[0];
         inputShortDescription.style.marginTop = "0.5vw"
         inputShortDescription.maxLength = "160";
         var inputContent = document.getElementsByClassName("add-new-textarea")[1];
         inputContent.style.height = "9.6vw";
         inputContent.style.marginTop = "0.5vw";
-        inputContent.maxLength = "640";
+        inputContent.maxLength = "1920";
         form.spellcheck = false;
         //var state1 = false;
         form.onsubmit = function(event){
