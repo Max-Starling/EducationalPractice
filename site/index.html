@@ -7,6 +7,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Underdog" rel="stylesheet">
 	<link href="css/style.css" type="text/css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="css/modal.css" />
+	<link rel="stylesheet" type="text/css" href="css/modal1.css" />
 	<link rel="stylesheet" type="text/css" href="css/modal2.css" />
 </head>
 <body>
@@ -14,7 +15,7 @@
 		<div class="right-panel">	
 			<div class="menu">
 				 <ul>
-					<li id="log"><a>Log in</a></li>
+					<li id="log" data-modal="modal-3" class="modal-trigger3" onmousedown="authorization()"><a>Log in</a></li>
 					<li id="register"><a>Register</a></li>
 					<li><a>Settings</a></li>
 					<li><a>Contact us</a></li>
@@ -65,7 +66,7 @@
 					<div class="quote"></div>
 				</div>
 				<div class="button-panel">
-					<img class="add-new-button modal-trigger1" src="images/elements/add.png" onmousedown="addNew()" data-modal="modal-2"> <img>
+					<img id="re" class="add-new-button modal-trigger1" src="images/elements/add.png" onmousedown="addNew()" data-modal="modal-2"><img>
 				</div>
 				<div class="news-block">
 					<div class="article-list"></div>
@@ -136,23 +137,36 @@
 					</div>
 				</div>
 			</div>
-			<div class="modal1 modal-effect1" id="modal-2">
-				<div class="modal-content1">
-					<div class="modal-text1">
-						<div class="modal-title"></div>
-					</div>
-					<form class="add-new-form"> 
-						<input class="add-new-input">
-						<input class="add-new-input">
-						<textarea class="add-new-textarea" placeholder="Short description"></textarea>
-						<textarea class="add-new-textarea" placeholder="Content"></textarea>
-						<div>
-							<button type="submit" class="md-close">Post</button>
-						</div>
-					</form>
-					</div>					
+		<div class="modal1 modal-effect1" id="modal-2">
+			<div class="modal-content1">
+				<div class="modal-text1">
+					<div class="modal-title"></div>
 				</div>
-			</div>
+				<form class="add-new-form"> 
+					<input class="add-new-input">
+					<input class="add-new-input">
+					<textarea class="add-new-textarea" placeholder="Short description"></textarea>
+					<textarea class="add-new-textarea" placeholder="Content"></textarea>
+					<div>
+						<button type="submit" class="md-close">Post</button>
+					</div>
+				</form>
+			</div>					
+		</div>
+		<div class="modal2 modal-effect2" id="modal-3">
+			<div class="modal-content2">
+				<div class="modal-text2">
+					<div class="modal-title"></div>
+				</div>
+				<form class="authorization-form"> 
+					<input class="authorization-input">
+					<input class="authorization-input">
+					<div>
+						<button type="submit" class="md-close">Enter</button>
+					</div>
+				</form>
+			</div>					
+		</div>
 		<div class="modal-overlay"></div>
     <!-- scripts -->
 		<script src="js/classie.js"></script>	

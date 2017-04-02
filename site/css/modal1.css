@@ -1,4 +1,4 @@
-.modal2 {
+.modal1 {
 	font-size: 1.5vw;
 	position: fixed;
 	top: 50%;
@@ -13,15 +13,16 @@
     overflow-x: hidden;
 	transform: translateX(-50%) translateY(-50%);
 }
-.modal-show2 {
+.modal-show1 {
 	visibility: visible;
 }
-.modal-show2 ~ .modal-overlay {
+
+.modal-show1 ~ .modal-overlay {
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect2 .modal-content2 {
+.modal-effect1 .modal-content1 {
 	transform: scale(0.7);
 	opacity: 0;
 	transition: all 0.3s;
@@ -31,26 +32,47 @@
 	border: 0.vw solid #777777;
 }
 
-.modal-show2.modal-effect2 .modal-content2 {
+.modal-show1.modal-effect1 .modal-content1 {
 	transform: scale(1);
 	opacity: 1;
 }
 
-.modal-content2 {
+.modal-content1 {
 	color: darkgray;
 	position: relative;
 	margin: 0 auto;
 	padding-bottom: 3vw;
 }
 
-.modal-content2 > div {
+.modal-content1 > div {
 	padding: 0.5vw;
 	margin: 0;
 	font-weight: 300;
 	font-size: 1.15em;
 }
 
-.modal-content2 > div p {
+.modal-content1 > div p {
 	margin: 0;
 	padding: 10px 0;
+}
+
+.md-close {
+	border: 0.1vw solid #999898;
+	padding: 0.4vw 1.2vw;
+	background: radial-gradient(circle at 50% 33%, #c4c1c1, #a9abad);
+	color: #fff;
+	font-family: 'Aladin';
+	font-size: 1em;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
+	display: inline-block;
+	margin-top: 0.56vw;
+	opacity: 0.9;
+	transition: 0.2s;
+}
+
+.md-close:hover {
+	opacity: 0.65;
+	transition: 0.2s;
 }

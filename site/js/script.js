@@ -528,99 +528,7 @@ searchForm.onsubmit = function(event){
     searchIn.value = "";
 };   
 
-    document.getElementById("register").addEventListener('click', register, true);
-    document.getElementById("log").addEventListener('click', log, true);
-    var correctUsername = false;
-    var correctPassword = false;
-    function log() {
-        var username = document.getElementsByClassName("user-info-name")[0];
-        var userphoto =  document.getElementsByClassName("user-info-photo")[0];
-        var body = document.getElementsByTagName("body")[0];
-        var div = document.createElement("div");
-        div.className = "authorization";
-        
-        var form1 = div.appendChild(createForm("Username"));
-        form1.onsubmit = function(event){
-            event.preventDefault();
-            correctUsername = false;
-            form1.in.style.color = "#aaaaaa";
-            if(form1.in.value.length > 0 && form1.in.value.length <= 16){
-                correctUsername = true;
-            }else if(form1.in.value.length > 10 || form1.in.value.length < 0){
-                form1.in.style.color = "#8b1500";
-            }
-            alert(correctUsername);
-        };
-        
-        var form2 = div.appendChild(createForm("Password"));
-        form2.onsubmit = function(event){
-            event.preventDefault();
-            var correctPassword = false;
-            form2.in.style.color = "#aaaaaa";
-            if(form2.in.value.length >= 4 && form2.in.value.length <= 16){
-                correctPassword = true;
-            }else if(form2.in.value.length > 16 || form2.in.value.length < 4){
-                form2.in.style.color = "#8b1500";
-            }
-            alert(correctPassword);
-        };
-        alert("cu " + correctUsername);
-        alert("cp " + correctPassword);
-        var sub = document.createElement("button");
-        //sub.style.visibility = "hidden";
-        //form1.appendChild(sub);
-        form1.appendChild(sub);
-        sub.addEventListener('click', 
-            function ffpls(){ 
-           // alert("cu " + correctUsername);
-           // alert("cp " + correctPassword);
-                if(correctUsername === true && correctPassword === true){
-                    userphoto.src = "images/pics/user_photo.jpg";
-                    userInfo.setn(form1.in.value + "");
-                    body.removeChild(div);  
-                }
-            }, true
-        );
-        body.appendChild(div);
-    }
-    function register(event) {
-        var body = document.getElementsByTagName("body")[0];
-        var div = document.createElement("div");
-        div.className = "authorization";
-        div.appendChild(createForm("Email"));
-        div.appendChild(createForm("Username"));
-        div.appendChild(createForm("Password")); 
-        body.appendChild(div);
-    }
     var state = true;
-    function createForm(text, form) {
-        state = false;
-        //ar form = document.createElement("form");
-        var p = document.createElement("p");
-        p.className="p";
-        p.textContent = text + ":";
-        var input = document.createElement("input");
-        input.className = "form-style";        
-        //input.required = "true";
-        input.placeholder = text;
-        if(text === "Username"){
-            input.placeholder = "@Max-Starling";
-            form.name = "uname";
-            input.name = "in";
-        }
-        if(text === "Password"){
-            input.type="password";
-            input.placeholder = "yourpassword";
-            input.name = "in";
-        }
-        if(text === "Email"){
-            input.placeholder = "17.max.starling@gmail.com";
-        }
-        form.appendChild(p);
-        form.appendChild(input);
-        return form;
-    }
-
     var ID;
     var title;
     var content;
@@ -654,7 +562,7 @@ searchForm.onsubmit = function(event){
             var a = event.currentTarget.getElementsByClassName("author")[0].textContent;
             var d = event.currentTarget.getElementsByClassName("date")[0].textContent;
             function tmp(){
-                event.stopPropagation();
+                //event.stopPropagation();
                 newRenderer.removeNewsFromDom();
                 newModel.removeNew(ID.toString());
                 var news = newModel.getNews(0, newModel.getLength());
@@ -845,6 +753,87 @@ function editNew(){
 						ev.stopPropagation();
 						    removeModalHandler();
 					});
+            }
+	    );
+}
+
+function authorization(){
+		var overlay = document.querySelector('.modal-overlay');
+        var modalContent = document.getElementsByClassName("modal-content2")[0]; 
+        var form = document.getElementsByClassName("authorization-form")[0];
+        var inputLogin = document.getElementsByClassName("authorization-input")[0];
+        //var modalTitle = document.getElementsByClassName("modal-title")[0].textContent;
+        //alert(modalTitle);
+        document.getElementsByClassName("modal-title")[1].textContent = "AUTHORIZATION";
+        inputLogin.placeholder = "@Max-Starling";
+        inputLogin.className = "authorization-input form-style";
+        inputLogin.style.marginTop = "1.5vw"    
+        var inputPassword = document.getElementsByClassName("authorization-input")[1];
+        inputPassword.style.marginTop = "1.5vw";
+        inputPassword.type = "password";     
+        inputPassword.placeholder = "yourpassword";
+        inputPassword.className = "authorization-input form-style"; 
+        //inputPassword.type = "text";
+        inputPassword.maxLength = "24";
+        form.spellcheck = false;
+        var correctUsername = false;
+        var correctPassword = false;
+        form.onsubmit = function(event){
+            event.preventDefault();
+            //var correctUsername = false;
+            //var correctPassword = false;
+            var uname = inputLogin.value.toString();
+            var password = inputPassword.value.toString();
+            correctUsername = false;
+
+            inputLogin.style.color = "#aaaaaa";
+            if(inputLogin.value.length > 0 && inputLogin.value.length <= 16){
+                correctUsername = true;
+            }else if(inputLogin.value.length > 16 || inputLogin.value.length < 1){
+                inputLogin.style.color = "#8b1500";
+            }
+
+            inputPassword.style.color = "#aaaaaa";
+            if(inputPassword.value.length >= 4 && inputPassword.value.length <= 16){
+                correctPassword = true;
+            }else if(inputPassword.value.length > 16 || inputPassword.value.length < 4){
+                inputPassword.style.color = "#8b1500";
+            }
+            var username = document.getElementsByClassName("user-info-name")[0];
+            var userrank = document.getElementsByClassName("user-info-rank")[0];
+            if(correctUsername && correctPassword){
+                username.textContent = uname;
+                userrank.textContent = "Administrator";
+                userrank.style.color = "#8b1500";
+                var addButton = document.getElementsByClassName("add-new-button")[0];
+                var editButton = document.getElementsByClassName("edit-new-button")[0];
+                var deleteButton = document.getElementsByClassName("delete-new-button")[0];
+                addButton.style.visibility = "inherit";
+                editButton.style.visibility = "inherit";
+                deleteButton.style.visibility = "inherit";
+            }
+        };        
+        [].slice.call(document.querySelectorAll('.modal-trigger3')).forEach(		
+            function(el, i){
+                var modal = document.querySelector('#' + el.getAttribute('data-modal'));
+                    function removeModalHandler(){
+                        classie.remove(modal,'modal-show2');
+                    }
+                    el.addEventListener('click', 
+                        function(){
+                            classie.add(modal, 'modal-show2');
+                            overlay.removeEventListener('click', removeModalHandler);
+                            overlay.addEventListener('click', removeModalHandler);
+                        }
+ 		            );
+                    var close = modal.querySelector( '.md-close' );
+					/*close.addEventListener('click', function(ev){
+						    ev.stopPropagation();
+                            alert(correctUsername);
+                            if(correctUsername && correctPassword){
+                                removeModalHandler();
+                            }
+					});*/
             }
 	    );
 }

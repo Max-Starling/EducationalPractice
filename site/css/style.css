@@ -410,13 +410,13 @@ input[type="checkbox"]:checked + label:before {
 
 .form-style{
 		/*Size & Position */
-	height: 3vw;	
+	height: 3.2vw;	
 		/*Margin, Border & Padding*/
 	border: 0.18vw solid #cecece;
 	margin: 0 1vw;
 	padding-left: 1vw;
 		/*Font*/
-	font-size: 90%;	
+	font-size: 150%;	
 		/*Other*/
 	background: radial-gradient(circle at 50% 33%, white, #e7e7e7);
 }
@@ -458,6 +458,7 @@ input[type="checkbox"]:checked + label:before {
 	width: 2vw;
 	margin-bottom: 20px;
 	margin-left: 44vw;
+	visibility: hidden;
 	cursor: cell;
 }
 .content{
@@ -509,4 +510,10 @@ textarea{
 }
 textarea:focus{
 	outline-color: #ada77c;
+}
+.edit-new-button{
+	visibility: hidden;
+}
+.delete-new-button{
+	visibility: hidden;
 }
