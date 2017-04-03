@@ -63,8 +63,27 @@ function authorization(){
                                 addButton.style.visibility = "inherit";
                                 editButton.style.visibility = "inherit";
                                 deleteButton.style.visibility = "inherit";
+                                document.getElementsByClassName("settings")[0].style.display = "inherit";
+                                document.getElementsByClassName("login")[0].style.display = "none";
+                                document.getElementsByClassName("logout")[0].style.display = "inherit";
+                                document.getElementsByClassName("register")[0].style.display = "none";
                                 inputLogin.value = "";
                                 inputPassword.value = "";
+                                document.getElementsByClassName("logout")[0].onmousedown = function(){
+                                    event.stopImmediatePropagation();
+                                    //document.getElementsByClassName("modal-trigger3")[0].className = "";
+                                    username.textContent = "Unknown";
+                                    userrank.textContent = "Guest";
+                                    userrank.style.color = "#525659"
+                                    addButton.style.visibility = "hidden";
+                                    editButton.style.visibility = "hidden";
+                                    deleteButton.style.visibility = "hidden";
+                                    document.getElementsByClassName("user-info-photo")[0].src = "images/pics/guest_photo.jpg";
+                                    document.getElementsByClassName("logout")[0].style.display = "none";
+                                    document.getElementsByClassName("login")[0].style.display = "inherit";
+                                    document.getElementsByClassName("register")[0].style.display = "inherit";
+                                    document.getElementsByClassName("settings")[0].style.display = "none";
+                                }
                                 removeModalHandler();
                             }
 					});

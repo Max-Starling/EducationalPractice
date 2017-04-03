@@ -281,13 +281,13 @@ img::selection {
 	margin-top: 2vh;
 }
 .user-info-photo{
-		
 	height:26vh;
 	max-height:12vw;
 		/*Margin, Border & Padding*/
 	border: 0.16vw solid #b3b3b3;
+	margin-top: 2.8vw;
 		/*Other*/
-	opacity:0.8; 
+	opacity:0.85; 
 }
 .user-info-name{
 		/*Text*/
@@ -530,4 +530,10 @@ textarea:focus{
 }
 .md-close{
 	outline: none;
+}
+.logout{
+	display: none;
+}
+.settings{
+	display: none;
 }

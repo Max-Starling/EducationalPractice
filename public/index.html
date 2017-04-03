@@ -17,9 +17,10 @@
 		<div class="right-panel">	
 			<div class="menu">
 				 <ul>
-					<li id="log" data-modal="modal-3" class="modal-trigger3" onmousedown="authorization()"><a>Log in</a></li>
-					<li id="register" data-modal="modal-4" class="modal-trigger4" onmousedown="registration()"><a>Register</a></li>
-					<li data-modal="modal-5" class="modal-trigger5" onmousedown="settings()"><a>Settings</a></li>
+					<li data-modal="modal-3" class="modal-trigger3" onmousedown="authorization()"><a class="login">Log in</a></li>
+					<li><a class="logout">Log out</a></li>
+					<li data-modal="modal-4" class="modal-trigger4" onmousedown="registration()"><a class="register"> Register</a></li>
+					<li data-modal="modal-5" class="modal-trigger5" onmousedown="settings()"><a class="settings">Settings</a></li>
 					<li><a>Contact us</a></li>
 				 </ul>      
 			</div>
@@ -34,7 +35,6 @@
 		</div>
 		<div class="left-panel">
 			<p class="menu-item">Search</p>
-			<div class="divider"></div>
 			<div class="search">
 				<img class="search-img" src="images/elements/search.png">
 				<form id = "searchform" autocomplete="off">
