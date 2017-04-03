@@ -8,7 +8,7 @@
 	<link href="css/style.css" type="text/css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="css/modal.css" />
 	<link rel="stylesheet" type="text/css" href="css/modal1.css" />
-	<link rel="stylesheet" type="text/css" href="css/modal2.css" />
+	<link rel="stylesheet" type="text/css" href="css/authorization.css" />
 </head>
 <body>
 	<div class="wrapper">
@@ -44,19 +44,19 @@
 				<div class="button-container">
 					<input type="checkbox" id="checkbox-id1" /> <label for="checkbox-id1"></label>
 				</div>
-				<p class="button-text"> Date </p>
+				<p class="button-text">Date</p>
 			</div>
 			<div class="button-pair">
 				<div class="button-container">
 					<input type="checkbox" id="checkbox-id2" /> <label for="checkbox-id2"></label>
 				</div>
-				<p class="button-text"> Author </p>
+				<p class="button-text">Author</p>
 			</div>
 			<div class="button-pair">
 				<div class="button-container">
 					<input type="checkbox" id="checkbox-id3" /> <label for="checkbox-id3"></label>
 				</div>
-				<p class="button-text"> ID </p>
+				<p class="button-text">Text size</p>
 			</div>
 		</div>
 		<div class="large-container">
@@ -91,14 +91,14 @@
 						</h3>
 					</div>
 					<div class="description">
-						<p class="article-list-item-summary">
+						<span class="article-list-item-summary">
 							Short description
-						</p>
+						</span>
 					</div>
 					<div class="content">
-						<p class="article-list-item-content">
+						<span class="article-list-item-content">
 							Content
-						</p>
+						</span>
 					</div>
 					<div class="article-list-item-meta">
 						<div class="author">
@@ -113,7 +113,7 @@
         </template>
 		<div class="modal modal-effect" id="modal-1">
 				<div class="modal-content" >
-					<img class="delete-new-button new-button" src="images/elements/delete.png">	
+					<img class="delete-new-button new-button modal-close" src="images/elements/delete.png" >	
 					<img class="edit-new-button new-button modal-trigger2" src="images/elements/edit.png" data-modal="modal-2" onmousedown="editNew()">	
 					<div class="modal-text">
 						<div class="title">

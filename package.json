@@ -1,0 +1,26 @@
+{
+  "name": "EducationalPractice",
+  "version": "1.0.0",
+  "description": "Задание 6 (Понедельник 27, 20:05)\r =======================================\r 1. Кнопку \"Показать ещё\" заменяет scrollbar\r 2. Возникли некоторые проблемы с сохранением данных из форм. Принажатии на кнопку Enter данные устанавливаются, а затем сразу же стираются,\r на то, чтобы я потратил очень много времени (часов 6-7), но у меня так и не вышло, поэтому поиск, авторизация и регистрация работают\r не полностью.\r 3. Добавление и удаление не успел, но это не сложно.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Max-Starling/EducationalPractice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Max-Starling/EducationalPractice/issues"
+  },
+  "homepage": "https://github.com/Max-Starling/EducationalPractice#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0"
+  }
+}

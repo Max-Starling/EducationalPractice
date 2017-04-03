@@ -362,6 +362,9 @@ var newModel = (function () {
             if (n.content){
                 news[i].content = n.content;
             }
+            if (n.img){
+                news[i].img = n.img;
+            }
             if (!validateNew(news[i])){
                 news[i] = tmp;
                 return false;
@@ -553,27 +556,11 @@ searchForm.onsubmit = function(event){
             content = modalText.getElementsByClassName("content")[0];
             author = modalText.getElementsByClassName("author")[0];
             date = modalText.getElementsByClassName("date")[0];
-            //shortDescription = modalText.getElementsByClassName("date")[0];
-            ID = event.currentTarget.dataset.ID;
-            
-            console.log(ID.toString());
+            ID = event.currentTarget.dataset.ID;       
             var t = event.currentTarget.getElementsByClassName("title")[0].textContent;
             var c = event.currentTarget.getElementsByClassName("content")[0].textContent;
             var a = event.currentTarget.getElementsByClassName("author")[0].textContent;
             var d = event.currentTarget.getElementsByClassName("date")[0].textContent;
-            function tmp(){
-                //event.stopPropagation();
-                newRenderer.removeNewsFromDom();
-                newModel.removeNew(ID.toString());
-                var news = newModel.getNews(0, newModel.getLength());
-                newRenderer.insertNewsInDOM(news);
-                event.stopImmediatePropagation();
-                document.getElementsByClassName("delete-new-button")[0].removeEventListener('click', tmp);
-            }
-            event.stopImmediatePropagation();
-            document.getElementsByClassName("delete-new-button")[0].addEventListener('click', tmp);
-
-            //document.getElementsByClassName("delete-new-button")[0].removeEventListener('click', tmp);
             title.textContent = t;
             content.textContent = c;
             date.textContent = d;
@@ -581,7 +568,6 @@ searchForm.onsubmit = function(event){
          [].slice.call(document.querySelectorAll('.modal-trigger')).forEach( 				
 			function(el, i){
 				var modal = document.querySelector('#' + el.getAttribute('data-modal'));
-                var close = modal.querySelector('.modal-close');
 				function removeModalHandler(){
 					classie.remove(modal,'modal-show');
 				}
@@ -592,6 +578,16 @@ searchForm.onsubmit = function(event){
 						overlay.addEventListener('click', removeModalHandler);
 					}
 		        );
+                var close = modal.querySelector('.modal-close');
+					close.addEventListener('click', function(ev){
+						ev.stopPropagation();
+                        newRenderer.removeNewsFromDom();
+                        newModel.removeNew(ID.toString());
+                        var news = newModel.getNews(0, newModel.getLength());
+                        newRenderer.insertNewsInDOM(news);
+                        event.stopImmediatePropagation();
+						removeModalHandler();
+				    });
 			} 
 		);
     }
@@ -617,51 +613,8 @@ searchForm.onsubmit = function(event){
         inputContent.style.marginTop = "0.5vw";
         inputContent.maxLength = "1280";
         form.spellcheck = false;
-        //var state1 = false;
         form.onsubmit = function(event){
             event.preventDefault();
-            //alert(inputContent.value);
-            var n = {
-                ID: (newModel.getLength() + 1) + '',
-                title: "",
-                summary: "",
-                createdAt: new Date(),
-                author: "You",
-                content: "",
-                img: ""
-            }
-            var ID = newModel.getLength() + 1;
-            var correctID = "";
-            if(ID >= 10){
-                correctID = "00" + ID;
-            }else if(ID >= 100){
-                correctID = "0" + ID;
-            }else if(ID >= 1000){
-                correctID = ID;
-            }else{
-                correcID = "000" + ID;
-            }
-            n.img = inputURL.value.toString();
-            n.title = inputTitle.value.toString();
-            n.summary = inputShortDescription.value.toString();
-            n.content = inputContent.value.toString();
-            newModel.addNew(n);
-            newRenderer.removeNewsFromDom();
-            var news = newModel.getNews(0, newModel.getLength());
-            newRenderer.insertNewsInDOM(news);
-            inputURL.value = "";
-            inputContent.value = "";
-            inputShortDescription.value = "";
-            inputTitle.value = "";
-            /*if(n.title, n.summare, n.content != ""){
-                n.img = "";
-                n.title = "";
-                n.summary = "";
-                n.content = "";
-                state1 = true;
-            }*/
-            //inputContent.value = "";
-            //alert(newModel.getLength());
         };        
         [].slice.call(document.querySelectorAll('.modal-trigger1')).forEach( 				
             function(el, i){
@@ -678,10 +631,58 @@ searchForm.onsubmit = function(event){
  		            );
                     var close = modal.querySelector( '.md-close' );
 					close.addEventListener('click', function(ev){
-						ev.stopPropagation(); //Прекращает дальнейшую передачу текущего события.
-                        //if(state1 == true){
+						ev.stopPropagation();
+                        var n = {
+                            ID: (newModel.getLength() + 1) + '',
+                            title: "",
+                            summary: "",
+                            createdAt: new Date(),
+                            author: "You",
+                            content: "",
+                            img: ""
+                        }
+                        var ID = newModel.getLength() + 1;
+                        var correctID = "";
+                        if(ID >= 10){
+                            correctID = "00" + ID;
+                        }else if(ID >= 100){
+                            correctID = "0" + ID;
+                        }else if(ID >= 1000){
+                            correctID = ID;
+                        }else{
+                            correcID = "000" + ID;
+                        }
+                        n.img = inputURL.value.toString();
+                        n.title = inputTitle.value.toString();
+                        n.summary = inputShortDescription.value.toString();
+                        n.content = inputContent.value.toString();
+                        newModel.addNew(n);
+                        newRenderer.removeNewsFromDom();
+                        var news = newModel.getNews(0, newModel.getLength());
+                        newRenderer.insertNewsInDOM(news);
+                        event.stopImmediatePropagation();
+                        if(!n.title){
+                              inputTitle.style.color = "#8b1500";
+                        }else{
+                            inputTitle.style.color = "#aaaaaa";
+                        }
+                        if(!n.content){
+                            inputContent.style.color = "#8b1500";
+                        }else{
+                            inputContent.style.color = "#aaaaaa";
+                        }
+                        if(!n.summary){
+                            inputShortDescription.style.color = "#8b1500";
+                        }else{
+                            inputShortDescription.style.color = "#aaaaaa";
+                        }
+                        if(n.title && n.summary && n.content){
+                            inputURL.value = "";
+                            inputContent.value = "";
+                            inputShortDescription.value = "";
+                            inputTitle.value = "";
 						    removeModalHandler();
-                      //  }
+                        }
 					});
             }
 	    );
@@ -751,7 +752,7 @@ function editNew(){
                     var close = modal.querySelector( '.md-close' );
 					close.addEventListener('click', function(ev){
 						ev.stopPropagation();
-						    removeModalHandler();
+						removeModalHandler();
 					});
             }
 	    );
@@ -762,56 +763,19 @@ function authorization(){
         var modalContent = document.getElementsByClassName("modal-content2")[0]; 
         var form = document.getElementsByClassName("authorization-form")[0];
         var inputLogin = document.getElementsByClassName("authorization-input")[0];
-        //var modalTitle = document.getElementsByClassName("modal-title")[0].textContent;
-        //alert(modalTitle);
         document.getElementsByClassName("modal-title")[1].textContent = "AUTHORIZATION";
         inputLogin.placeholder = "@Max-Starling";
         inputLogin.className = "authorization-input form-style";
-        inputLogin.style.marginTop = "1.5vw"    
+        inputLogin.style.marginTop = "1.5vw";    
         var inputPassword = document.getElementsByClassName("authorization-input")[1];
         inputPassword.style.marginTop = "1.5vw";
         inputPassword.type = "password";     
         inputPassword.placeholder = "yourpassword";
         inputPassword.className = "authorization-input form-style"; 
-        //inputPassword.type = "text";
         inputPassword.maxLength = "24";
         form.spellcheck = false;
-        var correctUsername = false;
-        var correctPassword = false;
         form.onsubmit = function(event){
-            event.preventDefault();
-            //var correctUsername = false;
-            //var correctPassword = false;
-            var uname = inputLogin.value.toString();
-            var password = inputPassword.value.toString();
-            correctUsername = false;
-
-            inputLogin.style.color = "#aaaaaa";
-            if(inputLogin.value.length > 0 && inputLogin.value.length <= 16){
-                correctUsername = true;
-            }else if(inputLogin.value.length > 16 || inputLogin.value.length < 1){
-                inputLogin.style.color = "#8b1500";
-            }
-
-            inputPassword.style.color = "#aaaaaa";
-            if(inputPassword.value.length >= 4 && inputPassword.value.length <= 16){
-                correctPassword = true;
-            }else if(inputPassword.value.length > 16 || inputPassword.value.length < 4){
-                inputPassword.style.color = "#8b1500";
-            }
-            var username = document.getElementsByClassName("user-info-name")[0];
-            var userrank = document.getElementsByClassName("user-info-rank")[0];
-            if(correctUsername && correctPassword){
-                username.textContent = uname;
-                userrank.textContent = "Administrator";
-                userrank.style.color = "#8b1500";
-                var addButton = document.getElementsByClassName("add-new-button")[0];
-                var editButton = document.getElementsByClassName("edit-new-button")[0];
-                var deleteButton = document.getElementsByClassName("delete-new-button")[0];
-                addButton.style.visibility = "inherit";
-                editButton.style.visibility = "inherit";
-                deleteButton.style.visibility = "inherit";
-            }
+            event.preventDefault(); 
         };        
         [].slice.call(document.querySelectorAll('.modal-trigger3')).forEach(		
             function(el, i){
@@ -827,13 +791,41 @@ function authorization(){
                         }
  		            );
                     var close = modal.querySelector( '.md-close' );
-					/*close.addEventListener('click', function(ev){
+					close.addEventListener('click', function(ev){
 						    ev.stopPropagation();
-                            alert(correctUsername);
+                            var uname = inputLogin.value.toString();
+                            var password = inputPassword.value.toString();
+                            var correctUsername = false;
+                            var correctPassword = false;
+                            inputLogin.style.color = "#aaaaaa";
+                            if(inputLogin.value.length > 0 && inputLogin.value.length <= 16){
+                                correctUsername = true;
+                            }else if(inputLogin.value.length > 16 || inputLogin.value.length < 1){
+                                inputLogin.style.color = "#8b1500";
+                            }
+                            inputPassword.style.color = "#aaaaaa";
+                            if(inputPassword.value.length >= 4 && inputPassword.value.length <= 16){
+                                correctPassword = true;
+                            }else if(inputPassword.value.length > 16 || inputPassword.value.length < 4){
+                                inputPassword.style.color = "#8b1500";
+                            }
+                            var username = document.getElementsByClassName("user-info-name")[0];
+                            var userrank = document.getElementsByClassName("user-info-rank")[0];
                             if(correctUsername && correctPassword){
+                                username.textContent = uname;
+                                userrank.textContent = "Administrator";
+                                userrank.style.color = "#8b1500";
+                                var addButton = document.getElementsByClassName("add-new-button")[0];
+                                var editButton = document.getElementsByClassName("edit-new-button")[0];
+                                var deleteButton = document.getElementsByClassName("delete-new-button")[0];
+                                addButton.style.visibility = "inherit";
+                                editButton.style.visibility = "inherit";
+                                deleteButton.style.visibility = "inherit";
+                                inputLogin.value = "";
+                                inputPassword.value = "";
                                 removeModalHandler();
                             }
-					});*/
+					});
             }
 	    );
 }

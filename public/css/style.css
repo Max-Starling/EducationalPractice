@@ -247,7 +247,15 @@ input[type="checkbox"]:checked + label:before {
 	background: radial-gradient(circle at 10% 33%, #c2c2c2, #575757);
 	opacity: 0.70;
 }
-
+p::selection {
+   background: transparent;
+}
+a::selection {
+   background: transparent;
+}
+img::selection {
+   background: transparent;
+}
 .menu ul li {
 		/*Text*/
 	font-size: 2.3vw;
@@ -420,6 +428,9 @@ input[type="checkbox"]:checked + label:before {
 		/*Other*/
 	background: radial-gradient(circle at 50% 33%, white, #e7e7e7);
 }
+.form-style:focus{
+	outline-color: #ada77c;
+}
 .authorization {
 	position: fixed;
 	top: 30%;
@@ -516,4 +527,7 @@ textarea:focus{
 }
 .delete-new-button{
 	visibility: hidden;
+}
+.md-close{
+	outline: none;
 }
