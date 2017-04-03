@@ -3,12 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>STARLING NEWS</title>
-	<link href="https://fonts.googleapis.com/css?family=Aladin" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css?family=Underdog" rel="stylesheet">
-	<link href="css/style.css" type="text/css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="css/modal.css" />
-	<link rel="stylesheet" type="text/css" href="css/modal1.css" />
-	<link rel="stylesheet" type="text/css" href="css/authorization.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin"/>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Underdog"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/detailnew.css"/>
+	<link rel="stylesheet" type="text/css" href="css/addeditnew.css"/>
+	<link rel="stylesheet" type="text/css" href="css/authorization.css"/>
+	<link rel="stylesheet" type="text/css" href="css/registration.css"/>
 </head>
 <body>
 	<div class="wrapper">
@@ -16,7 +17,7 @@
 			<div class="menu">
 				 <ul>
 					<li id="log" data-modal="modal-3" class="modal-trigger3" onmousedown="authorization()"><a>Log in</a></li>
-					<li id="register"><a>Register</a></li>
+					<li id="register" data-modal="modal-4" class="modal-trigger4" onmousedown="registration()"><a>Register</a></li>
 					<li><a>Settings</a></li>
 					<li><a>Contact us</a></li>
 				 </ul>      
@@ -111,6 +112,7 @@
 				</div>	
             </div>
         </template>
+	<!-- modal windows -->
 		<div class="modal modal-effect" id="modal-1">
 				<div class="modal-content" >
 					<img class="delete-new-button new-button modal-close" src="images/elements/delete.png" >	
@@ -167,9 +169,29 @@
 				</form>
 			</div>					
 		</div>
+		<div class="modal3 modal-effect3" id="modal-4">
+			<div class="modal-content3">
+				<div class="modal-text3">
+					<div class="modal-title"></div>
+				</div>
+				<form class="registration-form">
+					<input class="registration-input"> 
+					<input class="registration-input">
+					<input class="registration-input">
+					<div>
+						<button type="submit" class="md-close">Enter</button>
+					</div>
+				</form>
+			</div>					
+		</div>
 		<div class="modal-overlay"></div>
     <!-- scripts -->
-		<script src="js/classie.js"></script>	
+		<script src="js/classie.js" type="text/javascript"></script>	
 		<script src="js/script.js" type="text/javascript"></script>
+		<script src="js/authorization.js" type="text/javascript"></script>
+		<script src="js/registration.js" type="text/javascript"></script>
+		<script src="js/editnew.js" type="text/javascript"></script>
+		<script src="js/addnew.js" type="text/javascript"></script>
+		<script src="js/detailnew.js" type="text/javascript"></script>
  </body>
 </html>

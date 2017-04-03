@@ -1,4 +1,4 @@
-.modal2 {
+.modal3{
 	font-size: 1.5vw;
 	position: fixed;
 	top: 50%;
@@ -10,39 +10,40 @@
 	visibility: hidden;
 	backface-visibility: hidden;
 	overflow-y: scroll;
-    overflow-x: hidden;
+    	overflow-x: hidden;
 	transform: translateX(-50%) translateY(-50%);
 }
-.modal-show2 {
+.modal-show3{
 	visibility: visible;
 }
-.modal-show2 ~ .modal-overlay {
+.modal-show3 ~ .modal-overlay{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect2 .modal-content2 {
+.modal-effect3 .modal-content3{
 	transform: scale(0.7);
 	opacity: 0;
 	transition: all 0.3s;
 	background: radial-gradient(circle at 20% 33%, #f0f0f0, #eeeeee);	
-	min-height: 18vw;
+	min-height: 20vw;
 	color:black;
 	border: 0.vw solid #777777;
 }
 
-.modal-show2.modal-effect2 .modal-content2 {
+.modal-show3.modal-effect3 .modal-content3{
 	transform: scale(1);
 	opacity: 1;
 }
 
-.modal-content2 {
+.modal-content3{
 	color: darkgray;
 	position: relative;
 	margin: 0 auto;
+	padding-bottom: 1vw;
 }
 
-.modal-content2 > div {
+.modal-content3 > div{
 	padding: 0.5vw;
 	margin: 0;
 	font-weight: 300;
@@ -50,7 +51,7 @@
 	color: #ada77c;
 }
 
-.modal-content2 > div p {
+.modal-content3 > div p{
 	margin: 0;
 	padding: 10px 0;
 }
