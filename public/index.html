@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/addeditnew.css"/>
 	<link rel="stylesheet" type="text/css" href="css/authorization.css"/>
 	<link rel="stylesheet" type="text/css" href="css/registration.css"/>
+	<link rel="stylesheet" type="text/css" href="css/settings.css"/>
 </head>
 <body>
 	<div class="wrapper">
@@ -18,7 +19,7 @@
 				 <ul>
 					<li id="log" data-modal="modal-3" class="modal-trigger3" onmousedown="authorization()"><a>Log in</a></li>
 					<li id="register" data-modal="modal-4" class="modal-trigger4" onmousedown="registration()"><a>Register</a></li>
-					<li><a>Settings</a></li>
+					<li data-modal="modal-5" class="modal-trigger5" onmousedown="settings()"><a>Settings</a></li>
 					<li><a>Contact us</a></li>
 				 </ul>      
 			</div>
@@ -184,6 +185,21 @@
 				</form>
 			</div>					
 		</div>
+		<div class="modal4 modal-effect4" id="modal-5">
+			<div class="modal-content4">
+				<div class="modal-text4">
+					<div class="modal-title"></div>
+				</div>
+				<form class="settings-form">
+					<input class="settings-input"> 
+					<input class="settings-input">
+					<input class="settings-input">
+					<div>
+						<button type="submit" class="md-close">Enter</button>
+					</div>
+				</form>
+			</div>					
+		</div>
 		<div class="modal-overlay"></div>
     <!-- scripts -->
 		<script src="js/classie.js" type="text/javascript"></script>	
@@ -193,5 +209,6 @@
 		<script src="js/editnew.js" type="text/javascript"></script>
 		<script src="js/addnew.js" type="text/javascript"></script>
 		<script src="js/detailnew.js" type="text/javascript"></script>
+		<script src="js/settings.js" type="text/javascript"></script>
  </body>
 </html>

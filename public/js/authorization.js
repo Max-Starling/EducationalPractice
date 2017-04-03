@@ -2,8 +2,8 @@ function authorization(){
 		var overlay = document.querySelector('.modal-overlay');
         var modalContent = document.getElementsByClassName("modal-content2")[0]; 
         var form = document.getElementsByClassName("authorization-form")[0];
-        var inputLogin = document.getElementsByClassName("authorization-input")[0];
         document.getElementsByClassName("modal-title")[1].textContent = "AUTHORIZATION";
+        var inputLogin = document.getElementsByClassName("authorization-input")[0];
         inputLogin.placeholder = "@Max-Starling";
         inputLogin.className = "authorization-input form-style";
         inputLogin.style.marginTop = "1vw";    
@@ -12,7 +12,7 @@ function authorization(){
         inputPassword.type = "password";     
         inputPassword.placeholder = "yourpassword";
         inputPassword.className = "authorization-input form-style"; 
-        inputPassword.maxLength = "24";
+        inputPassword.maxLength = "16";
         inputPassword.style.color = "#aaaaaa";
         inputLogin.style.color = "#aaaaaa";
         form.spellcheck = false;

@@ -16,14 +16,13 @@ function registration(){
         inputPassword.type = "password";     
         inputPassword.placeholder = "yourpassword";
         inputPassword.className = "registration-input form-style"; 
-        inputPassword.maxLength = "24";
+        inputPassword.maxLength = "16";
         inputEmail.style.color = "#aaaaaa";
         inputPassword.style.color = "#aaaaaa";
         inputLogin.style.color = "#aaaaaa";
         form.spellcheck = false;
         form.onsubmit = function(event){
             event.preventDefault();
-            event.stopPropagation(); 
         };        
         [].slice.call(document.querySelectorAll('.modal-trigger4')).forEach(		
             function(el, i){
