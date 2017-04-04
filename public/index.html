@@ -18,7 +18,7 @@
 			<div class="menu">
 				 <ul>
 					<li data-modal="modal-3" class="modal-trigger3" onmousedown="authorization()"><a class="login">Log in</a></li>
-					<li><a class="logout">Log out</a></li>
+					<li><a class="logout" onmousedown="exit()">Log out</a></li>
 					<li data-modal="modal-4" class="modal-trigger4" onmousedown="registration()"><a class="register"> Register</a></li>
 					<li data-modal="modal-5" class="modal-trigger5" onmousedown="settings()"><a class="settings">Settings</a></li>
 					<li><a>Contact us</a></li>
@@ -83,7 +83,7 @@
 	<!-- templates -->
         <template id="template-article-list-item">
             <div class="article-list-item modal-trigger" data-id="id" onmousedown="newDetailShow()" data-modal="modal-1">
-				<div class="picture modal-trigger" data-modal="modal-1">
+				<div class="picture">
 					<img class="article-list-item-img">
 				</div>	
 				<div class="text">
@@ -210,5 +210,6 @@
 		<script src="js/addnew.js" type="text/javascript"></script>
 		<script src="js/detailnew.js" type="text/javascript"></script>
 		<script src="js/settings.js" type="text/javascript"></script>
+		<script src="js/exit.js" type="text/javascript"></script>
  </body>
 </html>

@@ -43,18 +43,20 @@ function settings(){
                         var url = changeURL.value;
                         var uname = changeLogin.value.toString();
                         var password = changePassword.value.toString();
-                        var correctLogin = false;
-                        var correctPassword = false;
+                        var correctLogin = true;
+                        var correctPassword = true;
                         if(changeLogin.value.length > 0){
                             correctLogin = true;
                             changeLogin.style.color = "#aaaaaa";
                         }else if(changeLogin.value.length < 1){
+                            //correctLogin = false;
                             changeLogin.style.color = "#8b1500";
                         }
                         if(changePassword.value.length >= 4){
                             correctPassword = true;
                             changePassword.style.color = "#aaaaaa";
                         }else if(changePassword.value.length < 4){
+                            //correctPassword = false;
                             changePassword.style.color = "#8b1500";
                         }
                         var username = document.getElementsByClassName("user-info-name")[0];
@@ -62,7 +64,9 @@ function settings(){
                         //alert(correctLogin);
                         //alert(correctPassword);
                         if(correctLogin && correctPassword){
-                            username.textContent = uname;
+                            if(uname){
+                                username.textContent = uname;
+                            }
                             if(url){
                                 userphoto.src = url;
                             }

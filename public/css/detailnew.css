@@ -71,6 +71,7 @@
 
 .new-button{
 	float: right;
+	height: 1.56vw;
 	padding-right: 0.7vw;
 	padding-top: 0.7vw;
 	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;

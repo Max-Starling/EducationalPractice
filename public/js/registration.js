@@ -1,87 +1,108 @@
 function registration(){
-		var overlay = document.querySelector('.modal-overlay');
-        var modalContent = document.getElementsByClassName("modal-content3")[0]; 
-        var form = document.getElementsByClassName("registration-form")[0];
-        document.getElementsByClassName("modal-title")[2].textContent = "REGISTRATION";
-        var inputEmail = document.getElementsByClassName("registration-input")[0];
-        inputEmail.placeholder = "Email";
-        inputEmail.className = "registration-input form-style";
-        inputEmail.style.marginTop = "0.5vw";    
-        var inputLogin = document.getElementsByClassName("registration-input")[1];
-        inputLogin.placeholder = "@Max-Starling";
-        inputLogin.className = "registration-input form-style";
-        inputLogin.style.marginTop = "1.5vw";    
-        var inputPassword = document.getElementsByClassName("registration-input")[2];
-        inputPassword.style.marginTop = "1.5vw";
-        inputPassword.type = "password";     
-        inputPassword.placeholder = "yourpassword";
-        inputPassword.className = "registration-input form-style"; 
-        inputPassword.maxLength = "16";
-        inputEmail.style.color = "#aaaaaa";
-        inputPassword.style.color = "#aaaaaa";
-        inputLogin.style.color = "#aaaaaa";
-        form.spellcheck = false;
-        form.onsubmit = function(event){
-            event.preventDefault();
-        };        
-        [].slice.call(document.querySelectorAll('.modal-trigger4')).forEach(		
-            function(el, i){
-                var modal = document.querySelector('#' + el.getAttribute('data-modal'));
-                    function removeModalHandler(){
-                        classie.remove(modal,'modal-show3');
-                    }
-                    el.addEventListener('click', 
-                        function(){
-                            classie.add(modal, 'modal-show3');
-                            overlay.removeEventListener('click', removeModalHandler);
-                            overlay.addEventListener('click', removeModalHandler);
-                        }
- 		            );
-                    var close = modal.querySelector( '.md-close' );
-					close.addEventListener('click', function(ev){
-						    ev.stopPropagation();
-                            var email = inputEmail.value.toString();
-                            var uname = inputLogin.value.toString();
-                            var password = inputPassword.value.toString();
-                            var correctEmail = false;
-                            var correctUsername = false;
-                            var correctPassword = false;
-                            if(inputEmail.value.length >= 5 && inputEmail.value.length <= 16){
-                                correctEmail = true;
-                                inputEmail.style.color = "#aaaaaa";
-                            }else if(inputEmail.value.length > 16 || inputEmail.value.length < 5){
-                                inputEmail.style.color = "#8b1500";
-                            }
-                            if(inputLogin.value.length > 0 && inputLogin.value.length <= 16){
-                                correctUsername = true;
-                                inputLogin.style.color = "#aaaaaa";
-                            }else if(inputLogin.value.length > 16 || inputLogin.value.length < 1){
-                                inputLogin.style.color = "#8b1500";
-                            }
-                            if(inputPassword.value.length >= 4 && inputPassword.value.length <= 16){
-                                correctPassword = true;
-                                inputPassword.style.color = "#aaaaaa";
-                            }else if(inputPassword.value.length > 16 || inputPassword.value.length < 4){
-                                inputPassword.style.color = "#8b1500";
-                            }
-                            var username = document.getElementsByClassName("user-info-name")[0];
-                            var userrank = document.getElementsByClassName("user-info-rank")[0];
-                            if(correctEmail && correctUsername && correctPassword){
-                                username.textContent = uname;
-                                userrank.textContent = "Administrator";
-                                userrank.style.color = "#8b1500";
-                                var addButton = document.getElementsByClassName("add-new-button")[0];
-                                var editButton = document.getElementsByClassName("edit-new-button")[0];
-                                var deleteButton = document.getElementsByClassName("delete-new-button")[0];
-                                addButton.style.visibility = "inherit";
-                                editButton.style.visibility = "inherit";
-                                deleteButton.style.visibility = "inherit";
-                                inputEmail.value = "";
-                                inputLogin.value = "";
-                                inputPassword.value = "";
-                                removeModalHandler();
-                            }
-					});
+    document.getElementsByClassName("modal-title")[2].textContent = "REGISTRATION"; 
+	const overlay = document.querySelector('.modal-overlay');
+    const modalContent = document.getElementsByClassName("modal-content3")[0];
+    //  Form  //
+    const form = document.getElementsByClassName("registration-form")[0];
+    form.spellcheck = false;
+    form.onsubmit = function(event){
+        event.preventDefault();
+    };  
+    //  Email  //
+    const inputEmail = document.getElementsByClassName("registration-input")[0];
+    inputEmail.className = "registration-input form-style";
+    inputEmail.maxLength = "16";
+    inputEmail.placeholder = "Email";
+    inputEmail.style.color = "#aaaaaa";
+    inputEmail.style.marginTop = "0.5vw";
+    //  Login  //
+    const inputLogin = document.getElementsByClassName("registration-input")[1];
+    inputLogin.className = "registration-input form-style";
+    inputLogin.maxLength = "16";
+    inputLogin.placeholder = "@Max-Starling";
+    inputLogin.style.color = "#aaaaaa";
+    inputLogin.style.marginTop = "1.5vw";
+    //  Password  //
+    const inputPassword = document.getElementsByClassName("registration-input")[2];
+    inputPassword.className = "registration-input form-style";
+    inputPassword.maxLength = "16";
+    inputPassword.placeholder = "yourpassword";
+    inputPassword.style.color = "#aaaaaa";
+    inputPassword.style.marginTop = "1.5vw";
+    inputPassword.type = "password";     
+
+    const el = document.querySelector('.modal-trigger4');
+    const modal = document.querySelector('#' + el.getAttribute('data-modal'));
+    function removeModalHandler(){
+        classie.remove(modal,'modal-show3');
+    }
+    el.addEventListener(
+        'click', function(){
+            classie.add(modal, 'modal-show3');
+            overlay.removeEventListener('click', removeModalHandler);
+            overlay.addEventListener('click', removeModalHandler);
+        }
+ 	);
+    //  Check & Close  //
+    var close = modal.querySelector( '.md-close' );
+	close.addEventListener(
+        'click', function(ev){
+            //  Getting values from the form.  //
+            let email = inputEmail.value.toString();
+            let uname = inputLogin.value.toString();
+            let password = inputPassword.value.toString();
+            //  Checking values for correctness.  //
+            let correctEmail = false;
+            if(inputEmail.value.length >= 5){
+                correctEmail = true;
+                inputEmail.style.color = "#aaaaaa";
+            }else if(inputEmail.value.length < 5){
+                inputEmail.style.color = "#8b1500";
             }
-	    );
+            let correctLogin = false;
+            if(inputLogin.value.length > 0){
+                correctLogin = true;
+                inputLogin.style.color = "#aaaaaa";
+            }else if(inputLogin.value.length < 1){
+                inputLogin.style.color = "#8b1500";
+            }
+            let correctPassword = false;
+            if(inputPassword.value.length >= 4){
+                correctPassword = true;
+                inputPassword.style.color = "#aaaaaa";
+            }else if(inputPassword.value.length < 4){
+                inputPassword.style.color = "#8b1500";
+            }
+            if(correctEmail && correctLogin && correctPassword){
+                //  Setting user info.  //
+                const username = document.getElementsByClassName("user-info-name")[0];
+                username.textContent = uname;
+                const userrank = document.getElementsByClassName("user-info-rank")[0];
+                userrank.textContent = "Administrator";
+                userrank.style.color = "#8b1500";
+                //  Displaying buttons to work with news.  //
+                const addButton = document.getElementsByClassName("add-new-button")[0];
+                addButton.style.visibility = "inherit";
+                const editButton = document.getElementsByClassName("edit-new-button")[0];
+                editButton.style.visibility = "inherit";
+                const deleteButton = document.getElementsByClassName("delete-new-button")[0];
+                deleteButton.style.visibility = "inherit";
+                //  Changing menu items.  //
+                const login = document.getElementsByClassName("login")[0];
+                login.style.display = "none";
+                const logout = document.getElementsByClassName("logout")[0];
+                logout.style.display = "inherit";
+                const register = document.getElementsByClassName("register")[0];
+                register.style.display = "none";
+                const settings = document.getElementsByClassName("settings")[0];
+                settings.style.display = "inherit";
+                //  Zeroing values in the form.  //
+                inputEmail.value = "";
+                inputLogin.value = "";
+                inputPassword.value = "";
+                //  Closing modal window.  //
+                ev.stopPropagation();
+                removeModalHandler();
+             }
+		});
 }
