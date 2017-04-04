@@ -285,7 +285,6 @@ img::selection {
 	max-height:12vw;
 		/*Margin, Border & Padding*/
 	border: 0.16vw solid #b3b3b3;
-	margin-top: 2.8vw;
 		/*Other*/
 	opacity:0.85; 
 }
@@ -534,6 +533,6 @@ textarea:focus{
 .logout{
 	display: none;
 }
-.settings{
+.profile{
 	display: none;
 }

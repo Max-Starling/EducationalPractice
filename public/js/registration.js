@@ -11,7 +11,7 @@ function registration(){
     //  Email  //
     const inputEmail = document.getElementsByClassName("registration-input")[0];
     inputEmail.className = "registration-input form-style";
-    inputEmail.maxLength = "16";
+    inputEmail.maxLength = "32";
     inputEmail.placeholder = "Email";
     inputEmail.style.color = "#aaaaaa";
     inputEmail.style.marginTop = "0.5vw";
@@ -92,10 +92,10 @@ function registration(){
                 login.style.display = "none";
                 const logout = document.getElementsByClassName("logout")[0];
                 logout.style.display = "inherit";
+                const profile = document.getElementsByClassName("profile")[0];
+                profile.style.display = "inherit";
                 const register = document.getElementsByClassName("register")[0];
-                register.style.display = "none";
-                const settings = document.getElementsByClassName("settings")[0];
-                settings.style.display = "inherit";
+                register.style.display = "none";             
                 //  Zeroing values in the form.  //
                 inputEmail.value = "";
                 inputLogin.value = "";

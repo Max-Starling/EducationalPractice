@@ -58,7 +58,7 @@ function authorization(){
                 }else if(inputPassword.value.length < 4){
                     inputPassword.style.color = "#8b1500";
                 }
-                if(correctUsername && correctPassword){
+                if(correctLogin && correctPassword){
                     //  Setting user info.  //
                     const userName = document.getElementsByClassName("user-info-name")[0];
                     userName.textContent = uname;
@@ -77,10 +77,10 @@ function authorization(){
                     login.style.display = "none";
                     const logout = document.getElementsByClassName("logout")[0];
                     logout.style.display = "inherit";
+                    const profile = document.getElementsByClassName("profile")[0];
+                    profile.style.display = "inherit";
                     const register = document.getElementsByClassName("register")[0];
-                    register.style.display = "none";
-                    const settings = document.getElementsByClassName("settings")[0];
-                    settings.style.display = "inherit";
+                    register.style.display = "none"; 
                     //  Zeroing values in the form.  //
                     inputLogin.value = "";
                     inputPassword.value = "";

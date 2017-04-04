@@ -17,7 +17,7 @@ function exit(){
     document.getElementsByClassName("logout")[0].style.display = "none";
     document.getElementsByClassName("login")[0].style.display = "inherit";
     document.getElementsByClassName("register")[0].style.display = "inherit";
-    document.getElementsByClassName("settings")[0].style.display = "none";
+    document.getElementsByClassName("profile")[0].style.display = "none";
     
     event.stopPropagation();
 }

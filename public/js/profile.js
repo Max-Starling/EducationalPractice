@@ -1,4 +1,4 @@
-function settings(){
+function profile(){
 		var overlay = document.querySelector('.modal-overlay');
         var modalContent = document.getElementsByClassName("modal-content4")[0]; 
         var form = document.getElementsByClassName("settings-form")[0];
