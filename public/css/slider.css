@@ -1,0 +1,32 @@
+input[type=range].slider {
+  background: none;
+  -webkit-appearance: none;
+  width: 30vw;
+  margin: 5vw 0;
+  opacity: 0.9;
+}
+input[type=range].slider:focus {
+  outline: none;
+}
+input[type=range].slider::-webkit-slider-runnable-track {
+  width: 50%;
+  height: 0.8vw;
+  cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
+  box-shadow: 0.07vw 0.1vw 0.1vw rgba(0, 0, 0, 0.24), 0vw 0vw 0.05vw rgba(13, 13, 13, 0.24);
+  background: rgba(77, 80, 101, 0.9);
+  border-radius: 1vw;
+  border: 0.1vw solid rgba(1, 1, 1, 0.73);
+}
+input[type=range].slider::-webkit-slider-thumb {
+  box-shadow: 0vw 0vw 0.25vw #5c2a00, 0vw 0vw 0.01vw #5c2a00;
+  height: 2vw;
+  width: 1vw;
+  border-radius: 0.3vw;
+  background: #c4b072;
+  cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
+  -webkit-appearance: none;
+  margin-top: -0.7vw;
+}
+input[type=range].slider:focus::-webkit-slider-runnable-track {
+  background: rgba(NaN, NaN, NaN, 0.9);
+}

@@ -1,4 +1,4 @@
-.modal4{
+.modal5{
 	font-size: 1.5vw;
 	position: fixed;
 	top: 50%;
@@ -13,38 +13,38 @@
     overflow-x: hidden;
 	transform: translateX(-50%) translateY(-50%);
 }
-.modal-show4{
+.modal-show5{
 	visibility: visible;
 }
 
-.modal-show4 ~ .modal-overlay{
+.modal-show5 ~ .modal-overlay{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect4 .modal-content4{
+.modal-effect5 .modal-content5{
 	transform: scale(0.7);
 	opacity: 0;
 	transition: all 0.3s;
 	background: radial-gradient(circle at 20% 33%, #f0f0f0, #eeeeee);	
-	min-height: 20vw;
+	min-height: 7vw;
 	color:black;
 	border: 0.vw solid #777777;
 }
 
-.modal-show4.modal-effect4 .modal-content4{
+.modal-show5.modal-effect5 .modal-content5{
 	transform: scale(1);
 	opacity: 1;
 }
 
-.modal-content4{
+.modal-content5{
 	color: darkgray;
 	position: relative;
 	margin: 0 auto;
 	padding-bottom: 1vw;
 }
 
-.modal-content4 > div{ 
+.modal-content5 > div{ 
 	padding: 0.5vw;
 	margin: 0;
 	font-weight: 300;
@@ -52,7 +52,7 @@
     color: #ada77c;
 }
 
-.modal-content4 > div p {
+.modal-content5 > div p {
 	margin: 0;
 	padding: 10px 0;
 }
