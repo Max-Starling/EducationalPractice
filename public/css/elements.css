@@ -1,0 +1,128 @@
+				/*-----------------Range-----------------*/
+input[type=range].slider {
+  background: none;
+  -webkit-appearance: none;
+  width: 30vw;
+  margin: 5vw 0;
+  opacity: 0.9;
+}
+input[type=range].slider:focus {
+  outline: none;
+}
+input[type=range].slider::-webkit-slider-runnable-track {
+  width: 50%;
+  height: 0.8vw;
+  cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
+  box-shadow: 0.07vw 0.1vw 0.1vw rgba(0, 0, 0, 0.24), 0vw 0vw 0.05vw rgba(13, 13, 13, 0.24);
+  background: rgba(77, 80, 101, 0.9);
+  border-radius: 1vw;
+  border: 0.1vw solid rgba(1, 1, 1, 0.73);
+}
+input[type=range].slider::-webkit-slider-thumb {
+  box-shadow: 0vw 0vw 0.25vw #5c2a00, 0vw 0vw 0.01vw #5c2a00;
+  height: 2vw;
+  width: 1vw;
+  border-radius: 0.3vw;
+  background: #c4b072;
+  cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
+  -webkit-appearance: none;
+  margin-top: -0.7vw;
+}
+
+				/*-----------------Textarea-----------------*/
+textarea{
+		/*Size & Position */
+	height: 6.4vw;
+	resize: none; 
+	width: 86%;
+		/*Margin, Border & Padding*/
+	border: 0.14vw solid #cecece;
+	margin: 0 1vw;
+	padding-left: 0.6vw;
+		/*Text*/
+	color: #aaaaaa;
+    font-family: Aladin, 'Underdog', cursive;
+    font-size: 1.3vw;
+		/*Other*/
+	background: radial-gradient(circle at 50% 33%, white, #e7e7e7);
+	cursor: url(../images/elements/PF3C_zlk_IBream.cur), text;
+}
+textarea:focus{
+	outline-color: #ada77c;
+}
+
+				/*-----------------Text-----------------*/
+input[type="text"] {
+		/*Size & Position */
+	height: auto;	
+		/*Margin, Border & Padding*/
+	border: 0.14vw solid #cecece;
+	margin: 0 1vw;
+	padding-left: 0.6vw;
+		/*Other*/
+	background: radial-gradient(circle at 50% 33%, white, #e7e7e7);
+	cursor: url(../images/elements/PF3C_zlk_IBream.cur), text;
+}
+input[type="text"]:focus{ 
+	outline-color: #ada77c;
+}
+
+				/*-----------------Checkbox-----------------*/
+input[type="checkbox"] {
+    display:none;
+}
+input[type="checkbox"] + label:before {
+		/*Display*/
+  display: inline-block;
+		/*Size & Position*/
+	height: 1.2vw;
+  width: 1.2vw;
+		/*Margin, Border & Padding*/
+	margin: 0.6vw auto;
+		/*Other*/
+  content: "";
+	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
+	background: url(../images/elements/button.png) no-repeat;
+	background-size: 1.2vw;
+}
+input[type="checkbox"]:checked + label:before {
+		/*Other*/
+    background-position: 0 -1.2vw;
+}
+
+				/*-----------------Scrollbar-----------------*/
+::-webkit-scrollbar {
+		/*Size & Position*/
+  width: 0.7vw;
+		/*Other*/
+	background: rgba(0,0,0,0.38); 
+	border-radius: 1vw;
+}
+::-webkit-scrollbar-track {
+		/*Other*/
+	border-radius: 2vw;
+	box-shadow: inset 0 0 0 0.1vh rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-track-piece{
+		/*Other*/
+	border-radius: 2vw;
+	opacity: 0.5;
+}
+::-webkit-scrollbar-thumb {
+		/*Other*/
+  background: -webkit-linear-gradient(0deg, rgba(128,39,1,0.4) 40%, rgba(250,168,168,0.3) 100%);
+  border-radius: 2vh;
+  box-shadow: inset 0 0 0 0.02vh rgba(0,0,0,0.5);
+  cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
+}
+
+				/*-----------------Selection-----------------*/
+a::selection {
+   background: transparent;
+}
+p::selection {
+   background: transparent;
+}
+img::selection {
+   background: transparent;
+}
