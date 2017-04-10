@@ -154,6 +154,7 @@ input{
 		/*Margin, Border & Padding*/
 	margin-top: 0.82vw;
 		/*Text*/
+	color: darkgray;
 	font-size: 60%;
 		/*Other*/
 	opacity:0.64;
@@ -166,7 +167,7 @@ input{
 	position:fixed;
 	width: 15%;
 		/*Other*/
-	background: radial-gradient(circle at 90% 33%, #c2c2c2, #575757);
+	background: radial-gradient(circle at 93% 36%, #c2c2c2, #575757);
 	opacity: 0.70;
 }
 .menu-item{

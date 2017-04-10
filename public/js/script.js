@@ -262,6 +262,37 @@ var newModel = (function () {
         }
         return true;
     }
+    /*    // Сериализуем его
+    var articlesString = JSON.stringify(news)
+    // После этого articlesString принимает строковое значение
+
+    // Запишем в localStorage с ключём object
+    localStorage.setItem("news", articlesString);
+
+    // Обратимся к localStorage следующим образом
+    // Хранилище вернёт нашу сериализованную строку
+    var articlesString2 = localStorage.getItem("articles");
+
+    // преобразуем к обычному объекту JavaScript
+    var articles2 = JSON.parse(articlesString2)
+    // В итоге объекты articles1 и articles2 абсолютно одинаковы
+*/
+    var storage = JSON.parse(localStorage.getItem('data'));
+    if(!storage){
+        localStorage.setItem('data', JSON.stringify(news));
+    }else{
+        news = storage;
+        for (var i of news){
+            i.createdAt = new Date(i.createdAt);
+        }
+    }
+
+    window.addEventListener('beforeunload', 
+        function (){
+            localStorage.setItem('data', JSON.stringify(news));
+        }
+    );
+
     function getLength(){
         return news.length;
     }
@@ -272,8 +303,8 @@ var newModel = (function () {
             }
         }
     }
-    function sortNews(few){
-        few.sort(
+    function sortNews(news, filterConfig){
+        news.sort(
             function (x, y){
                 if (x.createdAt < y.createdAt){
                     return 1;
@@ -283,31 +314,69 @@ var newModel = (function () {
                 }
             }
         );
+        if(filterConfig == "title"){
+            news.sort(
+                function (x, y){
+                    if (x.title > y.title){
+                        return 1;
+                    }
+                    if (x.title < y.title){
+                        return -1;
+                    }
+                }
+            );
+        }
+        if(filterConfig == "author"){
+            news.sort(
+                function (x, y){
+                    if (x.author > y.author){
+                        return 1;
+                    }
+                    if (x.author < y.author){
+                        return -1;
+                    }
+                }
+            );
+        }
+        if(filterConfig == "textsize"){
+            news.sort(
+                function (x, y){
+                    if (x.content.length < y.content.length){
+                        return 1;
+                    }
+                    if (x.content.length > y.content.length){
+                        return -1;
+                    }
+                }
+            );
+        }
     }
     function getAuthors(){
         return news.map(x => x.author);
     }
     function getNews(skip, top, filterConfig) {       
         /*Default*/
-        if (skip === undefined){
+        if (!skip){
             skip = 0;
         }
-        if (top === undefined){
+        if (!top){
             top = news.length;
         }
         var out = news.slice();
         sortNews(out);
         if (filterConfig){
             /*Author*/
-            if (filterConfig.author){
-                out = out.filter(
-                    function (n){
-                        return filterConfig.author === n.author;
-                    }
-                );
+            /*if (filterConfig == "title"){
+                //console.log("me");
+                sortNews(out, filterConfig);
             }
+            if (filterConfig == "author"){
+                //console.log("me");
+                sortNews(out, filterConfig);
+            }*/
+            sortNews(out, filterConfig);
             /*Date*/
-            if (filterConfig.createdAt){
+            /*if (filterConfig.createdAt){
                 filterConfig.createdAt = new Date(filterConfig.createdAt);
                 out = out.filter(
                     function (n)
@@ -315,7 +384,7 @@ var newModel = (function () {
                         return filterConfig.createdAt === n.createdAt;
                     }
                 );
-            }
+            }*/
         }
         return out.slice(skip, skip + top);
     }
@@ -343,14 +412,13 @@ var newModel = (function () {
                 tmp = i;
             }
         }
-        //alert(ID);
         var i = tmp;
         if (news[i]){
             var tmp = news[i];
-            if (n.title/* && n.title.length < 100*/){
+            if (n.title){
                 news[i].title = n.title;
             }
-            if (n.summary/* && n.summary.length < 200*/){
+            if (n.summary){
                 news[i].summary = n.summary;
             }
             if (n.createdAt){
@@ -409,6 +477,7 @@ var newRenderer =(
         function init(){
             ARTICLE_TEMPLATE = document.querySelector('#template-article-list-item');
             ARTICLE_LIST_NODE = document.querySelector('.article-list');
+            
         }
 
         function insertNewsInDOM(news){
@@ -492,7 +561,6 @@ function renderNews(skip, top) {
     newRenderer.insertNewsInDOM(news);
 }
 
-//document.addEventListener('DOMContentLoaded', searchResultNews);
 function startSearch(v){
      newRenderer.init();
      searchResultNews(v);
@@ -503,51 +571,3 @@ function searchResultNews(v) {
     var news = newModel.getNews(0, newModel.getLength(), {author: v});
     newRenderer.insertNewsInDOM(news);
 }
-
-var searchForm = document.getElementById("searchform");
-searchForm.onsubmit = function(event){
-            event.preventDefault();
-            var searchIn = document.forms.searchform.searchin;
-            var authors = newModel.getAuthors();
-            var news;
-            if(searchIn.value === ""){
-                newRenderer.removeNewsFromDom();
-                news = newModel.getNews();
-                newRenderer.insertNewsInDOM(news);
-            }else{
-                var i;
-                for(i = 0; i < authors.length; i++){
-                    if(authors[i].toString().toLowerCase().indexOf(searchIn.value.toString().toLowerCase()) + 1){
-                        startSearch(authors[i]);
-                        break;
-                    }
-                }
-                if(i === authors.length){
-                    newRenderer.removeNewsFromDom();
-                    news = newModel.getNews();
-                    newRenderer.insertNewsInDOM(news);
-                }
-            }
-    searchIn.value = "";
-};   
-
-    var state = true;
-    var ID;
-    var title;
-    var content;
-    var author;
-    //var shortDescription;
-    function getID(){
-        return ID;
-    }
-    function getTitle(){
-        return title;
-    }
-    function getContent(){
-        return content;
-    }
-    /*function getShortDescription(){
-        return shortDescription;
-    }*/
-	
-    

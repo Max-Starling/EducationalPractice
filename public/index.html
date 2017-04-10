@@ -5,7 +5,7 @@
 	<title>STARLING NEWS</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin"/>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Underdog"/>
-	<link rel="shortcut icon" type="image/x-icon" href="images/elements/favicon3.ico" >
+	<link rel="shortcut icon" type="image/x-icon" href="images/elements/favicon5.ico" >
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="css/detailnew.css"/>
 	<link rel="stylesheet" type="text/css" href="css/addeditnew.css"/>
@@ -22,7 +22,7 @@
 				 <ul>
 					<li data-modal="modal-3" class="modal-trigger3" onmousedown="authorization()"><a class="login">Log in</a></li>
 					<li class="logout" onmousedown="exit()"><a>Log out</a></li>
-					<li data-modal="modal-4" class="register modal-trigger4" onmousedown="registration()"><a> Register</a></li>
+					<li data-modal="modal-4" class="register modal-trigger4" onmousedown="registration()"><a>Sing Up</a></li>
 					<li data-modal="modal-5" class="profile modal-trigger5" onmousedown="profile()"><a>Profile</a></li>
 					<li data-modal="modal-6" class="modal-trigger6" onmousedown="settings()"><a>Settings</a></li>
 					<li><a>Contact us</a></li>
@@ -48,19 +48,19 @@
 			<p class="menu-item">Sort</p>    
 			<div class="button-pair">
 				<div class="button-container">
-					<input type="checkbox" id="checkbox-id1" /> <label for="checkbox-id1"></label>
+					<input type="checkbox" id="checkbox-id1" class="check" value="off"/> <label for="checkbox-id1"></label>
 				</div>
-				<p class="button-text">Date</p>
+				<p class="button-text">Title</p>
 			</div>
 			<div class="button-pair">
 				<div class="button-container">
-					<input type="checkbox" id="checkbox-id2" /> <label for="checkbox-id2"></label>
+					<input type="checkbox" id="checkbox-id2" class="check" value="off"/> <label for="checkbox-id2"></label>
 				</div>
 				<p class="button-text">Author</p>
 			</div>
 			<div class="button-pair">
 				<div class="button-container">
-					<input type="checkbox" id="checkbox-id3" /> <label for="checkbox-id3"></label>
+					<input type="checkbox" id="checkbox-id3" class="check" value="off"/> <label for="checkbox-id3"></label>
 				</div>
 				<p class="button-text">Text size</p>
 			</div>
@@ -91,59 +91,31 @@
 					<img class="article-list-item-img">
 				</div>	
 				<div class="text">
-					<div class="title">
-						<h3 class="article-list-item-title">
-							Title
-						</h3>
-					</div>
-					<div class="description">
-						<span class="article-list-item-summary">
-							Short description
-						</span>
-					</div>
-					<div class="content">
-						<span class="article-list-item-content">
-							Content
-						</span>
-					</div>
+					<div class="title"><h3 class="article-list-item-title">Title</h3></div>
+					<div class="description"><span class="article-list-item-summary">Short description</span></div>
+					<div class="content"><span class="article-list-item-content">Content</span></div>
 					<div class="article-list-item-meta">
-						<div class="author">
-							<span class="article-list-item-author">Max Starling</span>
-						</div>
-						<div class="date">
-							<span class="article-list-item-date">04:35 Feb, 17</span>
-						</div>
+						<div class="author"><span class="article-list-item-author">Max Starling</span></div>
+						<div class="date"><span class="article-list-item-date">04:35 Feb, 17</span></div>
 					</div>
 				</div>	
             </div>
         </template>
 	<!-- modal windows -->
 		<div class="modal modal-effect" id="modal-1">
-				<div class="modal-content" >
-					<img class="delete-new-button new-button modal-close" src="images/elements/delete.png" >	
-					<img class="edit-new-button new-button modal-trigger2" src="images/elements/edit.png" data-modal="modal-2" onmousedown="editNew()">	
-					<div class="modal-text">
-						<div class="title">
-							<p class="modal-list-item-title">
-								Title
-							</p>
-						</div>
-						<div class="content">
-							<p class="modal-list-item-content">
-								Content
-							</p>
-						</div>
-						<div class="article-list-item-meta">
-							<div class="author">
-								<span class="article-list-item-author">Max Starling</span>
-							</div>
-							<div class="date">
-								<span class="article-list-item-date">04:35 Feb, 17</span>
-							</div>
-						</div>
+			<div class="modal-content">
+				<img class="delete-new-button new-button modal-close" src="images/elements/delete.png" >	
+				<img class="edit-new-button new-button modal-trigger2" src="images/elements/edit.png" data-modal="modal-2">	
+				<div class="modal-text">
+					<div class="title"><p class="modal-list-item-title">Title</p></div>
+					<div class="content"><p class="modal-list-item-content">Content</p></div>
+					<div class="article-list-item-meta">
+						<div class="author"><span class="article-list-item-author">Max Starling</span></div>
+						<div class="date"><span class="article-list-item-date">04:35 Feb, 17</span></div>
 					</div>
 				</div>
 			</div>
+		</div>
 		<div class="modal1 modal-effect1" id="modal-2">
 			<div class="modal-content1">
 				<div class="modal-text1">
@@ -229,5 +201,7 @@
 		<script src="js/profile.js" type="text/javascript"></script>
 		<script src="js/settings.js" type="text/javascript"></script>
 		<script src="js/exit.js" type="text/javascript"></script>
+		<script src="js/search.js" type="text/javascript"></script>
+		<script src="js/sort.js" type="text/javascript"></script>
  </body>
 </html>

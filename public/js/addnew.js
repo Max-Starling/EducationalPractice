@@ -6,18 +6,22 @@ function addNew(){
         document.getElementsByClassName("modal-title")[0].textContent = "ADD NEW";
         inputURL.placeholder = "Image URL";
         inputURL.type = "text";
+        inputURL.value = "";
         var inputTitle = document.getElementsByClassName("add-new-input")[1];
         inputTitle.style.marginTop = "0.5vw"     
         inputTitle.placeholder = "Title";
         inputTitle.type = "text";
         inputTitle.maxLength = "24";
+        inputTitle.value = "";
         var inputShortDescription = document.getElementsByClassName("add-new-textarea")[0];
         inputShortDescription.style.marginTop = "0.5vw"
         inputShortDescription.maxLength = "80";
+        inputShortDescription.value = "";
         var inputContent = document.getElementsByClassName("add-new-textarea")[1];
         inputContent.style.height = "9.6vw";
         inputContent.style.marginTop = "0.5vw";
         inputContent.maxLength = "1280";
+        inputContent.value = "";
         form.spellcheck = false;
         form.onsubmit = function(event){
             event.preventDefault();
@@ -87,6 +91,9 @@ function addNew(){
                             inputContent.value = "";
                             inputShortDescription.value = "";
                             inputTitle.value = "";
+                            inputTitle.style.color = "#aaaaaa";
+                            inputContent.style.color = "#aaaaaa";
+                            inputShortDescription.style.color = "#aaaaaa";
 						    removeModalHandler();
                         }
 					});

@@ -1,22 +1,35 @@
 function newDetailShow(){
-		    var overlay = document.querySelector('.modal-overlay');
-            var modalText = document.getElementsByClassName("modal-text")[0];
-            title = modalText.getElementsByClassName("title")[0];
-            content = modalText.getElementsByClassName("content")[0];
-            author = modalText.getElementsByClassName("author")[0];
-            date = modalText.getElementsByClassName("date")[0];
-            ID = event.currentTarget.dataset.ID;       
-            var t = event.currentTarget.getElementsByClassName("title")[0].textContent;
-            var c = event.currentTarget.getElementsByClassName("content")[0].textContent;
-            var a = event.currentTarget.getElementsByClassName("author")[0].textContent;
-            var d = event.currentTarget.getElementsByClassName("date")[0].textContent;
-            title.textContent = t;
+            const overlay = document.querySelector('.modal-overlay');
+            
+            const modalContent = document.querySelector('.modal-content');
+            const modalText = modalContent.querySelector('.modal-text');
+            //alert(modalText.textContent);
+            const target = event.currentTarget;
+
+            const ID = event.currentTarget.dataset.ID;
+
+            author = modalText.querySelector('.author');
+            const a = target.querySelector('.author').textContent;
+            author.textContent = a;
+
+            content = modalText.querySelector('.content');
+            const c = target.querySelector('.content').textContent;
             content.textContent = c;
+
+            date = modalText.querySelector('.date');
+            const d = target.querySelector('.date').textContent;
             date.textContent = d;
-            author.textContent = a;      
-         [].slice.call(document.querySelectorAll('.modal-trigger')).forEach( 				
+
+            title = modalText.querySelector('.title');
+            const t = target.querySelector('.title').textContent;
+            title.textContent = t;
+
+            const sd = target.querySelector(".description").textContent;
+            
+            
+            [].slice.call(document.querySelectorAll('.modal-trigger')).forEach(		
 			function(el, i){
-				var modal = document.querySelector('#' + el.getAttribute('data-modal'));
+				const modal = document.querySelector('#' + el.getAttribute('data-modal'));
 				function removeModalHandler(){
 					classie.remove(modal,'modal-show');
 				}
@@ -25,18 +38,41 @@ function newDetailShow(){
 						classie.add(modal, 'modal-show');
 						overlay.removeEventListener('click', removeModalHandler);
 						overlay.addEventListener('click', removeModalHandler);
+                        ev.stopImmediatePropagation();
 					}
 		        );
-                var close = modal.querySelector('.modal-close');
-					close.addEventListener('click', function(ev){
-						ev.stopPropagation();
+                
+                const edit = modal.querySelector('.modal-trigger2');
+                edit.addEventListener('click', editNew(ID, t, sd, c));
+                /*console.log(state);
+                if(state){
+                        alert(state);
+                        ev.stopPropagation();
+                        if(editedNew.title){
+                            alert("re");
+                        }
+                        content.textContent = c;
+                        //newRenderer.removeNewsFromDom();
+                        //newModel.removeNew(ID.toString());
+                        //const news = newModel.getNews(0, newModel.getLength());
+                        //newRenderer.insertNewsInDOM(news);
+                        removeModalHandler();
+                }*/
+                        //event.stopImmediatePropagation();
+                        //removeModalHandler();
+                //);
+                const close = modal.querySelector('.modal-close');
+				close.addEventListener('click', 
+                    function(ev){
+                        //ev.stopPropagation();
                         newRenderer.removeNewsFromDom();
                         newModel.removeNew(ID.toString());
-                        var news = newModel.getNews(0, newModel.getLength());
+                        const news = newModel.getNews(0, newModel.getLength());
                         newRenderer.insertNewsInDOM(news);
                         event.stopImmediatePropagation();
-						removeModalHandler();
-				    });
+                        removeModalHandler();
+                    }
+                );
 			} 
 		);
     }
