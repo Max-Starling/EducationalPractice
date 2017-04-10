@@ -106,3 +106,6 @@ function registration(){
              }
 		});
 }
+exports = {
+    singup: registration
+}
