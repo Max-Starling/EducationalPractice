@@ -1,7 +1,7 @@
 # EducationalPractice
 Просмотреть сайт:
 =======================================
-max-starling.github.io/EducationalPractice/public
+https://max-starling.github.io/EducationalPractice/public
 
 Задание 6+ (Вторник 11, 16:40)
 =======================================
