@@ -12,7 +12,7 @@ function sort(sortByCriterion, criterion){
                     }
                 );
                 newRenderer.removeNewsFromDom();
-                const news = newModel.getNews(0, newModel.getLength());
+                const news = newModel.getNews();
                 newModel.sortNews(news, criterion);
                 newRenderer.insertNewsInDOM(news);
             }else{
@@ -26,7 +26,7 @@ function sort(sortByCriterion, criterion){
                     }
                 );
                 newRenderer.removeNewsFromDom();
-                const news = newModel.getNews(0, newModel.getLength());
+                const news = newModel.getNews();
                 newModel.sortNews(news, "");
                 newRenderer.insertNewsInDOM(news);
             }
@@ -34,15 +34,16 @@ function sort(sortByCriterion, criterion){
     );
 }
 const criterionArray = [];
+const sortBlock = document.querySelector('.sort-block');
 
-const sortByTitle = document.querySelectorAll('.check')[0];
+const sortByTitle = sortBlock.querySelectorAll('.check')[0];
 criterionArray.push(sortByTitle);
 sort(sortByTitle, "title");
 
-const sortByAuthor = document.querySelectorAll('.check')[1];
+const sortByAuthor = sortBlock.querySelectorAll('.check')[1];
 sort(sortByAuthor, "author");
 criterionArray.push(sortByAuthor);
 
-const sortByTextsize = document.querySelectorAll('.check')[2];
+const sortByTextsize = sortBlock.querySelectorAll('.check')[2];
 sort(sortByTextsize, "textsize");
 criterionArray.push(sortByTextsize);

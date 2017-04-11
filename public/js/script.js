@@ -262,21 +262,6 @@ var newModel = (function () {
         }
         return true;
     }
-    /*    // Сериализуем его
-    var articlesString = JSON.stringify(news)
-    // После этого articlesString принимает строковое значение
-
-    // Запишем в localStorage с ключём object
-    localStorage.setItem("news", articlesString);
-
-    // Обратимся к localStorage следующим образом
-    // Хранилище вернёт нашу сериализованную строку
-    var articlesString2 = localStorage.getItem("articles");
-
-    // преобразуем к обычному объекту JavaScript
-    var articles2 = JSON.parse(articlesString2)
-    // В итоге объекты articles1 и articles2 абсолютно одинаковы
-*/
     var storage = JSON.parse(localStorage.getItem('data'));
     if(!storage){
         localStorage.setItem('data', JSON.stringify(news));
@@ -364,9 +349,27 @@ var newModel = (function () {
         }
         var out = news.slice();
         sortNews(out);
-        /*if (filterConfig){
+        if (filterConfig){
+             //  Author  //
+            if (filterConfig.author){
+                 out = out.filter(
+                     function (n){
+                         return filterConfig.author === n.author;
+                     }
+                 );
+            }
+            //  Date  //
+            if (filterConfig.createdAt){
+                  filterConfig.createdAt = new Date(filterConfig.createdAt);
+                  out = out.filter(
+                      function (n)
+                      {
+                          return filterConfig.createdAt === n.createdAt;
+                      }
+                  );
+             }
             sortNews(out, filterConfig);
-        }*/
+        }
         return out.slice(skip, skip + top);
     }
     function addNew(n){
@@ -540,16 +543,5 @@ function startApp() {
 function renderNews(skip, top) {
     newRenderer.removeNewsFromDom();
     var news = newModel.getNews(0, newModel.getLength(), {author: ""});
-    newRenderer.insertNewsInDOM(news);
-}
-
-function startSearch(v){
-     newRenderer.init();
-     searchResultNews(v);
-}
-
-function searchResultNews(v) {
-    newRenderer.removeNewsFromDom();
-    var news = newModel.getNews(0, newModel.getLength(), {author: v});
     newRenderer.insertNewsInDOM(news);
 }

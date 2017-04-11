@@ -1,3 +1,14 @@
+function startSearch(v){
+     newRenderer.init();
+     searchResultNews(v);
+}
+
+function searchResultNews(v) {
+    newRenderer.removeNewsFromDom();
+    var news = newModel.getNews(0, newModel.getLength(), {author: v});
+    newRenderer.insertNewsInDOM(news);
+}
+
 var searchForm = document.getElementById("searchform");
 searchForm.onsubmit = function(event){
             event.preventDefault();
