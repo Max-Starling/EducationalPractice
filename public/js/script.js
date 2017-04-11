@@ -364,28 +364,9 @@ var newModel = (function () {
         }
         var out = news.slice();
         sortNews(out);
-        if (filterConfig){
-            /*Author*/
-            /*if (filterConfig == "title"){
-                //console.log("me");
-                sortNews(out, filterConfig);
-            }
-            if (filterConfig == "author"){
-                //console.log("me");
-                sortNews(out, filterConfig);
-            }*/
+        /*if (filterConfig){
             sortNews(out, filterConfig);
-            /*Date*/
-            /*if (filterConfig.createdAt){
-                filterConfig.createdAt = new Date(filterConfig.createdAt);
-                out = out.filter(
-                    function (n)
-                    {
-                        return filterConfig.createdAt === n.createdAt;
-                    }
-                );
-            }*/
-        }
+        }*/
         return out.slice(skip, skip + top);
     }
     function addNew(n){
@@ -447,6 +428,7 @@ var newModel = (function () {
         getNews: getNews,
         editNew: editNew,
         removeNew:removeNew,
+        sortNews: sortNews,
         addNew: addNew,
         getAuthors: getAuthors,
         getLength: getLength
