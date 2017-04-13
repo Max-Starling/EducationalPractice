@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="css/detailnew.css"/>
 	<link rel="stylesheet" type="text/css" href="css/addeditnew.css"/>
+	<link rel="stylesheet" type="text/css" href="css/contact_us.css"/>
 	<link rel="stylesheet" type="text/css" href="css/authorization.css"/>
 	<link rel="stylesheet" type="text/css" href="css/registration.css"/>
 	<link rel="stylesheet" type="text/css" href="css/settings.css"/>
@@ -27,7 +28,7 @@
 					<li data-modal="modal-4" class="register modal-trigger4" onmousedown="registration()"><a>Sing Up</a></li>
 					<li data-modal="modal-5" class="profile modal-trigger5" onmousedown="profile()"><a>Profile</a></li>
 					<li data-modal="modal-6" class="modal-trigger6" onmousedown="settings()"><a>Settings</a></li>
-					<li><a>Contact us</a></li>
+					<li data-modal="modal-8" class="modal-trigger8" onmousedown="contactUs()"><a>Contact us</a></li>
 				 </ul>      
 			</div>
 			<div class="user-info">
@@ -109,7 +110,7 @@
 			</div>
 		</div>
 	</div> 	
-	<!-- templates -->
+	<!-- //  TEMPLATES  // -->
         <template id="template-article-list-item">
             <div class="article-list-item modal-trigger" data-id="id" onmousedown="newDetailShow()" data-modal="modal-1">
 				<div class="picture">
@@ -126,7 +127,8 @@
 				</div>	
             </div>
         </template>
-	<!-- modal windows -->
+	<!-- //  MODAL WINDOWS  // -->
+		<!-- // Detail show window // -->
 		<div class="modal modal-effect" id="modal-1">
 			<div class="modal-content">
 				<img class="delete-new-button new-button modal-trigger7" src="images/elements/delete.png" data-modal="modal-7">	
@@ -141,6 +143,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- // Add new window // -->
 		<div class="modal1 modal-effect1" id="modal-2">
 			<div class="modal-content1">
 				<div class="modal-text1">
@@ -157,6 +160,7 @@
 				</form>
 			</div>					
 		</div>
+		<!-- // Authorization window // -->
 		<div class="modal2 modal-effect2" id="modal-3">
 			<div class="modal-content2">
 				<div class="modal-text2">
@@ -171,6 +175,7 @@
 				</form>
 			</div>					
 		</div>
+		<!-- // Registration window // -->
 		<div class="modal3 modal-effect3" id="modal-4">
 			<div class="modal-content3">
 				<div class="modal-text3">
@@ -186,6 +191,7 @@
 				</form>
 			</div>					
 		</div>
+		<!-- // Profile window // -->
 		<div class="modal4 modal-effect4" id="modal-5">
 			<div class="modal-content4">
 				<div class="modal-text4">
@@ -201,6 +207,7 @@
 				</form>
 			</div>					
 		</div>
+		<!-- // Settings window // -->
 		<div class="modal5 modal-effect5" id="modal-6">
 			<div class="modal-content5">
 				<div class="modal-text5">
@@ -214,11 +221,12 @@
 				</form>
 			</div>					
 		</div>
+		<!-- // Notice window // -->
 		<div class="modal6 modal-effect6" id="modal-7">
 			<div class="modal-content6">
 				<div class="modal-text6">
 					<div class="modal-title"></div>
-					<div class="message">Content</div>
+					<div class="message">Message</div>
 				</div>
 				<form class="notice-form">
 					<div>
@@ -228,21 +236,36 @@
 				</form>
 			</div>					
 		</div>
+		<!-- // Contact us window // -->
+		<div class="modal7 modal-effect7" id="modal-8">
+			<div class="modal-content7">
+				<div class="modal-text7">
+					<div class="modal-title"></div>
+				</div>
+				<form class="contact-form">
+					<textarea class="contact-textarea" placeholder="Content"></textarea>
+					<div>
+						<button type="submit" class="md-close">Send</button>
+					</div>
+				</form>
+			</div>					
+		</div>
 		<div class="modal-overlay"></div>
 		<div class="modal-overlay2"></div>
-    <!-- scripts -->
+    <!-- //  SCRIPTS  // -->
 		<script src="js/classie.js" type="text/javascript"></script>	
 		<script src="js/script.js" type="text/javascript"></script>
 		<script src="js/authorization.js" type="text/javascript"></script>
 		<script src="js/registration.js" type="text/javascript"></script>
-		<script src="js/editnew.js" type="text/javascript"></script>
-		<script src="js/addnew.js" type="text/javascript"></script>
-		<script src="js/detailnew.js" type="text/javascript"></script>
+		<script src="js/edit_new.js" type="text/javascript"></script>
+		<script src="js/add_new.js" type="text/javascript"></script>
+		<script src="js/contact_us.js" type="text/javascript"></script>
+		<script src="js/detail_new.js" type="text/javascript"></script>
 		<script src="js/profile.js" type="text/javascript"></script>
 		<script src="js/settings.js" type="text/javascript"></script>
 		<script src="js/exit.js" type="text/javascript"></script>
 		<script src="js/search.js" type="text/javascript"></script>
 		<script src="js/notice.js" type="text/javascript"></script>
 		<script src="js/sort.js" type="text/javascript"></script>
- </body>
+	</body>
 </html>

@@ -1,5 +1,4 @@
     function editNew(parentModal, parentModalShow, ID, title, description, content){
-        console.log("qq");
 		var overlay = document.querySelector('.modal-overlay2');
         var modalContent = document.getElementsByClassName("modal-content1")[0]; 
         var form = document.getElementsByClassName("add-new-form")[0];

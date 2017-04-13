@@ -1,0 +1,64 @@
+.modal7{
+	font-size: 1.5vw;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 40%;
+	height: auto;
+	max-height: 34vw;
+	z-index: 2000;
+	visibility: hidden;
+	backface-visibility: hidden;
+	overflow-y: scroll;
+    overflow-x: hidden;
+	transform: translateX(-50%) translateY(-50%);
+}
+.modal-show7{
+	visibility: visible;
+}
+
+.modal-show7 ~ .modal-overlay{
+	opacity: 1;
+	visibility: visible;
+}
+
+.modal-effect7 .modal-content7{
+	transform: scale(0.7);
+	opacity: 0;
+	transition: all 0.3s;
+	background: radial-gradient(circle at 20% 33%, #f0f0f0, #eeeeee);	
+	min-height: 7vw;
+	color:black;
+	border: 0.vw solid #777777;
+}
+
+.modal-show7.modal-effect7 .modal-content7{
+	transform: scale(1);
+	opacity: 1;
+}
+
+.modal-content7{
+	color: darkgray;
+	position: relative;
+	margin: 0 auto;
+	padding-bottom: 1vw;
+}
+
+.modal-content7 > div{ 
+	padding: 0.5vw;
+	margin: 0;
+	font-weight: 300;
+	font-size: 180%;
+    color: #ada77c;
+}
+
+.modal-content7 > div p {
+	margin: 0;
+	padding: 10px 0;
+}
+
+.contact-textarea{
+	height: 9.6vw;
+	margin-top: 0.5vw;
+	font-size: 1.8vw;
+}
