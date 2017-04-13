@@ -7,7 +7,7 @@ function newDetailShow(){
             const target = event.currentTarget;
 
             const ID = event.currentTarget.dataset.ID;
-
+            console.log(ID);
             author = modalText.querySelector('.author');
             const a = target.querySelector('.author').textContent;
             author.textContent = a;
@@ -26,45 +26,48 @@ function newDetailShow(){
 
             const sd = target.querySelector(".description").textContent;
             
+            const modal = document.querySelector('#' + target.getAttribute('data-modal'));
+
+            const edit = modal.querySelector('.modal-trigger2');
+            edit.addEventListener('click', editNew(ID, t, sd, c));
             
-            [].slice.call(document.querySelectorAll('.modal-trigger')).forEach(		
-			function(el, i){
-				const modal = document.querySelector('#' + el.getAttribute('data-modal'));
+            
+            const close = modal.querySelector('.modal-trigger7');
+            //close.removeEventListener('click', removeModalHandler);
+            close.addEventListener('click', notice("Are you sure want to delete this?", modal, 'modal-show', ID));
+            function removeModalHandler(){
+					classie.remove(modal,'modal-show');
+			}
+			target.addEventListener('click', 
+				function(event){
+					classie.add(modal, 'modal-show');
+					overlay.removeEventListener('click', removeModalHandler);
+					overlay.addEventListener('click', removeModalHandler);
+                    event.stopImmediatePropagation();
+				}
+		    );
+            /*document.querySelectorAll('.modal-trigger').forEach(		
+			function(){
+				const modal = document.querySelector('#' + target.getAttribute('data-modal'));
 				function removeModalHandler(){
 					classie.remove(modal,'modal-show');
 				}
-				el.addEventListener('click', 
-					function(ev){
+				target.addEventListener('click', 
+					function(event){
 						classie.add(modal, 'modal-show');
 						overlay.removeEventListener('click', removeModalHandler);
 						overlay.addEventListener('click', removeModalHandler);
-                        ev.stopImmediatePropagation();
+                        event.stopImmediatePropagation();
 					}
 		        );
-                
-                const edit = modal.querySelector('.modal-trigger2');
-                edit.addEventListener('click', editNew(ID, t, sd, c));
-                /*console.log(state);
-                if(state){
-                        alert(state);
-                        ev.stopPropagation();
-                        if(editedNew.title){
-                            alert("re");
-                        }
-                        content.textContent = c;
-                        //newRenderer.removeNewsFromDom();
-                        //newModel.removeNew(ID.toString());
-                        //const news = newModel.getNews(0, newModel.getLength());
-                        //newRenderer.insertNewsInDOM(news);
-                        removeModalHandler();
-                }*/
-                        //event.stopImmediatePropagation();
-                        //removeModalHandler();
-                //);
-                const close = modal.querySelector('.modal-close');
-				close.addEventListener('click', 
+                */
+               // const close = modal.querySelector('.modal-trigger7');
+                //close.addEventListener('click', notice("Are you sure want to delete this?", modal, 'modal-show', ID));
+			} 
+		//);
+    //}
+    /*close.addEventListener('click', 
                     function(ev){
-                        //ev.stopPropagation();
                         newRenderer.removeNewsFromDom();
                         newModel.removeNew(ID.toString());
                         const news = newModel.getNews(0, newModel.getLength());
@@ -72,7 +75,6 @@ function newDetailShow(){
                         event.stopImmediatePropagation();
                         removeModalHandler();
                     }
-                );
-			} 
-		);
-    }
+                );*/
+                //const noticeButton = modal.querySelector('.modal-trigger7');
+                //console.log(ID.toString());

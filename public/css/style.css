@@ -369,6 +369,7 @@ input{
 	font-size: 150%;	
 		/*Other*/
 	background: radial-gradient(circle at 50% 33%, white, #e7e7e7);
+	cursor: url(../images/elements/PF3C_zlk_IBream.cur), text;
 }
 .form-style:focus{
 	outline-color: #ada77c;

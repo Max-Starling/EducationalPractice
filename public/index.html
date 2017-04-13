@@ -14,13 +14,15 @@
 	<link rel="stylesheet" type="text/css" href="css/settings.css"/>
 	<link rel="stylesheet" type="text/css" href="css/profile.css"/>
 	<link rel="stylesheet" type="text/css" href="css/elements.css"/>
+	<link rel="stylesheet" type="text/css" href="css/notice.css"/>
 </head>
 <body>
 	<div class="wrapper">
+		<!-- //  Right panel  // -->
 		<div class="right-panel">	
 			<div class="menu">
 				 <ul>
-					<li data-modal="modal-3" class="modal-trigger3" onmousedown="authorization()"><a class="login">Log in</a></li>
+					<li data-modal="modal-3" class="login modal-trigger3" onmousedown="authorization()"><a>Log in</a></li>
 					<li class="logout" onmousedown="exit()"><a>Log out</a></li>
 					<li data-modal="modal-4" class="register modal-trigger4" onmousedown="registration()"><a>Sing Up</a></li>
 					<li data-modal="modal-5" class="profile modal-trigger5" onmousedown="profile()"><a>Profile</a></li>
@@ -37,6 +39,7 @@
 				<img class="github" src="images/elements/github.png">
 			</div>
 		</div>
+		<!-- //  Left panel  // -->
 		<div class="left-panel">
 			<p class="menu-item">Search</p>
 			<div class="search">
@@ -45,23 +48,25 @@
 					<input type="text" placeholder="search" name="searchin">
 				</form> 
 			</div>
-			<div class="button-pair">
-				<div class="button-container">
-					<input type="checkbox" id="checkbox-id1" disabled class="check" value="off"/> <label for="checkbox-id1"></label>
+			<div class="search-block">
+				<div class="button-pair">
+					<div class="button-container">
+						<input type="checkbox" id="checkbox-id1" disabled class="check" value="off"/> <label for="checkbox-id1"></label>
+					</div>
+					<p class="button-text">Title</p>
 				</div>
-				<p class="button-text">Title</p>
-			</div>
-			<div class="button-pair">
-				<div class="button-container">
-					<input type="checkbox" id="checkbox-id2" checked disabled class="check" value="off"/> <label for="checkbox-id2"></label>
+				<div class="button-pair">
+					<div class="button-container">
+						<input type="checkbox" id="checkbox-id2" checked disabled class="check" value="off"/> <label for="checkbox-id2"></label>
+					</div>
+					<p class="button-text">Author</p>
 				</div>
-				<p class="button-text">Author</p>
-			</div>
-			<div class="button-pair">
-				<div class="button-container">
-					<input type="checkbox" id="checkbox-id3" disabled class="check" value="off"/> <label for="checkbox-id3"></label>
+				<div class="button-pair">
+					<div class="button-container">
+						<input type="checkbox" id="checkbox-id3" disabled class="check" value="off"/> <label for="checkbox-id3"></label>
+					</div>
+					<p class="button-text">Date</p>
 				</div>
-				<p class="button-text">Date</p>
 			</div>
 			<div class="sort-block">
 				<p class="menu-item">Sort</p>    
@@ -124,7 +129,7 @@
 	<!-- modal windows -->
 		<div class="modal modal-effect" id="modal-1">
 			<div class="modal-content">
-				<img class="delete-new-button new-button modal-close" src="images/elements/delete.png" >	
+				<img class="delete-new-button new-button modal-trigger7" src="images/elements/delete.png" data-modal="modal-7">	
 				<img class="edit-new-button new-button modal-trigger2" src="images/elements/edit.png" data-modal="modal-2">	
 				<div class="modal-text">
 					<div class="title"><p class="modal-list-item-title">Title</p></div>
@@ -209,6 +214,20 @@
 				</form>
 			</div>					
 		</div>
+		<div class="modal6 modal-effect6" id="modal-7">
+			<div class="modal-content6">
+				<div class="modal-text6">
+					<div class="modal-title"></div>
+					<div class="message">Content</div>
+				</div>
+				<form class="notice-form">
+					<div>
+						<button type="submit" class="button-yes md-close">Yes</button>
+						<button type="submit" class="button-no md-close">No</button>
+					</div>
+				</form>
+			</div>					
+		</div>
 		<div class="modal-overlay"></div>
     <!-- scripts -->
 		<script src="js/classie.js" type="text/javascript"></script>	
@@ -222,6 +241,7 @@
 		<script src="js/settings.js" type="text/javascript"></script>
 		<script src="js/exit.js" type="text/javascript"></script>
 		<script src="js/search.js" type="text/javascript"></script>
+		<script src="js/notice.js" type="text/javascript"></script>
 		<script src="js/sort.js" type="text/javascript"></script>
  </body>
 </html>

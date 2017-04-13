@@ -382,6 +382,7 @@ var newModel = (function () {
     }
     function removeNew(ID){
         var tmp = 0;
+        console.log("ID " + ID);
         for(var i = 0; i < news.length; i++){
             if(news[i].ID === ID){
                 tmp = i;
@@ -462,9 +463,7 @@ var newRenderer =(
         function init(){
             ARTICLE_TEMPLATE = document.querySelector('#template-article-list-item');
             ARTICLE_LIST_NODE = document.querySelector('.article-list');
-            
         }
-
         function insertNewsInDOM(news){
             var newsNodes = renderNews(news);
             newsNodes.forEach(
@@ -473,7 +472,6 @@ var newRenderer =(
                 }
             );
         }
-
         function removeNewsFromDom (){
             ARTICLE_LIST_NODE.innerHTML = '';
         }
@@ -487,7 +485,6 @@ var newRenderer =(
                 }
             );
         }
-
     function renderNew(n){
         var template = ARTICLE_TEMPLATE;
         template.content.querySelector('.article-list-item').dataset.ID = n.ID;

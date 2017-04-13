@@ -36,8 +36,8 @@ function registration(){
     function removeModalHandler(){
         classie.remove(modal,'modal-show3');
     }
-    el.addEventListener(
-        'click', function(){
+    el.addEventListener('click', 
+        function(){
             classie.add(modal, 'modal-show3');
             overlay.removeEventListener('click', removeModalHandler);
             overlay.addEventListener('click', removeModalHandler);
@@ -45,8 +45,8 @@ function registration(){
  	);
     //  Check & Close  //
     var close = modal.querySelector( '.md-close' );
-	close.addEventListener(
-        'click', function(ev){
+	close.addEventListener('click', 
+        function(ev){
             //  Getting values from the form.  //
             let email = inputEmail.value.toString();
             let uname = inputLogin.value.toString();
@@ -106,6 +106,6 @@ function registration(){
              }
 		});
 }
-exports = {
+/*exports = {
     singup: registration
-}
+}*/
