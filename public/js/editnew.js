@@ -1,6 +1,6 @@
-    function editNew(ID, title, description, content){
+    function editNew(parentModal, parentModalShow, ID, title, description, content){
         console.log("qq");
-		var overlay = document.querySelector('.modal-overlay');
+		var overlay = document.querySelector('.modal-overlay2');
         var modalContent = document.getElementsByClassName("modal-content1")[0]; 
         var form = document.getElementsByClassName("add-new-form")[0];
         var inputURL = document.getElementsByClassName("add-new-input")[0];
@@ -47,6 +47,9 @@
         function removeModalHandler(){
             classie.remove(modal,'modal-show1');
         }
+        function removeParentModalHandler(){
+            classie.remove(parentModal, parentModalShow);
+        }
         el.addEventListener('click', 
             function(){
                 classie.add(modal, 'modal-show1');
@@ -58,6 +61,7 @@
 		close.addEventListener('click', 
             function(ev){
 			    ev.stopPropagation();
+                removeParentModalHandler();
 			    removeModalHandler();
 			}
         );

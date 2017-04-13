@@ -26,7 +26,7 @@
 	opacity: 0;
 	transition: all 0.3s;
 	background: radial-gradient(circle at 20% 33%, #f0f0f0, #eeeeee);	
-	min-height: 18vw;
+	min-height: 17.4vw;
 	color:black;
 	border: 0.vw solid #777777;
 }

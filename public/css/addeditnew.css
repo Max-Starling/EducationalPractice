@@ -6,28 +6,28 @@
 	width: 40%;
 	height: auto;
 	max-height: 34vw;
-	z-index: 2000;
+	z-index: 3000;
 	visibility: hidden;
 	backface-visibility: hidden;
 	overflow-y: scroll;
     overflow-x: hidden;
 	transform: translateX(-50%) translateY(-50%);
 }
-.modal-show1 {
+.modal-show1{
 	visibility: visible;
 }
 
-.modal-show1 ~ .modal-overlay {
+.modal-show1 ~ .modal-overlay2{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect1 .modal-content1 {
+.modal-effect1 .modal-content1{
 	transform: scale(0.7);
 	opacity: 0;
 	transition: all 0.3s;
 	background: radial-gradient(circle at 20% 33%, #f0f0f0, #eeeeee);	
-	min-height: 20vw;
+	min-height: 14vw;
 	color:black;
 	border: 0.vw solid #777777;
 }
@@ -41,7 +41,7 @@
 	color: darkgray;
 	position: relative;
 	margin: 0 auto;
-	padding-bottom: 3vw;
+	padding-bottom: 1vw;
 }
 
 .modal-content1 > div {
