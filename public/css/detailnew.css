@@ -6,7 +6,7 @@
 	width: 40%;
 	height: auto;
 	max-height: 30vw;
-	z-index: 2000;
+	z-index: 1000;
 	visibility: hidden;
 	backface-visibility: hidden;
 	overflow-y: scroll;
@@ -24,7 +24,7 @@
 	visibility: hidden;
 	top: 0;
 	left: 0;
-	z-index: 1000;
+	z-index: 750;
 	opacity: 0;
 	background: rgba(0,0,0,0.6);
 	transition: all 0.3s;

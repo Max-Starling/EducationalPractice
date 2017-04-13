@@ -6,7 +6,7 @@
 	width: 30%;
 	height: auto;
 	max-height: 20vw;
-	z-index: 2000;
+	z-index: 3000;
 	visibility: hidden;
 	backface-visibility: hidden;
 	overflow-y: scroll;
@@ -16,7 +16,7 @@
 .modal-show6 {
 	visibility: visible;
 }
-.modal-show6 ~ .modal-overlay {
+.modal-show6 ~ .modal-overlay2 {
 	opacity: 1;
 	visibility: visible;
 }
@@ -58,4 +58,17 @@
 .message{
 	word-wrap: break-word;
     color: #565656;
+}
+
+.modal-overlay2 {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	z-index: 1500;
+	opacity: 0;
+	background: rgba(0,0,0,0.6);
+	transition: all 0.3s;
 }

@@ -1,7 +1,7 @@
 //var noticeModule =(
 //function (){
         function notice(message, parentModal, parentModalShow, newID){
-            const overlay = document.querySelector('.modal-overlay');
+            const overlay = document.querySelector('.modal-overlay2');
             const modalContent = document.querySelector('.modal-content6');
 
             modalContent.querySelector('.modal-title').textContent = "NOTICE";
@@ -30,7 +30,7 @@
             );
             console.log("nid" + newID);
             const buttonYes = modal.querySelector('.button-yes');
-            buttonYes.onmousedown = function(ev){
+            buttonYes.onclick = function(ev){
                 //console.log("nid" + newID);
                 newRenderer.removeNewsFromDom();
                 newModel.removeNew(newID);
@@ -43,12 +43,16 @@
             }
 //);
             const buttonNo = modal.querySelector('.button-no');
-            buttonNo.addEventListener('click', 
+            buttonNo.onclick = function(ev){
+                ev.stopPropagation();
+                removeModalHandler();
+            }
+            /*buttonNo.addEventListener('click', 
                 function(ev){
                         ev.stopPropagation();
                         removeModalHandler();
                 }
-            );
+            );*/
         }
      /*       return {
                 changeState: changeState,
