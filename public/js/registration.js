@@ -1,3 +1,4 @@
+
 function registration(){
     document.getElementsByClassName("modal-title")[2].textContent = "REGISTRATION"; 
 	const overlay = document.querySelector('.modal-overlay');
@@ -106,6 +107,6 @@ function registration(){
              }
 		});
 }
-/*exports = {
+exports = {
     singup: registration
-}*/
+}

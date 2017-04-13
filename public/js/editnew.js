@@ -1,4 +1,5 @@
     function editNew(ID, title, description, content){
+        console.log("qq");
 		var overlay = document.querySelector('.modal-overlay');
         var modalContent = document.getElementsByClassName("modal-content1")[0]; 
         var form = document.getElementsByClassName("add-new-form")[0];

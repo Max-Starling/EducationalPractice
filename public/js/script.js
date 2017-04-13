@@ -262,7 +262,7 @@ var newModel = (function () {
         }
         return true;
     }
-    var storage = JSON.parse(localStorage.getItem('data'));
+    /*var storage = JSON.parse(localStorage.getItem('data'));
     if(!storage){
         localStorage.setItem('data', JSON.stringify(news));
     }else{
@@ -277,7 +277,7 @@ var newModel = (function () {
             localStorage.setItem('data', JSON.stringify(news));
         }
     );
-
+*/
     function getLength(){
         return news.length;
     }
