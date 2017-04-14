@@ -3,11 +3,11 @@ function sort(sortByCriterion, criterion){
         function(){
             if(sortByCriterion.value == "off"){
                 sortByCriterion.value = "on";
-                //console.log(sortByCriterion.value);
                 criterionArray.forEach(
                     function(item, i, criterionArray){
                         if(item !== sortByCriterion){
-                            item.disabled = true;
+                            item.checked = false;
+                            item.value = "off";
                         }
                     }
                 );
@@ -17,18 +17,8 @@ function sort(sortByCriterion, criterion){
                 newRenderer.insertNewsInDOM(news);
             }else{
                 sortByCriterion.value = "off";
-                //console.log(sortByCriterion.value);
-                criterionArray.forEach(
-                    function(item, i, criterionArray){
-                        if(item !== sortByCriterion){
-                            item.disabled = false;
-                        }
-                    }
-                );
                 newRenderer.removeNewsFromDom();
-                const news = newModel.getNews();
-                newModel.sortNews(news, "");
-                newRenderer.insertNewsInDOM(news);
+                newRenderer.insertNewsInDOM(newModel.getNews());
             }
         }
     );

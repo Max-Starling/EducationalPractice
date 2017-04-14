@@ -9,28 +9,31 @@ function searchResultNews(v) {
     newRenderer.insertNewsInDOM(news);
 }
 
-var searchForm = document.getElementById("searchform");
-searchForm.onsubmit = function(event){
+document.forms.searchform.onsubmit = function(event){
             event.preventDefault();
             var searchIn = document.forms.searchform.searchin;
-            var authors = newModel.getAuthors();
+            var authorsArray = newModel.getAuthors();
             var news;
-            if(searchIn.value === ""){
+            if(!searchIn.value){
                 newRenderer.removeNewsFromDom();
                 news = newModel.getNews();
                 newRenderer.insertNewsInDOM(news);
             }else{
-                var i;
-                for(i = 0; i < authors.length; i++){
-                    if(authors[i].toString().toLowerCase().indexOf(searchIn.value.toString().toLowerCase()) + 1){
-                        startSearch(authors[i]);
-                        break;
+                let firstOccurrence;
+                let success = false;
+                authorsArray.some(
+                    function(element){
+                        if(element.toString().toLowerCase().indexOf(searchIn.value.toString().toLowerCase()) + 1){
+                            firstOccurrence = element;
+                            success = true;
+                        }
                     }
-                }
-                if(i === authors.length){
+                )
+                if(success){
+                    startSearch(firstOccurrence.toString());
+                }else{
                     newRenderer.removeNewsFromDom();
-                    news = newModel.getNews();
-                    newRenderer.insertNewsInDOM(news);
+                    newRenderer.insertNewsInDOM();
                 }
             }
     searchIn.value = "";

@@ -465,6 +465,9 @@ var newRenderer =(
             ARTICLE_LIST_NODE = document.querySelector('.article-list');
         }
         function insertNewsInDOM(news){
+            if(!news){
+                news = newModel.getNews();
+            }
             var newsNodes = renderNews(news);
             newsNodes.forEach(
                 function (node){
