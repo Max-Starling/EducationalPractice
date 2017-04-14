@@ -334,6 +334,18 @@ var newModel = (function () {
     }
     function searchNews(inputValue, news, criterion){
         let occurrenceArray = [];
+        
+        function unique(arr) {
+            var obj = {};
+
+            for (var i = 0; i < arr.length; i++) {
+                var str = arr[i];
+                obj[str] = true; // запомнить строку в виде свойства объекта
+            }
+
+            return Object.keys(obj); 
+        }
+    
         if(criterion == "title"){
             console.log(criterion + " " + inputValue);
             let occurrenceArray = [];
@@ -345,35 +357,39 @@ var newModel = (function () {
                     }
                 }
             );
+            occurrenceArray = unique(occurrenceArray);
             return occurrenceArray;
         }
         if(criterion == "author"){
             news.map(x => x.author).some(
                 function(element){
-                    if(element.toString().toLowerCase().indexOf(inputValue.toString().toLowerCase()) + 1){
+                    if(element.toString().toLowerCase().indexOf(inputValue.toString().toLowerCase()) >= 0){
                         occurrenceArray.push(element);
                     }
                 }
             );
+            occurrenceArray = unique(occurrenceArray);
             return occurrenceArray;
         }
         if(criterion == "date" || !criterion){
-            console.log("qqq");
-            news.map(x => x.createdAt).some(
+            //console.log("qqq");
+            /*news.map(x => x.createdAt).some(
                 function(element){
                     console.log(element.toString().toLowerCase());
-                    if(element.toString().toLowerCase().indexOf(inputValue.toString().toLowerCase()) + 1){
+                    if(element.toString().toLowerCase().indexOf(inputValue.toString().toLowerCase()) >= 0){
                         occurrenceArray.push(element);
                     }
                 }
-            );
+            );*/
+            //occurrenceArray = unique(occurrenceArray);
+            occurrenceArray.push(inputValue);
             return occurrenceArray;
         }
     }
     function getAuthors(){
         return news.map(x => x.author);
     }
-    function getNews(skip, top, filterConfig) {       
+    function getNews(skip, top, criterion, value) {       
         /*Default*/
         if (!skip){
             skip = 0;
@@ -383,26 +399,43 @@ var newModel = (function () {
         }
         var out = news.slice();
         sortNews(out);
-        if (filterConfig){
-             //  Author  //
-            if (filterConfig.author){
+        if (criterion && value){
+             //console.log(criterion);
+            //  Title  //
+            if (criterion === "title"){
                  out = out.filter(
                      function (n){
-                         return filterConfig.author === n.author;
+                         console.log(value, n.title);
+                         return value === n.title;
+                     }
+                 );
+            }
+            //  Author  //
+            if (criterion === "author"){
+                //console.log(criterion);
+                 out = out.filter(
+                     function (n){
+                         console.log(value, n.author);
+                         return value === n.author;
                      }
                  );
             }
             //  Date  //
-            if (filterConfig.createdAt){
-                  filterConfig.createdAt = new Date(filterConfig.createdAt);
-                  out = out.filter(
-                      function (n)
-                      {
-                          return filterConfig.createdAt === n.createdAt;
-                      }
-                  );
+            if (criterion === "date"){
+                //date = new Date(value);
+                out = out.filter(
+                    function (n){
+                        console.log(value.toString().toLowerCase());
+                        console.log(n.createdAt.toString().toLowerCase());
+                        console.log("     ");
+                        console.log(n.createdAt.toString().toLowerCase().indexOf(value.toString().toLowerCase()));
+                        //if(value){
+                        return n.createdAt.toString().toLowerCase().indexOf(value.toString().toLowerCase()) >= 0;
+                        //}
+                    }
+                );
              }
-            sortNews(out, filterConfig);
+            //sortNews(out, criterion);
         }
         return out.slice(skip, skip + top);
     }

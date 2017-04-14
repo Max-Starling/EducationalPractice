@@ -1,6 +1,6 @@
 function showSearchResult(criterion, value) {
-    newRenderer.removeNewsFromDom();
-    var news = newModel.getNews(0, newModel.getLength(), {critetion: value});
+    //console.log(criterion, value);
+    var news = newModel.getNews(0, newModel.getLength(), criterion, value);
     newRenderer.insertNewsInDOM(news);
 }
 
@@ -15,7 +15,7 @@ criterionSearchArray.push({checkbox: searchByAuthor, criterion: "author"});
 
 const searchByDate = searchBlock.querySelectorAll('.check')[2];
 criterionSearchArray.push({checkbox: searchByDate, criterion: "date"});
-
+search();
 criterionSearchArray.forEach(
     function(searchByCriterion){ 
         searchByCriterion.checkbox.addEventListener('click', 
@@ -56,10 +56,11 @@ function search(searchByCriterion, criterionSearch){
                 console.log(searchByCriterion, criterionSearch);
                 occurrenceArray = newModel.searchNews(searchIn.value, newModel.getNews(), criterionSearch);
                 console.log(occurrenceArray);
+                newRenderer.removeNewsFromDom();
                 occurrenceArray.forEach(
                     function(el){
-                        console.log(el);
-                        showSearchResult(el, criterionSearch);
+                        console.log(criterionSearch, el);
+                        showSearchResult(criterionSearch, el);
                     }
                 );
             }else{
