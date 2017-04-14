@@ -288,52 +288,86 @@ var newModel = (function () {
             }
         }
     }
-    function sortNews(news, filterConfig){
+    function sortNews(news, criterion){
         news.sort(
             function (x, y){
                 if (x.createdAt < y.createdAt){
                     return 1;
-                }
-                if (x.createdAt > y.createdAt){
+                }else if (x.createdAt > y.createdAt){
                     return -1;
                 }
             }
         );
-        if(filterConfig == "title"){
+        if(criterion == "title"){
             news.sort(
                 function (x, y){
                     if (x.title > y.title){
                         return 1;
-                    }
-                    if (x.title < y.title){
+                    }else if (x.title < y.title){
                         return -1;
                     }
                 }
             );
         }
-        if(filterConfig == "author"){
+        if(criterion == "author"){
             news.sort(
                 function (x, y){
                     if (x.author > y.author){
                         return 1;
-                    }
-                    if (x.author < y.author){
+                    }else if (x.author < y.author){
                         return -1;
                     }
                 }
             );
         }
-        if(filterConfig == "textsize"){
+        if(criterion == "textsize"){
             news.sort(
                 function (x, y){
                     if (x.content.length < y.content.length){
                         return 1;
-                    }
-                    if (x.content.length > y.content.length){
+                    }else if (x.content.length > y.content.length){
                         return -1;
                     }
                 }
             );
+        }
+    }
+    function searchNews(inputValue, news, criterion){
+        let occurrenceArray = [];
+        if(criterion == "title"){
+            console.log(criterion + " " + inputValue);
+            let occurrenceArray = [];
+            news.map(x => x.title).some(
+                function(element){
+                    if(element.toString().toLowerCase().indexOf(inputValue.toString().toLowerCase()) >= 0){
+                        console.log(element);
+                        occurrenceArray.push(element);
+                    }
+                }
+            );
+            return occurrenceArray;
+        }
+        if(criterion == "author"){
+            news.map(x => x.author).some(
+                function(element){
+                    if(element.toString().toLowerCase().indexOf(inputValue.toString().toLowerCase()) + 1){
+                        occurrenceArray.push(element);
+                    }
+                }
+            );
+            return occurrenceArray;
+        }
+        if(criterion == "date" || !criterion){
+            console.log("qqq");
+            news.map(x => x.createdAt).some(
+                function(element){
+                    console.log(element.toString().toLowerCase());
+                    if(element.toString().toLowerCase().indexOf(inputValue.toString().toLowerCase()) + 1){
+                        occurrenceArray.push(element);
+                    }
+                }
+            );
+            return occurrenceArray;
         }
     }
     function getAuthors(){
@@ -433,6 +467,7 @@ var newModel = (function () {
         editNew: editNew,
         removeNew:removeNew,
         sortNews: sortNews,
+        searchNews: searchNews,
         addNew: addNew,
         getAuthors: getAuthors,
         getLength: getLength

@@ -1,10 +1,11 @@
 function sort(sortByCriterion, criterion){
+    sortByCriterion.removeEventListener('click',{});
     sortByCriterion.addEventListener('click', 
         function(){
             if(sortByCriterion.value == "off"){
                 sortByCriterion.value = "on";
-                criterionArray.forEach(
-                    function(item, i, criterionArray){
+                criterionSortArray.forEach(
+                    function(item, i, criterionSortArray){
                         if(item !== sortByCriterion){
                             item.checked = false;
                             item.value = "off";
@@ -23,17 +24,17 @@ function sort(sortByCriterion, criterion){
         }
     );
 }
-const criterionArray = [];
+let criterionSortArray = [];
 const sortBlock = document.querySelector('.sort-block');
 
 const sortByTitle = sortBlock.querySelectorAll('.check')[0];
-criterionArray.push(sortByTitle);
+criterionSortArray.push(sortByTitle);
 sort(sortByTitle, "title");
 
 const sortByAuthor = sortBlock.querySelectorAll('.check')[1];
 sort(sortByAuthor, "author");
-criterionArray.push(sortByAuthor);
+criterionSortArray.push(sortByAuthor);
 
 const sortByTextsize = sortBlock.querySelectorAll('.check')[2];
 sort(sortByTextsize, "textsize");
-criterionArray.push(sortByTextsize);
+criterionSortArray.push(sortByTextsize);
