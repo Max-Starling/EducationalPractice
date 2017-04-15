@@ -42,14 +42,14 @@
 		</div>
 		<!-- //  Left panel  // -->
 		<div class="left-panel">
-			<p class="menu-item">Search</p>
-			<div class="search">
-				<img class="search-img" src="images/elements/search.png">
-				<form id = "searchform" autocomplete="off">
-					<input type="text" placeholder="search" name="searchin">
-				</form> 
-			</div>
 			<div class="search-block">
+				<p class="menu-item">Search</p>
+				<div class="search">
+					<img class="search-img" src="images/elements/search.png">
+					<form id = "searchform" autocomplete="off">
+						<input type="text" placeholder="search" name="searchin">
+					</form> 
+				</div>
 				<div class="button-pair">
 					<div class="button-container">
 						<input type="checkbox" id="checkbox-id1" class="check" value="off">
@@ -104,7 +104,7 @@
 					<div class="quote"></div>
 				</div>
 				<div class="button-panel">
-					<img id="re" class="add-new-button modal-trigger1" src="images/elements/add.png" onmousedown="addNew()" data-modal="modal-2"><img>
+					<img class="add-new-button modal-trigger1" src="images/elements/add.png" onmousedown="addNew()" data-modal="modal-add-edit"><img>
 				</div>
 				<div class="news-block">
 					<div class="article-list"></div>
@@ -118,7 +118,7 @@
 	</div> 	
 	<!-- //  TEMPLATES  // -->
         <template id="template-article-list-item">
-            <div class="article-list-item modal-trigger" data-id="id" onmousedown="newDetailShow()" data-modal="modal-1">
+            <div class="article-list-item modal-trigger" data-id="id" onmousedown="newDetailShow()" data-modal="modal-detail">
 				<div class="picture">
 					<img class="article-list-item-img">
 				</div>	
@@ -135,10 +135,10 @@
         </template>
 	<!-- //  MODAL WINDOWS  // -->
 		<!-- // Detail show window // -->
-		<div class="modal modal-effect" id="modal-1">
+		<div class="modal modal-effect" id="modal-detail">
 			<div class="modal-content">
 				<img class="delete-new-button new-button modal-trigger7" src="images/elements/delete.png" data-modal="modal-7">	
-				<img class="edit-new-button new-button modal-trigger2" src="images/elements/edit.png" data-modal="modal-2">	
+				<img class="edit-new-button new-button modal-trigger2" src="images/elements/edit.png" data-modal="modal-add-edit">	
 				<div class="modal-text">
 					<div class="title"><p class="modal-list-item-title">Title</p></div>
 					<div class="content"><p class="modal-list-item-content">Content</p></div>
@@ -149,8 +149,8 @@
 				</div>
 			</div>
 		</div>
-		<!-- // Add new window // -->
-		<div class="modal1 modal-effect1" id="modal-2">
+		<!-- // Add & Edit new window // -->
+		<div class="modal-add-edit modal-effect-add-edit" id="modal-add-edit">
 			<div class="modal-content1">
 				<div class="modal-text1">
 					<div class="modal-title"></div>
@@ -238,6 +238,7 @@
 					<div>
 						<button type="submit" class="button-yes md-close">Yes</button>
 						<button type="submit" class="button-no md-close">No</button>
+						<button type="submit" class="button-sure md-close">Sure</button>
 					</div>
 				</form>
 			</div>					

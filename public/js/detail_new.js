@@ -1,4 +1,4 @@
-function newDetailShow(){
+var newDetailShow = function(){
             const overlay = document.querySelector('.modal-overlay');
             
             const modalContent = document.querySelector('.modal-content');
@@ -31,10 +31,8 @@ function newDetailShow(){
             const edit = modal.querySelector('.modal-trigger2');
             edit.addEventListener('click', editNew(modal, 'modal-show', ID, t, sd, c));
             
-            
             const close = modal.querySelector('.modal-trigger7');
-            //close.removeEventListener('click', removeModalHandler);
-            close.addEventListener('click', notice("Are you sure want to delete this?", modal, 'modal-show', ID));
+            close.addEventListener('click', modalModule.notice("Are you sure want to delete this?", modal, 'modal-show', ID));
             function removeModalHandler(){
 					classie.remove(modal,'modal-show');
 			}
@@ -46,35 +44,4 @@ function newDetailShow(){
                     event.stopImmediatePropagation();
 				}
 		    );
-            /*document.querySelectorAll('.modal-trigger').forEach(		
-			function(){
-				const modal = document.querySelector('#' + target.getAttribute('data-modal'));
-				function removeModalHandler(){
-					classie.remove(modal,'modal-show');
-				}
-				target.addEventListener('click', 
-					function(event){
-						classie.add(modal, 'modal-show');
-						overlay.removeEventListener('click', removeModalHandler);
-						overlay.addEventListener('click', removeModalHandler);
-                        event.stopImmediatePropagation();
-					}
-		        );
-                */
-               // const close = modal.querySelector('.modal-trigger7');
-                //close.addEventListener('click', notice("Are you sure want to delete this?", modal, 'modal-show', ID));
-			} 
-		//);
-    //}
-    /*close.addEventListener('click', 
-                    function(ev){
-                        newRenderer.removeNewsFromDom();
-                        newModel.removeNew(ID.toString());
-                        const news = newModel.getNews(0, newModel.getLength());
-                        newRenderer.insertNewsInDOM(news);
-                        event.stopImmediatePropagation();
-                        removeModalHandler();
-                    }
-                );*/
-                //const noticeButton = modal.querySelector('.modal-trigger7');
-                //console.log(ID.toString());
+		} 
