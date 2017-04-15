@@ -1,3 +1,16 @@
+.modal0{
+	font-size: 1.5vw;
+	position: fixed;
+	overflow-y: scroll;
+    overflow-x: hidden;
+	transform: translateX(-50%) translateY(-50%);
+	max-height: 34vw;
+	top: 50%;
+	left: 50%;
+	width: 40%;
+	height: auto;
+	z-index: 2000;
+}
 .modal-add-edit{
 	font-size: 1.5vw;
 	position: fixed;
@@ -6,7 +19,7 @@
 	width: 40%;
 	height: auto;
 	max-height: 34vw;
-	z-index: 3000;
+	z-index: 4000;
 	visibility: hidden;
 	backface-visibility: hidden;
 	overflow-y: scroll;
@@ -37,21 +50,21 @@
 	opacity: 1;
 }
 
-.modal-content1 {
+.modal-content0 {
 	color: darkgray;
 	position: relative;
 	margin: 0 auto;
 	padding-bottom: 1vw;
 }
 
-.modal-content1 > div {
+.modal-content0 > div{
 	padding: 0.5vw;
 	margin: 0;
 	font-weight: 300;
 	font-size: 1.15em;
 }
 
-.modal-content1 > div p {
+.modal-content0 > div p {
 	margin: 0;
 	padding: 10px 0;
 }
@@ -69,6 +82,7 @@
 	display: inline-block;
 	margin-top: 0.56vw;
 	opacity: 0.9;
+	outline: none;
 	transition: 0.2s;
 }
 

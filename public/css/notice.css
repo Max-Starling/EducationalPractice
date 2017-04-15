@@ -1,17 +1,8 @@
 .modal6 {
-	font-size: 1.5vw;
-	position: fixed;
-	top: 50%;
-	left: 50%;
 	width: 30%;
-	height: auto;
 	max-height: 20vw;
 	z-index: 3000;
 	visibility: hidden;
-	backface-visibility: hidden;
-	overflow-y: scroll;
-    overflow-x: hidden;
-	transform: translateX(-50%) translateY(-50%);
 }
 .modal-show6 {
 	visibility: visible;
@@ -36,23 +27,9 @@
 	opacity: 1;
 }
 
-.modal-content6 {
-	color: darkgray;
-	position: relative;
-	margin: 0 auto;
-}
-
 .modal-content6 > div {
-	padding: 0.5vw;
-	margin: 0;
-	font-weight: 300;
 	font-size: 140%;
 	color: #ada77c;
-}
-
-.modal-content6 > div p {
-	margin: 0;
-	padding: 10px 0;
 }
 
 .message{
@@ -67,7 +44,7 @@
 	visibility: hidden;
 	top: 0;
 	left: 0;
-	z-index: 1500;
+	z-index: 2500;
 	opacity: 0;
 	background: rgba(0,0,0,0.6);
 	transition: all 0.3s;

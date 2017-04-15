@@ -37,24 +37,9 @@
 	opacity: 1;
 }
 
-.modal-content7{
-	color: darkgray;
-	position: relative;
-	margin: 0 auto;
-	padding-bottom: 1vw;
-}
-
 .modal-content7 > div{ 
-	padding: 0.5vw;
-	margin: 0;
-	font-weight: 300;
 	font-size: 180%;
     color: #ada77c;
-}
-
-.modal-content7 > div p {
-	margin: 0;
-	padding: 10px 0;
 }
 
 .contact-textarea{

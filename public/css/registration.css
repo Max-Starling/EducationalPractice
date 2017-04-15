@@ -1,17 +1,5 @@
 .modal3{
-	font-size: 1.5vw;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	width: 40%;
-	height: auto;
-	max-height: 34vw;
-	z-index: 2000;
 	visibility: hidden;
-	backface-visibility: hidden;
-	overflow-y: scroll;
-    	overflow-x: hidden;
-	transform: translateX(-50%) translateY(-50%);
 }
 .modal-show3{
 	visibility: visible;
@@ -36,22 +24,7 @@
 	opacity: 1;
 }
 
-.modal-content3{
-	color: darkgray;
-	position: relative;
-	margin: 0 auto;
-	padding-bottom: 1vw;
-}
-
 .modal-content3 > div{
-	padding: 0.5vw;
-	margin: 0;
-	font-weight: 300;
 	font-size: 140%;
 	color: #ada77c;
-}
-
-.modal-content3 > div p{
-	margin: 0;
-	padding: 10px 0;
 }

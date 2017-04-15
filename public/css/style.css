@@ -421,9 +421,6 @@ input{
 .delete-new-button{
 	visibility: hidden;
 }
-.md-close{
-	outline: none;
-}
 .logout{
 	display: none;
 }
