@@ -1,8 +1,7 @@
 function addNew() {
-    var overlay = document.querySelector('.modal-overlay');
-    var modalContent = document.querySelector('.modal-content1');
+    var overlay = document.querySelector('.fisrt-overlay-layer');
+    var modalContent = document.querySelector('.modal-content-add');
     var form = modalContent.querySelector('.add-new-form');
-    modalContent.querySelector('.modal-title').textContent = "ADD NEW";
 
     var inputURL = form.querySelectorAll('.add-new-input')[0];
     inputURL.placeholder = "Image URL";

@@ -40,7 +40,7 @@
 }
 				/*-----------------Modal overlay-----------------*/
 
-.modal-overlay {
+.fisrt-overlay-layer {
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -53,7 +53,7 @@
 	transition: all 0.3s;
 }
 
-.modal-overlay2 {
+.second-overlay-layer {
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -99,12 +99,12 @@
 	visibility: visible;
 }
 
-.modal-show1 ~ .modal-overlay{
+.modal-show1 ~ .fisrt-overlay-layer{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-show1.modal-effect .modal-content1 {
+.modal-show1.modal-effect .modal-content-add {
 	transform: scale(1);
 	opacity: 1;
 }
@@ -119,19 +119,19 @@
 	visibility: visible;
 }
 
-.modal-show8 ~ .modal-overlay2{
+.modal-show8 ~ .second-overlay-layer{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-show8.modal-effect .modal-content8 {
+.modal-show8.modal-effect .modal-content-edit {
 	transform: scale(1);
 	opacity: 1;
 }				
 
 				/*-----------------Authorization window-----------------*/
 
-.modal2 {
+.modal-auth {
 	visibility: hidden;
 }
 
@@ -139,23 +139,23 @@
 	visibility: visible;
 }
 
-.modal-show2 ~ .modal-overlay {
+.modal-show2 ~ .fisrt-overlay-layer {
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect .modal2{
+.modal-effect .modal-auth{
 	min-height: 17.4vw;
 }
 
-.modal-show2.modal-effect .modal-content2 {
+.modal-show2.modal-effect .modal-content-auth {
 	transform: scale(1);
 	opacity: 1;
 }
 
 				/*-----------------Registration window-----------------*/
 
-.modal3{
+.modal-reg{
 	visibility: hidden;
 }
 
@@ -163,23 +163,23 @@
 	visibility: visible;
 }
 
-.modal-show3 ~ .modal-overlay{
+.modal-show3 ~ .fisrt-overlay-layer{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect .modal-content3{
+.modal-effect .modal-content-reg{
 	min-height: 20vw;
 }
 
-.modal-show3.modal-effect .modal-content3{
+.modal-show3.modal-effect .modal-content-reg{
 	transform: scale(1);
 	opacity: 1;
 }
 
 				/*-----------------Profile window-----------------*/
 
-.modal4{
+.modal-prof{
 	visibility: hidden;
 }
 
@@ -187,23 +187,23 @@
 	visibility: visible;
 }
 
-.modal-show4 ~ .modal-overlay{
+.modal-show4 ~ .fisrt-overlay-layer{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect .modal-content4{	
+.modal-effect .modal-content-prof{	
 	min-height: 20vw;
 }
 
-.modal-show4.modal-effect .modal-content4{
+.modal-show4.modal-effect .modal-content-prof{
 	transform: scale(1);
 	opacity: 1;
 }
 
 				/*-----------------Settings window-----------------*/
 
-.modal5{
+.modal-sett{
 	visibility: hidden;
 }
 
@@ -211,23 +211,23 @@
 	visibility: visible;
 }
 
-.modal-show5 ~ .modal-overlay{
+.modal-show5 ~ .fisrt-overlay-layer{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect .modal-content5{
+.modal-effect .modal-content-sett{
 	min-height: 7vw;
 }
 
-.modal-show5.modal-effect .modal-content5{
+.modal-show5.modal-effect .modal-content-sett{
 	transform: scale(1);
 	opacity: 1;
 }
 
 				/*-----------------Notice window-----------------*/
 
-.modal6 {
+.modal-not {
 	width: 30%;
 	max-height: 20vw;
 	z-index: 3000;
@@ -238,16 +238,16 @@
 	visibility: visible;
 }
 
-.modal-show6 ~ .modal-overlay2 {
+.modal-show6 ~ .second-overlay-layer {
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect .modal-content6 {
+.modal-effect .modal-content-not {
 	min-height: 11.6vw;
 }
 
-.modal-show6.modal-effect .modal-content6 {
+.modal-show6.modal-effect .modal-content-not {
 	transform: scale(1);
 	opacity: 1;
 }
@@ -259,7 +259,7 @@
 
 				/*-----------------Contact us window-----------------*/
 
-.modal7{
+.modal-cont{
 	visibility: hidden;
 }
 
@@ -267,16 +267,16 @@
 	visibility: visible;
 }
 
-.modal-show7 ~ .modal-overlay{
+.modal-show7 ~ .fisrt-overlay-layer{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect .modal-content7{
+.modal-effect .modal-content-cont{
 	min-height: 7vw;
 }
 
-.modal-show7.modal-effect .modal-content7{
+.modal-show7.modal-effect .modal-content-cont{
 	transform: scale(1);
 	opacity: 1;
 }
@@ -289,7 +289,7 @@
 
 				/*-----------------Detail new window-----------------*/
 
-.modal{
+.modal-detail{
 	max-height: 31vw;
 	z-index: 1000;
 	visibility: hidden;
@@ -299,7 +299,7 @@
 	visibility: visible;
 }
 
-.modal-show ~ .modal-overlay {
+.modal-show ~ .fisrt-overlay-layer {
 	opacity: 1;
 	visibility: visible;
 }

@@ -1,7 +1,6 @@
 function settings(){
-	const overlay = document.querySelector('.modal-overlay');
-    const modalContent = document.querySelector('.modal-content5'); 
-    modalContent.querySelector('.modal-title').textContent = "SETTINGS";
+	const overlay = document.querySelector('.fisrt-overlay-layer');
+    const modalContent = document.querySelector('.modal-content-sett'); 
     //  Form  //
     const form = document.querySelector('.settings-form');
     form.spellcheck = false;

@@ -1,8 +1,7 @@
 function profile(){
-		var overlay = document.querySelector('.modal-overlay');
-        var modalContent = document.getElementsByClassName("modal-content4")[0]; 
+		var overlay = document.querySelector('.fisrt-overlay-layer');
+        var modalContent = document.getElementsByClassName("modal-content-prof")[0]; 
         var form = document.getElementsByClassName("profile-form")[0];
-        document.getElementsByClassName("modal-title")[4].textContent = "PROFILE";
         var changeURL = document.getElementsByClassName("profile-input")[0];
         changeURL.placeholder = "URL to new picture";
         changeURL.className = "profile-input form-style";

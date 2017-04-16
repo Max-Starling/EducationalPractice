@@ -1,5 +1,5 @@
 var newDetailShow = function(){
-            const overlay = document.querySelector('.modal-overlay');
+            const overlay = document.querySelector('.fisrt-overlay-layer');
             
             const modalContent = document.querySelector('.modal-content');
             const modalText = modalContent.querySelector('.modal-text');

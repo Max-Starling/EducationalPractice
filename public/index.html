@@ -16,12 +16,12 @@
 		<div class="right-panel">	
 			<div class="menu">
 				 <ul>
-					<li data-modal="modal-3" class="login modal-trigger3" onmousedown="authorization()"><a>Log in</a></li>
+					<li data-modal="md-auth" class="login modal-trigger3" onmousedown="authorization()"><a>Log in</a></li>
 					<li class="logout" onmousedown="exit()"><a>Log out</a></li>
-					<li data-modal="modal-4" class="register modal-trigger4" onmousedown="registration()"><a>Sing Up</a></li>
-					<li data-modal="modal-5" class="profile modal-trigger5" onmousedown="profile()"><a>Profile</a></li>
-					<li data-modal="modal-6" class="modal-trigger6" onmousedown="settings()"><a>Settings</a></li>
-					<li data-modal="modal-8" class="modal-trigger8" onmousedown="contactUs()"><a>Contact us</a></li>
+					<li data-modal="md-reg" class="register modal-trigger4" onmousedown="registration()"><a>Sing Up</a></li>
+					<li data-modal="md-prof" class="profile modal-trigger5" onmousedown="profile()"><a>Profile</a></li>
+					<li data-modal="md-sett" class="modal-trigger6" onmousedown="settings()"><a>Settings</a></li>
+					<li data-modal="md-cont" class="modal-trigger8" onmousedown="contactUs()"><a>Contact us</a></li>
 				 </ul>      
 			</div>
 			<div class="user-info">
@@ -97,7 +97,7 @@
 					<div class="quote"></div>
 				</div>
 				<div class="button-panel">
-					<img class="add-new-button modal-trigger1" src="images/elements/add.png" onmousedown="addNew()" data-modal="modal-add"><img>
+					<img class="add-new-button modal-trigger1" src="images/elements/add.png" onmousedown="addNew()" data-modal="md-add"><img>
 				</div>
 				<div class="news-block">
 					<div class="article-list"></div>
@@ -128,10 +128,10 @@
         </template>
 	<!-- //  MODAL WINDOWS  // -->
 		<!-- // Detail show window // -->
-		<div class="modal-default modal modal-effect" id="md-detail">
+		<div class="modal-detail modal-default modal-effect" id="md-detail">
 			<div class="modal-content modal-content-default">
-				<img class="delete-new-button new-button modal-trigger7" src="images/elements/delete.png" data-modal="modal-7">	
-				<img class="edit-new-button new-button modal-trigger9" src="images/elements/edit.png" data-modal="modal-edit">	
+				<img class="delete-new-button new-button modal-trigger7" src="images/elements/delete.png" data-modal="md-not">	
+				<img class="edit-new-button new-button modal-trigger9" src="images/elements/edit.png" data-modal="md-edit">	
 				<div class="modal-text">
 					<div class="title"><p class="modal-list-item-title">Title</p></div>
 					<div class="content"><p class="modal-list-item-content">Content</p></div>
@@ -143,11 +143,9 @@
 			</div>
 		</div>
 		<!-- // Add new window // -->
-		<div class="modal-default modal-add modal-effect" id="modal-add">
-			<div class="modal-content1 modal-content-default">
-				<div class="modal-text1">
-					<div class="modal-title"></div>
-				</div>
+		<div class="modal-add modal-default modal-effect" id="md-add">
+			<div class="modal-content-add modal-content-default">
+				<div class="modal-title">ADD NEW</div>
 				<form class="add-new-form"> 
 					<input class="add-new-input">
 					<input class="add-new-input">
@@ -160,11 +158,9 @@
 			</div>					
 		</div>
 		<!-- // Edit new window // -->
-		<div class="modal-default modal-edit modal-effect" id="modal-edit">
-			<div class="modal-content8 modal-content-default">
-				<div class="modal-text8">
-					<div class="modal-title"></div>
-				</div>
+		<div class="modal-edit modal-default modal-effect" id="md-edit">
+			<div class="modal-content-edit modal-content-default">
+				<div class="modal-title">EDIT NEW</div>
 				<form class="edit-new-form"> 
 					<input class="edit-new-input">
 					<input class="edit-new-input">
@@ -177,11 +173,9 @@
 			</div>					
 		</div>
 		<!-- // Authorization window // -->
-		<div class="modal-default modal2 modal-effect" id="modal-3">
-			<div class="modal-content2 modal-content-default">
-				<div class="modal-text2">
-					<div class="modal-title"></div>
-				</div>
+		<div class="modal-auth modal-default modal-effect" id="md-auth">
+			<div class="modal-content-auth modal-content-default">
+				<div class="modal-title">AUTHORIZATION</div>
 				<form class="authorization-form"> 
 					<input class="authorization-input">
 					<input class="authorization-input">
@@ -192,11 +186,9 @@
 			</div>					
 		</div>
 		<!-- // Registration window // -->
-		<div class="modal-default modal3 modal-effect" id="modal-4">
-			<div class="modal-content3 modal-content-default">
-				<div class="modal-text3">
-					<div class="modal-title"></div>
-				</div>
+		<div class="modal-reg modal-default modal-effect" id="md-reg">
+			<div class="modal-content-reg modal-content-default">
+				<div class="modal-title">REGISTRATION</div>
 				<form class="registration-form">
 					<input class="registration-input"> 
 					<input class="registration-input">
@@ -208,11 +200,9 @@
 			</div>					
 		</div>
 		<!-- // Profile window // -->
-		<div class="modal-default modal4 modal-effect" id="modal-5">
-			<div class="modal-content4 modal-content-default">
-				<div class="modal-text4">
-					<div class="modal-title"></div>
-				</div>
+		<div class="modal-prof modal-default modal-effect" id="md-prof">
+			<div class="modal-content-prof modal-content-default">
+				<div class="modal-title">PROFILE</div>
 				<form class="profile-form">
 					<input class="profile-input"> 
 					<input class="profile-input">
@@ -224,11 +214,9 @@
 			</div>					
 		</div>
 		<!-- // Settings window // -->
-		<div class="modal-default modal5 modal-effect" id="modal-6">
-			<div class="modal-content5 modal-content-default">
-				<div class="modal-text5">
-					<div class="modal-title"></div>
-				</div>
+		<div class="modal-sett modal-default modal-effect" id="md-sett">
+			<div class="modal-content-sett modal-content-default">
+				<div class="modal-title">SETTINGS</div>
 				<form class="settings-form">
 					<input type="range" min="0" max="100" step="1" value="50" class="slider"> 
 					<div>
@@ -238,12 +226,10 @@
 			</div>					
 		</div>
 		<!-- // Notice window // -->
-		<div class="modal-default modal6 modal-effect" id="modal-7">
-			<div class="modal-content6 modal-content-default">
-				<div class="modal-text6">
-					<div class="modal-title"></div>
-					<div class="message">Message</div>
-				</div>
+		<div class="modal-not modal-default modal-effect" id="md-not">
+			<div class="modal-content-not modal-content-default">
+				<div class="modal-title">NOTICE</div>
+				<div class="message">Message</div>
 				<form class="notice-form">
 					<div>
 						<button type="submit" class="button-yes md-close">Yes</button>
@@ -254,11 +240,9 @@
 			</div>					
 		</div>
 		<!-- // Contact us window // -->
-		<div class="modal-default modal7 modal-effect" id="modal-8">
-			<div class="modal-content7 modal-content-default">
-				<div class="modal-text7">
-					<div class="modal-title"></div>
-				</div>
+		<div class="modal-cont modal-default modal-effect" id="md-cont">
+			<div class="modal-content-cont modal-content-default">
+				<div class="modal-title">CONTACT US</div>
 				<form class="contact-form">
 					<textarea class="contact-textarea" placeholder="Content"></textarea>
 					<div>
@@ -267,8 +251,8 @@
 				</form>
 			</div>					
 		</div>
-		<div class="modal-overlay"></div>
-		<div class="modal-overlay2"></div>
+		<div class="fisrt-overlay-layer"></div>
+		<div class="second-overlay-layer"></div>
     <!-- //  SCRIPTS  // -->
 		<script src="js/classie.js" type="text/javascript"></script>	
 		<script src="js/script.js" type="text/javascript"></script>

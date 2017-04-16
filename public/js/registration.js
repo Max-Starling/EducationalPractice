@@ -1,7 +1,6 @@
 function registration(){
-    document.getElementsByClassName("modal-title")[3].textContent = "REGISTRATION"; 
-	const overlay = document.querySelector('.modal-overlay');
-    const modalContent = document.getElementsByClassName("modal-content3")[0];
+	const overlay = document.querySelector('.fisrt-overlay-layer');
+    const modalContent = document.getElementsByClassName("modal-content-reg")[0];
     //  Form  //
     const form = document.getElementsByClassName("registration-form")[0];
     form.spellcheck = false;

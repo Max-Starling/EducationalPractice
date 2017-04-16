@@ -1,8 +1,7 @@
     function contactUs(){
-		var overlay = document.querySelector('.modal-overlay');
-        var modalContent = document.querySelector('.modal-content7'); 
+		var overlay = document.querySelector('.fisrt-overlay-layer');
+        var modalContent = document.querySelector('.modal-content-cont'); 
         var form = document.getElementsByClassName("contact-form")[0];
-        modalContent.querySelector('.modal-title').textContent = "CONTACT US";
 
         var inputContent = form.getElementsByClassName("contact-textarea")[0];
         //inputContent.style.height = "9.6vw";

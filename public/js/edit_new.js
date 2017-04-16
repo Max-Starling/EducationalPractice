@@ -1,10 +1,9 @@
     function editNew(parentModal, parentModalShow, ID, title, description, content){
-		var overlay = document.querySelector('.modal-overlay2');
-        var modalContent = document.getElementsByClassName("modal-content8")[0]; 
+		var overlay = document.querySelector('.second-overlay-layer');
+        var modalContent = document.getElementsByClassName("modal-content-edit")[0]; 
         var form = document.getElementsByClassName("edit-new-form")[0];
         var inputURL = document.getElementsByClassName("edit-new-input")[0];
         var modalTitle = document.getElementsByClassName("modal-title")[0].textContent;
-        document.getElementsByClassName("modal-title")[1].textContent = "EDIT NEW";
         inputURL.placeholder = "Image URL";
         inputURL.type = "text";
         var inputTitle = document.getElementsByClassName("edit-new-input")[1];

@@ -1,7 +1,6 @@
 function authorization(){
-    document.getElementsByClassName("modal-title")[2].textContent = "AUTHORIZATION";
-	const overlay = document.querySelector('.modal-overlay');
-    const modalContent = document.getElementsByClassName("modal-content2")[0];
+	const overlay = document.querySelector('.fisrt-overlay-layer');
+    const modalContent = document.getElementsByClassName("modal-content-auth")[0];
     //  Form  //
     const form = document.getElementsByClassName("authorization-form")[0];
     form.spellcheck = false;

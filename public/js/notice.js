@@ -2,10 +2,8 @@
     'use strict';
         
     var notice = function(message, parentModal, parentModalShow, newID){
-        const overlay = document.querySelector('.modal-overlay2');
-        const modalContent = document.querySelector('.modal-content6');
-        console.log("qqq");
-        modalContent.querySelector('.modal-title').textContent = "NOTICE";
+        const overlay = document.querySelector('.second-overlay-layer');
+        const modalContent = document.querySelector('.modal-content-not');
         modalContent.querySelector('.message').textContent = message;
             //  Form  //
         const form = document.querySelector('.notice-form');
