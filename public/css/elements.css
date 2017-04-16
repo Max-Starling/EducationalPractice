@@ -1,4 +1,5 @@
-				/*-----------------Range-----------------*/
+								/*-----------------Range-----------------*/
+								
 input[type=range].slider {
   background: none;
   -webkit-appearance: none;
@@ -6,9 +7,11 @@ input[type=range].slider {
   margin: 5vw 0;
   opacity: 0.9;
 }
+
 input[type=range].slider:focus {
   outline: none;
 }
+
 input[type=range].slider::-webkit-slider-runnable-track {
   width: 50%;
   height: 0.8vw;
@@ -18,6 +21,7 @@ input[type=range].slider::-webkit-slider-runnable-track {
   border-radius: 1vw;
   border: 0.1vw solid rgba(1, 1, 1, 0.73);
 }
+
 input[type=range].slider::-webkit-slider-thumb {
   box-shadow: 0vw 0vw 0.25vw #5c2a00, 0vw 0vw 0.01vw #5c2a00;
   height: 2vw;
@@ -29,7 +33,8 @@ input[type=range].slider::-webkit-slider-thumb {
   margin-top: -0.7vw;
 }
 
-				/*-----------------Textarea-----------------*/
+								/*-----------------Textarea-----------------*/
+
 textarea{
 		/*Size & Position */
 	height: 6.4vw;
@@ -47,11 +52,13 @@ textarea{
 	background: radial-gradient(circle at 50% 33%, white, #e7e7e7);
 	cursor: url(../images/elements/PF3C_zlk_IBream.cur), text;
 }
+
 textarea:focus{
 	outline-color: #ada77c;
 }
 
-				/*-----------------Text-----------------*/
+								/*-----------------Text-----------------*/
+				
 input[type="text"] {
 		/*Size & Position */
 	height: auto;	
@@ -63,14 +70,17 @@ input[type="text"] {
 	background: radial-gradient(circle at 50% 33%, white, #e7e7e7);
 	cursor: url(../images/elements/PF3C_zlk_IBream.cur), text;
 }
+
 input[type="text"]:focus{ 
 	outline-color: #ada77c;
 }
 
-				/*-----------------Checkbox-----------------*/
+								/*-----------------Checkbox-----------------*/
+
 input[type="checkbox"] {
     display:none;
 }
+
 input[type="checkbox"] + label:before {
 		/*Display*/
   display: inline-block;
@@ -85,12 +95,14 @@ input[type="checkbox"] + label:before {
 	background: url(../images/elements/button.png) no-repeat;
 	background-size: 1.2vw;
 }
+
 input[type="checkbox"]:checked + label:before {
 		/*Other*/
     background-position: 0 -1.2vw;
 }
 
-				/*-----------------Scrollbar-----------------*/
+								/*-----------------Scrollbar-----------------*/
+
 ::-webkit-scrollbar {
 		/*Size & Position*/
   width: 0.7vw;
@@ -98,16 +110,19 @@ input[type="checkbox"]:checked + label:before {
 	background: rgba(0,0,0,0.38); 
 	border-radius: 1vw;
 }
+
 ::-webkit-scrollbar-track {
 		/*Other*/
 	border-radius: 2vw;
 	box-shadow: inset 0 0 0 0.1vh rgba(0,0,0,0.3);
 }
+
 ::-webkit-scrollbar-track-piece{
 		/*Other*/
 	border-radius: 2vw;
 	opacity: 0.5;
 }
+
 ::-webkit-scrollbar-thumb {
 		/*Other*/
   background: -webkit-linear-gradient(0deg, rgba(128,39,1,0.4) 40%, rgba(250,168,168,0.3) 100%);
@@ -116,13 +131,91 @@ input[type="checkbox"]:checked + label:before {
   cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
 }
 
-				/*-----------------Selection-----------------*/
+								/*-----------------Selection-----------------*/
+
 a::selection {
    background: transparent;
 }
+
 p::selection {
    background: transparent;
 }
+
 img::selection {
    background: transparent;
+}
+
+h3::selection {
+	background: #d9d9f5;
+}
+
+span::selection {
+background: #d9d9f5;
+}
+select::selection {
+	background: transparent;
+}
+
+								/*-----------------Select-----------------*/
+
+.select-wrapper {
+  position: relative;
+  width: 13.2vw;
+	background: radial-gradient(circle at 50% 33%, white, #e7e7e7); 
+  margin: 1vw 1vw;
+  border: 0.14vw solid #cecece;
+	
+}
+
+.qq:focus{
+  outline: none;
+}
+
+.select-wrapper select {
+	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
+  width: 13vw;
+  height: 1.5vw;
+  padding: 0 1vw 0 1.4vw;
+  border: none;         
+  -webkit-appearance: none;
+	color: #aaaaaa;
+	font-family: Aladin, 'Underdog', cursive;
+	font-size: 1.3vw;
+	background-color: transparent;
+}
+.select-wrapper select:hover{
+	outline: none;
+  background:#e7e7e7;
+	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
+	pointer-events: none;	
+}
+
+.select{
+  display: inline-block;
+  width: 160px;
+  height: 34px;
+  line-height: 30px;
+  position: relative;
+	-webkit-appearance: none;
+}
+.select-arrow-3 {
+  position: absolute;
+  border: 0.44vw solid transparent; 
+  border-bottom: 0;
+  left: 0.3vw;
+}
+
+.select-arrow-3:nth-child(1) {
+  top: 0.66vw;
+	width: 0.5vw;
+	height: 0.5vw;
+  border-top-color: #aaaaaa;
+	pointer-events: none;	
+}
+
+.select-arrow-3:nth-child(2) {
+  top: 0.40vw;
+	width: 0.5vw;
+	height: 0.5vw;
+  border-top-color: #e7e7e7;pointer-events: none;	
 }
