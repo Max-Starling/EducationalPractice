@@ -427,3 +427,6 @@ input{
 .profile{
 	display: none;
 }
+a{
+	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
+}
