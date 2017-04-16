@@ -4,7 +4,7 @@
         var form = document.getElementsByClassName("contact-form")[0];
         modalContent.querySelector('.modal-title').textContent = "CONTACT US";
 
-        var inputContent = document.getElementsByClassName("contact-textarea")[0];
+        var inputContent = form.getElementsByClassName("contact-textarea")[0];
         //inputContent.style.height = "9.6vw";
         //inputContent.style.marginTop = "0.5vw";
         inputContent.maxLength = "200";

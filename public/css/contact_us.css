@@ -1,17 +1,5 @@
 .modal7{
-	font-size: 1.5vw;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	width: 40%;
-	height: auto;
-	max-height: 34vw;
-	z-index: 2000;
 	visibility: hidden;
-	backface-visibility: hidden;
-	overflow-y: scroll;
-    overflow-x: hidden;
-	transform: translateX(-50%) translateY(-50%);
 }
 .modal-show7{
 	visibility: visible;
@@ -35,11 +23,6 @@
 .modal-show7.modal-effect7 .modal-content7{
 	transform: scale(1);
 	opacity: 1;
-}
-
-.modal-content7 > div{ 
-	font-size: 180%;
-    color: #ada77c;
 }
 
 .contact-textarea{
