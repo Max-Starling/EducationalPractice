@@ -28,7 +28,7 @@ var newDetailShow = function(){
             
             const modal = document.querySelector('#' + target.getAttribute('data-modal'));
 
-            const edit = modal.querySelector('.modal-trigger2');
+            const edit = modal.querySelector('.modal-trigger9');
             edit.addEventListener('click', editNew(modal, 'modal-show', ID, t, sd, c));
             
             const close = modal.querySelector('.modal-trigger7');

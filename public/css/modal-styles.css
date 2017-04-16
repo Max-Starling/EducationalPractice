@@ -1,0 +1,340 @@
+				/*-----------------Modal default-----------------*/
+
+.modal-default{
+	font-size: 1.5vw;
+	position: fixed;
+	overflow-y: scroll;
+    overflow-x: hidden;
+	transform: translateX(-50%) translateY(-50%);
+	max-height: 34vw;
+	top: 50%;
+	left: 50%;
+	width: 40%;
+	height: auto;
+	z-index: 2000;
+}
+
+.modal-content-default {
+	color: darkgray;
+	position: relative;
+	margin: 0 auto;
+	padding-bottom: 1vw;
+}
+
+.modal-content-default > div{
+	padding: 0.5vw;
+	margin: 0;
+	font-weight: 300;
+	font-size: 140%;
+    color: #ada77c;
+}
+
+.modal-effect .modal-content-default{
+	transform: scale(0.7);
+	opacity: 0;
+	transition: all 0.3s;
+	background: radial-gradient(circle at 20% 33%, #f0f0f0, #eeeeee);	
+	min-height: 14vw;
+	color:black;
+	border: 0.vw solid #777777;
+}
+				/*-----------------Modal overlay-----------------*/
+
+.modal-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	z-index: 750;
+	opacity: 0;
+	background: rgba(0,0,0,0.6);
+	transition: all 0.3s;
+}
+
+.modal-overlay2 {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	z-index: 2500;
+	opacity: 0;
+	background: rgba(0,0,0,0.6);
+	transition: all 0.3s;
+}
+				/*-----------------Close button-----------------*/
+.md-close {
+	border: 0.1vw solid #999898;
+	padding: 0.4vw 1.2vw;
+	background: radial-gradient(circle at 50% 33%, #c4c1c1, #a9abad);
+	color: #fff;
+	font-family: 'Aladin';
+	font-size: 1em;
+	letter-spacing: 0.05vw;
+	text-transform: uppercase;
+	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
+	display: inline-block;
+	margin-top: 0.56vw;
+	opacity: 0.9;
+	outline: none;
+	transition: 0.2s;
+}
+
+.md-close:hover {
+	opacity: 0.65;
+	transition: 0.2s;
+}
+
+				/*-----------------Add window-----------------*/
+
+.modal-add{
+	z-index: 2000;
+	visibility: hidden;
+}
+
+.modal-show1{
+	visibility: visible;
+}
+
+.modal-show1 ~ .modal-overlay{
+	opacity: 1;
+	visibility: visible;
+}
+
+.modal-show1.modal-effect .modal-content1 {
+	transform: scale(1);
+	opacity: 1;
+}
+				/*-----------------Edit window-----------------*/
+
+.modal-edit{
+	z-index: 4000;
+	visibility: hidden;
+}
+
+.modal-show8{
+	visibility: visible;
+}
+
+.modal-show8 ~ .modal-overlay2{
+	opacity: 1;
+	visibility: visible;
+}
+
+.modal-show8.modal-effect .modal-content8 {
+	transform: scale(1);
+	opacity: 1;
+}				
+
+				/*-----------------Authorization window-----------------*/
+
+.modal2 {
+	visibility: hidden;
+}
+
+.modal-show2 {
+	visibility: visible;
+}
+
+.modal-show2 ~ .modal-overlay {
+	opacity: 1;
+	visibility: visible;
+}
+
+.modal-effect .modal2{
+	min-height: 17.4vw;
+}
+
+.modal-show2.modal-effect .modal-content2 {
+	transform: scale(1);
+	opacity: 1;
+}
+
+				/*-----------------Registration window-----------------*/
+
+.modal3{
+	visibility: hidden;
+}
+
+.modal-show3{
+	visibility: visible;
+}
+
+.modal-show3 ~ .modal-overlay{
+	opacity: 1;
+	visibility: visible;
+}
+
+.modal-effect .modal-content3{
+	min-height: 20vw;
+}
+
+.modal-show3.modal-effect .modal-content3{
+	transform: scale(1);
+	opacity: 1;
+}
+
+				/*-----------------Profile window-----------------*/
+
+.modal4{
+	visibility: hidden;
+}
+
+.modal-show4{
+	visibility: visible;
+}
+
+.modal-show4 ~ .modal-overlay{
+	opacity: 1;
+	visibility: visible;
+}
+
+.modal-effect .modal-content4{	
+	min-height: 20vw;
+}
+
+.modal-show4.modal-effect .modal-content4{
+	transform: scale(1);
+	opacity: 1;
+}
+
+				/*-----------------Settings window-----------------*/
+
+.modal5{
+	visibility: hidden;
+}
+
+.modal-show5{
+	visibility: visible;
+}
+
+.modal-show5 ~ .modal-overlay{
+	opacity: 1;
+	visibility: visible;
+}
+
+.modal-effect .modal-content5{
+	min-height: 7vw;
+}
+
+.modal-show5.modal-effect .modal-content5{
+	transform: scale(1);
+	opacity: 1;
+}
+
+				/*-----------------Notice window-----------------*/
+
+.modal6 {
+	width: 30%;
+	max-height: 20vw;
+	z-index: 3000;
+	visibility: hidden;
+}
+
+.modal-show6 {
+	visibility: visible;
+}
+
+.modal-show6 ~ .modal-overlay2 {
+	opacity: 1;
+	visibility: visible;
+}
+
+.modal-effect .modal-content6 {
+	min-height: 11.6vw;
+}
+
+.modal-show6.modal-effect .modal-content6 {
+	transform: scale(1);
+	opacity: 1;
+}
+
+.message{
+	word-wrap: break-word;
+    color: #565656;
+}
+
+				/*-----------------Contact us window-----------------*/
+
+.modal7{
+	visibility: hidden;
+}
+
+.modal-show7{
+	visibility: visible;
+}
+
+.modal-show7 ~ .modal-overlay{
+	opacity: 1;
+	visibility: visible;
+}
+
+.modal-effect .modal-content7{
+	min-height: 7vw;
+}
+
+.modal-show7.modal-effect .modal-content7{
+	transform: scale(1);
+	opacity: 1;
+}
+
+.contact-textarea{
+	height: 9.6vw;
+	margin-top: 0.5vw;
+	font-size: 1.8vw;
+}
+
+				/*-----------------Detail new window-----------------*/
+
+.modal{
+	max-height: 31vw;
+	z-index: 1000;
+	visibility: hidden;
+}
+
+.modal-show {
+	visibility: visible;
+}
+
+.modal-show ~ .modal-overlay {
+	opacity: 1;
+	visibility: visible;
+}
+
+.modal-effect .modal-content {
+	min-height: 20vw;
+}
+
+.modal-show.modal-effect .modal-content {
+	transform: scale(1);
+	opacity: 1;
+}
+
+.modal-content {
+	padding-bottom: 3vw;
+}
+
+.modal-content > div {
+	padding: 3vw;
+	font-size: 115%;
+}
+
+.new-button{
+	float: right;
+	height: 1.56vw;
+	padding-right: 0.7vw;
+	padding-top: 0.7vw;
+	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
+}
+
+.modal-text .content{
+	display: inline;
+	color: 	#565656;
+}
+
+.modal-text{
+	word-wrap: break-word;
+}

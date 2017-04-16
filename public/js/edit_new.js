@@ -1,23 +1,23 @@
     function editNew(parentModal, parentModalShow, ID, title, description, content){
 		var overlay = document.querySelector('.modal-overlay2');
-        var modalContent = document.getElementsByClassName("modal-content1")[0]; 
-        var form = document.getElementsByClassName("add-new-form")[0];
-        var inputURL = document.getElementsByClassName("add-new-input")[0];
+        var modalContent = document.getElementsByClassName("modal-content8")[0]; 
+        var form = document.getElementsByClassName("edit-new-form")[0];
+        var inputURL = document.getElementsByClassName("edit-new-input")[0];
         var modalTitle = document.getElementsByClassName("modal-title")[0].textContent;
-        document.getElementsByClassName("modal-title")[0].textContent = "EDIT NEW";
+        document.getElementsByClassName("modal-title")[1].textContent = "EDIT NEW";
         inputURL.placeholder = "Image URL";
         inputURL.type = "text";
-        var inputTitle = document.getElementsByClassName("add-new-input")[1];
+        var inputTitle = document.getElementsByClassName("edit-new-input")[1];
         inputTitle.style.marginTop = "0.5vw"     
         inputTitle.placeholder = "Title";
         inputTitle.type = "text";
         inputTitle.value = title;
         inputTitle.maxLength = "24";
-        var inputShortDescription = document.getElementsByClassName("add-new-textarea")[0];
+        var inputShortDescription = document.getElementsByClassName("edit-new-textarea")[0];
         inputShortDescription.style.marginTop = "0.5vw"
         inputShortDescription.maxLength = "80";
         inputShortDescription.value = description;
-        var inputContent = document.getElementsByClassName("add-new-textarea")[1];
+        var inputContent = document.getElementsByClassName("edit-new-textarea")[1];
         inputContent.style.height = "9.6vw";
         inputContent.style.marginTop = "0.5vw";
         inputContent.maxLength = "1280";
@@ -41,17 +41,17 @@
             var news = newModel.getNews(0, newModel.getLength());
             newRenderer.insertNewsInDOM(news);
         };
-        const el = document.querySelector('.modal-trigger2');
+        const el = document.querySelector('.modal-trigger9');
         const modal = document.querySelector('#' + el.getAttribute('data-modal'));        
         function removeModalHandler(){
-            classie.remove(modal,'modal-show1');
+            classie.remove(modal,'modal-show8');
         }
         function removeParentModalHandler(){
             classie.remove(parentModal, parentModalShow);
         }
         el.addEventListener('click', 
             function(){
-                classie.add(modal, 'modal-show1');
+                classie.add(modal, 'modal-show8');
                 overlay.removeEventListener('click', removeModalHandler);
                 overlay.addEventListener('click', removeModalHandler);
             }

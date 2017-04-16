@@ -1,6 +1,5 @@
-
 function registration(){
-    document.getElementsByClassName("modal-title")[2].textContent = "REGISTRATION"; 
+    document.getElementsByClassName("modal-title")[3].textContent = "REGISTRATION"; 
 	const overlay = document.querySelector('.modal-overlay');
     const modalContent = document.getElementsByClassName("modal-content3")[0];
     //  Form  //

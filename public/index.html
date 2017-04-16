@@ -7,15 +7,8 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Underdog"/>
 	<link rel="shortcut icon" type="image/x-icon" href="images/elements/favicon5.ico" >
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/detail_new.css"/>
-	<link rel="stylesheet" type="text/css" href="css/add_edit_new.css"/>
-	<link rel="stylesheet" type="text/css" href="css/contact_us.css"/>
-	<link rel="stylesheet" type="text/css" href="css/authorization.css"/>
-	<link rel="stylesheet" type="text/css" href="css/registration.css"/>
-	<link rel="stylesheet" type="text/css" href="css/settings.css"/>
-	<link rel="stylesheet" type="text/css" href="css/profile.css"/>
+	<link rel="stylesheet" type="text/css" href="css/modal-styles.css"/>
 	<link rel="stylesheet" type="text/css" href="css/elements.css"/>
-	<link rel="stylesheet" type="text/css" href="css/notice.css"/>
 </head>
 <body>
 	<div class="wrapper">
@@ -104,7 +97,7 @@
 					<div class="quote"></div>
 				</div>
 				<div class="button-panel">
-					<img class="add-new-button modal-trigger1" src="images/elements/add.png" onmousedown="addNew()" data-modal="modal-add-edit"><img>
+					<img class="add-new-button modal-trigger1" src="images/elements/add.png" onmousedown="addNew()" data-modal="modal-add"><img>
 				</div>
 				<div class="news-block">
 					<div class="article-list"></div>
@@ -118,7 +111,7 @@
 	</div> 	
 	<!-- //  TEMPLATES  // -->
         <template id="template-article-list-item">
-            <div class="article-list-item modal-trigger" data-id="id" onmousedown="newDetailShow()" data-modal="modal-detail">
+            <div class="article-list-item modal-trigger" data-id="id" onmousedown="newDetailShow()" data-modal="md-detail">
 				<div class="picture">
 					<img class="article-list-item-img">
 				</div>	
@@ -135,10 +128,10 @@
         </template>
 	<!-- //  MODAL WINDOWS  // -->
 		<!-- // Detail show window // -->
-		<div class="modal modal-effect" id="modal-detail">
-			<div class="modal-content">
+		<div class="modal-default modal modal-effect" id="md-detail">
+			<div class="modal-content modal-content-default">
 				<img class="delete-new-button new-button modal-trigger7" src="images/elements/delete.png" data-modal="modal-7">	
-				<img class="edit-new-button new-button modal-trigger2" src="images/elements/edit.png" data-modal="modal-add-edit">	
+				<img class="edit-new-button new-button modal-trigger9" src="images/elements/edit.png" data-modal="modal-edit">	
 				<div class="modal-text">
 					<div class="title"><p class="modal-list-item-title">Title</p></div>
 					<div class="content"><p class="modal-list-item-content">Content</p></div>
@@ -149,8 +142,8 @@
 				</div>
 			</div>
 		</div>
-		<!-- // Add & Edit new window // -->
-		<div class="modal-default modal-add-edit modal-effect-add-edit" id="modal-add-edit">
+		<!-- // Add new window // -->
+		<div class="modal-default modal-add modal-effect" id="modal-add">
 			<div class="modal-content1 modal-content-default">
 				<div class="modal-text1">
 					<div class="modal-title"></div>
@@ -166,8 +159,25 @@
 				</form>
 			</div>					
 		</div>
+		<!-- // Edit new window // -->
+		<div class="modal-default modal-edit modal-effect" id="modal-edit">
+			<div class="modal-content8 modal-content-default">
+				<div class="modal-text8">
+					<div class="modal-title"></div>
+				</div>
+				<form class="edit-new-form"> 
+					<input class="edit-new-input">
+					<input class="edit-new-input">
+					<textarea class="edit-new-textarea" placeholder="Short description"></textarea>
+					<textarea class="edit-new-textarea" placeholder="Content"></textarea>
+					<div>
+						<button type="submit" class="md-close">Post</button>
+					</div>
+				</form>
+			</div>					
+		</div>
 		<!-- // Authorization window // -->
-		<div class="modal-default modal2 modal-effect2" id="modal-3">
+		<div class="modal-default modal2 modal-effect" id="modal-3">
 			<div class="modal-content2 modal-content-default">
 				<div class="modal-text2">
 					<div class="modal-title"></div>
@@ -182,7 +192,7 @@
 			</div>					
 		</div>
 		<!-- // Registration window // -->
-		<div class="modal-default modal3 modal-effect3" id="modal-4">
+		<div class="modal-default modal3 modal-effect" id="modal-4">
 			<div class="modal-content3 modal-content-default">
 				<div class="modal-text3">
 					<div class="modal-title"></div>
@@ -198,7 +208,7 @@
 			</div>					
 		</div>
 		<!-- // Profile window // -->
-		<div class="modal-default modal4 modal-effect4" id="modal-5">
+		<div class="modal-default modal4 modal-effect" id="modal-5">
 			<div class="modal-content4 modal-content-default">
 				<div class="modal-text4">
 					<div class="modal-title"></div>
@@ -214,7 +224,7 @@
 			</div>					
 		</div>
 		<!-- // Settings window // -->
-		<div class="modal-default modal5 modal-effect5" id="modal-6">
+		<div class="modal-default modal5 modal-effect" id="modal-6">
 			<div class="modal-content5 modal-content-default">
 				<div class="modal-text5">
 					<div class="modal-title"></div>
@@ -228,7 +238,7 @@
 			</div>					
 		</div>
 		<!-- // Notice window // -->
-		<div class="modal-default modal6 modal-effect6" id="modal-7">
+		<div class="modal-default modal6 modal-effect" id="modal-7">
 			<div class="modal-content6 modal-content-default">
 				<div class="modal-text6">
 					<div class="modal-title"></div>
@@ -244,7 +254,7 @@
 			</div>					
 		</div>
 		<!-- // Contact us window // -->
-		<div class="modal-default modal7 modal-effect7" id="modal-8">
+		<div class="modal-default modal7 modal-effect" id="modal-8">
 			<div class="modal-content7 modal-content-default">
 				<div class="modal-text7">
 					<div class="modal-title"></div>
