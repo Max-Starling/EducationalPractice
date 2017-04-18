@@ -246,15 +246,19 @@
 .modal-effect .modal-content-not {
 	min-height: 11.6vw;
 }
-
+.modal-content-not > div{
+	padding-bottom: 0 !important;
+}
 .modal-show6.modal-effect .modal-content-not {
 	transform: scale(1);
 	opacity: 1;
 }
 
-.message{
+.modal-content-not .message{
+	padding: 0vw !important;
+	padding-bottom: 0.5vw !important;
 	word-wrap: break-word;
-    color: #565656;
+    color: #565656 !important;
 }
 
 				/*-----------------Contact us window-----------------*/

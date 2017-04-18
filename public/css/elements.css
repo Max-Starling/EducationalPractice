@@ -160,24 +160,24 @@ select::selection {
 
 .select-wrapper {
   position: relative;
-  width: 13.2vw;
+  width: 86%;
 	background: radial-gradient(circle at 50% 33%, white, #e7e7e7); 
   margin: 1vw 1vw;
   border: 0.14vw solid #cecece;
 	
 }
 
-.qq:focus{
+.categories-select:focus{
   outline: none;
 }
 
 .select-wrapper select {
 	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
-  width: 13vw;
-  height: 1.5vw;
-  padding: 0 1vw 0 1.4vw;
-  border: none;         
-  -webkit-appearance: none;
+	width: 98%;
+	height: 1.5vw;
+	padding: 0 1vw 0 1.4vw;
+	border: none;         
+	-webkit-appearance: none;
 	color: #aaaaaa;
 	font-family: Aladin, 'Underdog', cursive;
 	font-size: 1.3vw;
@@ -185,27 +185,27 @@ select::selection {
 }
 .select-wrapper select:hover{
 	outline: none;
-  background:#e7e7e7;
+  /*background:#e7e7e7;*/
 	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
-	pointer-events: none;	
+	/*pointer-events: none;	*/
 }
 
 .select{
-  display: inline-block;
-  width: 160px;
-  height: 34px;
-  line-height: 30px;
-  position: relative;
+	display: inline-block;
+	width: 160px;
+	height: 34px;
+	line-height: 30px;
+	position: relative;
 	-webkit-appearance: none;
 }
-.select-arrow-3 {
+.select-arrow {
   position: absolute;
   border: 0.44vw solid transparent; 
   border-bottom: 0;
   left: 0.3vw;
 }
 
-.select-arrow-3:nth-child(1) {
+.select-arrow:nth-child(1) {
   top: 0.66vw;
 	width: 0.5vw;
 	height: 0.5vw;
@@ -213,9 +213,10 @@ select::selection {
 	pointer-events: none;	
 }
 
-.select-arrow-3:nth-child(2) {
+.select-arrow:nth-child(2) {
   top: 0.40vw;
 	width: 0.5vw;
 	height: 0.5vw;
-  border-top-color: #e7e7e7;pointer-events: none;	
+  border-top-color: #e7e7e7;
+	pointer-events: none;	
 }

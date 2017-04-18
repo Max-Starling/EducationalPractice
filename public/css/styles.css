@@ -166,6 +166,8 @@ input{
 	left:0%;
 	position:fixed;
 	width: 15%;
+			/*Margin, Border & Padding*/
+	margin-left: -0.3vw;
 		/*Other*/
 	background: radial-gradient(circle at 93% 36%, #c2c2c2, #575757);
 	opacity: 0.70;
@@ -201,6 +203,8 @@ input{
 	opacity:0.9;
 }
 .button-container{
+		/*Margin, Border & Padding*/
+	margin-left: 0.3vw;
 		/*Size & Position*/
 	float:left;
 	height: 2vw;
@@ -331,8 +335,8 @@ input{
 	max-height: 10wh;
 	width: 50%;
 		/*Margin, Border & Padding*/
-	margin-bottom: -0.08vw; 
-	margin-right: -0.08vw;
+	margin-bottom: -0.09vmax; 
+	margin-right: -0.07vmax;
 	border: 0.1vw solid #b3b3b3;		
 		/*Text*/
 	color: darkgray;
@@ -343,9 +347,9 @@ input{
 .article-list-item-img{
 		/*Size & Position*/
 	height:15.5vmin;
-	max-height:10vw;
+	max-height:9vw;
 	width:15.5vmin;
-	max-width:10vw;
+	max-width:9vw;
 		/*Margin, Border & Padding*/
 	padding:1.3vh;
 }
