@@ -1,0 +1,32 @@
+[
+        {
+			"user": "Unknown",
+			"password": "",
+            "rank": "Guest",
+            "img": ""
+        },
+        {
+			"user": "MaxStarling",
+			"password": "onthetopoftheworld",
+            "rank": "Administrator",
+            "img": ""
+        },
+        {
+			"user": "Tanya",
+			"password": "tata",
+            "rank": "Moderator",
+            "img": ""
+        },
+        {
+			"user": "danilyanich",
+			"password": "dankr",
+            "rank": "Moderator",
+            "img": ""
+        },
+        {
+			"user": "Morty",
+			"password": "mrt1",
+            "rank": "User",
+            "img": ""
+        }
+]

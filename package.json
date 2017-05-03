@@ -15,6 +15,9 @@
   },
   "homepage": "https://github.com/Max-Starling/EducationalPractice#readme",
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "diskdb": "^0.1.17",
+    "eslint": "^3.19.0",
     "express": "^4.15.2"
   },
   "devDependencies": {
