@@ -1,50 +1,50 @@
 const serverService = (function () {
-  const xhr = new XMLHttpRequest()
+  const xhr = new XMLHttpRequest();
   //  Get news  //
   function getNews() {
-    xhr.open('GET', '/news', false)
-    xhr.setRequestHeader('content-type', 'application/json')
-    xhr.send()
-    const news = JSON.parse(xhr.responseText)
+    xhr.open('GET', '/news', false);
+    xhr.setRequestHeader('content-type', 'application/json');
+    xhr.send();
+    const news = JSON.parse(xhr.responseText);
     news.forEach((n) => {
-      n.createdAt = new Date(n.createdAt)
-    })
-    return news
+      n.createdAt = new Date(n.createdAt);
+    });
+    return news;
   }
   //  Get new  //
   function getNew(ID) {
-    xhr.open('GET', `/news/${ID}`, false)
-    xhr.send()
-    const n = JSON.parse(xhr.responseText)
-    n.createdAt = new Date(n.createdAt)
-    return n
+    xhr.open('GET', `/news/${ID}`, false);
+    xhr.send();
+    const n = JSON.parse(xhr.responseText);
+    n.createdAt = new Date(n.createdAt);
+    return n;
   }
   //  Add new  //
   function addNew(n) {
-    xhr.open('POST', '/postNew', false)
-    xhr.setRequestHeader('content-type', 'application/json')
+    xhr.open('POST', '/postNew', false);
+    xhr.setRequestHeader('content-type', 'application/json');
     xhr.onerror = function () {
-      reject(new Error('Error'))
-    }
-    xhr.send(JSON.stringify(n))
+      reject(new Error('Error'));
+    };
+    xhr.send(JSON.stringify(n));
   }
   //  Edit new  //
   function editNew(ID, n) {
-    xhr.open('PUT', `/news/${ID}`, false)
-    xhr.setRequestHeader('content-type', 'application/json')
+    xhr.open('PUT', `/news/${ID}`, false);
+    xhr.setRequestHeader('content-type', 'application/json');
     xhr.onerror = function () {
-      reject(new Error('Error'))
-    }
-    xhr.send(JSON.stringify(n))
+      reject(new Error('Error'));
+    };
+    xhr.send(JSON.stringify(n));
   }
   //  Remove new  //
   function removeNew(ID) {
-    xhr.open('DELETE', `/news/${ID}`, false)
-    xhr.setRequestHeader('content-type', 'application/json')
+    xhr.open('DELETE', `/news/${ID}`, false);
+    xhr.setRequestHeader('content-type', 'application/json');
     xhr.onerror = function () {
-      reject(new Error('Error'))
-    }
-    xhr.send()
+      reject(new Error('Error'));
+    };
+    xhr.send();
   }
   return {
     //  Full names  //
@@ -59,5 +59,5 @@ const serverService = (function () {
     getn: getNew,
     getns: getNews,
     removen: removeNew,
-  }
-}())
+  };
+}());

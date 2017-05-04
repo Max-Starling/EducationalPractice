@@ -408,7 +408,7 @@ const newRenderer = (function () {
   function removeNewsFromDom() {
     ARTICLE_LIST_NODE.innerHTML = '';
   }
-  /*function removeNewFromDom(node) {
+  /* function removeNewFromDom(node) {
     ARTICLE_LIST_NODE.removeChild(node);
   }*/
 
