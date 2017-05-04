@@ -1,0 +1,19 @@
+{
+    "env": {
+        "node": true
+    },
+    "extends": "airbnb",
+    "rules": {
+        "indent": [
+            "error"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "func-names": [
+            "error",
+            "never"
+        ]
+    }
+}

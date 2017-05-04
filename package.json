@@ -1,6 +1,6 @@
 {
   "name": "myeducationalpractice",
-  "version": "1.0.0",
+  "version": "1.8.0",
   "description": "My first site.",
   "main": "index.js",
   "repository": {
@@ -18,9 +18,14 @@
     "body-parser": "^1.17.1",
     "diskdb": "^0.1.17",
     "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
     "express": "^4.15.2"
   },
   "devDependencies": {
-    "babel": "^6.23.0"
+    "babel": "^6.23.0",
+    "eslint": "^3.19.0"
   }
 }
