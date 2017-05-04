@@ -1,3 +1,4 @@
+/* global document, event, window, classie, newModel, newRenderer, modalModule */
 function contactUs() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
   // const modalContent = document.querySelector('.modal-content-cont')

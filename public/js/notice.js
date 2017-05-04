@@ -1,3 +1,4 @@
+/* global document, event, window, classie, newModel, newRenderer, modalModule */
 (function (window) {
   const notice = function (message, parentModal, parentModalShow, newID) {
     const overlay = document.querySelector('.second-overlay-layer');
@@ -31,7 +32,7 @@
         classie.remove(parentModal, parentModalShow);
       }
       buttonSure.style.display = 'none';
-      buttonYes.onclick = function (ev) {
+      buttonYes.onclick = function (event) {
         newRenderer.removeNewsFromDom();
         newModel.removeNew(newID);
         const news = newModel.getNews(0, newModel.getLength());
@@ -40,15 +41,15 @@
         removeParentModalHandler();
         event.stopImmediatePropagation();
       };
-      buttonNo.onclick = function (ev) {
-        ev.stopPropagation();
+      buttonNo.onclick = function (event) {
+        event.stopPropagation();
         removeModalHandler();
       };
     } else {
-      //console.log('qqqq');
+      // console.log('qqqq');
       buttonYes.style.display = 'none';
       buttonNo.style.display = 'none';
-      buttonSure.onclick = function (ev) {
+      buttonSure.onclick = function (event) {
         removeModalHandler();
         event.stopImmediatePropagation();
       };

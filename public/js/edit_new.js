@@ -1,3 +1,4 @@
+/* global document, event, window, classie, newModel, newRenderer, modalModule */
 function editNew(
   parentModal,
   parentModalShow,
@@ -7,11 +8,11 @@ function editNew(
   content,
 ) {
   const overlay = document.querySelector('.second-overlay-layer');
-  const modalContent = document.getElementsByClassName('modal-content-edit')[0];
+  // const modalContent = document.getElementsByClassName('modal-content-edit')[0];
   const form = document.getElementsByClassName('edit-new-form')[0];
   const inputURL = document.getElementsByClassName('edit-new-input')[0];
-  const modalTitle = document.getElementsByClassName('modal-title')[0]
-    .textContent;
+  // const modalTitle = document.getElementsByClassName('modal-title')[0]
+  //  .textContent;
   inputURL.placeholder = 'Image URL';
   inputURL.type = 'text';
   const inputTitle = document.getElementsByClassName('edit-new-input')[1];

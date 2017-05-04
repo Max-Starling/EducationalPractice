@@ -1,3 +1,4 @@
+
 const serverService = (function () {
   const xhr = new XMLHttpRequest();
   //  Get news  //

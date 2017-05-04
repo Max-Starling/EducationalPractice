@@ -1,3 +1,4 @@
+/* global document, event, window, classie, newModel, newRenderer, modalModule */
 function exit() {
   //  Setting user info.  //
   const userName = document.getElementsByClassName('user-info-name')[0];

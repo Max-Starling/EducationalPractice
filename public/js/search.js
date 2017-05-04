@@ -1,10 +1,11 @@
+/* global document, event, window, classie, newModel, newRenderer, modalModule */
 function showSearchResult(criterion, value) {
   const news = newModel.getNews(0, newModel.getLength(), criterion, value);
   newRenderer.insertNewsInDOM(news);
 }
 
 const searchBlock = document.querySelector('.search-block');
-let criterionSearchArray = [];
+const criterionSearchArray = [];
 
 criterionSearchArray.push({
   checkbox: searchBlock.querySelectorAll('.check')[0],

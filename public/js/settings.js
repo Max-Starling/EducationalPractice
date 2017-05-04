@@ -1,6 +1,7 @@
+/* global document, event, window, classie */
 function settings() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
-  const modalContent = document.querySelector('.modal-content-sett');
+  // const modalContent = document.querySelector('.modal-content-sett');
   //  Form  //
   const form = document.querySelector('.settings-form');
   form.spellcheck = false;
@@ -22,7 +23,7 @@ function settings() {
   const close = modal.querySelector('.md-close');
   close.addEventListener('click', (event) => {
     //  Saturation effect from 0.5 to 1.5 with slider  //
-    let value = slider.value / 100 + 0.5;
+    const value = (slider.value / 100) + 0.5;
     const wrapper = document.getElementsByClassName('wrapper')[0];
     wrapper.style.filter = `saturate(${value})`;
     event.stopPropagation();

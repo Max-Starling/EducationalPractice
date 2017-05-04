@@ -1,3 +1,4 @@
+/* global document, event, window, classie */
 function authorization() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
   // const modalContent = document.getElementsByClassName('modal-content-auth')[0]
@@ -40,7 +41,7 @@ function authorization() {
   close.addEventListener('click', (ev) => {
     //  Getting values from the form.  //
     const uname = inputLogin.value.toString();
-    const password = inputPassword.value.toString();
+    // const password = inputPassword.value.toString();
     //  Checking values for correctness.  //
     let correctLogin = false;
     if (inputLogin.value.length > 0) {

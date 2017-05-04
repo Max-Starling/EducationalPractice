@@ -1,3 +1,4 @@
+/* global document, event, window, classie, newModel, newRenderer, modalModule */
 const newDetailShow = function () {
   const overlay = document.querySelector('.fisrt-overlay-layer');
 

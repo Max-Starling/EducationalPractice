@@ -1,3 +1,4 @@
+/* global document, event, window, classie */
 function registration() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
   // const modalContent = document.getElementsByClassName('modal-content-reg')[0]

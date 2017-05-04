@@ -1,3 +1,4 @@
+/* global document, event, window, classie, newModel, newRenderer, modalModule*/
 function sort(sortByCriterion, criterion) {
   sortByCriterion.removeEventListener('click', {});
   sortByCriterion.addEventListener('click', () => {
