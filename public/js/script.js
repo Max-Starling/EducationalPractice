@@ -224,6 +224,7 @@ const newModel = (function () {
       }
       // sortNews(out, criterion);
     }
+    console.log(out);
     return out.slice(skip, skip + top);
   }
   function addNew(n) {
@@ -397,10 +398,10 @@ const newRenderer = (function () {
   function renderNews(news) {
     return news.map(n => renderNew(n));
   }
-  function insertNewsInDOM(/* news*/) {
-    // if (!news) {
-    const news = serverService.getNews();
-    // }
+  function insertNewsInDOM(news) {
+    if (!news) {
+      news = serverService.getNews();
+    }
     const newsNodes = renderNews(news);
     newsNodes.forEach((node) => {
       ARTICLE_LIST_NODE.appendChild(node);

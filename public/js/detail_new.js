@@ -8,7 +8,7 @@ const newDetailShow = function () {
   const target = event.currentTarget;
 
   const ID = event.currentTarget.dataset.ID;
-
+  console.log(ID);
   const author = modalText.querySelector('.author');
   const a = target.querySelector('.author').textContent;
   author.textContent = a;

@@ -92,5 +92,5 @@ function startSearch() {
     });
     search(state);
   });
-  startSearch();
 }
+startSearch();

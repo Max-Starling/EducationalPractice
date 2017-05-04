@@ -1,4 +1,5 @@
 /* global document, event, window, classie, newModel, newRenderer, modalModule*/
+const criterionSortArray = [];
 function sort(sortByCriterion, criterion) {
   sortByCriterion.removeEventListener('click', {});
   sortByCriterion.addEventListener('click', () => {
@@ -21,7 +22,6 @@ function sort(sortByCriterion, criterion) {
     }
   });
 }
-let criterionSortArray = [];
 const sortBlock = document.querySelector('.sort-block');
 
 const sortByTitle = sortBlock.querySelectorAll('.check')[0];

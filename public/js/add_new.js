@@ -57,14 +57,14 @@ function addNew() {
     // const ID = newModel.getLength() + 1;
     // let correctID = '';
     // if (ID >= 10) {
-    //  correctID = `00${ID}`;
-    // } else if (ID >= 100) {
-    //  correctID = `0${ID}`;
-    // } else if (ID >= 1000) {
-    //  correctID = ID;
-    // } else {
-    // correcID = `000${ID}`;
-    // }
+    //    correctID = `00${ID}`;
+    //  } else if (ID >= 100) {
+    //     correctID = `0${ID}`;
+    //   } else if (ID >= 1000) {
+    //    correctID = ID;
+    //  } else {
+    //     correcID = `000${ID}`;
+    //   }
     n.img = inputURL.value.toString();
     n.title = inputTitle.value.toString();
     n.summary = inputShortDescription.value.toString();
