@@ -50,7 +50,7 @@ function addNew() {
       title: '',
       summary: '',
       createdAt: new Date(),
-      author: 'You',
+      author: currentUser.user,
       content: '',
       img: '',
     };

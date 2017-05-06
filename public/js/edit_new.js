@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newModel, newRenderer, modalModule */
+/* global document, event, window, classie, newModel, newRenderer, modalModule, currentUser */
 function editNew(
   parentModal,
   parentModalShow,
@@ -6,27 +6,30 @@ function editNew(
   title,
   description,
   content,
+  image
 ) {
   const overlay = document.querySelector('.second-overlay-layer');
   // const modalContent = document.getElementsByClassName('modal-content-edit')[0];
   const form = document.getElementsByClassName('edit-new-form')[0];
-  const inputURL = document.getElementsByClassName('edit-new-input')[0];
+  const inputURL = form.getElementsByClassName('edit-new-input')[0];
   // const modalTitle = document.getElementsByClassName('modal-title')[0]
   //  .textContent;
   inputURL.placeholder = 'Image URL';
   inputURL.type = 'text';
+  inputURL.value = image;
+  //  Title  //
   const inputTitle = document.getElementsByClassName('edit-new-input')[1];
   inputTitle.style.marginTop = '0.5vw';
   inputTitle.placeholder = 'Title';
   inputTitle.type = 'text';
   inputTitle.value = title;
   inputTitle.maxLength = '24';
-  const inputShortDescription = document.getElementsByClassName(
-    'edit-new-textarea',
-  )[0];
+  //  Short description  //
+  const inputShortDescription = document.getElementsByClassName('edit-new-textarea')[0];
   inputShortDescription.style.marginTop = '0.5vw';
   inputShortDescription.maxLength = '80';
   inputShortDescription.value = description;
+  //  Content  //
   const inputContent = document.getElementsByClassName('edit-new-textarea')[1];
   inputContent.style.height = '9.6vw';
   inputContent.style.marginTop = '0.5vw';
@@ -38,9 +41,9 @@ function editNew(
     const n = {
       title: '',
       summary: '',
-      author: 'You',
+      // author: '',
       content: '',
-      img: '',
+      img: image,
     };
     n.img = inputURL.value.toString();
     n.title = inputTitle.value.toString();

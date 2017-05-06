@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newModel, newRenderer, modalModule */
+/* global document, event, window, classie, newModel, newRenderer, modalModule, editNew */
 const newDetailShow = function () {
   const overlay = document.querySelector('.fisrt-overlay-layer');
 
@@ -27,10 +27,16 @@ const newDetailShow = function () {
 
   const sd = target.querySelector('.description').textContent;
 
+  //const img = modalContent.querySelector('.picture');
+  const i = target.querySelector('.article-list-item-img');
+  //img = i.textContent;
+  console.log(i.src);
+  title.textContent = t;
+
   const modal = document.querySelector(`#${target.getAttribute('data-modal')}`);
 
   const edit = modal.querySelector('.modal-trigger9');
-  edit.addEventListener('click', editNew(modal, 'modal-show', ID, t, sd, c));
+  edit.addEventListener('click', editNew(modal, 'modal-show', ID, t, sd, c, i.src));
 
   const close = modal.querySelector('.modal-trigger7');
   close.addEventListener(
