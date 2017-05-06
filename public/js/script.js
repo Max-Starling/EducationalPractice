@@ -1,10 +1,10 @@
 /* global document, event, window, classie, newModel, newRenderer, modalModule, serverService */
-// const currentUser = {
-//  user: 'Unknown',
-//  password: '',
-// rank: 'Guest',
-// img: '',
-// };
+const currentUser = {
+  user: 'Unknown',
+  password: '',
+  rank: 'Guest',
+  img: '',
+};
 
 const newModel = (function () {
   function validateNew(n) {

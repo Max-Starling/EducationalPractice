@@ -58,6 +58,7 @@ function authorization() {
       inputPassword.style.color = '#8b1500';
     }
     if (correctLogin && correctPassword) {
+      currentUser.user = uname;
       //  Setting user info.  //
       const userName = document.getElementsByClassName('user-info-name')[0];
       userName.textContent = uname;
@@ -69,9 +70,7 @@ function authorization() {
       addButton.style.visibility = 'inherit';
       const editButton = document.getElementsByClassName('edit-new-button')[0];
       editButton.style.visibility = 'inherit';
-      const deleteButton = document.getElementsByClassName('delete-new-button')[
-        0
-      ];
+      const deleteButton = document.getElementsByClassName('delete-new-button')[0];
       deleteButton.style.visibility = 'inherit';
       //  Changing menu items.  //
       const login = document.getElementsByClassName('login')[0];
