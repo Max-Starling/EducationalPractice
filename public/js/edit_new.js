@@ -23,7 +23,7 @@ function editNew(
   inputTitle.value = title;
   inputTitle.maxLength = '24';
   //  Short description  //
-  const inputDescription = document.querySelectorAll('.edit-new-textarea')[2];
+  const inputDescription = document.querySelectorAll('.edit-new-textarea')[0];
   inputDescription.style.marginTop = '0.5vw';
   inputDescription.maxLength = '80';
   inputDescription.value = description;
