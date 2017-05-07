@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newModel, newRenderer, modalModule */
+/* global document, event, window, classie, newModel, newRenderer, modalModule, currentUser */
 function profile() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
   //  Form  //
@@ -55,8 +55,8 @@ function profile() {
         userphoto.src = url;
       }
     } else {
-      console.log(currentUser.password);
-      modalModule.notice('qq');
+      // console.log(currentUser.password);
+      modalModule.notice('Wrong password');
     }
 
 
