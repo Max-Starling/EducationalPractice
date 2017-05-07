@@ -6,8 +6,7 @@ function editNew(
   title,
   description,
   content,
-  image
-) {
+  image) {
   const overlay = document.querySelector('.second-overlay-layer');
   // const modalContent = document.getElementsByClassName('md-content-edit')[0];
   const form = document.getElementsByClassName('edit-new-form')[0];
@@ -25,7 +24,9 @@ function editNew(
   inputTitle.value = title;
   inputTitle.maxLength = '24';
   //  Short description  //
-  const inputShortDescription = document.getElementsByClassName('edit-new-textarea')[0];
+  const inputShortDescription = document.getElementsByClassName(
+    'edit-new-textarea',
+  )[0];
   inputShortDescription.style.marginTop = '0.5vw';
   inputShortDescription.maxLength = '80';
   inputShortDescription.value = description;

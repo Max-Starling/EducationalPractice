@@ -28,9 +28,6 @@
     const buttonNo = modal.querySelector('.button-no');
 
     if (parentModal && parentModalShow && newID) {
-      function removeParentModalHandler() {
-        classie.remove(parentModal, parentModalShow);
-      }
       buttonSure.style.display = 'none';
       buttonYes.onclick = function (event) {
         newRenderer.removeNewsFromDom();
@@ -38,7 +35,7 @@
         const news = newModel.getNews(0, newModel.getLength());
         newRenderer.insertNewsInDOM(news);
         removeModalHandler();
-        removeParentModalHandler();
+        classie.remove(parentModal, parentModalShow);
         event.stopImmediatePropagation();
       };
       buttonNo.onclick = function (event) {
