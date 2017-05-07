@@ -1,6 +1,6 @@
 				/*-----------------Modal default-----------------*/
 
-.modal-default{
+.md-default{
 	font-size: 1.5vw;
 	position: fixed;
 	overflow-y: scroll;
@@ -14,14 +14,14 @@
 	z-index: 2000;
 }
 
-.modal-content-default {
+.md-content-default {
 	color: darkgray;
 	position: relative;
 	margin: 0 auto;
 	padding-bottom: 1vw;
 }
 
-.modal-content-default > div{
+.md-content-default > div{
 	padding: 0.5vw;
 	margin: 0;
 	font-weight: 300;
@@ -29,7 +29,7 @@
     color: #ada77c;
 }
 
-.modal-effect .modal-content-default{
+.md-effect .md-content-default{
 	transform: scale(0.7);
 	opacity: 0;
 	transition: all 0.3s;
@@ -90,171 +90,171 @@
 
 				/*-----------------Add window-----------------*/
 
-.modal-add{
+.md-add{
 	z-index: 2000;
 	visibility: hidden;
 }
 
-.modal-show1{
+.md-show1{
 	visibility: visible;
 }
 
-.modal-show1 ~ .fisrt-overlay-layer{
+.md-show1 ~ .fisrt-overlay-layer{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-show1.modal-effect .modal-content-add {
+.md-show1.md-effect .md-content-add {
 	transform: scale(1);
 	opacity: 1;
 }
 				/*-----------------Edit window-----------------*/
 
-.modal-edit{
+.md-edit{
 	z-index: 4000;
 	visibility: hidden;
 }
 
-.modal-show8{
+.md-show8{
 	visibility: visible;
 }
 
-.modal-show8 ~ .second-overlay-layer{
+.md-show8 ~ .second-overlay-layer{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-show8.modal-effect .modal-content-edit {
+.md-show8.md-effect .md-content-edit {
 	transform: scale(1);
 	opacity: 1;
 }				
 
 				/*-----------------Authorization window-----------------*/
 
-.modal-auth {
+.md-auth {
 	visibility: hidden;
 }
 
-.modal-show2 {
+.md-show2 {
 	visibility: visible;
 }
 
-.modal-show2 ~ .fisrt-overlay-layer {
+.md-show2 ~ .fisrt-overlay-layer {
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect .modal-auth{
+.md-effect .md-auth{
 	min-height: 17.4vw;
 }
 
-.modal-show2.modal-effect .modal-content-auth {
+.md-show2.md-effect .md-content-auth {
 	transform: scale(1);
 	opacity: 1;
 }
 
 				/*-----------------Registration window-----------------*/
 
-.modal-reg{
+.md-reg{
 	visibility: hidden;
 }
 
-.modal-show3{
+.md-show3{
 	visibility: visible;
 }
 
-.modal-show3 ~ .fisrt-overlay-layer{
+.md-show3 ~ .fisrt-overlay-layer{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect .modal-content-reg{
+.md-effect .md-content-reg{
 	min-height: 20vw;
 }
 
-.modal-show3.modal-effect .modal-content-reg{
+.md-show3.md-effect .md-content-reg{
 	transform: scale(1);
 	opacity: 1;
 }
 
 				/*-----------------Profile window-----------------*/
 
-.modal-prof{
+.md-prof{
 	visibility: hidden;
 }
 
-.modal-show4{
+.md-show4{
 	visibility: visible;
 }
 
-.modal-show4 ~ .fisrt-overlay-layer{
+.md-show4 ~ .fisrt-overlay-layer{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect .modal-content-prof{	
+.md-effect .md-content-prof{	
 	min-height: 20vw;
 }
 
-.modal-show4.modal-effect .modal-content-prof{
+.md-show4.md-effect .md-content-prof{
 	transform: scale(1);
 	opacity: 1;
 }
 
 				/*-----------------Settings window-----------------*/
 
-.modal-sett{
+.md-sett{
 	visibility: hidden;
 }
 
-.modal-show5{
+.md-show5{
 	visibility: visible;
 }
 
-.modal-show5 ~ .fisrt-overlay-layer{
+.md-show5 ~ .fisrt-overlay-layer{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect .modal-content-sett{
+.md-effect .md-content-sett{
 	min-height: 7vw;
 }
 
-.modal-show5.modal-effect .modal-content-sett{
+.md-show5.md-effect .md-content-sett{
 	transform: scale(1);
 	opacity: 1;
 }
 
 				/*-----------------Notice window-----------------*/
 
-.modal-not {
+.md-not {
 	width: 30%;
 	max-height: 20vw;
 	z-index: 3000;
 	visibility: hidden;
 }
 
-.modal-show6 {
+.md-show6 {
 	visibility: visible;
 }
 
-.modal-show6 ~ .second-overlay-layer {
+.md-show6 ~ .second-overlay-layer {
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect .modal-content-not {
+.md-effect .md-content-not {
 	min-height: 11.6vw;
 }
-.modal-content-not > div{
+.md-content-not > div{
 	padding-bottom: 0 !important;
 }
-.modal-show6.modal-effect .modal-content-not {
+.md-show6.md-effect .md-content-not {
 	transform: scale(1);
 	opacity: 1;
 }
 
-.modal-content-not .message{
+.md-content-not .message{
 	padding: 0vw !important;
 	padding-bottom: 0.5vw !important;
 	word-wrap: break-word;
@@ -263,24 +263,24 @@
 
 				/*-----------------Contact us window-----------------*/
 
-.modal-cont{
+.md-cont{
 	visibility: hidden;
 }
 
-.modal-show7{
+.md-show7{
 	visibility: visible;
 }
 
-.modal-show7 ~ .fisrt-overlay-layer{
+.md-show7 ~ .fisrt-overlay-layer{
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect .modal-content-cont{
+.md-effect .md-content-cont{
 	min-height: 7vw;
 }
 
-.modal-show7.modal-effect .modal-content-cont{
+.md-show7.md-effect .md-content-cont{
 	transform: scale(1);
 	opacity: 1;
 }
@@ -293,35 +293,35 @@
 
 				/*-----------------Detail new window-----------------*/
 
-.modal-detail{
+.md-detail{
 	max-height: 31vw;
 	z-index: 1000;
 	visibility: hidden;
 }
 
-.modal-show {
+.md-show {
 	visibility: visible;
 }
 
-.modal-show ~ .fisrt-overlay-layer {
+.md-show ~ .fisrt-overlay-layer {
 	opacity: 1;
 	visibility: visible;
 }
 
-.modal-effect .modal-content {
+.md-effect .md-content {
 	min-height: 20vw;
 }
 
-.modal-show.modal-effect .modal-content {
+.md-show.md-effect .md-content {
 	transform: scale(1);
 	opacity: 1;
 }
 
-.modal-content {
+.md-content {
 	padding-bottom: 3vw;
 }
 
-.modal-content > div {
+.md-content > div {
 	padding: 3vw;
 	font-size: 115%;
 }
@@ -334,11 +334,11 @@
 	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
 }
 
-.modal-text .content{
+.md-text .content{
 	display: inline;
 	color: 	#565656;
 }
 
-.modal-text{
+.md-text{
 	word-wrap: break-word;
 }

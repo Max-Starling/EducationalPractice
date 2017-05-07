@@ -1,7 +1,7 @@
 /* global document, event, window, classie, newModel, newRenderer, modalModule */
 function addNew() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
-  const modalContent = document.querySelector('.modal-content-add');
+  const modalContent = document.querySelector('.md-content-add');
   const form = modalContent.querySelector('.add-new-form');
 
   const inputURL = form.querySelectorAll('.add-new-input')[0];
@@ -32,13 +32,13 @@ function addNew() {
     event.preventDefault();
   };
 
-  const el = document.querySelector('.modal-trigger1');
+  const el = document.querySelector('.md-trigger1');
   const modal = document.querySelector(`#${el.getAttribute('data-modal')}`);
   function removeModalHandler() {
-    classie.remove(modal, 'modal-show1');
+    classie.remove(modal, 'md-show1');
   }
   el.addEventListener('click', () => {
-    classie.add(modal, 'modal-show1');
+    classie.add(modal, 'md-show1');
     overlay.removeEventListener('click', removeModalHandler);
     overlay.addEventListener('click', removeModalHandler);
   });

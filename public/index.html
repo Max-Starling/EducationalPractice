@@ -6,9 +6,10 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin"/>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Underdog"/>
 	<link rel="shortcut icon" type="image/x-icon" href="images/elements/favicon5.ico" >
+	<link rel="stylesheet" type="text/css" href="css/default.css"/>
+	<link rel="stylesheet" type="text/css" href="css/elements.css"/>
 	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="css/modal-styles.css"/>
-	<link rel="stylesheet" type="text/css" href="css/elements.css"/>
 </head>
 <body>
 	<div class="wrapper">
@@ -16,12 +17,12 @@
 		<div class="right-panel">	
 			<div class="menu">
 				 <ul>
-					<li data-modal="md-auth" class="login modal-trigger3" onmousedown="authorization()"><a>Log in</a></li>
+					<li data-modal="md-auth" class="login md-trigger3" onmousedown="authorization()"><a>Log in</a></li>
 					<li class="logout" onmousedown="exit()"><a>Log out</a></li>
-					<li data-modal="md-reg" class="register modal-trigger4" onmousedown="registration()"><a>Sing Up</a></li>
-					<li data-modal="md-prof" class="profile modal-trigger5" onmousedown="profile()"><a>Profile</a></li>
-					<li data-modal="md-sett" class="modal-trigger6" onmousedown="settings()"><a>Settings</a></li>
-					<li data-modal="md-cont" class="modal-trigger8" onmousedown="contactUs()"><a>Contact us</a></li>
+					<li data-modal="md-reg" class="register md-trigger4" onmousedown="registration()"><a>Sing Up</a></li>
+					<li data-modal="md-prof" class="profile md-trigger5" onmousedown="profile()"><a>Profile</a></li>
+					<li data-modal="md-sett" class="md-trigger6" onmousedown="settings()"><a>Settings</a></li>
+					<li data-modal="md-cont" class="md-trigger8" onmousedown="contactUs()"><a>Contact us</a></li>
 				 </ul>      
 			</div>
 			<div class="user-info">
@@ -110,7 +111,7 @@
 					<div class="quote"></div>
 				</div>
 				<div class="button-panel">
-					<img class="add-new-button modal-trigger1" src="images/elements/add.png" onmousedown="addNew()" data-modal="md-add"><img>
+					<img class="add-new-button md-trigger1" src="images/elements/add.png" onmousedown="addNew()" data-modal="md-add"><img>
 				</div>
 				<div class="news-block">
 					<div class="article-list"></div>
@@ -124,7 +125,7 @@
 	</div> 	
 	<!-- //  TEMPLATES  // -->
         <template id="template-article-list-item">
-            <div class="article-list-item modal-trigger" data-id="id" onmousedown="newDetailShow()" data-modal="md-detail">
+            <div class="article-list-item md-trigger" data-id="id" onmousedown="newDetailShow()" data-modal="md-detail">
 				<div class="picture">
 					<img class="article-list-item-img">
 				</div>	
@@ -141,13 +142,13 @@
         </template>
 	<!-- //  MODAL WINDOWS  // -->
 		<!-- // Detail show window // -->
-		<div class="modal-detail modal-default modal-effect" id="md-detail">
-			<div class="modal-content modal-content-default">
-				<img class="delete-new-button new-button modal-trigger7" src="images/elements/delete.png" data-modal="md-not">	
-				<img class="edit-new-button new-button modal-trigger9" src="images/elements/edit.png" data-modal="md-edit">	
-				<div class="modal-text">
-					<div class="title"><p class="modal-list-item-title">Title</p></div>
-					<div class="content"><p class="modal-list-item-content">Content</p></div>
+		<div class="md-detail md-default md-effect" id="md-detail">
+			<div class="md-content md-content-default">
+				<img class="delete-new-button new-button md-trigger7" src="images/elements/delete.png" data-modal="md-not">	
+				<img class="edit-new-button new-button md-trigger9" src="images/elements/edit.png" data-modal="md-edit">	
+				<div class="md-text">
+					<div class="title"><p class="md-list-item-title">Title</p></div>
+					<div class="content"><p class="md-list-item-content">Content</p></div>
 					<div class="article-list-item-meta">
 						<div class="author"><span class="article-list-item-author">Max Starling</span></div>
 						<div class="date"><span class="article-list-item-date">04:35 Feb, 17</span></div>
@@ -156,9 +157,9 @@
 			</div>
 		</div>
 		<!-- // Add new window // -->
-		<div class="modal-add modal-default modal-effect" id="md-add">
-			<div class="modal-content-add modal-content-default">
-				<div class="modal-title">ADD NEW</div>
+		<div class="md-add md-default md-effect" id="md-add">
+			<div class="md-content-add md-content-default">
+				<div class="md-title">ADD NEW</div>
 				<form class="add-new-form"> 
 					<input class="add-new-input">
 					<input class="add-new-input">
@@ -171,9 +172,9 @@
 			</div>					
 		</div>
 		<!-- // Edit new window // -->
-		<div class="modal-edit modal-default modal-effect" id="md-edit">
-			<div class="modal-content-edit modal-content-default">
-				<div class="modal-title">EDIT NEW</div>
+		<div class="md-edit md-default md-effect" id="md-edit">
+			<div class="md-content-edit md-content-default">
+				<div class="md-title">EDIT NEW</div>
 				<form class="edit-new-form"> 
 					<input class="edit-new-input">
 					<input class="edit-new-input">
@@ -186,9 +187,9 @@
 			</div>					
 		</div>
 		<!-- // Authorization window // -->
-		<div class="modal-auth modal-default modal-effect" id="md-auth">
-			<div class="modal-content-auth modal-content-default">
-				<div class="modal-title"><p>AUTHORIZATION</p></div>
+		<div class="md-auth md-default md-effect" id="md-auth">
+			<div class="md-content-auth md-content-default">
+				<div class="md-title"><p>AUTHORIZATION</p></div>
 				<form class="authorization-form"> 
 					<input class="authorization-input">
 					<input class="authorization-input">
@@ -199,9 +200,9 @@
 			</div>					
 		</div>
 		<!-- // Registration window // -->
-		<div class="modal-reg modal-default modal-effect" id="md-reg">
-			<div class="modal-content-reg modal-content-default">
-				<div class="modal-title"><p>REGISTRATION</p></div>
+		<div class="md-reg md-default md-effect" id="md-reg">
+			<div class="md-content-reg md-content-default">
+				<div class="md-title"><p>REGISTRATION</p></div>
 				<form class="registration-form">
 					<input class="registration-input"> 
 					<input class="registration-input">
@@ -213,9 +214,9 @@
 			</div>					
 		</div>
 		<!-- // Profile window // -->
-		<div class="modal-prof modal-default modal-effect" id="md-prof">
-			<div class="modal-content-prof modal-content-default">
-				<div class="modal-title"><p>PROFILE</p></div>
+		<div class="md-prof md-default md-effect" id="md-prof">
+			<div class="md-content-prof md-content-default">
+				<div class="md-title"><p>PROFILE</p></div>
 				<form class="profile-form">
 					<input class="profile-input"> 
 					<input class="profile-input">
@@ -227,9 +228,9 @@
 			</div>					
 		</div>
 		<!-- // Settings window // -->
-		<div class="modal-sett modal-default modal-effect" id="md-sett">
-			<div class="modal-content-sett modal-content-default">
-				<div class="modal-title"><p>SETTINGS</p></div>
+		<div class="md-sett md-default md-effect" id="md-sett">
+			<div class="md-content-sett md-content-default">
+				<div class="md-title"><p>SETTINGS</p></div>
 				<form class="settings-form">
 					<input type="range" min="0" max="100" step="1" value="50" class="slider"> 
 					<div>
@@ -239,9 +240,9 @@
 			</div>					
 		</div>
 		<!-- // Notice window // -->
-		<div class="modal-not modal-default modal-effect" id="md-not">
-			<div class="modal-content-not modal-content-default">
-				<div class="modal-title"><p>NOTICE</p></div>
+		<div class="md-not md-default md-effect" id="md-not">
+			<div class="md-content-not md-content-default">
+				<div class="md-title"><p>NOTICE</p></div>
 				<div class="message">Message</div>
 				<form class="notice-form">
 					<div>
@@ -253,9 +254,9 @@
 			</div>					
 		</div>
 		<!-- // Contact us window // -->
-		<div class="modal-cont modal-default modal-effect" id="md-cont">
-			<div class="modal-content-cont modal-content-default">
-				<div class="modal-title"><p>CONTACT US</p></div>
+		<div class="md-cont md-default md-effect" id="md-cont">
+			<div class="md-content-cont md-content-default">
+				<div class="md-title"><p>CONTACT US</p></div>
 				<form class="contact-form">
 					<textarea class="contact-textarea" placeholder="Content"></textarea>
 					<div>
@@ -281,6 +282,6 @@
 		<script src="js/search.js" type="text/javascript"></script>
 		<script src="js/notice.js" type="text/javascript"></script>
 		<script src="js/sort.js" type="text/javascript"></script>
-		<script src="js/server_service.js" type="text/javascript"></script>
+		<script src="js/news_service.js" type="text/javascript"></script>
 	</body>
 </html>

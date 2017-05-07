@@ -1,7 +1,7 @@
-/* global document, event, window, classie */
+/* global document, event, window, classie, currentUser */
 function authorization() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
-  // const modalContent = document.getElementsByClassName('modal-content-auth')[0]
+  // const modalContent = document.getElementsByClassName('md-content-auth')[0]
   //  Form  //
   const form = document.getElementsByClassName('authorization-form')[0];
   form.spellcheck = false;
@@ -26,23 +26,23 @@ function authorization() {
   inputPassword.style.marginTop = '1.5vw';
   inputPassword.type = 'password';
 
-  const el = document.querySelector('.modal-trigger3');
+  const el = document.querySelector('.md-trigger3');
   const modal = document.querySelector(`#${el.getAttribute('data-modal')}`);
   function removeModalHandler() {
-    classie.remove(modal, 'modal-show2');
+    classie.remove(modal, 'md-show2');
   }
   el.addEventListener('click', () => {
-    classie.add(modal, 'modal-show2');
+    classie.add(modal, 'md-show2');
     overlay.removeEventListener('click', removeModalHandler);
     overlay.addEventListener('click', removeModalHandler);
   });
-  //  Check & Close  //
+    //  Check & Close  //
   const close = modal.querySelector('.md-close');
   close.addEventListener('click', (ev) => {
-    //  Getting values from the form.  //
+      //  Getting values from the form.  //
     const uname = inputLogin.value.toString();
-    // const password = inputPassword.value.toString();
-    //  Checking values for correctness.  //
+    const upass = inputPassword.value.toString();
+      //  Checking login  //
     let correctLogin = false;
     if (inputLogin.value.length > 0) {
       correctLogin = true;
@@ -50,6 +50,7 @@ function authorization() {
     } else if (inputLogin.value.length < 1) {
       inputLogin.style.color = '#8b1500';
     }
+      //  Checking password  //
     let correctPassword = false;
     if (inputPassword.value.length >= 4) {
       correctPassword = true;
@@ -59,27 +60,28 @@ function authorization() {
     }
     if (correctLogin && correctPassword) {
       currentUser.user = uname;
+      currentUser.password = upass;
       //  Setting user info.  //
-      const userName = document.getElementsByClassName('user-info-name')[0];
+      const userName = document.querySelector('.user-info-name');
       userName.textContent = uname;
-      const userRank = document.getElementsByClassName('user-info-rank')[0];
+      const userRank = document.querySelector('.user-info-rank');
       userRank.textContent = 'Administrator';
       userRank.style.color = '#8b1500';
       //  Displaying buttons to work with news.  //
-      const addButton = document.getElementsByClassName('add-new-button')[0];
+      const addButton = document.querySelector('.add-new-button');
       addButton.style.visibility = 'inherit';
-      const editButton = document.getElementsByClassName('edit-new-button')[0];
+      const editButton = document.querySelector('.edit-new-button');
       editButton.style.visibility = 'inherit';
-      const deleteButton = document.getElementsByClassName('delete-new-button')[0];
+      const deleteButton = document.querySelector('.delete-new-button');
       deleteButton.style.visibility = 'inherit';
       //  Changing menu items.  //
-      const login = document.getElementsByClassName('login')[0];
+      const login = document.querySelector('.login');
       login.style.display = 'none';
-      const logout = document.getElementsByClassName('logout')[0];
+      const logout = document.querySelector('.logout');
       logout.style.display = 'inherit';
-      const profile = document.getElementsByClassName('profile')[0];
+      const profile = document.querySelector('.profile');
       profile.style.display = 'inherit';
-      const register = document.getElementsByClassName('register')[0];
+      const register = document.querySelector('.register');
       register.style.display = 'none';
       //  Zeroing values in the form.  //
       inputLogin.value = '';

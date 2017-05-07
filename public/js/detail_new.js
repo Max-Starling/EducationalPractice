@@ -2,8 +2,8 @@
 const newDetailShow = function () {
   const overlay = document.querySelector('.fisrt-overlay-layer');
 
-  const modalContent = document.querySelector('.modal-content');
-  const modalText = modalContent.querySelector('.modal-text');
+  const modalContent = document.querySelector('.md-content');
+  const modalText = modalContent.querySelector('.md-text');
   // alert(modalText.textContent);
   const target = event.currentTarget;
 
@@ -27,32 +27,35 @@ const newDetailShow = function () {
 
   const sd = target.querySelector('.description').textContent;
 
-  //const img = modalContent.querySelector('.picture');
+  // const img = modalContent.querySelector('.picture');
   const i = target.querySelector('.article-list-item-img');
-  //img = i.textContent;
+  // img = i.textContent;
   console.log(i.src);
   title.textContent = t;
 
   const modal = document.querySelector(`#${target.getAttribute('data-modal')}`);
 
-  const edit = modal.querySelector('.modal-trigger9');
-  edit.addEventListener('click', editNew(modal, 'modal-show', ID, t, sd, c, i.src));
+  const edit = modal.querySelector('.md-trigger9');
+  edit.addEventListener(
+    'click',
+    editNew(modal, 'md-show', ID, t, sd, c, i.src),
+  );
 
-  const close = modal.querySelector('.modal-trigger7');
+  const close = modal.querySelector('.md-trigger7');
   close.addEventListener(
     'click',
     modalModule.notice(
       'Are you sure want to delete this?',
       modal,
-      'modal-show',
+      'md-show',
       ID,
     ),
   );
   function removeModalHandler() {
-    classie.remove(modal, 'modal-show');
+    classie.remove(modal, 'md-show');
   }
   target.addEventListener('click', (event) => {
-    classie.add(modal, 'modal-show');
+    classie.add(modal, 'md-show');
     overlay.removeEventListener('click', removeModalHandler);
     overlay.addEventListener('click', removeModalHandler);
     event.stopImmediatePropagation();

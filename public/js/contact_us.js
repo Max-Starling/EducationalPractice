@@ -1,7 +1,7 @@
 /* global document, event, window, classie, newModel, newRenderer, modalModule */
 function contactUs() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
-  // const modalContent = document.querySelector('.modal-content-cont')
+  // const modalContent = document.querySelector('.md-content-cont')
   const form = document.getElementsByClassName('contact-form')[0];
 
   const inputContent = form.getElementsByClassName('contact-textarea')[0];
@@ -14,13 +14,13 @@ function contactUs() {
   form.onsubmit = function (event) {
     event.preventDefault();
   };
-  const el = document.querySelector('.modal-trigger8');
+  const el = document.querySelector('.md-trigger8');
   const modal = document.querySelector(`#${el.getAttribute('data-modal')}`);
   function removeModalHandler() {
-    classie.remove(modal, 'modal-show7');
+    classie.remove(modal, 'md-show7');
   }
   el.addEventListener('click', () => {
-    classie.add(modal, 'modal-show7');
+    classie.add(modal, 'md-show7');
     overlay.removeEventListener('click', removeModalHandler);
     overlay.addEventListener('click', removeModalHandler);
   });

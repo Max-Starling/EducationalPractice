@@ -9,10 +9,10 @@ function editNew(
   image
 ) {
   const overlay = document.querySelector('.second-overlay-layer');
-  // const modalContent = document.getElementsByClassName('modal-content-edit')[0];
+  // const modalContent = document.getElementsByClassName('md-content-edit')[0];
   const form = document.getElementsByClassName('edit-new-form')[0];
   const inputURL = form.getElementsByClassName('edit-new-input')[0];
-  // const modalTitle = document.getElementsByClassName('modal-title')[0]
+  // const modalTitle = document.getElementsByClassName('md-title')[0]
   //  .textContent;
   inputURL.placeholder = 'Image URL';
   inputURL.type = 'text';
@@ -54,16 +54,16 @@ function editNew(
     const news = newModel.getNews(0, newModel.getLength());
     newRenderer.insertNewsInDOM(news);
   };
-  const el = document.querySelector('.modal-trigger9');
+  const el = document.querySelector('.md-trigger9');
   const modal = document.querySelector(`#${el.getAttribute('data-modal')}`);
   function removeModalHandler() {
-    classie.remove(modal, 'modal-show8');
+    classie.remove(modal, 'md-show8');
   }
   function removeParentModalHandler() {
     classie.remove(parentModal, parentModalShow);
   }
   el.addEventListener('click', () => {
-    classie.add(modal, 'modal-show8');
+    classie.add(modal, 'md-show8');
     overlay.removeEventListener('click', removeModalHandler);
     overlay.addEventListener('click', removeModalHandler);
   });

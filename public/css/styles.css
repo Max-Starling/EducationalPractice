@@ -1,4 +1,3 @@
-@import url(reset.css);
 body {
 		/*Text*/
     text-align: center;
@@ -256,8 +255,11 @@ input{
 	margin-top: 2vh;
 }
 .user-info-photo{
+		/*Size & Position*/	
 	height:26vh;
 	max-height:12vw;
+	width:26vh;
+	max-width:12vw;
 		/*Margin, Border & Padding*/
 	border: 0.16vw solid #b3b3b3;
 		/*Other*/
@@ -405,7 +407,7 @@ input{
 .content{
 	display: none;
 }
-.modal-text .content{
+.md-text .content{
 	display: inline;
 	word-wrap: break-word;
 	color: 	#565656;

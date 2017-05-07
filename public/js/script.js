@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newModel, newRenderer, modalModule, serverService */
+/* global document, event, window, classie, modalModule, newsService */
 const currentUser = {
   user: 'Unknown',
   password: '',
@@ -70,10 +70,10 @@ const newModel = (function () {
     return true;
   }
   function getLength() {
-    return serverService.getNews().length;
+    return newsService.getNews().length;
   }
   function getNew(ID) {
-    return serverService.getNew(ID);
+    return newsService.getNew(ID);
   }
   function sortNews(news, criterion) {
     news.sort((x, y) => {
@@ -169,11 +169,11 @@ const newModel = (function () {
     }
   }
   function getAuthors() {
-    return serverService.getNews().map(x => x.author);
+    return newsService.getNews().map(x => x.author);
   }
   function getNews(skip, top, criterion, value) {
     /* Default*/
-    let out = serverService.getNews();
+    let out = newsService.getNews();
     if (!skip) {
       skip = 0;
     }
@@ -228,17 +228,17 @@ const newModel = (function () {
     return out.slice(skip, skip + top);
   }
   function addNew(n) {
-    // const news = serverService.getNews()
+    // const news = newsService.getNews()
     if (validateNew(n)) {
       // news.push(n);
-      serverService.addNew(n);
+      newsService.addNew(n);
       return true;
     }
     return false;
   }
   function removeNew(ID) {
-    // const news = serverService.getNews();
-    serverService.removeNew(ID);
+    // const news = newsService.getNews();
+    newsService.removeNew(ID);
     // var tmp = 0;
     // console.log(`ID ${ID}`)
     /* for (var i = 0; i < news.length; i++) {
@@ -251,8 +251,8 @@ const newModel = (function () {
     // alert(news.length);
   }
   function editNew(ID, n) {
-    // let news = serverService.getNews();
-    serverService.editNew(ID, n);
+    // let news = newsService.getNews();
+    newsService.editNew(ID, n);
     /* for (var i = 0; i < news.length; i++) {
             if (news[i].ID === ID) {
                 tmp = i;
@@ -400,7 +400,7 @@ const newRenderer = (function () {
   }
   function insertNewsInDOM(news) {
     if (!news) {
-      news = serverService.getNews();
+      news = newsService.getNews();
     }
     const newsNodes = renderNews(news);
     newsNodes.forEach((node) => {

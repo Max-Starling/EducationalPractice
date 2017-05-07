@@ -2,7 +2,7 @@
 (function (window) {
   const notice = function (message, parentModal, parentModalShow, newID) {
     const overlay = document.querySelector('.second-overlay-layer');
-    const modalContent = document.querySelector('.modal-content-not');
+    const modalContent = document.querySelector('.md-content-not');
     modalContent.querySelector('.message').textContent = message;
     //  Form  //
     const form = document.querySelector('.notice-form');
@@ -11,14 +11,14 @@
       event.preventDefault();
     };
 
-    const el = document.querySelector('.modal-trigger7');
+    const el = document.querySelector('.md-trigger7');
     const modal = document.querySelector(`#${el.getAttribute('data-modal')}`);
     function removeModalHandler() {
-      classie.remove(modal, 'modal-show6');
+      classie.remove(modal, 'md-show6');
     }
 
     el.addEventListener('click', () => {
-      classie.add(modal, 'modal-show6');
+      classie.add(modal, 'md-show6');
       overlay.removeEventListener('click', removeModalHandler);
       overlay.addEventListener('click', removeModalHandler);
     });
@@ -46,7 +46,7 @@
         removeModalHandler();
       };
     } else {
-      // console.log('qqqq');
+      console.log('qqqq');
       buttonYes.style.display = 'none';
       buttonNo.style.display = 'none';
       buttonSure.onclick = function (event) {

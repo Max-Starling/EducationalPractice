@@ -1,31 +1,28 @@
-/* global document, event, window, classie */
+/* global document, event, window, classie, currentUser */
 function registration() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
-  // const modalContent = document.getElementsByClassName('modal-content-reg')[0]
   //  Form  //
-  const form = document.getElementsByClassName('registration-form')[0];
+  const form = document.querySelector('.registration-form');
   form.spellcheck = false;
   form.onsubmit = function (event) {
     event.preventDefault();
   };
   //  Email  //
-  const inputEmail = document.getElementsByClassName('registration-input')[0];
+  const inputEmail = form.querySelectorAll('.registration-input')[0];
   inputEmail.className = 'registration-input form-style';
   inputEmail.maxLength = '32';
   inputEmail.placeholder = 'Email';
   inputEmail.style.color = '#aaaaaa';
   inputEmail.style.marginTop = '0.5vw';
   //  Login  //
-  const inputLogin = document.getElementsByClassName('registration-input')[1];
+  const inputLogin = form.querySelectorAll('.registration-input')[1];
   inputLogin.className = 'registration-input form-style';
   inputLogin.maxLength = '16';
-  inputLogin.placeholder = '@Max-Starling';
+  inputLogin.placeholder = 'Max-Starling';
   inputLogin.style.color = '#aaaaaa';
   inputLogin.style.marginTop = '1.5vw';
   //  Password  //
-  const inputPassword = document.getElementsByClassName('registration-input')[
-    2
-  ];
+  const inputPassword = form.querySelectorAll('.registration-input')[2];
   inputPassword.className = 'registration-input form-style';
   inputPassword.maxLength = '16';
   inputPassword.placeholder = 'yourpassword';
@@ -33,13 +30,13 @@ function registration() {
   inputPassword.style.marginTop = '1.5vw';
   inputPassword.type = 'password';
 
-  const el = document.querySelector('.modal-trigger4');
+  const el = document.querySelector('.md-trigger4');
   const modal = document.querySelector(`#${el.getAttribute('data-modal')}`);
   function removeModalHandler() {
-    classie.remove(modal, 'modal-show3');
+    classie.remove(modal, 'md-show3');
   }
   el.addEventListener('click', () => {
-    classie.add(modal, 'modal-show3');
+    classie.add(modal, 'md-show3');
     overlay.removeEventListener('click', removeModalHandler);
     overlay.addEventListener('click', removeModalHandler);
   });
@@ -49,7 +46,7 @@ function registration() {
     //  Getting values from the form.  //
     // const email = inputEmail.value.toString()
     const uname = inputLogin.value.toString();
-    // const password = inputPassword.value.toString()
+    const upass = inputPassword.value.toString();
     //  Checking values for correctness.  //
     let correctEmail = false;
     if (inputEmail.value.length >= 5) {
@@ -73,29 +70,29 @@ function registration() {
       inputPassword.style.color = '#8b1500';
     }
     if (correctEmail && correctLogin && correctPassword) {
+      currentUser.user = uname;
+      currentUser.password = upass;
       //  Setting user info.  //
-      const username = document.getElementsByClassName('user-info-name')[0];
+      const username = document.querySelector('.user-info-name');
       username.textContent = uname;
-      const userrank = document.getElementsByClassName('user-info-rank')[0];
+      const userrank = document.querySelector('.user-info-rank');
       userrank.textContent = 'Administrator';
       userrank.style.color = '#8b1500';
       //  Displaying buttons to work with news.  //
-      const addButton = document.getElementsByClassName('add-new-button')[0];
+      const addButton = document.querySelector('.add-new-button');
       addButton.style.visibility = 'inherit';
-      const editButton = document.getElementsByClassName('edit-new-button')[0];
+      const editButton = document.querySelector('.edit-new-button');
       editButton.style.visibility = 'inherit';
-      const deleteButton = document.getElementsByClassName('delete-new-button')[
-        0
-      ];
+      const deleteButton = document.querySelector('.delete-new-button')[0];
       deleteButton.style.visibility = 'inherit';
       //  Changing menu items.  //
-      const login = document.getElementsByClassName('login')[0];
+      const login = document.querySelector('.login');
       login.style.display = 'none';
-      const logout = document.getElementsByClassName('logout')[0];
+      const logout = document.querySelector('.logout');
       logout.style.display = 'inherit';
-      const profile = document.getElementsByClassName('profile')[0];
+      const profile = document.querySelector('.profile');
       profile.style.display = 'inherit';
-      const register = document.getElementsByClassName('register')[0];
+      const register = document.querySelector('.register');
       register.style.display = 'none';
       //  Zeroing values in the form.  //
       inputEmail.value = '';

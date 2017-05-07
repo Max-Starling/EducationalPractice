@@ -1,7 +1,7 @@
 /* global document, event, window, classie */
 function settings() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
-  // const modalContent = document.querySelector('.modal-content-sett');
+  // const modalContent = document.querySelector('.md-content-sett');
   //  Form  //
   const form = document.querySelector('.settings-form');
   form.spellcheck = false;
@@ -10,13 +10,13 @@ function settings() {
   };
 
   const slider = document.querySelector('.slider');
-  const el = document.querySelector('.modal-trigger6');
+  const el = document.querySelector('.md-trigger6');
   const modal = document.querySelector(`#${el.getAttribute('data-modal')}`);
   function removeModalHandler() {
-    classie.remove(modal, 'modal-show5');
+    classie.remove(modal, 'md-show5');
   }
   el.addEventListener('click', () => {
-    classie.add(modal, 'modal-show5');
+    classie.add(modal, 'md-show5');
     overlay.removeEventListener('click', removeModalHandler);
     overlay.addEventListener('click', removeModalHandler);
   });
