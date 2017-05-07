@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newModel, newRenderer, modalModule, currentUser */
+/* global document, event, window, classie, newModel, newRenderer, modalFunctions, currentUser */
 function profile() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
   //  Form  //
@@ -56,7 +56,7 @@ function profile() {
       }
     } else {
       // console.log(currentUser.password);
-      modalModule.notice('Wrong password');
+      modalFunctions.notice('Wrong password');
     }
 
 

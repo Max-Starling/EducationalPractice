@@ -31,7 +31,7 @@
 				<p class="user-info-rank">Guest</p>
 			</div>
 			<div>
-				<a href="https://github.com/Max-Starling/EducationalPractice" ><img class="github"src="images/elements/github.png"></a>
+				<a href="https://github.com/Max-Starling/EducationalPractice"><img class="github"src="images/elements/github.png"></a>
 			</div>
 		</div>
 		<!-- //  Left panel  // -->
@@ -111,7 +111,7 @@
 					<div class="quote"></div>
 				</div>
 				<div class="button-panel">
-					<img class="add-new-button md-trigger1" src="images/elements/add.png" onmousedown="addNew()" data-modal="md-add"><img>
+					<img class="add-new-button md-trigger1" src="images/elements/add.png"  onmousedown="modalFunctions.addNew()" data-modal="md-add"><img>
 				</div>
 				<div class="news-block">
 					<div class="article-list"></div>
@@ -125,7 +125,7 @@
 	</div> 	
 	<!-- //  TEMPLATES  // -->
         <template id="template-article-list-item">
-            <div class="article-list-item md-trigger" data-id="id" onmousedown="newDetailShow()" data-modal="md-detail">
+            <div class="article-list-item md-trigger" data-id="id" onmousedown="modalFunctions.newDetailShow()" data-modal="md-detail">
 				<div class="picture">
 					<img class="article-list-item-img">
 				</div>	
@@ -272,15 +272,12 @@
 		<script src="js/script.js" type="text/javascript"></script>
 		<script src="js/authorization.js" type="text/javascript"></script>
 		<script src="js/registration.js" type="text/javascript"></script>
-		<script src="js/edit_new.js" type="text/javascript"></script>
-		<script src="js/add_new.js" type="text/javascript"></script>
 		<script src="js/contact_us.js" type="text/javascript"></script>
-		<script src="js/detail_new.js" type="text/javascript"></script>
 		<script src="js/profile.js" type="text/javascript"></script>
 		<script src="js/settings.js" type="text/javascript"></script>
 		<script src="js/exit.js" type="text/javascript"></script>
 		<script src="js/search.js" type="text/javascript"></script>
-		<script src="js/notice.js" type="text/javascript"></script>
+		<script src="js/modal_functions.js" type="text/javascript"></script>
 		<script src="js/sort.js" type="text/javascript"></script>
 		<script src="js/news_service.js" type="text/javascript"></script>
 	</body>

@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newModel, newRenderer, modalModule */
+/* global document, event, window, classie, newModel, newRenderer, modalFunctions */
 function showSearchResult(criterion, value) {
   const news = newModel.getNews(0, newModel.getLength(), criterion, value);
   newRenderer.insertNewsInDOM(news);
@@ -22,7 +22,7 @@ criterionSearchArray.push({
   criterion: 'date',
 });
 
-// modalModule.notice("qq", "","","");
+// modalFunctions.notice("qq", "","","");
 function search(state, searchByCriterion, criterionSearch) {
   // console.log(state);
   const form = document.forms.searchform;
@@ -33,7 +33,7 @@ function search(state, searchByCriterion, criterionSearch) {
       form.searchin.value = '';
       form.searchin.placeholder = 'please select a criterion';
       // return;
-      // modalModule.notice("qq");
+      // modalFunctions.notice("qq");
     };
   } else {
     form.onsubmit = function (event) {

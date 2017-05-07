@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newModel, newRenderer, modalModule */
+/* global document, event, window, classie, newModel, newRenderer, modalFunctions */
 function contactUs() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
   // const modalContent = document.querySelector('.md-content-cont')

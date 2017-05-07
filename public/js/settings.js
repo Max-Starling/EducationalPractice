@@ -1,7 +1,6 @@
 /* global document, event, window, classie */
 function settings() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
-  // const modalContent = document.querySelector('.md-content-sett');
   //  Form  //
   const form = document.querySelector('.settings-form');
   form.spellcheck = false;

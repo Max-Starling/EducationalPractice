@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newModel, newRenderer, modalModule*/
+/* global document, event, window, classie, newModel, newRenderer, modalFunctions*/
 const criterionSortArray = [];
 function sort(sortByCriterion, criterion) {
   sortByCriterion.removeEventListener('click', {});

@@ -1,25 +1,25 @@
-/* global document, event, window, classie, newModel, newRenderer, modalModule */
+/* global document, event, window, classie, newModel, newRenderer, modalFunctions */
 function exit() {
   //  Setting user info.  //
-  const userName = document.getElementsByClassName('user-info-name')[0];
+  const userName = document.querySelector('.user-info-name');
   userName.textContent = 'Unknown';
-  const userRank = document.getElementsByClassName('user-info-rank')[0];
+  const userRank = document.querySelector('.user-info-rank');
   userRank.textContent = 'Guest';
   userRank.style.color = '#525659';
-  document.getElementsByClassName('user-info-photo')[0].src =
+  document.querySelector('.user-info-photo').src =
     'images/pics/guest_photo.jpg';
   //  Hiding buttons to work with news.  //
-  const addButton = document.getElementsByClassName('add-new-button')[0];
+  const addButton = document.querySelector('.add-new-button');
   addButton.style.visibility = 'hidden';
-  const editButton = document.getElementsByClassName('edit-new-button')[0];
+  const editButton = document.querySelector('.edit-new-button');
   editButton.style.visibility = 'hidden';
-  const deleteButton = document.getElementsByClassName('delete-new-button')[0];
+  const deleteButton = document.querySelector('.delete-new-button');
   deleteButton.style.visibility = 'hidden';
   //  Changing menu items.  //
-  document.getElementsByClassName('logout')[0].style.display = 'none';
-  document.getElementsByClassName('login')[0].style.display = 'inherit';
-  document.getElementsByClassName('register')[0].style.display = 'inherit';
-  document.getElementsByClassName('profile')[0].style.display = 'none';
+  document.querySelector('.logout').style.display = 'none';
+  document.querySelector('.login').style.display = 'inherit';
+  document.querySelector('.register').style.display = 'inherit';
+  document.querySelector('.profile').style.display = 'none';
 
   event.stopPropagation();
 }
