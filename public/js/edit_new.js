@@ -6,7 +6,8 @@ function editNew(
   title,
   description,
   content,
-  image) {
+  image,
+) {
   const overlay = document.querySelector('.second-overlay-layer');
   const form = document.querySelector('.edit-new-form');
   //  Image
