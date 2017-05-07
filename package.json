@@ -1,7 +1,7 @@
 {
   "name": "myeducationalpractice",
-  "version": "1.9.1",
-  "description": "My first site.",
+  "version": "1.10.1",
+  "description": "This is the first site, created by Max Starling as him educational practice task in 2017.",
   "main": "index.js",
   "repository": {
     "type": "git",
