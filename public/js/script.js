@@ -1,4 +1,4 @@
-/* global document, event, window, classie, modalFunctions, newsService */
+/* global document, event, window, classie, newsModal, newsService */
 const currentUser = {
   user: 'Unknown',
   password: '',

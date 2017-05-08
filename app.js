@@ -94,7 +94,11 @@ app.put('/news/:ID', (req, res) => {
   res.json(diskDB.news.update({ ID: req.params.ID }, req.body));
   res.status(200);
 });
-
+// For editing profile //
+app.put('/users/:user', (req, res) => {
+  res.json(diskDB.users.update({ user: req.params.user }, req.body));
+  res.status(200);
+});
 const port = '7777';
 app.listen(port, () => {
   console.log(`STARLING NEWS listening on port ${port}!`);

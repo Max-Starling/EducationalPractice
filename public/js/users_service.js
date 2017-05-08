@@ -44,6 +44,22 @@ const usersService = (function () {
       xhr.send(JSON.stringify(u));
     });
   }
+  //  Edit profile  //
+  function editProfile(user, u) {
+    return new Promise((resolve, reject) => {
+      xhr.open('PUT', `/users/${user}`);
+      xhr.setRequestHeader('content-type', 'application/json');
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          resolve();
+        }
+      };
+      xhr.onerror = function () {
+        reject(new Error('Error'));
+      };
+      xhr.send(JSON.stringify(u));
+    });
+  }
   //  Post mention  //
   function addMention(m) {
     return new Promise((resolve, reject) => {
@@ -62,6 +78,7 @@ const usersService = (function () {
   }
   return {
     registerUser,
+    editProfile,
     addMention,
     checkUser,
     getUsers,

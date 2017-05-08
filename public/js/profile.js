@@ -1,4 +1,4 @@
-/* global document, event, window, classie, modalFunctions, currentUser, usersService */
+/* global document, event, window, classie, newsModal, currentUser, usersService */
 function profile() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
   //  Form  //
@@ -21,7 +21,7 @@ function profile() {
   changeLogin.style.color = '#aaaaaa';
   //  Password  //
   const changePassword = form.querySelectorAll('.profile-input')[2];
-  changePassword.placeholder = 'yournewpassword';
+  changePassword.placeholder = 'yourpassword';
   changePassword.className = 'profile-input form-style';
   changePassword.style.marginTop = '1vw';
   changePassword.type = 'password';
@@ -46,20 +46,26 @@ function profile() {
     if (upass === currentUser.password) {
       const uname = changeLogin.value.toString();
       const username = document.querySelector('.user-info-name');
-      console.log(usersService.checkUser(uname));
-      if (uname && !usersService.checkUser(uname)) {
-        username.textContent = uname;
-        currentUser.user = uname;
-      }
+      //  Image  //
       const url = changeURL.value;
       const userphoto = document.querySelector('.user-info-photo');
       if (url) {
         userphoto.src = url;
         currentUser.img = url;
+        const tmp = currentUser.user;
+        usersService.editProfile(tmp, currentUser);
+      }
+      //  Name  //
+      //console.log(usersService.checkUser(uname));
+      if (uname && uname.length >= 4 && !usersService.checkUser(uname)) {
+        username.textContent = uname;
+        const tmp = currentUser.user;
+        currentUser.user = uname;
+        usersService.editProfile(tmp, currentUser);
       }
     } else {
-      // console.log(currentUser.password);
-      modalFunctions.notice('Wrong password');
+      console.log(currentUser.password);
+      newsModal.notice('Wrong password');
     }
 
     changeURL.value = '';

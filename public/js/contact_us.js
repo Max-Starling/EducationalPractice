@@ -1,4 +1,4 @@
-/* global document, event, window, classie, modalFunctions, usersService, currentUser */
+/* global document, event, window, classie, newsModal, usersService, currentUser */
 function contactUs() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
   const form = document.getElementsByClassName('contact-form')[0];

@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newModel, newRenderer, modalFunctions, currentUser */
+/* global document, event, window, classie, newModel, newRenderer, newsModal, currentUser */
 function exit() {
   //  Username  //
   const userName = document.querySelector('.user-info-name');

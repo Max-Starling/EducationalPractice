@@ -11,9 +11,9 @@ function registration() {
   const inputLogin = form.querySelectorAll('.registration-input')[0];
   inputLogin.className = 'registration-input form-style';
   inputLogin.maxLength = '32';
-  inputLogin.placeholder = '@Max-Starling';
+  inputLogin.placeholder = '@MaxStarling';
   inputLogin.style.color = '#aaaaaa';
-  inputLogin.style.marginTop = '1.5vw';
+  inputLogin.style.marginTop = '0.5vw';
   //  Password  //
   const inputPassword = form.querySelectorAll('.registration-input')[1];
   inputPassword.className = 'registration-input form-style';
@@ -26,7 +26,7 @@ function registration() {
   const inputPasswordAgain = form.querySelectorAll('.registration-input')[2];
   inputPasswordAgain.className = 'registration-input form-style';
   inputPasswordAgain.maxLength = '16';
-  inputPasswordAgain.placeholder = 'yourpasswordagain';
+  inputPasswordAgain.placeholder = 'passwordagain';
   inputPasswordAgain.style.color = '#aaaaaa';
   inputPasswordAgain.style.marginTop = '1.5vw';
   inputPasswordAgain.type = 'password';

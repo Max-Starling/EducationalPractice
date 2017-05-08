@@ -12,9 +12,9 @@ function authorization() {
   const inputLogin = form.querySelectorAll('.authorization-input')[0];
   inputLogin.className = 'authorization-input form-style';
   inputLogin.maxLength = '16';
-  inputLogin.placeholder = '@Max-Starling';
+  inputLogin.placeholder = '@MaxStarling';
   inputLogin.style.color = '#aaaaaa';
-  inputLogin.style.marginTop = '1vw';
+  inputLogin.style.marginTop = '0.5vw';
   //  Password  //
   const inputPassword = form.querySelectorAll('.authorization-input')[1];
   inputPassword.className = 'authorization-input form-style';
@@ -69,18 +69,21 @@ function authorization() {
       if (user.rank === 'Administrator') {
         userRank.textContent = user.rank;
         userRank.style.color = '#8b1500';
+        currentUser.rank = 'Administrator';
       }
       if (user.rank === 'Moderator') {
         userRank.textContent = user.rank;
         userRank.style.color = '#2075a4';
+        currentUser.rank = 'Moderator';
       }
       if (user.rank === 'User') {
         userRank.textContent = user.rank;
         userRank.style.color = '#505C8B';
+        currentUser.rank = 'User';
       }
       if (user.img) {
-        currentUser.img = user.img;
         document.querySelector('.user-info-photo').src = user.img;
+        currentUser.img = user.img;
       }
       //  Displaying buttons to work with news.  //
       const addButton = document.querySelector('.add-new-button');

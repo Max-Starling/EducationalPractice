@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newModel, newRenderer, modalFunctions, currentUser */
+/* global document, event, window, classie, newModel, newRenderer, newsModal, currentUser */
 (function (window) {
   /**
    * ADD NEW
@@ -290,11 +290,11 @@
     });
   };
 
-  const modalFunctions = {
+  const newsModal = {
     newDetailShow,
     addNew,
     editNew,
     notice,
   };
-  window.modalFunctions = modalFunctions;
+  window.newsModal = newsModal;
 }(window));
