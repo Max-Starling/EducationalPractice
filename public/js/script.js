@@ -3,7 +3,7 @@ const currentUser = {
   user: 'Unknown',
   password: '',
   rank: 'Guest',
-  img: '',
+  img: 'img": "images/pics/guest_photo.jpg',
 };
 
 const newModel = (function () {

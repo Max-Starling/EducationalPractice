@@ -23,7 +23,7 @@ app.get('/checkUser/:user/:password', (req, res) => {
   } else {
     res.status(200);
     if (diskDB.users.findOne({ user: req.params.user, password: req.params.password })) {
-      res.json(true);
+      res.json(diskDB.users.findOne({ user: req.params.user, password: req.params.password }));
     } else {
       res.json(false);
     }

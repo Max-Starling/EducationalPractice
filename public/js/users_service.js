@@ -17,9 +17,8 @@ const usersService = (function () {
     console.log('news_service.js:');
     console.log(user, password);
     xhr.send(user, password);
-    const state = JSON.parse(xhr.responseText);
-    console.log(state);
-    return state;
+    const u = JSON.parse(xhr.responseText);
+    return u;
   }
 
   //  Post mention  //

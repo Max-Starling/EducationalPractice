@@ -1,32 +1,26 @@
 [
-        {
-			"user": "Unknown",
-			"password": "",
-            "rank": "Guest",
-            "img": ""
-        },
-        {
-			"user": "MaxStarling",
-			"password": "onthetopoftheworld",
-            "rank": "Administrator",
-            "img": ""
-        },
-        {
-			"user": "Tanya",
-			"password": "tata",
-            "rank": "Moderator",
-            "img": ""
-        },
-        {
-			"user": "danilyanich",
-			"password": "dankr",
-            "rank": "Moderator",
-            "img": ""
-        },
-        {
-			"user": "Morty",
-			"password": "mrt1",
-            "rank": "User",
-            "img": ""
-        }
+    {
+        "user": "MaxStarling",
+        "password": "onthetopofthew",
+        "rank": "Administrator",
+        "img": "images/pics/MaxStarling.jpg"
+    },
+    {
+        "user": "Tanya",
+        "password": "tata",
+        "rank": "Moderator",
+        "img": "images/pics/Tanya.jpg"
+    },
+    {
+        "user": "danilyanich",
+        "password": "dankr",
+        "rank": "Moderator",
+        "img": "images/pics/danilyanich.jpg"
+    },
+    {
+        "user": "Morty",
+        "password": "morty",
+        "rank": "User",
+        "img": "images/pics/Morty.gif"
+    }
 ]

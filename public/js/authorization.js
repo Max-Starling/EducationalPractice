@@ -58,16 +58,30 @@ function authorization() {
     }
     console.log('authorization.js:');
     console.log(uname, upass);
-    console.log(usersService.checkUser(uname, upass));
-    if (usersService.checkUser(uname, upass)) {
+    const user = usersService.checkUser(uname, upass);
+    if (user) {
       currentUser.user = uname;
       currentUser.password = upass;
       //  Setting user info.  //
       const userName = document.querySelector('.user-info-name');
       userName.textContent = uname;
       const userRank = document.querySelector('.user-info-rank');
-      userRank.textContent = 'Administrator';
-      userRank.style.color = '#8b1500';
+      if (user.rank === 'Administrator') {
+        userRank.textContent = user.rank;
+        userRank.style.color = '#8b1500';
+      }
+      if (user.rank === 'Moderator') {
+        userRank.textContent = user.rank;
+        userRank.style.color = '#2075a4';
+      }
+      if (user.rank === 'User') {
+        userRank.textContent = user.rank;
+        userRank.style.color = '#505C8B';
+      }
+      if (user.img) {
+        currentUser.img = user.img;
+        document.querySelector('.user-info-photo').src = user.img;
+      }
       //  Displaying buttons to work with news.  //
       const addButton = document.querySelector('.add-new-button');
       addButton.style.visibility = 'inherit';
