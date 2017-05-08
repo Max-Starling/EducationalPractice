@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newModel, newRenderer, modalFunctions, currentUser */
+/* global document, event, window, classie, modalFunctions, currentUser, usersService */
 function profile() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
   //  Form  //
@@ -46,19 +46,21 @@ function profile() {
     if (upass === currentUser.password) {
       const uname = changeLogin.value.toString();
       const username = document.querySelector('.user-info-name');
-      if (uname) {
+      console.log(usersService.checkUser(uname));
+      if (uname && !usersService.checkUser(uname)) {
         username.textContent = uname;
+        currentUser.user = uname;
       }
       const url = changeURL.value;
       const userphoto = document.querySelector('.user-info-photo');
       if (url) {
         userphoto.src = url;
+        currentUser.img = url;
       }
     } else {
       // console.log(currentUser.password);
       modalFunctions.notice('Wrong password');
     }
-
 
     changeURL.value = '';
     changeLogin.value = '';

@@ -3,9 +3,8 @@ const currentUser = {
   user: 'Unknown',
   password: '',
   rank: 'Guest',
-  img: 'img": "images/pics/guest_photo.jpg',
+  img: 'images/users/guest_photo.jpg',
 };
-
 const newModel = (function () {
   function validateNew(n) {
     /* ID*/
@@ -292,5 +291,6 @@ function renderNews(skip, top) {
 function startApp() {
   newRenderer.init();
   renderNews(0, 20);
+  console.log('qq');
 }
 document.addEventListener('DOMContentLoaded', startApp);

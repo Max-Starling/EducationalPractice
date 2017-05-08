@@ -1,13 +1,18 @@
-/* global document, event, window, classie, newModel, newRenderer, modalFunctions */
+/* global document, event, window, classie, newModel, newRenderer, modalFunctions, currentUser */
 function exit() {
-  //  Setting user info.  //
+  //  Username  //
   const userName = document.querySelector('.user-info-name');
   userName.textContent = 'Unknown';
+  currentUser.user = 'Unknown';
+  //  Rank  //
   const userRank = document.querySelector('.user-info-rank');
   userRank.textContent = 'Guest';
   userRank.style.color = '#525659';
+  currentUser.rank = 'Guest';
+  //  Image  //
   document.querySelector('.user-info-photo').src =
-    'images/pics/guest_photo.jpg';
+    'images/users/guest_photo.jpg';
+  currentUser.img = 'images/users/guest_photo.jpg';
   //  Hiding buttons to work with news.  //
   const addButton = document.querySelector('.add-new-button');
   addButton.style.visibility = 'hidden';

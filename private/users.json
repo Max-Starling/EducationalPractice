@@ -3,24 +3,24 @@
         "user": "MaxStarling",
         "password": "onthetopofthew",
         "rank": "Administrator",
-        "img": "images/pics/MaxStarling.jpg"
+        "img": "images/users/MaxStarling.jpg"
     },
     {
         "user": "Tanya",
         "password": "tata",
         "rank": "Moderator",
-        "img": "images/pics/Tanya.jpg"
+        "img": "images/users/Tanya.jpg"
     },
     {
         "user": "danilyanich",
         "password": "dankr",
         "rank": "Moderator",
-        "img": "images/pics/danilyanich.jpg"
+        "img": "images/users/danilyanich.jpg"
     },
     {
         "user": "Morty",
         "password": "morty",
         "rank": "User",
-        "img": "images/pics/Morty.gif"
+        "img": "images/users/Morty.gif"
     }
 ]
