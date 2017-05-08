@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 const diskDB = require('diskdb');
-diskDB.connect('private', ['news', 'users']);
+diskDB.connect('private', ['news', 'users', 'users_mention']);
 
 // For getting users //
 app.get('/users', (req, res) => {
@@ -32,6 +32,11 @@ app.post('/postNew', (req, res) => {
   res.status(200);
 });
 
+// For posting mention //
+app.post('/postMention', (req, res) => {
+  res.json(diskDB.users_mention.save(req.body));
+  res.status(200);
+});
 // For deleting news //
 app.delete('/news/:ID', (req, res) => {
   res.json(diskDB.news.remove({ ID: req.params.ID }));

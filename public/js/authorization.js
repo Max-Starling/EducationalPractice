@@ -3,22 +3,20 @@ function authorization() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
   // const modalContent = document.getElementsByClassName('md-content-auth')[0]
   //  Form  //
-  const form = document.getElementsByClassName('authorization-form')[0];
+  const form = document.querySelector('.authorization-form');
   form.spellcheck = false;
   form.onsubmit = function (event) {
     event.preventDefault();
   };
   //  Login  //
-  const inputLogin = document.getElementsByClassName('authorization-input')[0];
+  const inputLogin = form.querySelectorAll('.authorization-input')[0];
   inputLogin.className = 'authorization-input form-style';
   inputLogin.maxLength = '16';
   inputLogin.placeholder = '@Max-Starling';
   inputLogin.style.color = '#aaaaaa';
   inputLogin.style.marginTop = '1vw';
   //  Password  //
-  const inputPassword = document.getElementsByClassName('authorization-input')[
-    1
-  ];
+  const inputPassword = form.querySelectorAll('.authorization-input')[1];
   inputPassword.className = 'authorization-input form-style';
   inputPassword.maxLength = '16';
   inputPassword.placeholder = 'yourpassword';

@@ -24,7 +24,7 @@ const newsService = (function () {
   //  Add new  //
   function addNew(n) {
     return new Promise((resolve, reject) => {
-      xhr.open('POST', '/postNew', false);
+      xhr.open('POST', '/postNew');
       xhr.setRequestHeader('content-type', 'application/json');
       xhr.onload = function () {
         if (xhr.status === 200) {
@@ -37,10 +37,26 @@ const newsService = (function () {
       xhr.send(JSON.stringify(n));
     });
   }
+  //  Post mention  //
+  function addMention(m) {
+    return new Promise((resolve, reject) => {
+      xhr.open('POST', '/postMention');
+      xhr.setRequestHeader('content-type', 'application/json');
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          resolve();
+        }
+      };
+      xhr.onerror = function () {
+        reject(new Error('Error'));
+      };
+      xhr.send(JSON.stringify(m));
+    });
+  }
   //  Edit new  //
   function editNew(ID, n) {
     return new Promise((resolve, reject) => {
-      xhr.open('PUT', `/news/${ID}`, false);
+      xhr.open('PUT', `/news/${ID}`);
       xhr.setRequestHeader('content-type', 'application/json');
       xhr.onload = function () {
         if (xhr.status === 200) {
@@ -56,7 +72,7 @@ const newsService = (function () {
   //  Remove new  //
   function removeNew(ID) {
     return new Promise((resolve, reject) => {
-      xhr.open('DELETE', `/news/${ID}`, false);
+      xhr.open('DELETE', `/news/${ID}`);
       xhr.setRequestHeader('content-type', 'application/json');
       xhr.onload = function () {
         if (xhr.status === 200) {
@@ -72,15 +88,10 @@ const newsService = (function () {
   return {
     //  Full names  //
     addNew,
+    addMention,
     editNew,
     getNews,
     getNew,
     removeNew,
-    //  Short names  //
-    addn: addNew,
-    editn: editNew,
-    getn: getNew,
-    getns: getNews,
-    removen: removeNew,
   };
 }());
