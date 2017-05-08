@@ -37,22 +37,7 @@ const newsService = (function () {
       xhr.send(JSON.stringify(n));
     });
   }
-  //  Post mention  //
-  function addMention(m) {
-    return new Promise((resolve, reject) => {
-      xhr.open('POST', '/postMention');
-      xhr.setRequestHeader('content-type', 'application/json');
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          resolve();
-        }
-      };
-      xhr.onerror = function () {
-        reject(new Error('Error'));
-      };
-      xhr.send(JSON.stringify(m));
-    });
-  }
+
   //  Edit new  //
   function editNew(ID, n) {
     return new Promise((resolve, reject) => {
@@ -86,9 +71,7 @@ const newsService = (function () {
     });
   }
   return {
-    //  Full names  //
     addNew,
-    addMention,
     editNew,
     getNews,
     getNew,

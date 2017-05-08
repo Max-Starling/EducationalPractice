@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newModel, newRenderer, modalFunctions, newsService, currentUser */
+/* global document, event, window, classie, modalFunctions, usersService, currentUser */
 function contactUs() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
   const form = document.getElementsByClassName('contact-form')[0];
@@ -17,8 +17,8 @@ function contactUs() {
         user: currentUser.user,
         mention: inputMention.value.toString(),
       };
-      //console.log(m);
-      newsService.addMention(m);
+      // console.log(m);
+      usersService.addMention(m);
     }
   };
 

@@ -14,6 +14,22 @@ app.get('/users', (req, res) => {
   res.status(200);
 });
 
+// For cheking user //
+app.get('/checkUser/:user/:password', (req, res) => {
+  console.log(req.params);
+  if (!req.params.user || !req.params.password) {
+    res.status(200);
+    res.json(false);
+  } else {
+    res.status(200);
+    if (diskDB.users.findOne({ user: req.params.user, password: req.params.password })) {
+      res.json(true);
+    } else {
+      res.json(false);
+    }
+  }
+});
+
 // For getting news //
 app.get('/news', (req, res) => {
   res.json(diskDB.news.find());

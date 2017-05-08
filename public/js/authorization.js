@@ -1,4 +1,4 @@
-/* global document, event, window, classie, currentUser */
+/* global document, event, window, classie, currentUser, newsService, usersService */
 function authorization() {
   const overlay = document.querySelector('.fisrt-overlay-layer');
   // const modalContent = document.getElementsByClassName('md-content-auth')[0]
@@ -34,13 +34,13 @@ function authorization() {
     overlay.removeEventListener('click', removeModalHandler);
     overlay.addEventListener('click', removeModalHandler);
   });
-    //  Check & Close  //
+  //  Check & Close  //
   const close = modal.querySelector('.md-close');
   close.addEventListener('click', (ev) => {
-      //  Getting values from the form.  //
+    //  Getting values from the form.  //
     const uname = inputLogin.value.toString();
     const upass = inputPassword.value.toString();
-      //  Checking login  //
+    //  Checking login  //
     let correctLogin = false;
     if (inputLogin.value.length > 0) {
       correctLogin = true;
@@ -48,7 +48,7 @@ function authorization() {
     } else if (inputLogin.value.length < 1) {
       inputLogin.style.color = '#8b1500';
     }
-      //  Checking password  //
+    //  Checking password  //
     let correctPassword = false;
     if (inputPassword.value.length >= 4) {
       correctPassword = true;
@@ -56,7 +56,10 @@ function authorization() {
     } else if (inputPassword.value.length < 4) {
       inputPassword.style.color = '#8b1500';
     }
-    if (correctLogin && correctPassword) {
+    console.log('authorization.js:');
+    console.log(uname, upass);
+    console.log(usersService.checkUser(uname, upass));
+    if (usersService.checkUser(uname, upass)) {
       currentUser.user = uname;
       currentUser.password = upass;
       //  Setting user info.  //
@@ -85,6 +88,9 @@ function authorization() {
       inputLogin.value = '';
       inputPassword.value = '';
       //  Closing modal window.  //
+      ev.stopPropagation();
+      removeModalHandler();
+    } else {
       ev.stopPropagation();
       removeModalHandler();
     }
