@@ -190,9 +190,9 @@
 		<div class="md-auth md-default md-effect" id="md-auth">
 			<div class="md-content-auth md-content-default">
 				<div class="md-title"><p>AUTHORIZATION</p></div>
-				<form class="authorization-form"> 
-					<input class="authorization-input">
-					<input class="authorization-input">
+				<form action="/login" method="post" class="authorization-form"> 
+					<input class="authorization-input" type="text" name="username">
+					<input class="authorization-input" type="password" name="password">
 					<div>
 						<button type="submit" class="md-close"><p>Enter</p></button>
 					</div>

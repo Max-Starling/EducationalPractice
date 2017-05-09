@@ -1,16 +1,21 @@
 [
     {
-        "user": "MaxStarling",
+        "username": "MaxStarling",
         "mention": "In my humble opinion, ... it.s perfect."
     },
     {
-        "user": "Daily",
+        "username": "Daily",
         "mention": "It's my opinion :)",
         "_id": "a4ad97309d734ae2bba79c542248be83"
     },
     {
-        "user": "Tanya",
+        "username": "Tanya",
         "mention": "I think, it's beautiful.",
         "_id": "e615549f4c52414cba6043bf13b58225"
+    },
+    {
+        "user": "Tanya",
+        "mention": "It's my new mention: ...",
+        "_id": "6d085391ed2a41e798c173cb1d447db1"
     }
 ]

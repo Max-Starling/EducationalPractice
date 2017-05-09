@@ -1,6 +1,6 @@
 /* global document, event, window, classie, newsModal, newsService */
 const currentUser = {
-  user: 'Unknown',
+  username: 'Unknown',
   password: '',
   rank: 'Guest',
   img: 'images/users/guest_photo.jpg',

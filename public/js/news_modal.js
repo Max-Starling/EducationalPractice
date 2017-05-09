@@ -54,7 +54,7 @@
         title: '',
         summary: '',
         createdAt: new Date(),
-        author: currentUser.user,
+        author: currentUser.username,
         content: '',
         img: '',
       };

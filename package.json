@@ -16,13 +16,18 @@
   "homepage": "https://github.com/Max-Starling/EducationalPractice#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "connect-flash": "^0.1.1",
     "diskdb": "^0.1.17",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "session-file-store": "^1.0.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",

@@ -60,61 +60,65 @@
       } else if (inputPassword.value.length < 4) {
         inputPassword.style.color = '#8b1500';
       }
-      console.log('authorization.js:');
-      console.log(uname, upass);
-      const user = usersService.checkUser(uname, upass);
-      if (user) {
-        currentUser.user = uname;
-        currentUser.password = upass;
-        //  Setting user info.  //
-        const userName = document.querySelector('.user-info-name');
-        userName.textContent = uname;
-        const userRank = document.querySelector('.user-info-rank');
-        if (user.rank === 'Administrator') {
-          userRank.textContent = user.rank;
-          userRank.style.color = '#8b1500';
-          currentUser.rank = 'Administrator';
-        }
-        if (user.rank === 'Moderator') {
-          userRank.textContent = user.rank;
-          userRank.style.color = '#2075a4';
-          currentUser.rank = 'Moderator';
-        }
-        if (user.rank === 'User') {
-          userRank.textContent = user.rank;
-          userRank.style.color = '#505C8B';
-          currentUser.rank = 'User';
-        }
-        if (user.img) {
-          document.querySelector('.user-info-photo').src = user.img;
-          currentUser.img = user.img;
-        }
-        //  Displaying buttons to work with news.  //
-        const addButton = document.querySelector('.add-new-button');
-        addButton.style.visibility = 'inherit';
-        const editButton = document.querySelector('.edit-new-button');
-        editButton.style.visibility = 'inherit';
-        const deleteButton = document.querySelector('.delete-new-button');
-        deleteButton.style.visibility = 'inherit';
-        //  Changing menu items.  //
-        const login = document.querySelector('.login');
-        login.style.display = 'none';
-        const logout = document.querySelector('.logout');
-        logout.style.display = 'inherit';
-        const profile = document.querySelector('.profile');
-        profile.style.display = 'inherit';
-        const register = document.querySelector('.register');
-        register.style.display = 'none';
-        //  Zeroing values in the form.  //
-        inputLogin.value = '';
-        inputPassword.value = '';
-        //  Closing modal window.  //
-        ev.stopPropagation();
-        removeModalHandler();
-      } else {
-        ev.stopPropagation();
-        removeModalHandler();
-      }
+
+      usersService.logIn({ username: uname, password: upass })
+        .then((user) => {
+          // console.log(val);
+          // const u = JSON.parse(val);
+          // console.log(u);
+          currentUser.username = user.username;
+          currentUser.password = user.password;
+          //  Setting user info.  //
+          const userName = document.querySelector('.user-info-name');
+          userName.textContent = user.username;
+          const userRank = document.querySelector('.user-info-rank');
+          if (user.rank === 'Administrator') {
+            userRank.textContent = user.rank;
+            userRank.style.color = '#8b1500';
+            currentUser.rank = 'Administrator';
+          }
+          if (user.rank === 'Moderator') {
+            userRank.textContent = user.rank;
+            userRank.style.color = '#2075a4';
+            currentUser.rank = 'Moderator';
+          }
+          if (user.rank === 'User') {
+            userRank.textContent = user.rank;
+            userRank.style.color = '#505C8B';
+            currentUser.rank = 'User';
+          }
+          if (user.img) {
+            document.querySelector('.user-info-photo').src = user.img;
+            currentUser.img = user.img;
+          }
+          //  Displaying buttons to work with news.  //
+          const addButton = document.querySelector('.add-new-button');
+          addButton.style.visibility = 'inherit';
+          const editButton = document.querySelector('.edit-new-button');
+          editButton.style.visibility = 'inherit';
+          const deleteButton = document.querySelector('.delete-new-button');
+          deleteButton.style.visibility = 'inherit';
+          //  Changing menu items.  //
+          const login = document.querySelector('.login');
+          login.style.display = 'none';
+          const logout = document.querySelector('.logout');
+          logout.style.display = 'inherit';
+          const profile = document.querySelector('.profile');
+          profile.style.display = 'inherit';
+          const register = document.querySelector('.register');
+          register.style.display = 'none';
+          //  Zeroing values in the form.  //
+          inputLogin.value = '';
+          inputPassword.value = '';
+          //  Closing modal window.  //
+          ev.stopPropagation();
+          removeModalHandler();
+        })
+        .catch((reason) => {
+          console.log(`Handle rejected promise, because: ${reason}.`);
+          ev.stopPropagation();
+          removeModalHandler();
+        });
     });
   }
 
@@ -198,7 +202,7 @@
         correctPasswordAgain &&
         !usersService.checkUser(uName)
       ) {
-        currentUser.user = uName;
+        currentUser.username = uName;
         currentUser.password = uPass;
         //  Setting user info.  //
         const username = document.querySelector('.user-info-name');
@@ -290,15 +294,14 @@
         if (url) {
           userphoto.src = url;
           currentUser.img = url;
-          const tmp = currentUser.user;
-          usersService.editProfile(tmp, currentUser);
+          usersService.editProfile(currentUser.username, currentUser);
         }
         //  Name  //
         // console.log(usersService.checkUser(uname));
         if (uname && uname.length >= 4 && !usersService.checkUser(uname)) {
           username.textContent = uname;
-          const tmp = currentUser.user;
-          currentUser.user = uname;
+          const tmp = currentUser.username;
+          currentUser.username = uname;
           usersService.editProfile(tmp, currentUser);
         }
       } else {
@@ -365,7 +368,7 @@
       event.preventDefault();
       if (inputMention) {
         const m = {
-          user: currentUser.user,
+          user: currentUser.username,
           mention: inputMention.value.toString(),
         };
         // console.log(m);
@@ -394,32 +397,39 @@
    */
   function exit() {
     //  Username  //
-    const userName = document.querySelector('.user-info-name');
-    userName.textContent = 'Unknown';
-    currentUser.user = 'Unknown';
-    //  Rank  //
-    const userRank = document.querySelector('.user-info-rank');
-    userRank.textContent = 'Guest';
-    userRank.style.color = '#525659';
-    currentUser.rank = 'Guest';
-    //  Image  //
-    document.querySelector('.user-info-photo').src =
-      'images/users/guest_photo.jpg';
-    currentUser.img = 'images/users/guest_photo.jpg';
-    //  Hiding buttons to work with news.  //
-    const addButton = document.querySelector('.add-new-button');
-    addButton.style.visibility = 'hidden';
-    const editButton = document.querySelector('.edit-new-button');
-    editButton.style.visibility = 'hidden';
-    const deleteButton = document.querySelector('.delete-new-button');
-    deleteButton.style.visibility = 'hidden';
-    //  Changing menu items.  //
-    document.querySelector('.logout').style.display = 'none';
-    document.querySelector('.login').style.display = 'inherit';
-    document.querySelector('.register').style.display = 'inherit';
-    document.querySelector('.profile').style.display = 'none';
+    usersService.logOut()
+      .then(() => {
+        const userName = document.querySelector('.user-info-name');
+        userName.textContent = 'Unknown';
+        currentUser.username = 'Unknown';
+        //  Rank  //
+        const userRank = document.querySelector('.user-info-rank');
+        userRank.textContent = 'Guest';
+        userRank.style.color = '#525659';
+        currentUser.rank = 'Guest';
+        //  Image  //
+        document.querySelector('.user-info-photo').src =
+          'images/users/guest_photo.jpg';
+        currentUser.img = 'images/users/guest_photo.jpg';
+        //  Hiding buttons to work with news.  //
+        const addButton = document.querySelector('.add-new-button');
+        addButton.style.visibility = 'hidden';
+        const editButton = document.querySelector('.edit-new-button');
+        editButton.style.visibility = 'hidden';
+        const deleteButton = document.querySelector('.delete-new-button');
+        deleteButton.style.visibility = 'hidden';
+        //  Changing menu items.  //
+        document.querySelector('.logout').style.display = 'none';
+        document.querySelector('.login').style.display = 'inherit';
+        document.querySelector('.register').style.display = 'inherit';
+        document.querySelector('.profile').style.display = 'none';
 
-    event.stopPropagation();
+        event.stopPropagation();
+      })
+      .catch((reason) => {
+        console.log(`Handle rejected promise, because: ${reason}.`);
+        event.stopPropagation();
+      });
   }
   const usersModal = {
     authorization,

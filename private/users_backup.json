@@ -1,24 +1,24 @@
 [
     {
-        "user": "MaxStarling",
+        "username": "MaxStarling",
         "password": "onthetopofthew",
         "rank": "Administrator",
         "img": "images/users/MaxStarling.jpg"
     },
     {
-        "user": "Tanya",
+        "username": "Tanya",
         "password": "tata",
         "rank": "Moderator",
         "img": "images/users/Tanya.jpg"
     },
     {
-        "user": "danilyanich",
+        "username": "danilyanich",
         "password": "dankr",
         "rank": "Moderator",
         "img": "images/users/danilyanich.jpg"
     },
     {
-        "user": "Morty",
+        "username": "Morty",
         "password": "morty",
         "rank": "User",
         "img": "images/users/Morty.gif"
