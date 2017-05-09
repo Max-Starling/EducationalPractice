@@ -17,7 +17,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
   session({
-    name: 'server-session-cookie-id', // можно убрать
     secret: 'stay alive',
     saveUninitialized: true,
     resave: false,
