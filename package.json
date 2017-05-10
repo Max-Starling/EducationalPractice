@@ -25,6 +25,8 @@
     "eslint-plugin-react": "^6.10.3",
     "express": "^4.15.2",
     "express-session": "^1.15.2",
+    "mongodb": "^2.2.26",
+    "mongoose": "^4.9.8",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "session-file-store": "^1.0.0"

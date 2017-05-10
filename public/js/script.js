@@ -241,7 +241,8 @@ const newRenderer = (function () {
   }
   function renderNew(n) {
     const template = ARTICLE_TEMPLATE;
-    template.content.querySelector('.article-list-item').dataset.ID = n.ID;
+    console.log(n);
+    template.content.querySelector('.article-list-item').dataset.ID = n._id;
     template.content.querySelector('.article-list-item-title').textContent =
       n.title;
     template.content.querySelector('.article-list-item-summary').textContent =

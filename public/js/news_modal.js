@@ -206,6 +206,7 @@
       buttonSure.style.display = 'none';
       buttonYes.onclick = function (event) {
         newRenderer.removeNewsFromDom();
+        console.log(newID);
         newModel.removeNew(newID);
         const news = newModel.getNews(0, newModel.getLength());
         newRenderer.insertNewsInDOM(news);
@@ -239,7 +240,7 @@
     const target = event.currentTarget;
 
     const ID = event.currentTarget.dataset.ID;
-    console.log(ID);
+    console.log(event.currentTarget.dataset);
     const author = modalText.querySelector('.author');
     const a = target.querySelector('.author').textContent;
     author.textContent = a;
