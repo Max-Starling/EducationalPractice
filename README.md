@@ -1,18 +1,18 @@
 # EducationalPractice
 Просмотреть сайт:
 =======================================
-https://max-starling.github.io/EducationalPractice/public
-https://www.npmjs.com/package/myeducationalpractice
-localhost:7777
-mongodb://localhost/StarlingNews
+* https://max-starling.github.io/EducationalPractice/public
+* https://www.npmjs.com/package/myeducationalpractice
+* localhost:7777
+* mongodb://localhost/StarlingNews
 
 Задание 12+ (Четверг 11, 19:10)
 =======================================
 1. Все 3 массива (users, news and mentions) перенесены на MongoDB.
 2. Все нужные фукнции, находившиеся в app.js, переписаны под MongoDB (кроме функций проверки существования юзера, изменения профиля и получения новости).  
 3. Функция getUsers удалена.
-3. Исправлена функция logOut. Теперь сессиии УДАЛЯЮТСЯ (остаются только если закрыть(обновить) страницу, не выходя из профиля). Проблема была в функции 'logout'. В связи с тем, что: 'req.logout not working with "local strategy".', пришлось искать ему замену (спасибо stackoverflow).
-
+4. Исправлена функция logOut. Теперь сессиии УДАЛЯЮТСЯ (остаются только если закрыть(обновить) страницу, не выходя из профиля). Проблема была в функции 'logout'. В связи с тем, что: 'req.logout not working with "local strategy".', пришлось искать ей замену (спасибо stackoverflow).
+5. Добавлен backup для mentions.
 
 Задание 12+ (Четверг 11, 9:05)
 =======================================
