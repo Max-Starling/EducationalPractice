@@ -241,19 +241,19 @@
 
     const ID = event.currentTarget.dataset.ID;
     console.log(event.currentTarget.dataset);
-    const author = modalText.querySelector('.author');
+    const author = modalText.querySelector('.article-list-item-author');
     const a = target.querySelector('.author').textContent;
     author.textContent = a;
 
-    const content = modalText.querySelector('.content');
+    const content = modalText.querySelector('.md-list-item-content');
     const c = target.querySelector('.content').textContent;
     content.textContent = c;
 
-    const date = modalText.querySelector('.date');
+    const date = modalText.querySelector('.article-list-item-date');
     const d = target.querySelector('.date').textContent;
     date.textContent = d;
 
-    const title = modalText.querySelector('.title');
+    const title = modalText.querySelector('.md-list-item-title');
     const t = target.querySelector('.title').textContent;
     title.textContent = t;
 
