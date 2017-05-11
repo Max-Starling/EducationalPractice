@@ -294,7 +294,7 @@
 				/*-----------------Detail new window-----------------*/
 
 .md-detail{
-	max-height: 31vw;
+	max-height: 36vw;
 	z-index: 1000;
 	visibility: hidden;
 }

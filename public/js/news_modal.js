@@ -260,9 +260,10 @@
     const sd = target.querySelector('.description').textContent;
 
     // const img = modalContent.querySelector('.picture');
-    const i = target.querySelector('.article-list-item-img');
-    // img = i.textContent;
-    console.log(i.src);
+    const img = modalContent.querySelector('.md-list-item-img');
+    const i = target.querySelector('.article-list-item-img').src;
+    console.log(i); 
+    img.src = i;
     title.textContent = t;
 
     const modal = document.querySelector(
@@ -272,7 +273,7 @@
     const edit = modal.querySelector('.md-trigger9');
     edit.addEventListener(
       'click',
-      editNew(modal, 'md-show', ID, t, sd, c, i.src),
+      editNew(modal, 'md-show', ID, t, sd, c, i),
     );
 
     const close = modal.querySelector('.md-trigger7');

@@ -122,7 +122,7 @@ input{
 		/*Size & Position*/
 	float:left;
 	height: 30%;
-	width: 60%;
+	width: 50%;
 		/*Margin, Border & Padding*/
 	margin-left: -0.3vw;
 	margin-top: 0.55vw;
@@ -149,7 +149,7 @@ input{
 		/*Size & Position*/
 	float:right;
 	height: 30%;
-	width: 40%;
+	width: 50%;
 		/*Margin, Border & Padding*/
 	margin-top: 0.82vw;
 		/*Text*/
@@ -419,8 +419,20 @@ input{
 .article-list-item-author{
     height: 65%;
 }
-
-
+.md-content .article-list-item-author{
+	font-size: 115%;
+}
+.md-content .md-list-item-title{
+	font-size: 120%;
+}
+.md-content .article-list-item-date{
+	font-size: 115%;
+}
+.md-list-item-img{
+	width: 64%;
+	height: 59%;
+	opacity: 0.82;
+}
 .edit-new-button{
 	visibility: hidden;
 }
@@ -436,3 +448,4 @@ input{
 a{
 	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
 }
+
