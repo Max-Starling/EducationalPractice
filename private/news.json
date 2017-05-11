@@ -1,6 +1,5 @@
 [
     {
-        "ID": 1,
         "title": "CHAPTER I",
         "summary": "Down the Rabbit-Hole",
         "createdAt": "2017-01-05T00:00:00",
@@ -9,7 +8,6 @@
         "img": "images/news/picture1.jpg"
     },
     {
-        "ID": 2,
         "title": "CHAPTER II",
         "summary": "The Pool of Tears",
         "createdAt": "2017-01-10T01:01:01",
@@ -18,7 +16,6 @@
         "img": "images/news/picture2.jpg"
     },
     {
-        "ID": 3,
         "title": "CHAPTER III",
         "summary": "A Caucus-Race and a Long Tale",
         "createdAt": "2017-01-15T02:02:02",
@@ -27,7 +24,6 @@
         "img": "images/news/picture3.jpg"
     },
     {
-        "ID": 4,
         "title": "CHAPTER IV",
         "summary": "The Rabbit Sends in a Little Bill",
         "createdAt": "2017-01-18T03:03:03",
@@ -36,7 +32,6 @@
         "img": "images/news/picture4.jpg"
     },
     {
-        "ID": 5,
         "title": "CHAPTER V",
         "summary": "Advice from a Caterpillar",
         "createdAt": "2017-01-21T05:05:05",
@@ -45,7 +40,6 @@
         "img": "images/news/picture5.jpg"
     },
     {
-        "ID": 6,
         "title": "CHAPTER VI",
         "summary": "Pig and Pepper",
         "createdAt": "2017-01-26T06:06:06",
@@ -54,7 +48,6 @@
         "img": "images/news/picture6.jpg"
     },
     {
-        "ID": 7,
         "title": "CHAPTER VII",
         "summary": "A Mad Tea-Party",
         "createdAt": "2017-01-31T07:07:07",
@@ -63,7 +56,6 @@
         "img": "images/news/picture7.jpg"
     },
     {
-        "ID": 8,
         "title": "CHAPTER VIII",
         "summary": "The Queens Croquet-Ground",
         "createdAt": "2017-02-02T08:08:08",
@@ -72,7 +64,6 @@
         "img": "images/news/picture8.jpg"
     },
     {
-        "ID": 9,
         "title": "CHAPTER IX",
         "summary": "The Mock Turtles Story",
         "createdAt": "2017-02-07T09:09:09",
@@ -81,7 +72,6 @@
         "img": "images/news/picture9.jpg"
     },
     {
-        "ID": 10,
         "title": "CHAPTER X",
         "summary": "The Lobster Quadrille",
         "createdAt": "2017-02-14T10:10:10",
@@ -90,7 +80,6 @@
         "img": "images/news/picture10.jpg"
     },
     {
-        "ID": 11,
         "title": "CHAPTER XI",
         "summary": "Who Stole the Tarts?",
         "createdAt": "2017-02-17T11:11:11",
@@ -99,7 +88,6 @@
         "img": "images/news/picture11.jpg"
     },
     {
-        "ID": 12,
         "title": "CHAPTER XII",
         "summary": "Alices Evidence",
         "createdAt": "2017-02-18T12:12:12",
@@ -108,7 +96,6 @@
         "img": "http://localhost:7777/images/news/picture12.jpg"
     },
     {
-        "ID": 13,
         "title": "I",
         "summary": "Once",
         "createdAt": "2016-02-22T13:13:13",
@@ -117,7 +104,6 @@
         "img": "images/news/picture13.jpg"
     },
     {
-        "ID": 14,
         "title": "II",
         "summary": "So",
         "createdAt": "2016-02-27T14:14:14",
@@ -126,7 +112,6 @@
         "img": "images/news/picture14.jpg"
     },
     {
-        "ID": 15,
         "title": "III",
         "summary": "It",
         "createdAt": "2016-03-05T15:15:15",
@@ -135,7 +120,6 @@
         "img": "images/news/picture15.jpg"
     },
     {
-        "ID": 16,
         "title": "IV",
         "summary": "I",
         "createdAt": "2016-03-07T16:16:16",
@@ -144,7 +128,6 @@
         "img": "images/news/picture16.jpg"
     },
     {
-        "ID": 17,
         "title": "V",
         "summary": "As",
         "createdAt": "2016-03-09T17:17:17",
@@ -153,7 +136,6 @@
         "img": "images/news/picture17.jpg"
     },
     {
-        "ID": 18,
         "title": "VI",
         "summary": "Oh",
         "createdAt": "2016-03-16T18:18:18",
@@ -162,7 +144,6 @@
         "img": "images/news/picture18.jpg"
     },
     {
-        "ID": 19,
         "title": "VII",
         "summary": "Always",
         "createdAt": "2016-03-24T19:19:19",
@@ -171,7 +152,6 @@
         "img": "images/news/picture19.jpg"
     },
     {
-        "ID": 20,
         "title": "VIII",
         "summary": "Soon",
         "createdAt": "2016-03-31T20:20:20",

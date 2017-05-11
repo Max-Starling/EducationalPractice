@@ -72,6 +72,7 @@ module.exports.mentionsBackup = mongoDB.model('mentionsBackup', mentionsModel);
 mongoDB.on('error', error => console.log('Connection to database was failded, because: ', error.message));
 mongoDB.once('open', () => {
   console.log('Successfully connected to database.');
+  // news.insertMany(diskDB.news.find());
 });
 
 //  ========== FUNCTIONS ==========  //
