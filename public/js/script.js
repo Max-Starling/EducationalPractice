@@ -155,7 +155,8 @@ const newModel = (function () {
         );
       }
     }
-    return out.slice(skip, skip + top);
+    console.log(skip, top);
+    return out.slice(skip, top);
   }
   function addNew(n) {
     if (validateNew(n)) {
@@ -242,7 +243,7 @@ const newRenderer = (function () {
   function renderNew(n) {
     const template = ARTICLE_TEMPLATE;
     // console.log(n);
-    template.content.querySelector('.article-list-item').dataset.ID = n._id;
+    template.content.querySelector('.article-list-item').dataset.ID = n._id; //
     template.content.querySelector('.article-list-item-title').textContent =
       n.title;
     template.content.querySelector('.article-list-item-summary').textContent =
@@ -262,10 +263,11 @@ const newRenderer = (function () {
     return news.map(n => renderNew(n));
   }
   function insertNewsInDOM(news) {
-    if (!news) {
+    /* if (!news) {
       news = newsService.getNews();
-    }
+    } */
     const newsNodes = renderNews(news);
+    console.log(news);
     newsNodes.forEach((node) => {
       ARTICLE_LIST_NODE.appendChild(node);
     });
@@ -286,25 +288,26 @@ const newRenderer = (function () {
 }());
 function renderNews(skip, top) {
   newRenderer.removeNewsFromDom();
-  const news = newModel.getNews(skip, top, { author: '' });
+  const news = newModel.getNews(skip, top);
   newRenderer.insertNewsInDOM(news);
 }
 function startApp() {
   newRenderer.init();
-  let c = 8;
-  renderNews(0, c);
+  console.log(newModel.getLength());
+  const top = 8;
+  renderNews(0, top);
   let tmp = 0;
+  let d = 0;
   function myFunction() {
     if (document.querySelector('.large-container').scrollTop > tmp) {
       document.getElementById('myP').className = 'test';
       console.log(tmp);
-      tmp += 100;
-      c += 2;
-      renderNews(0, c);
-    } else if (document.querySelector('.large-container') < tmp - 100) {
-      console.log(tmp);
-      tmp -= 100;
-      document.getElementById('myP').className = '';
+      tmp += 200;
+      if (top + d < newModel.getLength()) {
+        newRenderer.insertNewsInDOM(newModel.getNews(top + d, top + d + 4));
+        d += 4;
+        console.log(top + d, top + d + 1);
+      }
     }
   }
 
