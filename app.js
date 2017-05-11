@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
   session({
-    secret: 'stay alive',
+    secret: 'Stay alive',
     saveUninitialized: true,
     resave: false,
     store: new SessionFS(),
@@ -128,7 +128,7 @@ app.get('/news', (req, res) => {
 
 //  For getting new  //
 app.get('/news/:ID', (req, res) => {
-  // news.findById(req.params.ID, error => (error ? res.sendStatus(500) : res.json(this))); 
+  // news.findById(req.params.ID, error => (error ? res.sendStatus(500) : res.json(this)));
 });
 
 //  For adding news  //

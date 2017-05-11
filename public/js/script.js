@@ -291,7 +291,37 @@ function renderNews(skip, top) {
 }
 function startApp() {
   newRenderer.init();
-  renderNews(0, 20);
-  console.log('qq');
+  let c = 8;
+  renderNews(0, c);
+  let tmp = 0;
+  function myFunction() {
+    if (document.querySelector('.large-container').scrollTop > tmp) {
+      document.getElementById('myP').className = 'test';
+      console.log(tmp);
+      tmp += 100;
+      c += 2;
+      renderNews(0, c);
+    } else if (document.querySelector('.large-container') < tmp - 100) {
+      console.log(tmp);
+      tmp -= 100;
+      document.getElementById('myP').className = '';
+    }
+  }
+
+  document.querySelector('.large-container').onscroll = function () {
+    myFunction();
+  };
 }
 document.addEventListener('DOMContentLoaded', startApp);
+/*
+var scrolled = 5;
+window.onscroll = function () {
+  scrolled = window.pageYOffset || document.documentElement.scrollTop;
+  if (scrolled > 0) {
+    console.log(scrolled);
+  }
+  if (documentHeight - clientHeight <= scrollTop) {
+    alert('Достигнут конец документа');
+  }
+};
+*/
