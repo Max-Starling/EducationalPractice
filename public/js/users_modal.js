@@ -368,7 +368,7 @@
       event.preventDefault();
       if (inputMention) {
         const m = {
-          user: currentUser.username,
+          username: currentUser.username,
           mention: inputMention.value.toString(),
         };
         // console.log(m);

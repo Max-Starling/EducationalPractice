@@ -31,7 +31,7 @@ app.use(passport.session());
 //  app.use(app.router);
 //  });
 
-diskDB.connect('private', ['news', 'users', 'users_mention']);
+diskDB.connect('private', ['news', 'mentions', 'users']);
 const mongoDB = mongoose.createConnection('mongodb://localhost/StarlingNews');
 
 //  ========== MONGO MODELS ==========  //
@@ -56,16 +56,18 @@ const usersModel = new mongoose.Schema({
   rank: String,
   img: String,
 });
-module.exports.users = mongoDB.model('users', usersModel);
-module.exports.usersBackup = mongoDB.model('usersBackup', usersModel);
+// module.exports.users = mongoDB.model('users', usersModel);
+// module.exports.usersBackup = mongoDB.model('usersBackup', usersModel);
+const users = mongoDB.model('users', usersModel);
 
 //  Mentions model  //
 const mentionsModel = new mongoose.Schema({
   username: String,
   mention: String,
 });
-module.exports.mentions = mongoDB.model('mentions', mentionsModel);
-module.exports.mentionsBackup = mongoDB.model('mentionsBackup', mentionsModel);
+// module.exports.mentions = mongoDB.model('mentions', mentionsModel);
+// module.exports.mentionsBackup = mongoDB.model('mentionsBackup', mentionsModel);
+const mentions = mongoDB.model('mentions', mentionsModel);
 
 //  ========== MONGO FUNCTIONS ==========  //
 
@@ -73,15 +75,11 @@ mongoDB.on('error', error => console.log('Connection to database was failded, be
 mongoDB.once('open', () => {
   console.log('Successfully connected to database.');
   // news.insertMany(diskDB.news.find());
+  // users.insertMany(diskDB.users.find());
+  // mentions.insertMany(diskDB.mentions.find());
 });
 
 //  ========== FUNCTIONS ==========  //
-
-//  For getting users  //
-app.get('/users', (req, res) => {
-  res.json(diskDB.users.find());
-  res.status(200);
-});
 
 //  For cheking user and password  //
 app.get('/checkUser/:username/:password', (req, res) => {
@@ -130,8 +128,7 @@ app.get('/news', (req, res) => {
 
 //  For getting new  //
 app.get('/news/:ID', (req, res) => {
-  res.json(diskDB.news.findOne({ ID: req.params.ID }));
-  res.status(200);
+  // news.findById(req.params.ID, error => (error ? res.sendStatus(500) : res.json(this))); 
 });
 
 //  For adding news  //
@@ -149,33 +146,53 @@ app.post('/postNew', (req, res) => {
 
 //  For registring new user  //
 app.post('/register', (req, res) => {
-  res.json(diskDB.users.save(req.body));
-  res.status(200);
+  const u = {
+    username: req.body.username,
+    password: req.body.password,
+    rank: req.body.rank,
+    img: req.body.img,
+  };
+  users(u).save(error => (error ? res.sendStatus(500) : res.sendStatus(200)));
 });
 
 //  For posting mention  //
 app.post('/postMention', (req, res) => {
-  res.json(diskDB.users_mention.save(req.body));
-  res.status(200);
+  const m = {
+    username: req.body.username,
+    mention: req.body.mention,
+  };
+  mentions(m).save(error => (error ? res.sendStatus(500) : res.sendStatus(200)));
 });
 
 //  For deleting news  //
 app.delete('/news/:ID', (req, res) => {
-  console.log(req.params);
   news.findByIdAndRemove(req.params.ID,
                          error => (error ? res.sendStatus(500) : res.sendStatus(200)));
 });
 
 //  For editing news  //
 app.put('/news/:ID', (req, res) => {
-  res.json(diskDB.news.update({ ID: req.params.ID }, req.body));
-  res.status(200);
+  const paramsSet = {};
+  if (req.body.img) {
+    paramsSet.img = req.body.img;
+  }
+  if (req.body.title) {
+    paramsSet.title = req.body.title;
+  }
+  if (req.body.summary) {
+    paramsSet.summary = req.body.summary;
+  }
+  if (req.body.content) {
+    paramsSet.content = req.body.content;
+  }
+  news.findByIdAndUpdate(req.params.ID, { $set: paramsSet },
+                         error => (error ? res.sendStatus(500) : res.sendStatus(200)));
 });
 
 //  For editing profile  //
 app.put('/users/:username', (req, res) => {
-  res.json(diskDB.users.update({ user: req.params.user }, req.body));
-  res.status(200);
+  // res.json(diskDB.users.update({ user: req.params.user }, req.body));
+  // res.status(200);
 });
 
 //  ========== PASSPORT ==========  //
@@ -198,33 +215,37 @@ passport.use(
       console.log();
       console.log(`username: ${username}`);
       console.log(`password: ${password}`);
-      const user = diskDB.users.findOne({ username });
-      if (!user) {
-        console.log('We cant found this user in database.');
-        return done(null, false, {
-          message: 'We cant found this user in database.',
-        });
-      } else if (password !== user.password) {
-        console.log('User was fount, but password is wrong.');
-        return done(null, false, {
-          message: 'User was fount, but password is wrong.',
-        });
-      }
-      console.log('You was successfully authorized.');
-      console.log('Data in database:');
-      console.log(user);
-      return done(null, user, { message: 'You was successfully authorized.' });
+      console.log();
+      users.findOne({ username }, (error, user) => {
+        if (error) {
+          return done(null, false, { message: error });
+        } else if (!user) {
+          console.log('We cant found this user in database.');
+          return done(null, false, {
+            message: 'We cant found this user in database.',
+          });
+        } else if (password !== user.password) {
+          console.log('User was fount, but password is wrong.');
+          return done(null, false, {
+            message: 'User was fount, but password is wrong.',
+          });
+        }
+        console.log('You was successfully authorized.');
+        console.log('Data in database:');
+        console.log(user);
+        return done(null, user, { message: 'You was successfully authorized.' });
+      });
     }));
 
 //  For log in  //
 app.post('/logIn', passport.authenticate('logIn'), (req, res) => res.send(req.user));
 
 //  For log out  //
-app.get('/logOut', (req, res) => {
-  req.logout();
-  res.sendStatus(200);
+app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    res.redirect('/');
+  });
 });
-
 //  ========== PORT ==========  //
 
 const port = '7777';
