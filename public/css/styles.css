@@ -432,6 +432,7 @@ input{
 	width: 64%;
 	height: 59%;
 	opacity: 0.82;
+	padding-bottom: 0.4vw;
 }
 .edit-new-button{
 	visibility: hidden;
