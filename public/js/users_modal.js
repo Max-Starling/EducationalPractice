@@ -220,7 +220,7 @@
         const deleteButton = document.querySelector('.delete-new-button');
         deleteButton.style.visibility = 'inherit';
         //  Changing menu items.  //
-         const login = document.querySelector('.login');
+        const login = document.querySelector('.login');
         login.style.display = 'none';
         const logout = document.querySelector('.logout');
         logout.style.display = 'inherit';

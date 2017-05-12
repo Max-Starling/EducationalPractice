@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newModel, newRenderer, newsModal, currentUser */
+/* global document, event, window, classie, newModel, newRenderer, newsService, currentUser */
 (function (window) {
   /**
    * ADD NEW
@@ -63,9 +63,7 @@
       n.summary = inputDescription.value.toString();
       n.content = inputContent.value.toString();
       newModel.addNew(n);
-      newRenderer.removeNewsFromDom();
-      const news = newModel.getNews(0, newModel.getLength());
-      newRenderer.insertNewsInDOM(news);
+      newRenderer.insertNewInDOM(newRenderer.renderNew(n));
       event.stopImmediatePropagation();
       if (!n.title) {
         inputTitle.style.color = '#8b1500';
@@ -175,7 +173,7 @@
   /**
    * NOTICE
    */
-  const notice = function (message, parentModal, parentModalShow, newID) {
+  const notice = function (message, parentModal, parentModalShow, newID, n) {
     const overlay = document.querySelector('.second-overlay-layer');
     const modalContent = document.querySelector('.md-content-not');
     modalContent.querySelector('.message').textContent = message;
@@ -205,11 +203,9 @@
     if (parentModal && parentModalShow && newID) {
       buttonSure.style.display = 'none';
       buttonYes.onclick = function (event) {
-        newRenderer.removeNewsFromDom();
         console.log(newID);
-        newModel.removeNew(newID);
-        const news = newModel.getNews(0, newModel.getLength());
-        newRenderer.insertNewsInDOM(news);
+        newRenderer.removeNewFromDom(newRenderer.renderNew(n));
+        newsService.removeNew(newID);
         removeModalHandler();
         classie.remove(parentModal, parentModalShow);
         event.stopImmediatePropagation();
@@ -262,7 +258,7 @@
     // const img = modalContent.querySelector('.picture');
     const img = modalContent.querySelector('.md-list-item-img');
     const i = target.querySelector('.article-list-item-img').src;
-    console.log(i); 
+    console.log(i);
     img.src = i;
     title.textContent = t;
 
@@ -279,7 +275,7 @@
     const close = modal.querySelector('.md-trigger7');
     close.addEventListener(
       'click',
-      notice('Are you sure want to delete this?', modal, 'md-show', ID),
+      notice('Are you sure want to delete this?', modal, 'md-show', ID, target),
     );
     function removeModalHandler() {
       classie.remove(modal, 'md-show');

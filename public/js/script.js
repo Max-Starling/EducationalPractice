@@ -242,7 +242,6 @@ const newRenderer = (function () {
   }
   function renderNew(n) {
     const template = ARTICLE_TEMPLATE;
-    // console.log(n);
     template.content.querySelector('.article-list-item').dataset.ID = n._id; //
     template.content.querySelector('.article-list-item-title').textContent =
       n.title;
@@ -262,6 +261,10 @@ const newRenderer = (function () {
   function renderNews(news) {
     return news.map(n => renderNew(n));
   }
+  function insertNewInDOM(n) {
+    // ARTICLE_LIST_NODE.appendChild(n);
+    ARTICLE_LIST_NODE.insertBefore(n, ARTICLE_LIST_NODE.firstChild);
+  }
   function insertNewsInDOM(news) {
     /* if (!news) {
       news = newsService.getNews();
@@ -275,15 +278,18 @@ const newRenderer = (function () {
   function removeNewsFromDom() {
     ARTICLE_LIST_NODE.innerHTML = '';
   }
-  /* function removeNewFromDom(node) {
+  function removeNewFromDom(node) {
     ARTICLE_LIST_NODE.removeChild(node);
-  }*/
+  }
 
   return {
     init,
     formatDate,
     insertNewsInDOM,
+    insertNewInDOM,
+    renderNew,
     removeNewsFromDom,
+    removeNewFromDom,
   };
 }());
 function renderNews(skip, top) {
@@ -292,6 +298,7 @@ function renderNews(skip, top) {
   newRenderer.insertNewsInDOM(news);
 }
 function startApp() {
+  console.log('start app');
   newRenderer.init();
   console.log(newModel.getLength());
   const top = 8;
@@ -300,13 +307,12 @@ function startApp() {
   let d = 0;
   function myFunction() {
     if (document.querySelector('.large-container').scrollTop > tmp) {
-      document.getElementById('myP').className = 'test';
       console.log(tmp);
       tmp += 200;
       if (top + d < newModel.getLength()) {
         newRenderer.insertNewsInDOM(newModel.getNews(top + d, top + d + 4));
         d += 4;
-        console.log(top + d, top + d + 1);
+        console.log(top + d, top + d + 4);
       }
     }
   }
@@ -316,15 +322,3 @@ function startApp() {
   };
 }
 document.addEventListener('DOMContentLoaded', startApp);
-/*
-var scrolled = 5;
-window.onscroll = function () {
-  scrolled = window.pageYOffset || document.documentElement.scrollTop;
-  if (scrolled > 0) {
-    console.log(scrolled);
-  }
-  if (documentHeight - clientHeight <= scrollTop) {
-    alert('Достигнут конец документа');
-  }
-};
-*/
