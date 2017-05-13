@@ -9,7 +9,6 @@ const newModel = (function () {
   function validateNew(n) {
     /* ID*/
     if (
-      !n.ID ||
       !n.title ||
       n.title.length === 0 ||
       !n.summary ||
@@ -19,13 +18,13 @@ const newModel = (function () {
       !n.content ||
       n.content.length === 0
     ) {
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
-  function getLength() {
-    return newsService.getNews().length;
-  }
+  /* function getLength() {
+    return getNews().length;
+  }*/
   function getNew(ID) {
     return newsService.getNew(ID);
   }
@@ -126,37 +125,52 @@ const newModel = (function () {
   }
   function getNews(skip, top, criterion, value) {
     //  Default //
-    let out = newsService.getNews();
     if (!skip) {
       skip = 0;
     }
     if (!top) {
-      top = out.length;
+      top = 8;
+      console.log(top);
     }
-    sortNews(out);
-    if (criterion && value) {
-      //  Title  //
-      if (criterion === 'title') {
-        out = out.filter(n => value === n.title);
-      }
-      //  Author  //
-      if (criterion === 'author') {
-        out = out.filter(n => value === n.author);
-      }
-      //  Date  //
-      if (criterion === 'date') {
-        // date = new Date(value);
-        out = out.filter(
-          n =>
-            n.createdAt
-              .toString()
-              .toLowerCase()
-              .indexOf(value.toString().toLowerCase()) >= 0,
-        );
-      }
-    }
-    console.log(skip, top);
-    return out.slice(skip, top);
+    let out;
+    newsService
+      .getNews()
+      .then((news) => {
+        news.forEach((n) => {
+          n.createdAt = new Date(n.createdAt);
+        });
+        out = news;
+        console.log(news);
+        sortNews(out);
+        if (criterion && value) {
+          //  Title  //
+          if (criterion === 'title') {
+            out = out.filter(n => value === n.title);
+          }
+          //  Author  //
+          if (criterion === 'author') {
+            out = out.filter(n => value === n.author);
+          }
+          //  Date  //
+          if (criterion === 'date') {
+            // date = new Date(value);
+            out = out.filter(
+              n =>
+                n.createdAt
+                  .toString()
+                  .toLowerCase()
+                  .indexOf(value.toString().toLowerCase()) >= 0,
+            );
+          }
+        }
+        console.log(skip, top);
+        return out.slice(skip, top);
+      })
+      .catch((reason) => {
+        console.log(`Handle rejected promise, because: ${reason}.`);
+        return false;
+      });
+    return true;
   }
   function addNew(n) {
     if (validateNew(n)) {
@@ -174,11 +188,12 @@ const newModel = (function () {
     getNews,
     editNew,
     removeNew,
+    validateNew,
     sortNews,
     searchNews,
     addNew,
     getAuthors,
-    getLength,
+    // getLength,
   };
 }());
 
@@ -259,6 +274,7 @@ const newRenderer = (function () {
   }
 
   function renderNews(news) {
+    console.log(news);
     return news.map(n => renderNew(n));
   }
   function insertNewInDOM(n) {
@@ -293,32 +309,47 @@ const newRenderer = (function () {
   };
 }());
 function renderNews(skip, top) {
-  newRenderer.removeNewsFromDom();
-  const news = newModel.getNews(skip, top);
-  newRenderer.insertNewsInDOM(news);
+  // newRenderer.removeNewsFromDom();
+  // const news = newModel.getNews(skip, top);
+  // let out;
+  newsService.getNews().then((news) => {
+    news.forEach((n) => {
+      n.createdAt = new Date(n.createdAt);
+    });
+    // out = news;
+    console.log(news);
+    newModel.sortNews(news);
+    newRenderer.insertNewsInDOM(news);
+  });
 }
 function startApp() {
   console.log('start app');
   newRenderer.init();
-  console.log(newModel.getLength());
-  const top = 8;
-  renderNews(0, top);
-  let tmp = 0;
-  let d = 0;
-  function myFunction() {
-    if (document.querySelector('.large-container').scrollTop > tmp) {
-      console.log(tmp);
-      tmp += 200;
-      if (top + d < newModel.getLength()) {
-        newRenderer.insertNewsInDOM(newModel.getNews(top + d, top + d + 4));
-        d += 4;
-        console.log(top + d, top + d + 4);
+  newsService
+    .getSize()
+    .then((length) => {
+      console.log(length);
+      const top = 8;
+      renderNews(0, top);
+      let tmp = 0;
+      let d = 0;
+      function onScroll() {
+        if (document.querySelector('.large-container').scrollTop > tmp) {
+          console.log(tmp);
+          tmp += 200;
+          if (top + d < length) {
+            newRenderer.insertNewsInDOM(newModel.getNews(top + d, top + d + 4));
+            d += 4;
+            console.log(top + d, top + d + 4);
+          }
+        }
       }
-    }
-  }
-
-  document.querySelector('.large-container').onscroll = function () {
-    myFunction();
-  };
+      document.querySelector('.large-container').onscroll = function () {
+        onScroll();
+      };
+    })
+    .catch(reason =>
+      console.log(`Handle rejected promise, because: ${reason}.`),
+    );
 }
 document.addEventListener('DOMContentLoaded', startApp);

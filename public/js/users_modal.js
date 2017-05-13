@@ -227,7 +227,7 @@
         const profile = document.querySelector('.profile');
         profile.style.display = 'inherit';
         const register = document.querySelector('.register');
-        register.style.display = 'none'; 
+        register.style.display = 'none';
         //  Zeroing values in the form.  //
         inputLogin.value = '';
         inputPassword.value = '';

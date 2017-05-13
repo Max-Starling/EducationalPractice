@@ -3,23 +3,60 @@ const newsService = (function () {
   const xhr = new XMLHttpRequest();
   //  Get news  //
   function getNews() {
-    xhr.open('GET', '/news', false);
-    xhr.setRequestHeader('content-type', 'application/json');
-    xhr.send();
-    const news = JSON.parse(xhr.responseText);
-    news.forEach((n) => {
-      n.createdAt = new Date(n.createdAt);
+    return new Promise((resolve, reject) => {
+      xhr.open('GET', '/news');
+      xhr.setRequestHeader('content-type', 'application/json');
+      xhr.send();
+      xhr.onload = () => {
+        // console.log(xhr.responseText);
+        if (xhr.status === 200) {
+          resolve(JSON.parse(xhr.responseText));
+        } else if (xhr.status !== 200) {
+          reject('can not get news.');
+        }
+      };
+      xhr.onerror = () => {
+        reject(new Error('Error'));
+      };
     });
-    return news;
   }
   //  Get new  //
   function getNew(ID) {
-    xhr.open('GET', `/news/${ID}`, false);
-    xhr.setRequestHeader('content-type', 'application/json');
-    xhr.send();
-    const n = JSON.parse(xhr.responseText);
-    n.createdAt = new Date(n.createdAt);
-    return n;
+    return new Promise((resolve, reject) => {
+      xhr.open('GET', `/news/${ID}`);
+      xhr.setRequestHeader('content-type', 'application/json');
+      xhr.send();
+      xhr.onload = () =>
+        (xhr.status === 200
+          ? resolve(JSON.parse(xhr.responseText))
+          : reject('can not find new by this ID.'));
+      xhr.onerror = () => {
+        reject(new Error('Error'));
+      };
+    });
+  }
+    //  Get size  //
+  function getSize() {
+    return new Promise((resolve, reject) => {
+      xhr.open('GET', '/newsSize');
+      xhr.setRequestHeader('content-type', 'application/json');
+      xhr.send();
+      /* xhr.onload = () =>
+        (xhr.status === 200
+          ? resolve(JSON.parse(xhr.responseText))
+          : reject('can count news size.'));*/
+      xhr.onload = () => {
+        console.log(xhr.responseText);
+        if (xhr.status === 200) {
+          resolve(JSON.parse(xhr.responseText));
+        } else if (xhr.status !== 200) {
+          reject('can count news size.');
+        }
+      };    
+      xhr.onerror = () => {
+        reject(new Error('Error'));
+      };
+    });
   }
   //  Add new  //
   function addNew(n) {
@@ -75,6 +112,7 @@ const newsService = (function () {
     editNew,
     getNews,
     getNew,
+    getSize,
     removeNew,
   };
 }());

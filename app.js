@@ -55,6 +55,8 @@ const usersModel = new mongoose.Schema({
   password: String,
   rank: String,
   img: String,
+}, {
+  autoIndex: process.env('mode') === 'development',
 });
 // module.exports.users = mongoDB.model('users', usersModel);
 // module.exports.usersBackup = mongoDB.model('usersBackup', usersModel);
@@ -64,6 +66,8 @@ const users = mongoDB.model('users', usersModel);
 const mentionsModel = new mongoose.Schema({
   username: String,
   mention: String,
+}, {
+  autoIndex: process.env('mode') === 'development',
 });
 // module.exports.mentions = mongoDB.model('mentions', mentionsModel);
 // module.exports.mentionsBackup = mongoDB.model('mentionsBackup', mentionsModel);
@@ -77,6 +81,8 @@ mongoDB.once('open', () => {
   // news.insertMany(diskDB.news.find());
   // users.insertMany(diskDB.users.find());
   // mentions.insertMany(diskDB.mentions.find());
+}, {
+  autoIndex: process.env('mode') === 'development',
 });
 
 //  ========== FUNCTIONS ==========  //
@@ -128,7 +134,16 @@ app.get('/news', (req, res) => {
 
 //  For getting new  //
 app.get('/news/:ID', (req, res) => {
-  // news.findById(req.params.ID, error => (error ? res.sendStatus(500) : res.json(this)));
+  news.findById(req.body.ID, (error, n) => (error ? res.sendStatus(500) : res.json(n)));
+});
+
+//  For getting new  //
+app.get('/newsSize', (req, res) => {
+  // news.size((error, s) => (error ? res.sendStatus(500) : res.json(s)));
+  // console.log(news.size((error, s) => (error ? res.sendStatus(500) : res.json(s))));
+  //console.log(news.size());
+ // res.json(news.size());
+  news.count({}, ((error, count) => (error ? res.sendStatus(500) : res.json(count))));
 });
 
 //  For adding news  //

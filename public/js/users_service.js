@@ -1,15 +1,6 @@
 /* global XMLHttpRequest */
 const usersService = (function () {
   const xhr = new XMLHttpRequest();
-  //  Get users  //
-/*  function getUsers() {
-    xhr.open('GET', '/users', false);
-    xhr.setRequestHeader('content-type', 'application/json');
-    xhr.send();
-    const users = JSON.parse(xhr.responseText);
-    console.log(users);
-    return users;
-  }*/
   //  Check user  //
 /*  function checkUser(username, password) {
     if (username && password) {
@@ -23,7 +14,7 @@ const usersService = (function () {
       console.log(username);
       xhr.send(username);
     }
-    return JSON.parse(xhr.responseText); 
+    return JSON.parse(xhr.responseText);
   }*/
   //  Register new  user //
   function registerUser(username) {

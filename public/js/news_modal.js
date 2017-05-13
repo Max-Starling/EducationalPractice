@@ -50,7 +50,6 @@
     close.addEventListener('click', (ev) => {
       ev.stopPropagation();
       const n = {
-        ID: `${newModel.getLength() + 1}`,
         title: '',
         summary: '',
         createdAt: new Date(),
@@ -63,6 +62,20 @@
       n.summary = inputDescription.value.toString();
       n.content = inputContent.value.toString();
       newModel.addNew(n);
+      if (newModel.validateNew(n)) {
+        newsService.addNew(n);
+      }
+      newsService.getNew(newID)
+          .then((ne) => {
+            console.log(n);
+            console.log(ne);
+            newsService.removeNew(newID);
+            newRenderer.removeNewFromDom(n);
+          })
+          .catch((reason) => {
+            console.log(`Handle rejected promise, because: ${reason}.`);
+          });
+
       newRenderer.insertNewInDOM(newRenderer.renderNew(n));
       event.stopImmediatePropagation();
       if (!n.title) {
@@ -204,8 +217,27 @@
       buttonSure.style.display = 'none';
       buttonYes.onclick = function (event) {
         console.log(newID);
-        newRenderer.removeNewFromDom(newRenderer.renderNew(n));
-        newsService.removeNew(newID);
+        newsService.getNew(newID)
+          .then((ne) => {
+            console.log(n);
+            console.log(ne);
+            newsService.removeNew(newID);
+            newRenderer.removeNewFromDom(n);
+          })
+          .catch((reason) => {
+            console.log(`Handle rejected promise, because: ${reason}.`);
+          });
+
+        // console.log(n);
+        // newModel.removeNew(newID);
+        // newsService.removeNew(newID);
+        // newRenderer.removeNewFromDom(n);
+        // newsService.removeNew(newID);
+        /* if (newModel.getLength() >= 7) {
+          newRenderer.insertNewInDOM(
+            newRenderer.renderNew(newModel.getNews(8, 8)),
+          );
+        } */
         removeModalHandler();
         classie.remove(parentModal, parentModalShow);
         event.stopImmediatePropagation();
@@ -237,6 +269,7 @@
 
     const ID = event.currentTarget.dataset.ID;
     console.log(event.currentTarget.dataset);
+    console.log(ID);
     const author = modalText.querySelector('.article-list-item-author');
     const a = target.querySelector('.author').textContent;
     author.textContent = a;
@@ -259,6 +292,7 @@
     const img = modalContent.querySelector('.md-list-item-img');
     const i = target.querySelector('.article-list-item-img').src;
     console.log(i);
+    console.log(target);
     img.src = i;
     title.textContent = t;
 
@@ -267,10 +301,7 @@
     );
 
     const edit = modal.querySelector('.md-trigger9');
-    edit.addEventListener(
-      'click',
-      editNew(modal, 'md-show', ID, t, sd, c, i),
-    );
+    edit.addEventListener('click', editNew(modal, 'md-show', ID, t, sd, c, i));
 
     const close = modal.querySelector('.md-trigger7');
     close.addEventListener(
