@@ -2,29 +2,49 @@
 const usersService = (function () {
   const xhr = new XMLHttpRequest();
   //  Check user  //
-/*  function checkUser(username, password) {
+  function checkUser(username, password) {
     if (username && password) {
-      xhr.open('GET', `/checkUser/${username}/${password}`, false);
-      xhr.setRequestHeader('content-type', 'application/json');
-      console.log(username, password);
-      xhr.send(username, password);
+      return new Promise((resolve, reject) => {
+        xhr.open('GET', `/checkUser?username=${username}&password=${password}`);
+        xhr.setRequestHeader('content-type', 'application/json');
+        xhr.send();
+        xhr.onload = () =>
+          (xhr.status === 200 ? resolve(xhr.responseText) : reject());
+        xhr.onerror = () => reject(new Error('Error'));
+      });
     } else if (username) {
-      xhr.open('GET', `/checkUser/${username}`, false);
-      xhr.setRequestHeader('content-type', 'application/json');
-      console.log(username);
-      xhr.send(username);
+      return new Promise((resolve, reject) => {
+        xhr.open('GET', `/checkUser?username=${username}`);
+        xhr.setRequestHeader('content-type', 'application/json');
+        xhr.send();
+        xhr.onload = () =>
+          (xhr.status === 200 ? resolve(xhr.responseText) : reject());
+        xhr.onerror = () => reject(new Error('Error'));
+      });
     }
-    return JSON.parse(xhr.responseText);
-  }*/
+    return new Promise((resolve, reject) => {
+      xhr.onerror = () => reject(new Error('Error'));
+    });
+  }
   //  Register new  user //
   function registerUser(username) {
     return new Promise((resolve, reject) => {
       xhr.open('POST', '/register');
       xhr.setRequestHeader('content-type', 'application/json');
+      xhr.send(JSON.stringify(username));
       xhr.onload = () =>
         (xhr.status === 200 ? resolve(xhr.responseText) : reject());
       xhr.onerror = () => reject(new Error('Error'));
-      xhr.send(JSON.stringify(username));
+    });
+  }
+  //  Get current user  //
+  function getCurrentUser() {
+    return new Promise((resolve, reject) => {
+      xhr.open('GET', '/currentUser');
+      xhr.send();
+      xhr.onload = () =>
+        (xhr.status === 200 ? resolve(JSON.parse(xhr.responseText)) : reject());
+      xhr.onerror = () => reject(new Error('Error'));
     });
   }
   //  Edit profile  //
@@ -79,7 +99,7 @@ const usersService = (function () {
     logOut,
     editProfile,
     addMention,
-    // checkUser,
-    // getUsers,
+    getCurrentUser,
+    checkUser,
   };
 }());

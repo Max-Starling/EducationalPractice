@@ -78,40 +78,20 @@ mongoDB.once('open', () => {
 
 //  ========== FUNCTIONS ==========  //
 
-//  For cheking user and password  //
-app.get('/checkUser/:username/:password', (req, res) => {
-  console.log(req.params);
-  if (!req.params.user || !req.params.password) {
-    res.status(200);
-    res.json(false);
-  } else {
-    res.status(200);
-    if (
-      diskDB.users.findOne({
-        user: req.params.user,
-        password: req.params.password })
-    ) {
-      res.json(
-        diskDB.users.findOne({
-          user: req.params.user,
-          password: req.params.password,
-        }));
+//  For cheking user  //
+app.get('/checkUser', (req, res) => {
+  console.log(req.query);
+  if (!req.query) {
+    res.sendStatus(500);
+  } else if (req.query.username && req.query.password) {
+    if (users.findOne({ username: req.query.username, password: req.query.password })) {
+      res.json(true);
     } else {
       res.json(false);
     }
-  }
-});
-
-//  For cheking user  //
-app.get('/checkUser/:username', (req, res) => {
-  console.log(req.params);
-  if (!req.params.user) {
-    res.status(200);
-    res.json(false);
-  } else {
-    res.status(200);
-    if (users.findOne({ user: req.params.user })) {
-      res.json(users.findOne({ user: req.params.user }));
+  } else if (req.query.username) {
+    if (users.findOne({ username: req.query.username })) {
+      res.json(true);
     } else {
       res.json(false);
     }
@@ -172,7 +152,7 @@ app.post('/postNew', (req, res) => {
     content: req.body.content,
     img: req.body.content,
   };
-  news(n).save(error => (error ? res.sendStatus(500) : res.json(200)));
+  news(n).save(error => (error ? res.sendStatus(500) : res.sendStatus(200)));
 });
 
 //  For registring new user  //
@@ -276,6 +256,19 @@ app.get('/logout', (req, res) => {
   req.session.destroy((err) => {
     res.redirect('/');
   });
+});
+
+app.get('/currentUser', (req, res) => {
+  const pass = req.session.passport;
+  if (pass) {
+    res.json({
+      username: pass.user.username,
+      img: pass.user.img,
+      rank: pass.user.rank,
+    });
+  } else {
+    res.json(false);
+  }
 });
 //  ========== PORT ==========  //
 

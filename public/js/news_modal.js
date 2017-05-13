@@ -1,4 +1,5 @@
-/* global document, event, window, classie, newModel, newRenderer, newsService, currentUser */
+/* global document, event, window, classie, newModel,
+newRenderer, newsService, currentUser, renderNews */
 (function (window) {
   /**
    * ADD NEW
@@ -88,7 +89,6 @@
           console.log(`Handle rejected promise, because: ${reason}.`);
         });
 */
-      
       event.stopImmediatePropagation();
       if (!n.title) {
         inputTitle.style.color = '#8b1500';
@@ -169,10 +169,9 @@
       n.title = inputTitle.value.toString();
       n.summary = inputDescription.value.toString();
       n.content = inputContent.value.toString();
-      newModel.editNew(ID, n);
-      newRenderer.removeNewsFromDom();
-      const news = newModel.getNews(0, newModel.getLength());
-      newRenderer.insertNewsInDOM(news);
+      newsService.editNew(ID, n);
+      // const news = newsService.getNews();
+      // newRenderer.insertNewInDOM(n);
     };
     const el = document.querySelector('.md-trigger9');
     const modal = document.querySelector(`#${el.getAttribute('data-modal')}`);

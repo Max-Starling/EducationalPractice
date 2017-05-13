@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newsModal, newsService */
+/* global document, event, window, classie, newsModal, newsService, usersService, usersModal */
 const currentUser = {
   username: 'Unknown',
   password: '',
@@ -256,7 +256,9 @@ const newRenderer = (function () {
     t.content.querySelector('.new-list-item-author').textContent = n.author;
     t.content.querySelector('.new-list-item-content').textContent = n.content;
     t.content.querySelector('.new-list-item-img').src = n.img;
-    t.content.querySelector('.new-list-item-date').textContent = formatDate(n.createdAt);
+    t.content.querySelector('.new-list-item-date').textContent = formatDate(
+      n.createdAt,
+    );
     return t.content.querySelector('.new-list-item').cloneNode(true);
   }
 
@@ -307,13 +309,21 @@ function renderNews(skip, limit) {
 function startApp() {
   console.log('start app');
   newRenderer.init();
+  usersService.getCurrentUser().then((user) => {
+    console.log(user);
+    if (user) {
+      usersModal.switchMode(user);
+    }
+  });
   newsService
     .getSize()
     .then((length) => {
       console.log(length);
       let limit;
-      if (document.documentElement.clientWidth /
-          document.documentElement.clientHeight >= 4 / 3
+      if (
+        document.documentElement.clientWidth /
+          document.documentElement.clientHeight >=
+        4 / 3
       ) {
         limit = 8;
       } else {

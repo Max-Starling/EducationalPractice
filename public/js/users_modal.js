@@ -1,6 +1,54 @@
 /* global document, event, window, classie, newsModal, currentUser, usersService */
 (function (window) {
   /**
+   * SWITCH MODE
+   */
+  function switchMode(user) {
+    currentUser.username = user.username;
+    currentUser.password = user.password;
+
+    //  Setting user info.  //
+    const userName = document.querySelector('.user-info-name');
+    userName.textContent = user.username;
+    const userRank = document.querySelector('.user-info-rank');
+    if (user.rank === 'Administrator') {
+      userRank.textContent = user.rank;
+      userRank.style.color = '#8b1500';
+      currentUser.rank = 'Administrator';
+    }
+    if (user.rank === 'Moderator') {
+      userRank.textContent = user.rank;
+      userRank.style.color = '#2075a4';
+      currentUser.rank = 'Moderator';
+    }
+    if (user.rank === 'User') {
+      userRank.textContent = user.rank;
+      userRank.style.color = '#505C8B';
+      currentUser.rank = 'User';
+    }
+    if (user.img) {
+      document.querySelector('.user-info-photo').src = user.img;
+      currentUser.img = user.img;
+    }
+    //  Displaying buttons to work with news.  //
+    const addButton = document.querySelector('.add-new-button');
+    addButton.style.visibility = 'inherit';
+    const editButton = document.querySelector('.edit-new-button');
+    editButton.style.visibility = 'inherit';
+    const deleteButton = document.querySelector('.delete-new-button');
+    deleteButton.style.visibility = 'inherit';
+    //  Changing menu items.  //
+    const login = document.querySelector('.login');
+    login.style.display = 'none';
+    const logout = document.querySelector('.logout');
+    logout.style.display = 'inherit';
+    const profile = document.querySelector('.profile');
+    profile.style.display = 'inherit';
+    const register = document.querySelector('.register');
+    register.style.display = 'none';
+  }
+
+  /**
    * AUTHORIZATION
    */
   function authorization() {
@@ -61,52 +109,11 @@
         inputPassword.style.color = '#8b1500';
       }
 
-      usersService.logIn({ username: uname, password: upass })
+      usersService
+        .logIn({ username: uname, password: upass })
         .then((user) => {
-          // console.log(val);
-          // const u = JSON.parse(val);
-          // console.log(u);
-          currentUser.username = user.username;
-          currentUser.password = user.password;
-          //  Setting user info.  //
-          const userName = document.querySelector('.user-info-name');
-          userName.textContent = user.username;
-          const userRank = document.querySelector('.user-info-rank');
-          if (user.rank === 'Administrator') {
-            userRank.textContent = user.rank;
-            userRank.style.color = '#8b1500';
-            currentUser.rank = 'Administrator';
-          }
-          if (user.rank === 'Moderator') {
-            userRank.textContent = user.rank;
-            userRank.style.color = '#2075a4';
-            currentUser.rank = 'Moderator';
-          }
-          if (user.rank === 'User') {
-            userRank.textContent = user.rank;
-            userRank.style.color = '#505C8B';
-            currentUser.rank = 'User';
-          }
-          if (user.img) {
-            document.querySelector('.user-info-photo').src = user.img;
-            currentUser.img = user.img;
-          }
-          //  Displaying buttons to work with news.  //
-          const addButton = document.querySelector('.add-new-button');
-          addButton.style.visibility = 'inherit';
-          const editButton = document.querySelector('.edit-new-button');
-          editButton.style.visibility = 'inherit';
-          const deleteButton = document.querySelector('.delete-new-button');
-          deleteButton.style.visibility = 'inherit';
-          //  Changing menu items.  //
-          const login = document.querySelector('.login');
-          login.style.display = 'none';
-          const logout = document.querySelector('.logout');
-          logout.style.display = 'inherit';
-          const profile = document.querySelector('.profile');
-          profile.style.display = 'inherit';
-          const register = document.querySelector('.register');
-          register.style.display = 'none';
+          //  Switch mode.  //
+          switchMode(user);
           //  Zeroing values in the form.  //
           inputLogin.value = '';
           inputPassword.value = '';
@@ -171,70 +178,54 @@
     const close = modal.querySelector('.md-close');
     close.addEventListener('click', (ev) => {
       //  Getting values from the form.  //
-      const uName = inputLogin.value.toString();
-      const uPass = inputPassword.value.toString();
-      const uPassAgain = inputPassword.value.toString();
+      const uName = inputLogin.value;
+      const uPass = inputPassword.value;
+      const uPassAgain = inputPassword.value;
       //  Checking values for correctness.  //
       let correctLogin = false;
-      if (inputLogin.value.length > 0) {
+      if (uName.length > 0) {
         correctLogin = true;
         inputLogin.style.color = '#aaaaaa';
-      } else if (inputLogin.value.length < 1) {
+      } else if (uName.length < 1) {
         inputLogin.style.color = '#8b1500';
       }
       let correctPassword = false;
-      if (inputPassword.value.length >= 4) {
+      if (uPass.length >= 4) {
         correctPassword = true;
         inputPassword.style.color = '#aaaaaa';
-      } else if (inputPassword.value.length < 4) {
+      } else if (uPass.length < 4) {
         inputPassword.style.color = '#8b1500';
       }
       let correctPasswordAgain = false;
-      if (inputPasswordAgain.value === inputPassword.value) {
+      if (uPassAgain === uPass) {
         correctPasswordAgain = true;
       } else {
         correctPasswordAgain = false;
       }
       //  Checking if user is alredy exist  //
-      if (
-        correctLogin &&
-        correctPassword &&
-        correctPasswordAgain &&
-        !usersService.checkUser(uName)
-      ) {
-        currentUser.username = uName;
-        currentUser.password = uPass;
-        //  Setting user info.  //
-        const username = document.querySelector('.user-info-name');
-        username.textContent = uName;
-        const userrank = document.querySelector('.user-info-rank');
-        userrank.textContent = 'User';
-        userrank.style.color = '#505C8B';
-        currentUser.rank = 'User';
-        usersService.registerUser(currentUser);
-        //  Displaying buttons to work with news.  //
-        const addButton = document.querySelector('.add-new-button');
-        addButton.style.visibility = 'inherit';
-        const editButton = document.querySelector('.edit-new-button');
-        editButton.style.visibility = 'inherit';
-        const deleteButton = document.querySelector('.delete-new-button');
-        deleteButton.style.visibility = 'inherit';
-        //  Changing menu items.  //
-        const login = document.querySelector('.login');
-        login.style.display = 'none';
-        const logout = document.querySelector('.logout');
-        logout.style.display = 'inherit';
-        const profile = document.querySelector('.profile');
-        profile.style.display = 'inherit';
-        const register = document.querySelector('.register');
-        register.style.display = 'none';
-        //  Zeroing values in the form.  //
-        inputLogin.value = '';
-        inputPassword.value = '';
-        inputPasswordAgain.value = '';
-        //  Closing modal window.  //
-        ev.stopPropagation();
-        removeModalHandler();
+      if (correctLogin && correctPasswordAgain) {
+        usersService.checkUser(uName).then((state) => {
+          if (state) {
+            usersService.registerUser({
+              username: uName,
+              password: inputPassword.value,
+              img: '',
+              rank: 'User',
+            });
+            //  Zeroing values in the form.  //
+            inputLogin.value = '';
+            inputPassword.value = '';
+            inputPasswordAgain.value = '';
+          }
+          //  Closing modal window.  //
+          ev.stopPropagation();
+          removeModalHandler();
+        })
+        .catch((reason) => {
+          console.log(`Handle rejected promise, because: ${reason}.`);
+          ev.stopPropagation();
+          removeModalHandler();
+        });
       }
     });
   }
@@ -343,7 +334,7 @@
     const close = modal.querySelector('.md-close');
     close.addEventListener('click', (event) => {
       //  Saturation effect from 0.5 to 1.5 with slider  //
-      const value = (slider.value / 100) + 0.5;
+      const value = slider.value / 100 + 0.5;
       const wrapper = document.getElementsByClassName('wrapper')[0];
       wrapper.style.filter = `saturate(${value})`;
       event.stopPropagation();
@@ -397,7 +388,8 @@
    */
   function exit() {
     //  Username  //
-    usersService.logOut()
+    usersService
+      .logOut()
       .then(() => {
         const userName = document.querySelector('.user-info-name');
         userName.textContent = 'Unknown';
@@ -432,6 +424,7 @@
       });
   }
   const usersModal = {
+    switchMode,
     authorization,
     registration,
     contactUs,
