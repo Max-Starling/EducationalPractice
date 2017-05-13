@@ -55,9 +55,9 @@ const usersModel = new mongoose.Schema({
   password: String,
   rank: String,
   img: String,
-}, {
+}/*, {
   autoIndex: process.env('mode') === 'development',
-});
+}*/);
 // module.exports.users = mongoDB.model('users', usersModel);
 // module.exports.usersBackup = mongoDB.model('usersBackup', usersModel);
 const users = mongoDB.model('users', usersModel);
@@ -66,9 +66,9 @@ const users = mongoDB.model('users', usersModel);
 const mentionsModel = new mongoose.Schema({
   username: String,
   mention: String,
-}, {
+}/*, {
   autoIndex: process.env('mode') === 'development',
-});
+}*/);
 // module.exports.mentions = mongoDB.model('mentions', mentionsModel);
 // module.exports.mentionsBackup = mongoDB.model('mentionsBackup', mentionsModel);
 const mentions = mongoDB.model('mentions', mentionsModel);
@@ -81,9 +81,9 @@ mongoDB.once('open', () => {
   // news.insertMany(diskDB.news.find());
   // users.insertMany(diskDB.users.find());
   // mentions.insertMany(diskDB.mentions.find());
-}, {
+}/*, {
   autoIndex: process.env('mode') === 'development',
-});
+}*/);
 
 //  ========== FUNCTIONS ==========  //
 
