@@ -58,25 +58,37 @@
         img: '',
       };
       n.img = inputURL.value.toString();
+      if (n.img) {
+        n.img = inputURL.value.toString();
+      } /* else {
+        n.img = 'images/news/default_img.jpg';
+      }*/
       n.title = inputTitle.value.toString();
       n.summary = inputDescription.value.toString();
       n.content = inputContent.value.toString();
-      newModel.addNew(n);
+      // newModel.addNew(n);
       if (newModel.validateNew(n)) {
-        newsService.addNew(n);
+        newsService.addNew(n).then((ne) => {
+          console.log(ne);
+          newRenderer.insertNewInDOM(newRenderer.renderNew(n));
+        });
       }
-      newsService.getNew(newID)
-          .then((ne) => {
-            console.log(n);
-            console.log(ne);
-            newsService.removeNew(newID);
-            newRenderer.removeNewFromDom(n);
-          })
-          .catch((reason) => {
-            console.log(`Handle rejected promise, because: ${reason}.`);
-          });
-
-      newRenderer.insertNewInDOM(newRenderer.renderNew(n));
+      /* newsService.getID(n).then((newWithID) => {
+        console.log(newWithID);
+      }); */
+      /* newsService
+        .getNew(newID)
+        .then((ne) => {
+          console.log(n);
+          console.log(ne);
+          newsService.removeNew(newID);
+          newRenderer.removeNewFromDom(n);
+        })
+        .catch((reason) => {
+          console.log(`Handle rejected promise, because: ${reason}.`);
+        });
+*/
+      
       event.stopImmediatePropagation();
       if (!n.title) {
         inputTitle.style.color = '#8b1500';
@@ -217,12 +229,14 @@
       buttonSure.style.display = 'none';
       buttonYes.onclick = function (event) {
         console.log(newID);
-        newsService.getNew(newID)
+        newsService
+          .getNew(newID)
           .then((ne) => {
             console.log(n);
             console.log(ne);
             newsService.removeNew(newID);
             newRenderer.removeNewFromDom(n);
+            renderNews(7, 7);
           })
           .catch((reason) => {
             console.log(`Handle rejected promise, because: ${reason}.`);
@@ -270,7 +284,7 @@
     const ID = event.currentTarget.dataset.ID;
     console.log(event.currentTarget.dataset);
     console.log(ID);
-    const author = modalText.querySelector('.article-list-item-author');
+    const author = modalText.querySelector('.new-list-item-author');
     const a = target.querySelector('.author').textContent;
     author.textContent = a;
 
@@ -278,7 +292,7 @@
     const c = target.querySelector('.content').textContent;
     content.textContent = c;
 
-    const date = modalText.querySelector('.article-list-item-date');
+    const date = modalText.querySelector('.new-list-item-date');
     const d = target.querySelector('.date').textContent;
     date.textContent = d;
 
@@ -290,7 +304,7 @@
 
     // const img = modalContent.querySelector('.picture');
     const img = modalContent.querySelector('.md-list-item-img');
-    const i = target.querySelector('.article-list-item-img').src;
+    const i = target.querySelector('.new-list-item-img').src;
     console.log(i);
     console.log(target);
     img.src = i;

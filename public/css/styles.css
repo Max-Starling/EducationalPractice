@@ -330,7 +330,7 @@ input{
 	width:100%;
 }
 				
-.article-list-item{
+.new-list-item{
 		/*Size & Position*/
 	float: left;
 	height: 33.3%;
@@ -346,7 +346,7 @@ input{
 		/*Other*/
 	background: radial-gradient(circle at 20% 33%, #f0f0f0, #eeeeee);	
 }
-.article-list-item-img{
+.new-list-item-img{
 		/*Size & Position*/
 	height:15.5vmin;
 	max-height:9vw;
@@ -412,20 +412,20 @@ input{
 	word-wrap: break-word;
 	color: 	#565656;
 }
-.article-list-item-content{
+.new-list-item-content{
 	font-size: 100%;
 	color: black;
 }
-.article-list-item-author{
+.new-list-item-author{
     height: 65%;
 }
-.md-content .article-list-item-author{
+.md-content .new-list-item-author{
 	font-size: 115%;
 }
 .md-content .md-list-item-title{
 	font-size: 120%;
 }
-.md-content .article-list-item-date{
+.md-content .new-list-item-date{
 	font-size: 115%;
 }
 .md-list-item-img{

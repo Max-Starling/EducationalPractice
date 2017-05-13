@@ -7,6 +7,7 @@ const currentUser = {
 };
 const newModel = (function () {
   function validateNew(n) {
+    console.log(n);
     /* ID*/
     if (
       !n.title ||
@@ -18,15 +19,9 @@ const newModel = (function () {
       !n.content ||
       n.content.length === 0
     ) {
-      return true;
+      return false;
     }
-    return false;
-  }
-  /* function getLength() {
-    return getNews().length;
-  }*/
-  function getNew(ID) {
-    return newsService.getNew(ID);
+    return true;
   }
   function sortNews(news, criterion) {
     news.sort((x, y) => {
@@ -130,7 +125,6 @@ const newModel = (function () {
     }
     if (!top) {
       top = 8;
-      console.log(top);
     }
     let out;
     newsService
@@ -164,7 +158,7 @@ const newModel = (function () {
           }
         }
         console.log(skip, top);
-        return out.slice(skip, top);
+        return out.slice(skip, skip + top);
       })
       .catch((reason) => {
         console.log(`Handle rejected promise, because: ${reason}.`);
@@ -184,7 +178,6 @@ const newModel = (function () {
     newsService.editNew(ID, n);
   }
   return {
-    getNew,
     getNews,
     editNew,
     removeNew,
@@ -198,10 +191,10 @@ const newModel = (function () {
 }());
 
 const newRenderer = (function () {
-  let ARTICLE_TEMPLATE;
+  let newTemplate;
   let ARTICLE_LIST_NODE;
   function init() {
-    ARTICLE_TEMPLATE = document.querySelector('#template-article-list-item');
+    newTemplate = document.querySelector('#template-new-list-item');
     ARTICLE_LIST_NODE = document.querySelector('.article-list');
   }
   function addZero(i) {
@@ -256,21 +249,15 @@ const newRenderer = (function () {
     return `${d.getHours()}:${addZero(d.getMinutes())} ${month}, ${d.getDate()}`;
   }
   function renderNew(n) {
-    const template = ARTICLE_TEMPLATE;
-    template.content.querySelector('.article-list-item').dataset.ID = n._id; //
-    template.content.querySelector('.article-list-item-title').textContent =
-      n.title;
-    template.content.querySelector('.article-list-item-summary').textContent =
-      n.summary;
-    template.content.querySelector('.article-list-item-author').textContent =
-      n.author;
-    template.content.querySelector('.article-list-item-content').textContent =
-      n.content;
-    template.content.querySelector('.article-list-item-img').src = n.img;
-    template.content.querySelector(
-      '.article-list-item-date',
-    ).textContent = formatDate(n.createdAt);
-    return template.content.querySelector('.article-list-item').cloneNode(true);
+    const t = newTemplate;
+    t.content.querySelector('.new-list-item').dataset.ID = n._id; //
+    t.content.querySelector('.new-list-item-title').textContent = n.title;
+    t.content.querySelector('.new-list-item-summary').textContent = n.summary;
+    t.content.querySelector('.new-list-item-author').textContent = n.author;
+    t.content.querySelector('.new-list-item-content').textContent = n.content;
+    t.content.querySelector('.new-list-item-img').src = n.img;
+    t.content.querySelector('.new-list-item-date').textContent = formatDate(n.createdAt);
+    return t.content.querySelector('.new-list-item').cloneNode(true);
   }
 
   function renderNews(news) {
@@ -286,7 +273,7 @@ const newRenderer = (function () {
       news = newsService.getNews();
     } */
     const newsNodes = renderNews(news);
-    console.log(news);
+    // console.log(news);
     newsNodes.forEach((node) => {
       ARTICLE_LIST_NODE.appendChild(node);
     });
@@ -308,17 +295,12 @@ const newRenderer = (function () {
     removeNewFromDom,
   };
 }());
-function renderNews(skip, top) {
-  // newRenderer.removeNewsFromDom();
-  // const news = newModel.getNews(skip, top);
-  // let out;
-  newsService.getNews().then((news) => {
+function renderNews(skip, limit) {
+  newsService.getNews(skip, limit).then((news) => {
     news.forEach((n) => {
       n.createdAt = new Date(n.createdAt);
     });
-    // out = news;
-    console.log(news);
-    newModel.sortNews(news);
+    // newModel.sortNews(news);
     newRenderer.insertNewsInDOM(news);
   });
 }
@@ -329,18 +311,26 @@ function startApp() {
     .getSize()
     .then((length) => {
       console.log(length);
-      const top = 8;
-      renderNews(0, top);
+      let limit;
+      if (document.documentElement.clientWidth /
+          document.documentElement.clientHeight >= 4 / 3
+      ) {
+        limit = 8;
+      } else {
+        limit = 20;
+      }
+      renderNews(0, limit);
       let tmp = 0;
       let d = 0;
+
       function onScroll() {
         if (document.querySelector('.large-container').scrollTop > tmp) {
           console.log(tmp);
           tmp += 200;
-          if (top + d < length) {
-            newRenderer.insertNewsInDOM(newModel.getNews(top + d, top + d + 4));
+          if (limit + d < length) {
+            renderNews(limit + d, 4);
+            console.log(limit + d, limit + d + 4);
             d += 4;
-            console.log(top + d, top + d + 4);
           }
         }
       }
