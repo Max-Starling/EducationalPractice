@@ -286,7 +286,7 @@ newRenderer, newsService, currentUser, renderNews */
     const img = modalContent.querySelector('.md-list-item-img');
     const i = target.querySelector('.new-list-item-img').src;
     console.log(i);
-    if (i === 'http://localhost:7777/') {
+    if (i === 'http://localhost:7777/' || i === 'http://localhost:7777/images/news/default_img.jpg') {
       console.log("q");
       img.style.display = 'none';
     } else {
