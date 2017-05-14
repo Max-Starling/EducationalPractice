@@ -1,0 +1,48 @@
+{
+    "_id": {
+        "$oid": "59147e25fecc8c0b1cdebbe6"
+    },
+    "__v": 0,
+    "username": "Daily",
+    "mention": "It's my opinion :)"
+}
+{
+    "_id": {
+        "$oid": "59147e25fecc8c0b1cdebbe7"
+    },
+    "__v": 0,
+    "username": "Tanya",
+    "mention": "I think, it's beautiful."
+}
+{
+    "_id": {
+        "$oid": "59147e25fecc8c0b1cdebbe8"
+    },
+    "__v": 0,
+    "username": "Tanya",
+    "mention": "It's my new mention: ..."
+}
+{
+    "_id": {
+        "$oid": "59147e25fecc8c0b1cdebbe9"
+    },
+    "__v": 0,
+    "username": "Morty",
+    "mention": "I'm Morty and i haven't my own opinion, sorry."
+}
+{
+    "_id": {
+        "$oid": "59147e25fecc8c0b1cdebbea"
+    },
+    "__v": 0,
+    "username": "MaxStarling",
+    "mention": "In my humble opinion, ... it.s perfect."
+}
+{
+    "_id": {
+        "$oid": "591481d3acd20015d893ec09"
+    },
+    "username": "danilyanich",
+    "mention": "First mention, saved in MongoDB.",
+    "__v": 0
+}

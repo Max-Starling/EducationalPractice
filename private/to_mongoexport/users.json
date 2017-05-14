@@ -1,0 +1,70 @@
+{
+    "_id": {
+        "$oid": "59147e25fecc8c0b1cdebbe2"
+    },
+    "__v": 0,
+    "username": "MaxStarling",
+    "password": "onthetopofthew",
+    "rank": "Administrator",
+    "img": "images/users/MaxStarling.jpg"
+}
+{
+    "_id": {
+        "$oid": "59147e25fecc8c0b1cdebbe3"
+    },
+    "__v": 0,
+    "username": "Tanya",
+    "password": "tata",
+    "rank": "Moderator",
+    "img": "images/users/Tanya.jpg"
+}
+{
+    "_id": {
+        "$oid": "59147e25fecc8c0b1cdebbe4"
+    },
+    "__v": 0,
+    "username": "danilyanich",
+    "password": "dankr",
+    "rank": "Moderator",
+    "img": "images/users/danilyanich.jpg"
+}
+{
+    "_id": {
+        "$oid": "59147e25fecc8c0b1cdebbe5"
+    },
+    "__v": 0,
+    "username": "Morty",
+    "password": "morty",
+    "rank": "User",
+    "img": "images/users/Morty.gif"
+}
+{
+    "_id": {
+        "$oid": "59176db163271b0fcc83775e"
+    },
+    "username": "Rick",
+    "password": "rick",
+    "rank": "User",
+    "img": "",
+    "__v": 0
+}
+{
+    "_id": {
+        "$oid": "59176eee89e6be1b305c76b5"
+    },
+    "username": "Morty",
+    "password": "mort",
+    "rank": "User",
+    "img": "",
+    "__v": 0
+}
+{
+    "_id": {
+        "$oid": "59176f0d89e6be1b305c76b6"
+    },
+    "username": "Vlad160",
+    "password": "vladislove",
+    "rank": "User",
+    "img": "",
+    "__v": 0
+}
