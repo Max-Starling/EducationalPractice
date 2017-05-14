@@ -56,10 +56,10 @@ const usersService = (function () {
     return new Promise((resolve, reject) => {
       xhr.open('PUT', `/users/${username}`);
       xhr.setRequestHeader('content-type', 'application/json');
+      xhr.send(JSON.stringify(user));
       xhr.onload = () =>
         (xhr.status === 200 ? resolve(xhr.responseText) : reject());
       xhr.onerror = () => reject(new Error('Error'));
-      xhr.send(JSON.stringify(user));
     });
   }
 
@@ -68,6 +68,7 @@ const usersService = (function () {
     return new Promise((resolve, reject) => {
       xhr.open('POST', '/postMention');
       xhr.setRequestHeader('content-type', 'application/json');
+      xhr.send(JSON.stringify(mention));
       xhr.onload = () =>
         (xhr.status === 200 ? resolve(xhr.responseText) : reject());
       xhr.onload = () =>
@@ -75,7 +76,6 @@ const usersService = (function () {
         ? resolve(JSON.parse(xhr.responseText))
         : reject('can not post mention.'));
       xhr.onerror = () => reject(new Error('Error'));
-      xhr.send(JSON.stringify(mention));
     });
   }
 
@@ -84,6 +84,7 @@ const usersService = (function () {
     return new Promise((resolve, reject) => {
       xhr.open('POST', '/login');
       xhr.setRequestHeader('content-type', 'application/json');
+      xhr.send(JSON.stringify(user));
       xhr.onload = () =>
         (xhr.status === 200
           ? resolve(JSON.parse(xhr.responseText))
@@ -91,7 +92,6 @@ const usersService = (function () {
       xhr.onerror = () => {
         reject(new Error('Error'));
       };
-      xhr.send(JSON.stringify(user));
     });
   }
 
@@ -99,6 +99,7 @@ const usersService = (function () {
   function logOut() {
     return new Promise((resolve, reject) => {
       xhr.open('GET', '/logOut');
+      xhr.send();
       xhr.onload = () =>
         (xhr.status === 200
           ? resolve()
@@ -106,7 +107,6 @@ const usersService = (function () {
       xhr.onerror = () => {
         reject(new Error('Error'));
       };
-      xhr.send();
     });
   }
   return {

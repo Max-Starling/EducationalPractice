@@ -100,7 +100,6 @@ app.get('/checkUser', (req, res) => {
 
 //  For getting news  //
 app.get('/news', (req, res) => {
-  console.log(req.query);
   news.find({}, {},
     {
       skip: Number(req.query.skip),
@@ -109,7 +108,6 @@ app.get('/news', (req, res) => {
     },
     (error, n) => (error ? res.sendStatus(500) : res.json(n)));
 });
-
 
 //  For getting new  //
 app.get('/news/:ID', (req, res) => {
@@ -121,27 +119,6 @@ app.get('/newsSize', (req, res) => {
   news.count({}, ((error, count) => (error ? res.sendStatus(500) : res.json(count))));
 });
 
-//  For getting ID //
-app.post('/getID/:n', (req, res) => {
-  console.log();
-  const n = {
-    title: req.body.title,
-    summary: req.body.summary,
-    createdAt: req.body.createdAt,
-    author: req.body.author,
-    content: req.body.content,
-    img: req.body.content,
-  };
-  console.log(n);
-  // news(n).save(error => (error ? res.sendStatus(500) : res.sendStatus(200)));
-  news.find({ n }, {},
-    {
-      sort: { $natural: -1 },
-    },
-    (error, newWithID) => (error ? res.sendStatus(500) : res.json(newWithID)));
-});
-
-
 //  For adding new  //
 app.post('/postNew', (req, res) => {
   const n = {
@@ -150,35 +127,13 @@ app.post('/postNew', (req, res) => {
     createdAt: req.body.createdAt,
     author: req.body.author,
     content: req.body.content,
-    img: req.body.content,
+    img: req.body.img,
   };
   const post = new news(n);
   post.save()
     .then(() => res.json(post))
     .catch(error => res.sendStatus(500));
 });
-  /* if (req.isAuthenticated()) {
-        const article = req.body;
-        article.createdAt = new Date();
-        console.log(article.author);
-        console.log(req.user.author);
-        if (article.author === req.user.author) {
-            const insert = new Articles(article);
-            insert.save()
-                .then(Articles.count())
-                .then((count) => {
-                    res.json({
-                        article: insert,
-                        size: count,
-                    });
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        }
-    }*/
-  // news(n).save(error => (error ? res.sendStatus(500) : res.sendStatus(200)));
-
 
 //  For registring new user  //
 app.post('/register', (req, res) => {
@@ -208,6 +163,7 @@ app.delete('/news/:ID', (req, res) => {
 
 //  For editing news  //
 app.put('/news/:ID', (req, res) => {
+  console.log(req.body);
   const paramsSet = {};
   if (req.body.img) {
     paramsSet.img = req.body.img;
@@ -277,6 +233,7 @@ app.get('/logout', (req, res) => {
   });
 });
 
+//  For getting current user  //
 app.get('/currentUser', (req, res) => {
   const pass = req.session.passport;
   if (pass) {

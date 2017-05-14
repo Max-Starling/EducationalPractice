@@ -34,23 +34,7 @@ const newsService = (function () {
     });
   }
 
-  //  Get ID  //
-  function getID(n) {
-    return new Promise((resolve, reject) => {
-      xhr.open('GET', `/getID/${n}`);
-      xhr.setRequestHeader('content-type', 'application/json');
-      xhr.send();
-      xhr.onload = () =>
-        (xhr.status === 200
-          ? resolve(JSON.parse(xhr.responseText))
-          : reject('can not find new by this params.'));
-      xhr.onerror = () => {
-        reject(new Error('Error'));
-      };
-    });
-  }
-
-    //  Get size  //
+  //  Get size  //
   function getSize() {
     return new Promise((resolve, reject) => {
       xhr.open('GET', '/newsSize');
@@ -87,14 +71,14 @@ const newsService = (function () {
     return new Promise((resolve, reject) => {
       xhr.open('PUT', `/news/${ID}`);
       xhr.setRequestHeader('content-type', 'application/json');
+      xhr.send(JSON.stringify(n));
       xhr.onload = () =>
         (xhr.status === 200
-          ? resolve(JSON.parse(xhr.responseText))
+          ? resolve()
           : reject('can not edit new'));
       xhr.onerror = function () {
         reject(new Error('Error'));
       };
-      xhr.send(JSON.parse(xhr.responseText));
     });
   }
 
@@ -103,6 +87,7 @@ const newsService = (function () {
     return new Promise((resolve, reject) => {
       xhr.open('DELETE', `/news/${ID}`);
       xhr.setRequestHeader('content-type', 'application/json');
+      xhr.send();
       xhr.onload = () =>
         (xhr.status === 200
           ? resolve(JSON.parse(xhr.responseText))
@@ -110,7 +95,6 @@ const newsService = (function () {
       xhr.onerror = function () {
         reject(new Error('Error'));
       };
-      xhr.send();
     });
   }
   return {
@@ -118,7 +102,6 @@ const newsService = (function () {
     editNew,
     getNews,
     getNew,
-    getID,
     getSize,
     removeNew,
   };

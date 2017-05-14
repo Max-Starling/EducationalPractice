@@ -315,8 +315,7 @@ function startApp() {
       usersModal.switchMode(user);
     }
   });
-  newsService
-    .getSize()
+  newsService.getSize()
     .then((length) => {
       console.log(length);
       let limit;
@@ -349,7 +348,6 @@ function startApp() {
       };
     })
     .catch(reason =>
-      console.log(`Handle rejected promise, because: ${reason}.`),
-    );
+      console.log(`Handle rejected promise, because: ${reason}.`));
 }
 document.addEventListener('DOMContentLoaded', startApp);

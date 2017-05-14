@@ -401,8 +401,12 @@ input{
 	width: 2vw;
 	margin-bottom: 20px;
 	margin-left: 44vw;
+	opacity: 0.8;
 	visibility: hidden;
 	cursor: cell;
+}
+.add-new-button:hover{
+	opacity: 1;
 }
 .content{
 	display: none;
@@ -437,8 +441,14 @@ input{
 .edit-new-button{
 	visibility: hidden;
 }
+.edit-new-button:hover{
+	opacity: 0.8;
+}
 .delete-new-button{
 	visibility: hidden;
+}
+.delete-new-button:hover{
+	opacity: 0.8;
 }
 .logout{
 	display: none;
