@@ -69,26 +69,12 @@ newRenderer, newsService, currentUser, renderNews */
       n.content = inputContent.value.toString();
       // newModel.addNew(n);
       if (newModel.validateNew(n)) {
-        newsService.addNew(n).then((ne) => {
-          console.log(ne);
-          newRenderer.insertNewInDOM(newRenderer.renderNew(n));
+        newsService.addNew(n).then((post) => {
+          console.log('post', post);
+          post.createdAt = new Date(post.createdAt);
+          newRenderer.insertNewInDOM(newRenderer.renderNew(post));
         });
       }
-      /* newsService.getID(n).then((newWithID) => {
-        console.log(newWithID);
-      }); */
-      /* newsService
-        .getNew(newID)
-        .then((ne) => {
-          console.log(n);
-          console.log(ne);
-          newsService.removeNew(newID);
-          newRenderer.removeNewFromDom(n);
-        })
-        .catch((reason) => {
-          console.log(`Handle rejected promise, because: ${reason}.`);
-        });
-*/
       event.stopImmediatePropagation();
       if (!n.title) {
         inputTitle.style.color = '#8b1500';
@@ -228,8 +214,7 @@ newRenderer, newsService, currentUser, renderNews */
       buttonSure.style.display = 'none';
       buttonYes.onclick = function (event) {
         console.log(newID);
-        newsService
-          .getNew(newID)
+        newsService.getNew(newID)
           .then((ne) => {
             console.log(n);
             console.log(ne);
@@ -240,17 +225,6 @@ newRenderer, newsService, currentUser, renderNews */
           .catch((reason) => {
             console.log(`Handle rejected promise, because: ${reason}.`);
           });
-
-        // console.log(n);
-        // newModel.removeNew(newID);
-        // newsService.removeNew(newID);
-        // newRenderer.removeNewFromDom(n);
-        // newsService.removeNew(newID);
-        /* if (newModel.getLength() >= 7) {
-          newRenderer.insertNewInDOM(
-            newRenderer.renderNew(newModel.getNews(8, 8)),
-          );
-        } */
         removeModalHandler();
         classie.remove(parentModal, parentModalShow);
         event.stopImmediatePropagation();

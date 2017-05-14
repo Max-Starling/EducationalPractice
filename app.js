@@ -142,7 +142,7 @@ app.post('/getID/:n', (req, res) => {
 });
 
 
-//  For adding news  //
+//  For adding new  //
 app.post('/postNew', (req, res) => {
   const n = {
     title: req.body.title,
@@ -152,8 +152,33 @@ app.post('/postNew', (req, res) => {
     content: req.body.content,
     img: req.body.content,
   };
-  news(n).save(error => (error ? res.sendStatus(500) : res.sendStatus(200)));
+  const post = new news(n);
+  post.save()
+    .then(() => res.json(post))
+    .catch(error => res.sendStatus(500));
 });
+  /* if (req.isAuthenticated()) {
+        const article = req.body;
+        article.createdAt = new Date();
+        console.log(article.author);
+        console.log(req.user.author);
+        if (article.author === req.user.author) {
+            const insert = new Articles(article);
+            insert.save()
+                .then(Articles.count())
+                .then((count) => {
+                    res.json({
+                        article: insert,
+                        size: count,
+                    });
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+    }*/
+  // news(n).save(error => (error ? res.sendStatus(500) : res.sendStatus(200)));
+
 
 //  For registring new user  //
 app.post('/register', (req, res) => {
@@ -223,10 +248,6 @@ passport.use(
   new LocalStrategy(
     { passReqToCallback: true },
     (req, username, password, done) => {
-      console.log();
-      console.log(`username: ${username}`);
-      console.log(`password: ${password}`);
-      console.log();
       users.findOne({ username }, (error, user) => {
         if (error) {
           return done(null, false, { message: error });
@@ -242,8 +263,6 @@ passport.use(
           });
         }
         console.log('You was successfully authorized.');
-        console.log('Data in database:');
-        console.log(user);
         return done(null, user, { message: 'You was successfully authorized.' });
       });
     }));

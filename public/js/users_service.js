@@ -1,6 +1,7 @@
 /* global XMLHttpRequest */
 const usersService = (function () {
   const xhr = new XMLHttpRequest();
+
   //  Check user  //
   function checkUser(username, password) {
     if (username && password) {
@@ -26,6 +27,7 @@ const usersService = (function () {
       xhr.onerror = () => reject(new Error('Error'));
     });
   }
+
   //  Register new  user //
   function registerUser(username) {
     return new Promise((resolve, reject) => {
@@ -37,6 +39,7 @@ const usersService = (function () {
       xhr.onerror = () => reject(new Error('Error'));
     });
   }
+
   //  Get current user  //
   function getCurrentUser() {
     return new Promise((resolve, reject) => {
@@ -47,6 +50,7 @@ const usersService = (function () {
       xhr.onerror = () => reject(new Error('Error'));
     });
   }
+
   //  Edit profile  //
   function editProfile(username, user) {
     return new Promise((resolve, reject) => {
@@ -58,6 +62,7 @@ const usersService = (function () {
       xhr.send(JSON.stringify(user));
     });
   }
+
   //  Post mention  //
   function addMention(mention) {
     return new Promise((resolve, reject) => {
@@ -65,10 +70,16 @@ const usersService = (function () {
       xhr.setRequestHeader('content-type', 'application/json');
       xhr.onload = () =>
         (xhr.status === 200 ? resolve(xhr.responseText) : reject());
+      xhr.onload = () =>
+       (xhr.status === 200
+        ? resolve(JSON.parse(xhr.responseText))
+        : reject('can not post mention.'));
       xhr.onerror = () => reject(new Error('Error'));
       xhr.send(JSON.stringify(mention));
     });
   }
+
+  //  Log in  //
   function logIn(user) {
     return new Promise((resolve, reject) => {
       xhr.open('POST', '/login');
@@ -83,10 +94,15 @@ const usersService = (function () {
       xhr.send(JSON.stringify(user));
     });
   }
+
+  //  Log out  //
   function logOut() {
     return new Promise((resolve, reject) => {
       xhr.open('GET', '/logOut');
-      xhr.onload = () => (xhr.status === 200 ? resolve() : reject());
+      xhr.onload = () =>
+        (xhr.status === 200
+          ? resolve()
+          : reject('can not log out'));
       xhr.onerror = () => {
         reject(new Error('Error'));
       };

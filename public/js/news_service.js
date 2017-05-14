@@ -1,25 +1,23 @@
 /* global XMLHttpRequest */
 const newsService = (function () {
   const xhr = new XMLHttpRequest();
+
   //  Get news  //
-  function getNews(skip, limit) { /* filterConfig*/
+  function getNews(skip, limit) { /* filter*/
     return new Promise((resolve, reject) => {
-      // xhr.open('GET', '/news');
-      xhr.open('GET', `/news?skip=${skip}&limit=${limit}`/* &filterConfig=${JSON.stringify(filterConfig)}*/);
+      xhr.open('GET', `/news?skip=${skip}&limit=${limit}`/* &filter=${JSON.stringify(filter)}*/);
       xhr.setRequestHeader('content-type', 'application/json');
       xhr.send();
-      xhr.onload = () => {
-        if (xhr.status === 200) {
-          resolve(JSON.parse(xhr.responseText));
-        } else if (xhr.status !== 200) {
-          reject('can not get news.');
-        }
-      };
+      xhr.onload = () =>
+        (xhr.status === 200
+          ? resolve(JSON.parse(xhr.responseText))
+          : reject('can not get news'));
       xhr.onerror = () => {
         reject(new Error('Error'));
       };
     });
   }
+
   //  Get new  //
   function getNew(ID) {
     return new Promise((resolve, reject) => {
@@ -35,6 +33,7 @@ const newsService = (function () {
       };
     });
   }
+
   //  Get ID  //
   function getID(n) {
     return new Promise((resolve, reject) => {
@@ -50,43 +49,36 @@ const newsService = (function () {
       };
     });
   }
+
     //  Get size  //
   function getSize() {
     return new Promise((resolve, reject) => {
       xhr.open('GET', '/newsSize');
       xhr.setRequestHeader('content-type', 'application/json');
       xhr.send();
-      /* xhr.onload = () =>
+      xhr.onload = () =>
         (xhr.status === 200
           ? resolve(JSON.parse(xhr.responseText))
-          : reject('can count news size.'));*/
-      xhr.onload = () => {
-        console.log(xhr.responseText);
-        if (xhr.status === 200) {
-          resolve(JSON.parse(xhr.responseText));
-        } else if (xhr.status !== 200) {
-          reject('can count news size.');
-        }
-      };
+          : reject('can not count news size.'));
       xhr.onerror = () => {
         reject(new Error('Error'));
       };
     });
   }
+
   //  Add new  //
   function addNew(n) {
     return new Promise((resolve, reject) => {
       xhr.open('POST', '/postNew');
       xhr.setRequestHeader('content-type', 'application/json');
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          resolve(xhr.responseText);
-        }
-      };
+      xhr.send(JSON.stringify(n));
+      xhr.onload = () =>
+        (xhr.status === 200
+          ? resolve(JSON.parse(xhr.responseText))
+          : reject('can not add new'));
       xhr.onerror = function () {
         reject(new Error('Error'));
       };
-      xhr.send(JSON.stringify(n));
     });
   }
 
@@ -95,27 +87,26 @@ const newsService = (function () {
     return new Promise((resolve, reject) => {
       xhr.open('PUT', `/news/${ID}`);
       xhr.setRequestHeader('content-type', 'application/json');
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          resolve(JSON.parse(xhr.responseText));
-        }
-      };
+      xhr.onload = () =>
+        (xhr.status === 200
+          ? resolve(JSON.parse(xhr.responseText))
+          : reject('can not edit new'));
       xhr.onerror = function () {
         reject(new Error('Error'));
       };
       xhr.send(JSON.parse(xhr.responseText));
     });
   }
+
   //  Remove new  //
   function removeNew(ID) {
     return new Promise((resolve, reject) => {
       xhr.open('DELETE', `/news/${ID}`);
       xhr.setRequestHeader('content-type', 'application/json');
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          resolve();
-        }
-      };
+      xhr.onload = () =>
+        (xhr.status === 200
+          ? resolve(JSON.parse(xhr.responseText))
+          : reject('can not remove new'));
       xhr.onerror = function () {
         reject(new Error('Error'));
       };
