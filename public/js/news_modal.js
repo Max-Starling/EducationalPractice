@@ -291,17 +291,14 @@ newRenderer, newsService, currentUser, renderNews */
       img.style.display = 'inline-block';
       img.src = i;
     }
-    const modal = document.querySelector(
-      `#${target.getAttribute('data-modal')}`,
-    );
+    const modal = document.querySelector(`#${target.getAttribute('data-modal')}`);
     console.log('target', target);
     const edit = modal.querySelector('.md-trigger9');
     edit.addEventListener('click', editNew(modal, 'md-show', ID, target));
 
     const close = modal.querySelector('.md-trigger7');
     close.addEventListener('click',
-      notice('Are you sure want to delete this?', modal, 'md-show', ID, target),
-    );
+      notice('Are you sure want to delete this?', modal, 'md-show', ID, target));
     function removeModalHandler() {
       classie.remove(modal, 'md-show');
     }

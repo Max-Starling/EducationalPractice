@@ -1,4 +1,5 @@
-/* global document, event, window, classie, newModel, newRenderer, newsModal */
+/* global document, event, window, classie,
+newsService, newModel, newRenderer, newsModal */
 function showSearchResult(criterion, value) {
   const news = newModel.getNews(0, newModel.getLength(), criterion, value);
   newRenderer.insertNewsInDOM(news);
@@ -22,41 +23,37 @@ criterionSearchArray.push({
   criterion: 'date',
 });
 
-// newsModal.notice("qq", "","","");
 function search(state, searchByCriterion, criterionSearch) {
-  // console.log(state);
   const form = document.forms.searchform;
   if (!state) {
     form.onsubmit = function (event) {
       event.preventDefault();
-      // //console.log("qq");
       form.searchin.value = '';
       form.searchin.placeholder = 'please select a criterion';
-      // return;
-      // newsModal.notice("qq");
     };
   } else {
     form.onsubmit = function (event) {
       event.preventDefault();
       const searchIn = document.forms.searchform.searchin;
-      // var authorsArray = newModel.getAuthors();
-      // var news;
       if (!searchIn.value) {
         newRenderer.removeNewsFromDom();
-        newRenderer.insertNewsInDOM(newModel.getNews());
+        newsService.getNews()
+          .then((n) => {
+            n.forEach((i) => {
+              i.createdAt = new Date(i.createdAt);
+            });
+            newRenderer.insertNewsInDOM(n);
+          });
       } else {
         let occurrenceArray;
         if (criterionSearch) {
-          // console.log(searchByCriterion, criterionSearch);
           occurrenceArray = newModel.searchNews(
             searchIn.value,
-            newModel.getNews(),
+            newsService.getNews(),
             criterionSearch,
           );
-          // console.log(occurrenceArray);
           newRenderer.removeNewsFromDom();
           occurrenceArray.forEach((el) => {
-            // console.log(criterionSearch, el);
             showSearchResult(criterionSearch, el);
           });
         } else {
@@ -65,7 +62,6 @@ function search(state, searchByCriterion, criterionSearch) {
         }
       }
       searchIn.value = '';
-      // return;
     };
   }
 }

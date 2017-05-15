@@ -10,16 +10,16 @@ const usersService = (function () {
         xhr.setRequestHeader('content-type', 'application/json');
         xhr.send();
         xhr.onload = () =>
-          (xhr.status === 200 ? resolve(xhr.responseText) : reject());
+          (xhr.status === 200 ? resolve(JSON.parse(xhr.responseText)) : reject());
         xhr.onerror = () => reject(new Error('Error'));
       });
-    } else if (username) {
+    } else if (username && !password) {
       return new Promise((resolve, reject) => {
         xhr.open('GET', `/checkUser?username=${username}`);
         xhr.setRequestHeader('content-type', 'application/json');
         xhr.send();
         xhr.onload = () =>
-          (xhr.status === 200 ? resolve(xhr.responseText) : reject());
+          (xhr.status === 200 ? resolve(JSON.parse(xhr.responseText)) : reject());
         xhr.onerror = () => reject(new Error('Error'));
       });
     }
@@ -51,12 +51,36 @@ const usersService = (function () {
     });
   }
 
+  //  Get current user  //
+  function checkPassword(inputPassword) {
+    return new Promise((resolve, reject) => {
+      xhr.open('GET', `/checkPassword?inputPassword=${inputPassword}`);
+      xhr.setRequestHeader('content-type', 'application/json');
+      xhr.send(JSON.stringify(inputPassword));
+      xhr.onload = () =>
+        (xhr.status === 200 ? resolve(JSON.parse(xhr.responseText)) : reject());
+      xhr.onerror = () => reject(new Error('Error'));
+    });
+  }
+
   //  Edit profile  //
   function editProfile(username, user) {
     return new Promise((resolve, reject) => {
       xhr.open('PUT', `/users/${username}`);
       xhr.setRequestHeader('content-type', 'application/json');
       xhr.send(JSON.stringify(user));
+      xhr.onload = () =>
+        (xhr.status === 200 ? resolve(xhr.responseText) : reject());
+      xhr.onerror = () => reject(new Error('Error'));
+    });
+  }
+
+  //  Change username  //
+  function changeUsername(username, newUsername) {
+    return new Promise((resolve, reject) => {
+      xhr.open('POST', '/changeUsername');
+      xhr.setRequestHeader('content-type', 'application/json');
+      xhr.send(JSON.stringify(newUsername));
       xhr.onload = () =>
         (xhr.status === 200 ? resolve(xhr.responseText) : reject());
       xhr.onerror = () => reject(new Error('Error'));
@@ -116,6 +140,8 @@ const usersService = (function () {
     editProfile,
     addMention,
     getCurrentUser,
+    changeUsername,
     checkUser,
+    checkPassword,
   };
 }());

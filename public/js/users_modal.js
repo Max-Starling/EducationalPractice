@@ -4,50 +4,75 @@
    * SWITCH MODE
    */
   function switchMode(user) {
-    currentUser.username = user.username;
-    currentUser.password = user.password;
-
-    //  Setting user info.  //
-    const userName = document.querySelector('.user-info-name');
-    userName.textContent = user.username;
-    const userRank = document.querySelector('.user-info-rank');
-    if (user.rank === 'Administrator') {
-      userRank.textContent = user.rank;
-      userRank.style.color = '#8b1500';
-      currentUser.rank = 'Administrator';
+    if (user) {
+      currentUser.username = user.username;
+      currentUser.password = user.password;
+      //  Setting user info.  //
+      const userName = document.querySelector('.user-info-name');
+      userName.textContent = user.username;
+      const userRank = document.querySelector('.user-info-rank');
+      if (user.rank === 'Administrator') {
+        userRank.textContent = user.rank;
+        userRank.style.color = '#8b1500';
+        currentUser.rank = 'Administrator';
+      }
+      if (user.rank === 'Moderator') {
+        userRank.textContent = user.rank;
+        userRank.style.color = '#2075a4';
+        currentUser.rank = 'Moderator';
+      }
+      if (user.rank === 'User') {
+        userRank.textContent = user.rank;
+        userRank.style.color = '#505C8B';
+        currentUser.rank = 'User';
+      }
+      if (user.img) {
+        document.querySelector('.user-info-photo').src = user.img;
+        currentUser.img = user.img;
+      }
+      //  Displaying buttons to work with news.  //
+      const addButton = document.querySelector('.add-new-button');
+      addButton.style.visibility = 'inherit';
+      const editButton = document.querySelector('.edit-new-button');
+      editButton.style.visibility = 'inherit';
+      const deleteButton = document.querySelector('.delete-new-button');
+      deleteButton.style.visibility = 'inherit';
+      //  Changing menu items.  //
+      const login = document.querySelector('.login');
+      login.style.display = 'none';
+      const logout = document.querySelector('.logout');
+      logout.style.display = 'inherit';
+      const profile = document.querySelector('.profile');
+      profile.style.display = 'inherit';
+      const register = document.querySelector('.register');
+      register.style.display = 'none';
+    } else {
+      const userName = document.querySelector('.user-info-name');
+      userName.textContent = 'Unknown';
+      currentUser.username = 'Unknown';
+      //  Rank  //
+      const userRank = document.querySelector('.user-info-rank');
+      userRank.textContent = 'Guest';
+      userRank.style.color = '#525659';
+      currentUser.rank = 'Guest';
+      //  Image  //
+      document.querySelector('.user-info-photo').src =
+        'images/users/guest_photo.jpg';
+      currentUser.img = 'images/users/guest_photo.jpg';
+      //  Hiding buttons to work with news.  //
+      const addButton = document.querySelector('.add-new-button');
+      addButton.style.visibility = 'hidden';
+      const editButton = document.querySelector('.edit-new-button');
+      editButton.style.visibility = 'hidden';
+      const deleteButton = document.querySelector('.delete-new-button');
+      deleteButton.style.visibility = 'hidden';
+      //  Changing menu items.  //
+      document.querySelector('.logout').style.display = 'none';
+      document.querySelector('.login').style.display = 'inherit';
+      document.querySelector('.register').style.display = 'inherit';
+      document.querySelector('.profile').style.display = 'none';
     }
-    if (user.rank === 'Moderator') {
-      userRank.textContent = user.rank;
-      userRank.style.color = '#2075a4';
-      currentUser.rank = 'Moderator';
-    }
-    if (user.rank === 'User') {
-      userRank.textContent = user.rank;
-      userRank.style.color = '#505C8B';
-      currentUser.rank = 'User';
-    }
-    if (user.img) {
-      document.querySelector('.user-info-photo').src = user.img;
-      currentUser.img = user.img;
-    }
-    //  Displaying buttons to work with news.  //
-    const addButton = document.querySelector('.add-new-button');
-    addButton.style.visibility = 'inherit';
-    const editButton = document.querySelector('.edit-new-button');
-    editButton.style.visibility = 'inherit';
-    const deleteButton = document.querySelector('.delete-new-button');
-    deleteButton.style.visibility = 'inherit';
-    //  Changing menu items.  //
-    const login = document.querySelector('.login');
-    login.style.display = 'none';
-    const logout = document.querySelector('.logout');
-    logout.style.display = 'inherit';
-    const profile = document.querySelector('.profile');
-    profile.style.display = 'inherit';
-    const register = document.querySelector('.register');
-    register.style.display = 'none';
   }
-
   /**
    * AUTHORIZATION
    */
@@ -109,11 +134,14 @@
         inputPassword.style.color = '#8b1500';
       }
 
-      usersService
-        .logIn({ username: uname, password: upass })
+      usersService.logIn({ username: uname, password: upass })
         .then((user) => {
           //  Switch mode.  //
           switchMode(user);
+          const notice = document.querySelector('.md-trigger7');
+          notice.addEventListener('click', newsModal.notice('Welcome back!'));
+          notice.click();
+          notice.removeEventListener('click', {});
           //  Zeroing values in the form.  //
           inputLogin.value = '';
           inputPassword.value = '';
@@ -123,8 +151,11 @@
         })
         .catch((reason) => {
           console.log(`Handle rejected promise, because: ${reason}.`);
+          const notice = document.querySelector('.md-trigger7');
+          notice.addEventListener('click', newsModal.notice('Wrong username or password.'));
+          notice.click();
+          notice.removeEventListener('click', {});
           ev.stopPropagation();
-          removeModalHandler();
         });
     });
   }
@@ -180,7 +211,7 @@
       //  Getting values from the form.  //
       const uName = inputLogin.value;
       const uPass = inputPassword.value;
-      const uPassAgain = inputPassword.value;
+      const uPassAgain = inputPasswordAgain.value;
       //  Checking values for correctness.  //
       let correctLogin = false;
       if (uName.length > 0) {
@@ -204,28 +235,46 @@
       }
       //  Checking if user is alredy exist  //
       if (correctLogin && correctPasswordAgain) {
-        usersService.checkUser(uName).then((state) => {
-          if (state) {
-            usersService.registerUser({
-              username: uName,
-              password: inputPassword.value,
-              img: '',
-              rank: 'User',
-            });
+        usersService.checkUser(uName)
+          .then((occurrences) => {
+            console.log(occurrences.length);
+            if (!occurrences.length) {
+              usersService.registerUser({
+                username: uName,
+                password: inputPassword.value,
+                img: '',
+                rank: 'User',
+              });
+              const notice = document.querySelector('.md-trigger7');
+              notice.addEventListener('click', newsModal.notice('You was successfully registred on this site!'));
+              notice.click();
+              notice.removeEventListener('click', {});
+              removeModalHandler();
+            } else {
+              const notice = document.querySelector('.md-trigger7');
+              notice.addEventListener('click', newsModal.notice('User with this username is already exist.'));
+              notice.click();
+              notice.removeEventListener('click', {});
+            }
             //  Zeroing values in the form.  //
             inputLogin.value = '';
             inputPassword.value = '';
             inputPasswordAgain.value = '';
-          }
-          //  Closing modal window.  //
-          ev.stopPropagation();
-          removeModalHandler();
-        })
-        .catch((reason) => {
-          console.log(`Handle rejected promise, because: ${reason}.`);
-          ev.stopPropagation();
-          removeModalHandler();
-        });
+            //  Closing modal window.  //
+            ev.stopPropagation();
+          })
+          .catch((reason) => {
+            console.log(`Handle rejected promise, because: ${reason}.`);
+            ev.stopPropagation();
+            removeModalHandler();
+          });
+      } else {
+        const notice = document.querySelector('.md-trigger7');
+        notice.addEventListener('click', newsModal.notice('Please, enter the same password twice.'));
+        notice.click();
+        notice.removeEventListener('click', {});
+        inputPassword.value = '';
+        inputPasswordAgain.value = '';
       }
     });
   }
@@ -241,25 +290,25 @@
       event.preventDefault();
     };
     //  Image  //
-    const changeURL = form.querySelectorAll('.profile-input')[0];
-    changeURL.placeholder = 'URL to new picture';
-    changeURL.className = 'profile-input form-style';
-    changeURL.style.color = '#aaaaaa';
+    const inputURL = form.querySelectorAll('.profile-input')[0];
+    inputURL.placeholder = 'URL to new picture';
+    inputURL.className = 'profile-input form-style';
+    inputURL.style.color = '#aaaaaa';
     //  Login  //
-    const changeLogin = form.querySelectorAll('.profile-input')[1];
-    changeLogin.placeholder = '@NewLogin';
-    changeLogin.className = 'profile-input form-style';
-    changeLogin.style.marginTop = '1vw';
-    changeLogin.maxLength = '16';
-    changeLogin.style.color = '#aaaaaa';
+    const inputLogin = form.querySelectorAll('.profile-input')[1];
+    inputLogin.placeholder = '@NewLogin';
+    inputLogin.className = 'profile-input form-style';
+    inputLogin.style.marginTop = '1vw';
+    inputLogin.maxLength = '16';
+    inputLogin.style.color = '#aaaaaa';
     //  Password  //
-    const changePassword = form.querySelectorAll('.profile-input')[2];
-    changePassword.placeholder = 'yourpassword';
-    changePassword.className = 'profile-input form-style';
-    changePassword.style.marginTop = '1vw';
-    changePassword.type = 'password';
-    changePassword.maxLength = '16';
-    changePassword.style.color = '#aaaaaa';
+    const inputPassword = form.querySelectorAll('.profile-input')[2];
+    inputPassword.placeholder = 'yourpassword';
+    inputPassword.className = 'profile-input form-style';
+    inputPassword.style.marginTop = '1vw';
+    inputPassword.type = 'password';
+    inputPassword.maxLength = '16';
+    inputPassword.style.color = '#aaaaaa';
 
     const el = document.querySelector('.md-trigger5');
     const modal = document.querySelector(`#${el.getAttribute('data-modal')}`);
@@ -274,37 +323,77 @@
     const close = modal.querySelector('.md-close');
     close.addEventListener('click', (ev) => {
       ev.stopPropagation();
-
-      const upass = changePassword.value.toString();
-      if (upass === currentUser.password) {
-        const uname = changeLogin.value.toString();
-        const username = document.querySelector('.user-info-name');
-        //  Image  //
-        const url = changeURL.value;
-        const userphoto = document.querySelector('.user-info-photo');
-        if (url) {
-          userphoto.src = url;
-          currentUser.img = url;
-          usersService.editProfile(currentUser.username, currentUser);
-        }
-        //  Name  //
-        // console.log(usersService.checkUser(uname));
-        if (uname && uname.length >= 4 && !usersService.checkUser(uname)) {
-          username.textContent = uname;
-          const tmp = currentUser.username;
-          currentUser.username = uname;
-          usersService.editProfile(tmp, currentUser);
-        }
-      } else {
-        console.log(currentUser.password);
-        newsModal.notice('Wrong password');
-      }
-
-      changeURL.value = '';
-      changeLogin.value = '';
-      changePassword.value = '';
+      const password = inputPassword.value.toString();
+      console.log(password);
+      usersService.checkPassword(password)
+        .then((state) => {
+          console.log(state);
+          if (state) {
+            const uname = inputLogin.value.toString();
+            console.log(inputLogin.value, inputLogin, inputLogin.value.toString());
+            const username = document.querySelector('.user-info-name');
+            //  Image  //
+            const image = inputURL.value;
+            const userphoto = document.querySelector('.user-info-photo');
+            if (image) {
+              usersService.editProfile(currentUser.username, currentUser)
+                .then(() => {
+                  userphoto.src = image;
+                  currentUser.img = image;
+                });
+            }
+            //  Name  //
+            if (uname && uname.length >= 4) {
+              console.log(uname);
+              usersService.checkUser(uname)
+                .then((occurrences) => {
+                  console.log(occurrences);
+                  if (!occurrences.length) {
+                    console.log('yes');
+                    console.log(currentUser.username, uname);
+                    usersService.changeUsername(currentUser.username, uname)
+                      .then(() => {
+                        username.textContent = uname;
+                        currentUser.username = uname;
+                        const notice = document.querySelector('.md-trigger7');
+                        notice.addEventListener('click', newsModal.notice('Username was successfully changed.'));
+                        notice.click();
+                        notice.removeEventListener('click', {});
+                      })
+                      .catch((reason) => {
+                        console.log(`Handle rejected promise, because: ${reason}.`);
+                        ev.stopPropagation();
+                        removeModalHandler();
+                      });
+                  } else {
+                    const notice = document.querySelector('.md-trigger7');
+                    notice.addEventListener('click', newsModal.notice('User with this username is already exist.'));
+                    notice.click();
+                    notice.removeEventListener('click', {});
+                    inputLogin.value = '';
+                    inputPassword.value = '';
+                  }
+                })
+                .catch((reason) => {
+                  console.log(`Handle rejected promise, because: ${reason}.`);
+                  ev.stopPropagation();
+                  removeModalHandler();
+                });
+            }
+            inputURL.value = '';
+            inputLogin.value = '';
+            inputPassword.value = '';
+            ev.stopImmediatePropagation();
+            removeModalHandler();
+          } else {
+            const notice = document.querySelector('.md-trigger7');
+            notice.addEventListener('click', newsModal.notice('Wrong password'));
+            notice.click();
+            notice.removeEventListener('click', {});
+            inputPassword.value = '';
+          }
+        });
       ev.stopImmediatePropagation();
-      removeModalHandler();
     });
   }
 
@@ -334,7 +423,7 @@
     const close = modal.querySelector('.md-close');
     close.addEventListener('click', (event) => {
       //  Saturation effect from 0.5 to 1.5 with slider  //
-      const value = slider.value / 100 + 0.5;
+      const value = (slider.value / 100) + 0.5;
       const wrapper = document.getElementsByClassName('wrapper')[0];
       wrapper.style.filter = `saturate(${value})`;
       event.stopPropagation();
@@ -388,34 +477,9 @@
    */
   function exit() {
     //  Username  //
-    usersService
-      .logOut()
+    usersService.logOut()
       .then(() => {
-        const userName = document.querySelector('.user-info-name');
-        userName.textContent = 'Unknown';
-        currentUser.username = 'Unknown';
-        //  Rank  //
-        const userRank = document.querySelector('.user-info-rank');
-        userRank.textContent = 'Guest';
-        userRank.style.color = '#525659';
-        currentUser.rank = 'Guest';
-        //  Image  //
-        document.querySelector('.user-info-photo').src =
-          'images/users/guest_photo.jpg';
-        currentUser.img = 'images/users/guest_photo.jpg';
-        //  Hiding buttons to work with news.  //
-        const addButton = document.querySelector('.add-new-button');
-        addButton.style.visibility = 'hidden';
-        const editButton = document.querySelector('.edit-new-button');
-        editButton.style.visibility = 'hidden';
-        const deleteButton = document.querySelector('.delete-new-button');
-        deleteButton.style.visibility = 'hidden';
-        //  Changing menu items.  //
-        document.querySelector('.logout').style.display = 'none';
-        document.querySelector('.login').style.display = 'inherit';
-        document.querySelector('.register').style.display = 'inherit';
-        document.querySelector('.profile').style.display = 'none';
-
+        switchMode();
         event.stopPropagation();
       })
       .catch((reason) => {

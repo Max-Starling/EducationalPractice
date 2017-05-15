@@ -18,6 +18,22 @@ const newsService = (function () {
     });
   }
 
+  //  Get news  //
+  function sortNews(skip, limit, criterion) { /* filter*/
+    return new Promise((resolve, reject) => {
+      xhr.open('GET', `/news?skip=${skip}&limit=${limit}&critetion=${criterion}`);
+      xhr.setRequestHeader('content-type', 'application/json');
+      xhr.send();
+      xhr.onload = () =>
+        (xhr.status === 200
+          ? resolve(JSON.parse(xhr.responseText))
+          : reject('can not get news'));
+      xhr.onerror = () => {
+        reject(new Error('Error'));
+      };
+    });
+  }
+
   //  Get new  //
   function getNew(ID) {
     return new Promise((resolve, reject) => {
@@ -103,6 +119,7 @@ const newsService = (function () {
     getNews,
     getNew,
     getSize,
+    sortNews,
     removeNew,
   };
 }());

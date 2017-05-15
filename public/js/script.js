@@ -127,14 +127,12 @@ const newModel = (function () {
       top = 8;
     }
     let out;
-    newsService
-      .getNews()
+    newsService.getNews()
       .then((news) => {
         news.forEach((n) => {
           n.createdAt = new Date(n.createdAt);
         });
         out = news;
-        console.log(news);
         sortNews(out);
         if (criterion && value) {
           //  Title  //
@@ -192,10 +190,10 @@ const newModel = (function () {
 
 const newRenderer = (function () {
   let newTemplate;
-  let ARTICLE_LIST_NODE;
+  let newsList;
   function init() {
     newTemplate = document.querySelector('#template-new-list-item');
-    ARTICLE_LIST_NODE = document.querySelector('.article-list');
+    newsList = document.querySelector('.article-list');
   }
   function addZero(i) {
     if (i < 10) {
@@ -267,8 +265,8 @@ const newRenderer = (function () {
     return news.map(n => renderNew(n));
   }
   function insertNewInDOM(n) {
-    // ARTICLE_LIST_NODE.appendChild(n);
-    ARTICLE_LIST_NODE.insertBefore(n, ARTICLE_LIST_NODE.firstChild);
+    // newsList.appendChild(n);
+    newsList.insertBefore(n, newsList.firstChild);
   }
   function insertNewsInDOM(news) {
     /* if (!news) {
@@ -277,14 +275,14 @@ const newRenderer = (function () {
     const newsNodes = renderNews(news);
     // console.log(news);
     newsNodes.forEach((node) => {
-      ARTICLE_LIST_NODE.appendChild(node);
+      newsList.appendChild(node);
     });
   }
   function removeNewsFromDom() {
-    ARTICLE_LIST_NODE.innerHTML = '';
+    newsList.innerHTML = '';
   }
   function removeNewFromDom(node) {
-    ARTICLE_LIST_NODE.removeChild(node);
+    newsList.removeChild(node);
   }
 
   return {
@@ -298,23 +296,25 @@ const newRenderer = (function () {
   };
 }());
 function renderNews(skip, limit) {
-  newsService.getNews(skip, limit).then((news) => {
-    news.forEach((n) => {
-      n.createdAt = new Date(n.createdAt);
+  newsService.getNews(skip, limit)
+    .then((news) => {
+      news.forEach((n) => {
+        n.createdAt = new Date(n.createdAt);
+      });
+      // newModel.sortNews(news);
+      newRenderer.insertNewsInDOM(news);
     });
-    // newModel.sortNews(news);
-    newRenderer.insertNewsInDOM(news);
-  });
 }
 function startApp() {
   console.log('start app');
   newRenderer.init();
-  usersService.getCurrentUser().then((user) => {
-    console.log(user);
-    if (user) {
-      usersModal.switchMode(user);
-    }
-  });
+  usersService.getCurrentUser()
+    .then((user) => {
+      console.log(user);
+      if (user) {
+        usersModal.switchMode(user);
+      }
+    });
   newsService.getSize()
     .then((length) => {
       console.log(length);
@@ -329,17 +329,17 @@ function startApp() {
         limit = 20;
       }
       renderNews(0, limit);
-      let tmp = 0;
-      let d = 0;
+      let scrollValue = 0;
+      let renderValue = 0;
 
       function onScroll() {
-        if (document.querySelector('.large-container').scrollTop > tmp) {
-          console.log(tmp);
-          tmp += 200;
-          if (limit + d < length) {
-            renderNews(limit + d, 4);
-            console.log(limit + d, limit + d + 4);
-            d += 4;
+        if (document.querySelector('.large-container').scrollTop > scrollValue) {
+          console.log(scrollValue);
+          scrollValue += 200;
+          if (limit + renderValue < length) {
+            renderNews(limit + renderValue, 4);
+            console.log(limit + renderValue, limit + renderValue + 4);
+            renderValue += 4;
           }
         }
       }

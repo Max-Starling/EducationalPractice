@@ -90,11 +90,20 @@ app.get('/checkUser', (req, res) => {
       res.json(false);
     }
   } else if (req.query.username) {
-    if (users.findOne({ username: req.query.username })) {
+    /* users.find({ username: req.query.username }).then((u) => {
+      console.log(u);
+
+      u.count({}).then((error, c) => {console.log(error, c);})
+    }); */
+    users.find({ username: req.query.username },
+    ((error, count) => (error ? res.sendStatus(500) : res.json(count))));
+          // if (!u) console.log(state); res.json(false);
+      // if (state) console.log(error); res.json(true);
+    /* if (users.findOne({ username: req.query.username })) {
       res.json(true);
     } else {
       res.json(false);
-    }
+    } */
   }
 });
 
@@ -109,12 +118,23 @@ app.get('/news', (req, res) => {
     (error, n) => (error ? res.sendStatus(500) : res.json(n)));
 });
 
+//  For sorting news  //
+app.get('/sortNews', (req, res) => {
+  const criterion = req.query.criterion;
+  news.find({}, {},
+    {
+      skip: Number(req.query.skip),
+      limit: Number(req.query.limit),
+      sort: { $natural: -1 }, //criterion: 1
+    }).sort({ criterion: 1 }, (error, n) => (error ? res.sendStatus(500) : res.json(n)));
+});
+
 //  For getting new  //
 app.get('/news/:ID', (req, res) => {
   news.findById(req.body.ID, (error, n) => (error ? res.sendStatus(500) : res.json(n)));
 });
 
-//  For getting size  //
+//  For getting news size  //
 app.get('/newsSize', (req, res) => {
   news.count({}, ((error, count) => (error ? res.sendStatus(500) : res.json(count))));
 });
@@ -181,12 +201,6 @@ app.put('/news/:ID', (req, res) => {
                          error => (error ? res.sendStatus(500) : res.sendStatus(200)));
 });
 
-//  For editing profile  //
-app.put('/users/:username', (req, res) => {
-  // res.json(diskDB.users.update({ user: req.params.user }, req.body));
-  // res.status(200);
-});
-
 //  ========== PASSPORT ==========  //
 
 //  Serialize user  //
@@ -246,6 +260,36 @@ app.get('/currentUser', (req, res) => {
     res.json(false);
   }
 });
+
+//  For cheking password  //
+app.get('/checkPassword', (req, res) => {
+  const pass = req.session.passport;
+  if (req.query.inputPassword === pass.user.password) {
+    res.json(true);
+  } else {
+    res.json(false);
+  }
+});
+
+//  For changing username  //
+app.post('/changeUsername', (req, res) => {
+  const pass = req.session.passport;
+  console.log(req.session.passport.user, req.query.username, req.body.newUsername);
+  users.findOneAndUpdate(
+    { username: req.query.username },
+    { $set: { username: req.body.newUsername } },
+    { new: true },
+    (err, doc) => {
+      if (err) {
+        res.sendStatus(500);
+      } else {
+        console.log(req.session.passport.user, req.query.username, req.body.newUsername);
+        // req.session.passport.user.username = req.body.username;
+        res.json(doc);
+      }
+    });
+});
+
 //  ========== PORT ==========  //
 
 const port = '7777';
