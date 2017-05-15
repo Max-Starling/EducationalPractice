@@ -244,7 +244,20 @@ newRenderer, newsService, currentUser, renderNews */
         event.stopPropagation();
         removeModalHandler();
       };
-    } else {
+    } else if (parentModal) {
+      buttonYes.style.display = 'inline-block';
+      buttonNo.style.display = 'inline-block';
+      buttonSure.style.display = 'none';
+      buttonYes.onclick = function (event) {
+        parentModal();
+        event.stopImmediatePropagation();
+        removeModalHandler();
+      };
+      buttonNo.onclick = function (event) {
+        event.stopPropagation();
+        removeModalHandler();
+      };
+    } else if (!parentModal) {
       buttonSure.style.display = 'inline-block';
       buttonYes.style.display = 'none';
       buttonNo.style.display = 'none';

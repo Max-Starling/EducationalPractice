@@ -3,9 +3,13 @@
   /**
    * SWITCH MODE
    */
-  function noticeTrigger(message) {
+  function noticeTrigger(message, func) {
     const notice = document.querySelector('.md-trigger7');
-    notice.addEventListener('click', newsModal.notice(message));
+    if (func) {
+      notice.addEventListener('click', newsModal.notice(message, func));
+    } else {
+      notice.addEventListener('click', newsModal.notice(message));
+    }
     notice.click();
     notice.removeEventListener('click', {});
   }
@@ -459,7 +463,7 @@
     //  Username  //
     usersService.logOut()
       .then(() => {
-        switchMode();
+        noticeTrigger('Are you sure want to log out?', switchMode);
         event.stopPropagation();
       })
       .catch((reason) => {

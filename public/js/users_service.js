@@ -3,17 +3,8 @@ const usersService = (function () {
   const xhr = new XMLHttpRequest();
 
   //  Check user  //
-  function checkUser(username, password) {
-    if (username && password) {
-      return new Promise((resolve, reject) => {
-        xhr.open('GET', `/checkUser?username=${username}&password=${password}`);
-        xhr.setRequestHeader('content-type', 'application/json');
-        xhr.send();
-        xhr.onload = () =>
-          (xhr.status === 200 ? resolve(JSON.parse(xhr.responseText)) : reject());
-        xhr.onerror = () => reject(new Error('Error'));
-      });
-    } else if (username && !password) {
+  function checkUser(username) {
+    if (username) {
       return new Promise((resolve, reject) => {
         xhr.open('GET', `/checkUser?username=${username}`);
         xhr.setRequestHeader('content-type', 'application/json');

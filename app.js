@@ -71,16 +71,8 @@ mongoDB.once('open', () => {
 
 //  For cheking user  //
 app.get('/checkUser', (req, res) => {
-  console.log(req.query);
-  if (!req.query) {
-    res.sendStatus(500);
-  } else if (req.query.username && req.query.password) {
-    users.find({ username: req.query.username, password: req.query.password },
+  users.find({ username: req.query.username },
     ((error, u) => (error ? res.sendStatus(500) : res.json(u))));
-  } else if (req.query.username) {
-    users.find({ username: req.query.username },
-    ((error, u) => (error ? res.sendStatus(500) : res.json(u))));
-  }
 });
 
 //  For getting news  //
