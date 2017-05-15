@@ -63,24 +63,24 @@ const usersService = (function () {
     });
   }
 
-  //  Edit profile  //
-  function editProfile(username, user) {
+  //  Change username  //
+  function changeUsername(oldName, newName) {
     return new Promise((resolve, reject) => {
-      xhr.open('PUT', `/users/${username}`);
+      xhr.open('GET', `/changeProfile?oldName=${oldName}&newName=${newName}`);
       xhr.setRequestHeader('content-type', 'application/json');
-      xhr.send(JSON.stringify(user));
+      xhr.send();
       xhr.onload = () =>
         (xhr.status === 200 ? resolve(xhr.responseText) : reject());
       xhr.onerror = () => reject(new Error('Error'));
     });
   }
 
-  //  Change username  //
-  function changeUsername(username, newUsername) {
+  //  Change image //
+  function changeImage(username, newImage) {
     return new Promise((resolve, reject) => {
-      xhr.open('POST', '/changeUsername');
+      xhr.open('GET', `/changeProfile?username=${username}&newImage=${newImage}`);
       xhr.setRequestHeader('content-type', 'application/json');
-      xhr.send(JSON.stringify(newUsername));
+      xhr.send();
       xhr.onload = () =>
         (xhr.status === 200 ? resolve(xhr.responseText) : reject());
       xhr.onerror = () => reject(new Error('Error'));
@@ -94,10 +94,8 @@ const usersService = (function () {
       xhr.setRequestHeader('content-type', 'application/json');
       xhr.send(JSON.stringify(mention));
       xhr.onload = () =>
-        (xhr.status === 200 ? resolve(xhr.responseText) : reject());
-      xhr.onload = () =>
        (xhr.status === 200
-        ? resolve(JSON.parse(xhr.responseText))
+        ? resolve()
         : reject('can not post mention.'));
       xhr.onerror = () => reject(new Error('Error'));
     });
@@ -137,10 +135,10 @@ const usersService = (function () {
     registerUser,
     logIn,
     logOut,
-    editProfile,
     addMention,
     getCurrentUser,
     changeUsername,
+    changeImage,
     checkUser,
     checkPassword,
   };

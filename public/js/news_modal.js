@@ -215,6 +215,8 @@ newRenderer, newsService, currentUser, renderNews */
     const buttonNo = modal.querySelector('.button-no');
 
     if (parentModal && parentModalShow && newID) {
+      buttonYes.style.display = 'inline-block';
+      buttonNo.style.display = 'inline-block';
       buttonSure.style.display = 'none';
       buttonYes.onclick = function (event) {
         console.log(newID);
@@ -243,7 +245,7 @@ newRenderer, newsService, currentUser, renderNews */
         removeModalHandler();
       };
     } else {
-      console.log('qqqq');
+      buttonSure.style.display = 'inline-block';
       buttonYes.style.display = 'none';
       buttonNo.style.display = 'none';
       buttonSure.onclick = function (event) {

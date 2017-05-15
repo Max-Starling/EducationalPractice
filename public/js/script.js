@@ -319,11 +319,8 @@ function startApp() {
     .then((length) => {
       console.log(length);
       let limit;
-      if (
-        document.documentElement.clientWidth /
-          document.documentElement.clientHeight >=
-        4 / 3
-      ) {
+      if (document.documentElement.clientWidth /
+          document.documentElement.clientHeight >= 4 / 3) {
         limit = 8;
       } else {
         limit = 20;

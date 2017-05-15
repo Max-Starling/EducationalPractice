@@ -42,8 +42,6 @@ const newsModel = new mongoose.Schema({
 }, {
   autoIndex: process.env.mode === 'development',
 });
-// module.exports.news = mongoDB.model('news', newsModel);
-// module.exports.newsBackup = mongoDB.model('newsBackup', newsModel);
 const news = mongoDB.model('news', newsModel);
 
 //  Users model  //
@@ -53,8 +51,6 @@ const usersModel = new mongoose.Schema({
   rank: String,
   img: String,
 });
-// module.exports.users = mongoDB.model('users', usersModel);
-// module.exports.usersBackup = mongoDB.model('usersBackup', usersModel);
 const users = mongoDB.model('users', usersModel);
 
 //  Mentions model  //
@@ -62,8 +58,6 @@ const mentionsModel = new mongoose.Schema({
   username: String,
   mention: String,
 });
-// module.exports.mentions = mongoDB.model('mentions', mentionsModel);
-// module.exports.mentionsBackup = mongoDB.model('mentionsBackup', mentionsModel);
 const mentions = mongoDB.model('mentions', mentionsModel);
 
 //  ========== MONGO FUNCTIONS ==========  //
@@ -71,9 +65,6 @@ const mentions = mongoDB.model('mentions', mentionsModel);
 mongoDB.on('error', error => console.log('Connection to database was failded, because: ', error.message));
 mongoDB.once('open', () => {
   console.log('Successfully connected to database.');
-  // news.insertMany(diskDB.news.find());
-  // users.insertMany(diskDB.users.find());
-  // mentions.insertMany(diskDB.mentions.find());
 });
 
 //  ========== FUNCTIONS ==========  //
@@ -84,26 +75,11 @@ app.get('/checkUser', (req, res) => {
   if (!req.query) {
     res.sendStatus(500);
   } else if (req.query.username && req.query.password) {
-    if (users.findOne({ username: req.query.username, password: req.query.password })) {
-      res.json(true);
-    } else {
-      res.json(false);
-    }
+    users.find({ username: req.query.username, password: req.query.password },
+    ((error, u) => (error ? res.sendStatus(500) : res.json(u))));
   } else if (req.query.username) {
-    /* users.find({ username: req.query.username }).then((u) => {
-      console.log(u);
-
-      u.count({}).then((error, c) => {console.log(error, c);})
-    }); */
     users.find({ username: req.query.username },
-    ((error, count) => (error ? res.sendStatus(500) : res.json(count))));
-          // if (!u) console.log(state); res.json(false);
-      // if (state) console.log(error); res.json(true);
-    /* if (users.findOne({ username: req.query.username })) {
-      res.json(true);
-    } else {
-      res.json(false);
-    } */
+    ((error, u) => (error ? res.sendStatus(500) : res.json(u))));
   }
 });
 
@@ -213,8 +189,7 @@ passport.deserializeUser((user, done) => {
 });
 
 //  Passport for authorization  //
-passport.use(
-  'logIn',
+passport.use('logIn',
   new LocalStrategy(
     { passReqToCallback: true },
     (req, username, password, done) => {
@@ -272,22 +247,35 @@ app.get('/checkPassword', (req, res) => {
 });
 
 //  For changing username  //
-app.post('/changeUsername', (req, res) => {
+app.get('/changeProfile', (req, res) => {
   const pass = req.session.passport;
-  console.log(req.session.passport.user, req.query.username, req.body.newUsername);
-  users.findOneAndUpdate(
-    { username: req.query.username },
-    { $set: { username: req.body.newUsername } },
-    { new: true },
-    (err, doc) => {
-      if (err) {
-        res.sendStatus(500);
-      } else {
-        console.log(req.session.passport.user, req.query.username, req.body.newUsername);
-        // req.session.passport.user.username = req.body.username;
-        res.json(doc);
-      }
-    });
+  if (req.query.oldName && req.query.newName) {
+    users.findOneAndUpdate(
+      { username: req.query.oldName },
+      { $set: { username: req.query.newName } },
+      { new: true },
+      (err, doc) => {
+        if (err) {
+          res.sendStatus(500);
+        } else {
+          pass.user.username = req.query.newName;
+          res.json(doc);
+        }
+      });
+  } else if (req.query.username && req.query.newImage) {
+    users.findOneAndUpdate(
+      { username: req.query.username },
+      { $set: { img: req.query.newImage } },
+      { new: true },
+      (err, doc) => {
+        if (err) {
+          res.sendStatus(500);
+        } else {
+          pass.user.img = req.query.newImage;
+          res.json(doc);
+        }
+      });
+  }
 });
 
 //  ========== PORT ==========  //

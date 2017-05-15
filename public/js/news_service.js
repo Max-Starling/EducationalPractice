@@ -18,8 +18,8 @@ const newsService = (function () {
     });
   }
 
-  //  Get news  //
-  function sortNews(skip, limit, criterion) { /* filter*/
+  //  Sort news  //
+  function sortNews(skip, limit, criterion) {
     return new Promise((resolve, reject) => {
       xhr.open('GET', `/news?skip=${skip}&limit=${limit}&critetion=${criterion}`);
       xhr.setRequestHeader('content-type', 'application/json');

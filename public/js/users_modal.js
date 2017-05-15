@@ -3,6 +3,12 @@
   /**
    * SWITCH MODE
    */
+  function noticeTrigger(message) {
+    const notice = document.querySelector('.md-trigger7');
+    notice.addEventListener('click', newsModal.notice(message));
+    notice.click();
+    notice.removeEventListener('click', {});
+  }
   function switchMode(user) {
     if (user) {
       currentUser.username = user.username;
@@ -90,14 +96,12 @@
     inputLogin.className = 'authorization-input form-style';
     inputLogin.maxLength = '16';
     inputLogin.placeholder = '@MaxStarling';
-    inputLogin.style.color = '#aaaaaa';
     inputLogin.style.marginTop = '0.5vw';
     //  Password  //
     const inputPassword = form.querySelectorAll('.authorization-input')[1];
     inputPassword.className = 'authorization-input form-style';
     inputPassword.maxLength = '16';
     inputPassword.placeholder = 'yourpassword';
-    inputPassword.style.color = '#aaaaaa';
     inputPassword.style.marginTop = '1.5vw';
     inputPassword.type = 'password';
 
@@ -117,31 +121,16 @@
       //  Getting values from the form.  //
       const uname = inputLogin.value.toString();
       const upass = inputPassword.value.toString();
-      //  Checking login  //
-      let correctLogin = false;
-      if (inputLogin.value.length > 0) {
-        correctLogin = true;
-        inputLogin.style.color = '#aaaaaa';
-      } else if (inputLogin.value.length < 1) {
-        inputLogin.style.color = '#8b1500';
-      }
-      //  Checking password  //
-      let correctPassword = false;
-      if (inputPassword.value.length >= 4) {
-        correctPassword = true;
-        inputPassword.style.color = '#aaaaaa';
-      } else if (inputPassword.value.length < 4) {
-        inputPassword.style.color = '#8b1500';
-      }
-
+      //  Trying to log in  //
       usersService.logIn({ username: uname, password: upass })
         .then((user) => {
+          //  Return normal colors.  //
+          inputPassword.style.color = '#aaaaaa';
+          inputLogin.style.color = '#aaaaaa';
           //  Switch mode.  //
           switchMode(user);
-          const notice = document.querySelector('.md-trigger7');
-          notice.addEventListener('click', newsModal.notice('Welcome back!'));
-          notice.click();
-          notice.removeEventListener('click', {});
+          //  Show message.  //
+          noticeTrigger('Welcome back!');
           //  Zeroing values in the form.  //
           inputLogin.value = '';
           inputPassword.value = '';
@@ -151,10 +140,13 @@
         })
         .catch((reason) => {
           console.log(`Handle rejected promise, because: ${reason}.`);
-          const notice = document.querySelector('.md-trigger7');
-          notice.addEventListener('click', newsModal.notice('Wrong username or password.'));
-          notice.click();
-          notice.removeEventListener('click', {});
+          //  Set red colors.  //
+          inputPassword.style.color = '#8b1500';
+          inputLogin.style.color = '#8b1500';
+          //  Show message.  //
+          noticeTrigger('Wrong username or password.');
+          //  Zeroing value in the form.  //
+          inputPassword.value = '';
           ev.stopPropagation();
         });
     });
@@ -176,14 +168,12 @@
     inputLogin.className = 'registration-input form-style';
     inputLogin.maxLength = '32';
     inputLogin.placeholder = '@MaxStarling';
-    inputLogin.style.color = '#aaaaaa';
     inputLogin.style.marginTop = '0.5vw';
     //  Password  //
     const inputPassword = form.querySelectorAll('.registration-input')[1];
     inputPassword.className = 'registration-input form-style';
     inputPassword.maxLength = '16';
     inputPassword.placeholder = 'yourpassword';
-    inputPassword.style.color = '#aaaaaa';
     inputPassword.style.marginTop = '1.5vw';
     inputPassword.type = 'password';
     //  Password  again  //
@@ -191,7 +181,6 @@
     inputPasswordAgain.className = 'registration-input form-style';
     inputPasswordAgain.maxLength = '16';
     inputPasswordAgain.placeholder = 'passwordagain';
-    inputPasswordAgain.style.color = '#aaaaaa';
     inputPasswordAgain.style.marginTop = '1.5vw';
     inputPasswordAgain.type = 'password';
 
@@ -213,13 +202,6 @@
       const uPass = inputPassword.value;
       const uPassAgain = inputPasswordAgain.value;
       //  Checking values for correctness.  //
-      let correctLogin = false;
-      if (uName.length > 0) {
-        correctLogin = true;
-        inputLogin.style.color = '#aaaaaa';
-      } else if (uName.length < 1) {
-        inputLogin.style.color = '#8b1500';
-      }
       let correctPassword = false;
       if (uPass.length >= 4) {
         correctPassword = true;
@@ -234,10 +216,12 @@
         correctPasswordAgain = false;
       }
       //  Checking if user is alredy exist  //
-      if (correctLogin && correctPasswordAgain) {
+      if (uName && correctPasswordAgain) {
         usersService.checkUser(uName)
           .then((occurrences) => {
             console.log(occurrences.length);
+            inputPassword.style.color = '#aaaaaa';
+            inputPasswordAgain.style.color = '#aaaaaa';
             if (!occurrences.length) {
               usersService.registerUser({
                 username: uName,
@@ -245,16 +229,12 @@
                 img: '',
                 rank: 'User',
               });
-              const notice = document.querySelector('.md-trigger7');
-              notice.addEventListener('click', newsModal.notice('You was successfully registred on this site!'));
-              notice.click();
-              notice.removeEventListener('click', {});
+              inputLogin.style.color = '#aaaaaa';
+              noticeTrigger('You was successfully registred on this site!');
               removeModalHandler();
             } else {
-              const notice = document.querySelector('.md-trigger7');
-              notice.addEventListener('click', newsModal.notice('User with this username is already exist.'));
-              notice.click();
-              notice.removeEventListener('click', {});
+              noticeTrigger('User with this username is already exist.');
+              inputLogin.style.color = '#8b1500';
             }
             //  Zeroing values in the form.  //
             inputLogin.value = '';
@@ -269,12 +249,11 @@
             removeModalHandler();
           });
       } else {
-        const notice = document.querySelector('.md-trigger7');
-        notice.addEventListener('click', newsModal.notice('Please, enter the same password twice.'));
-        notice.click();
-        notice.removeEventListener('click', {});
+        noticeTrigger('Please, enter the same password twice.');
         inputPassword.value = '';
         inputPasswordAgain.value = '';
+        inputPassword.style.color = '#8b1500';
+        inputPasswordAgain.style.color = '#8b1500';
       }
     });
   }
@@ -293,14 +272,12 @@
     const inputURL = form.querySelectorAll('.profile-input')[0];
     inputURL.placeholder = 'URL to new picture';
     inputURL.className = 'profile-input form-style';
-    inputURL.style.color = '#aaaaaa';
     //  Login  //
     const inputLogin = form.querySelectorAll('.profile-input')[1];
     inputLogin.placeholder = '@NewLogin';
     inputLogin.className = 'profile-input form-style';
     inputLogin.style.marginTop = '1vw';
     inputLogin.maxLength = '16';
-    inputLogin.style.color = '#aaaaaa';
     //  Password  //
     const inputPassword = form.querySelectorAll('.profile-input')[2];
     inputPassword.placeholder = 'yourpassword';
@@ -308,7 +285,6 @@
     inputPassword.style.marginTop = '1vw';
     inputPassword.type = 'password';
     inputPassword.maxLength = '16';
-    inputPassword.style.color = '#aaaaaa';
 
     const el = document.querySelector('.md-trigger5');
     const modal = document.querySelector(`#${el.getAttribute('data-modal')}`);
@@ -330,20 +306,26 @@
           console.log(state);
           if (state) {
             const uname = inputLogin.value.toString();
-            console.log(inputLogin.value, inputLogin, inputLogin.value.toString());
+            console.log(uname);
             const username = document.querySelector('.user-info-name');
             //  Image  //
             const image = inputURL.value;
             const userphoto = document.querySelector('.user-info-photo');
             if (image) {
-              usersService.editProfile(currentUser.username, currentUser)
+              usersService.changeImage(currentUser.username.toString(), image.toString())
                 .then(() => {
-                  userphoto.src = image;
-                  currentUser.img = image;
+                  userphoto.src = image.toString();
+                  currentUser.img = image.toString();
+                  noticeTrigger('Image was successfully changed.');
+                })
+                .catch((reason) => {
+                  console.log(`Handle rejected promise, because: ${reason}.`);
+                  ev.stopPropagation();
+                  removeModalHandler();
                 });
             }
             //  Name  //
-            if (uname && uname.length >= 4) {
+            if (uname) {
               console.log(uname);
               usersService.checkUser(uname)
                 .then((occurrences) => {
@@ -351,14 +333,11 @@
                   if (!occurrences.length) {
                     console.log('yes');
                     console.log(currentUser.username, uname);
-                    usersService.changeUsername(currentUser.username, uname)
+                    usersService.changeUsername(currentUser.username.toString(), uname.toString())
                       .then(() => {
-                        username.textContent = uname;
-                        currentUser.username = uname;
-                        const notice = document.querySelector('.md-trigger7');
-                        notice.addEventListener('click', newsModal.notice('Username was successfully changed.'));
-                        notice.click();
-                        notice.removeEventListener('click', {});
+                        username.textContent = uname.toString();
+                        currentUser.username = uname.toString();
+                        noticeTrigger('Username was successfully changed.');
                       })
                       .catch((reason) => {
                         console.log(`Handle rejected promise, because: ${reason}.`);
@@ -366,10 +345,7 @@
                         removeModalHandler();
                       });
                   } else {
-                    const notice = document.querySelector('.md-trigger7');
-                    notice.addEventListener('click', newsModal.notice('User with this username is already exist.'));
-                    notice.click();
-                    notice.removeEventListener('click', {});
+                    noticeTrigger('User with this username is already exist.');
                     inputLogin.value = '';
                     inputPassword.value = '';
                   }
@@ -386,10 +362,7 @@
             ev.stopImmediatePropagation();
             removeModalHandler();
           } else {
-            const notice = document.querySelector('.md-trigger7');
-            notice.addEventListener('click', newsModal.notice('Wrong password'));
-            notice.click();
-            notice.removeEventListener('click', {});
+            noticeTrigger('Wrong password');
             inputPassword.value = '';
           }
         });
@@ -446,14 +419,6 @@
     form.spellcheck = false;
     form.onsubmit = function (event) {
       event.preventDefault();
-      if (inputMention) {
-        const m = {
-          username: currentUser.username,
-          mention: inputMention.value.toString(),
-        };
-        // console.log(m);
-        usersService.addMention(m);
-      }
     };
 
     const el = document.querySelector('.md-trigger8');
@@ -468,8 +433,23 @@
     });
     const close = modal.querySelector('.md-close');
     close.addEventListener('click', (ev) => {
-      ev.stopPropagation();
-      removeModalHandler();
+      if (inputMention.value) {
+        const m = {
+          username: currentUser.username,
+          mention: inputMention.value.toString(),
+        };
+        // console.log(m);
+        usersService.addMention(m).then(() => {
+          noticeTrigger('Your mention was successfully saved! Thank you :)');
+          ev.stopPropagation();
+          removeModalHandler();
+        })
+        .catch((reason) => {
+          console.log(`Handle rejected promise, because: ${reason}.`);
+          ev.stopPropagation();
+          removeModalHandler();
+        });
+      }
     });
   }
   /**
@@ -489,6 +469,7 @@
   }
   const usersModal = {
     switchMode,
+    noticeTrigger,
     authorization,
     registration,
     contactUs,
