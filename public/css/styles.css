@@ -391,7 +391,6 @@ input{
 	border: 0.2vw solid #cecece;
 	color: #575757;
 	box-shadow: 0 0 10vw rgba(0,0,0,0.5);
-	/*z-index: 2000;*/
 }
 .button-panel{
 	height: 1.6vw;
@@ -404,7 +403,7 @@ input{
 	opacity: 1;
 	visibility: hidden;
 	color:#565656;
-	cursor: cell;
+	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
 	float:right;
 	margin-right: 0.8vw;
 	background: radial-gradient(circle at 20% 33%, #f0f0f0, #eeeeee);
