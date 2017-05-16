@@ -399,17 +399,18 @@ input{
 }
 .add-new-button{
 	height: 100%;
-	width: 16%;
+	width: 14%;
 	border: 0.03vw solid #b3b3b3;
 	opacity: 1;
 	visibility: hidden;
 	color:#565656;
 	cursor: cell;
 	float:right;
+	margin-right: 0.8vw;
 	background: radial-gradient(circle at 20% 33%, #f0f0f0, #eeeeee);
 }
 .add-new-button:hover{
-	opacity: 0.8;
+	opacity: 0.86;
 }
 .content{
 	display: none;
