@@ -184,7 +184,6 @@ const newModel = (function () {
     searchNews,
     addNew,
     getAuthors,
-    // getLength,
   };
 }());
 
@@ -204,51 +203,25 @@ const newRenderer = (function () {
   function formatDate(d) {
     let month = 'Jan';
     switch (d.getMonth()) {
-      case 0:
-        month = 'Jan';
-        break;
-      case 1:
-        month = 'Feb';
-        break;
-      case 2:
-        month = 'Mar';
-        break;
-      case 3:
-        month = 'Apr';
-        break;
-      case 4:
-        month = 'May';
-        break;
-      case 5:
-        month = 'Jun';
-        break;
-      case 6:
-        month = 'Jul';
-        break;
-      case 7:
-        month = 'Aug';
-        break;
-      case 8:
-        month = 'Sep';
-        break;
-      case 9:
-        month = 'Oct';
-        break;
-      case 10:
-        month = 'Nov';
-        break;
-      case 11:
-        month = 'Dec';
-        break;
-      default:
-        month = 'Feb';
-        break;
+      case 0: month = 'Jan'; break;
+      case 1: month = 'Feb'; break;
+      case 2: month = 'Mar'; break;
+      case 3: month = 'Apr'; break;
+      case 4: month = 'May'; break;
+      case 5: month = 'Jun'; break;
+      case 6: month = 'Jul'; break;
+      case 7: month = 'Aug'; break;
+      case 8: month = 'Sep'; break;
+      case 9: month = 'Oct'; break;
+      case 10: month = 'Nov'; break;
+      case 11: month = 'Dec'; break;
+      default: month = 'Feb'; break;
     }
     return `${d.getHours()}:${addZero(d.getMinutes())} ${month}, ${d.getDate()}`;
   }
   function renderNew(n) {
     const t = newTemplate;
-    t.content.querySelector('.new-list-item').dataset.ID = n._id; //
+    t.content.querySelector('.new-list-item').dataset.ID = n._id;
     t.content.querySelector('.new-list-item-title').textContent = n.title;
     t.content.querySelector('.new-list-item-summary').textContent = n.summary;
     t.content.querySelector('.new-list-item-author').textContent = n.author;
@@ -269,11 +242,7 @@ const newRenderer = (function () {
     newsList.insertBefore(n, newsList.firstChild);
   }
   function insertNewsInDOM(news) {
-    /* if (!news) {
-      news = newsService.getNews();
-    } */
     const newsNodes = renderNews(news);
-    // console.log(news);
     newsNodes.forEach((node) => {
       newsList.appendChild(node);
     });
@@ -296,7 +265,7 @@ const newRenderer = (function () {
   };
 }());
 function renderNews(skip, limit) {
-  newsService.getNews(skip, limit)
+  newsService.getNews(skip, limit, 'date')
     .then((news) => {
       news.forEach((n) => {
         n.createdAt = new Date(n.createdAt);
@@ -308,11 +277,17 @@ function renderNews(skip, limit) {
 function startApp() {
   console.log('start app');
   newRenderer.init();
-  function load(){ 
+  function load() {
     document.querySelector('.loader').style.display = 'none';
-    document.querySelector('.wrapper').style.display = 'block'
+    document.querySelector('.wrapper').style.display = 'block';
+    const modals = document.querySelectorAll('.md-default');
+    [].forEach.call(modals, (m) => {
+      m.style.display = 'block';
+    });
+    document.querySelector('.fisrt-overlay-layer').style.display = 'block';
+    document.querySelector('.second-overlay-layer').style.display = 'block';
   }
-  setTimeout(load, 1000 + Math.random() * 1000);
+  setTimeout(load, 1000 + (Math.random() * 1000));
   usersService.getCurrentUser()
     .then((user) => {
       console.log(user);

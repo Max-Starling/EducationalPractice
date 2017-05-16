@@ -3,9 +3,9 @@ const newsService = (function () {
   const xhr = new XMLHttpRequest();
 
   //  Get news  //
-  function getNews(skip, limit) { /* filter*/
+  function getNews(skip, limit, filter) {
     return new Promise((resolve, reject) => {
-      xhr.open('GET', `/news?skip=${skip}&limit=${limit}`/* &filter=${JSON.stringify(filter)}*/);
+      xhr.open('GET', `/news?skip=${skip}&limit=${limit}&filter=${filter}`);
       xhr.setRequestHeader('content-type', 'application/json');
       xhr.send();
       xhr.onload = () =>
@@ -21,7 +21,7 @@ const newsService = (function () {
   //  Sort news  //
   function sortNews(skip, limit, criterion) {
     return new Promise((resolve, reject) => {
-      xhr.open('GET', `/news?skip=${skip}&limit=${limit}&critetion=${criterion}`);
+      xhr.open('GET', `/sort?skip=${skip}&limit=${limit}&critetion=${criterion}`);
       xhr.setRequestHeader('content-type', 'application/json');
       xhr.send();
       xhr.onload = () =>

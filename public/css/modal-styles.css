@@ -1,6 +1,7 @@
 				/*-----------------Modal default-----------------*/
 
 .md-default{
+	display: none;
 	font-size: 1.5vw;
 	position: fixed;
 	overflow-y: scroll;
@@ -41,6 +42,7 @@
 				/*-----------------Modal overlay-----------------*/
 
 .fisrt-overlay-layer {
+	display: none;
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -54,6 +56,7 @@
 }
 
 .second-overlay-layer {
+	display: none;
 	position: fixed;
 	width: 100%;
 	height: 100%;

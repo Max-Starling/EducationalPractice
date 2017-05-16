@@ -41,7 +41,7 @@ textarea{
 	resize: none; 
 	width: 86%;
 		/*Margin, Border & Padding*/
-	border: 0.14vw solid #cecece;
+	border: 0.12vw solid #cecece;
 	margin: 0 1vw;
 	padding-left: 0.6vw;
 		/*Text*/
@@ -63,7 +63,7 @@ input[type="text"] {
 		/*Size & Position */
 	height: auto;	
 		/*Margin, Border & Padding*/
-	border: 0.14vw solid #cecece;
+	border: 0.12vw solid #cecece;
 	margin: 0 1vw;
 	padding-left: 0.6vw;
 		/*Other*/

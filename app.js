@@ -75,26 +75,57 @@ app.get('/checkUser', (req, res) => {
     ((error, u) => (error ? res.sendStatus(500) : res.json(u))));
 });
 
-//  For getting news  //
+
+
 app.get('/news', (req, res) => {
+  const filter = req.query.filter;
+  // if (filter === 'author') {
   news.find({}, {},
     {
       skip: Number(req.query.skip),
       limit: Number(req.query.limit),
       sort: { $natural: -1 },
     },
-    (error, n) => (error ? res.sendStatus(500) : res.json(n)));
+  (error, n) => (error ? res.sendStatus(500) : res.json(n)));
+  // }
 });
-
 //  For sorting news  //
-app.get('/sortNews', (req, res) => {
+app.get('/sort', (req, res) => {
   const criterion = req.query.criterion;
-  news.find({}, {},
-    {
-      skip: Number(req.query.skip),
-      limit: Number(req.query.limit),
-      sort: { $natural: -1 }, //criterion: 1
-    }).sort({ criterion: 1 }, (error, n) => (error ? res.sendStatus(500) : res.json(n)));
+  console.log(criterion);
+  if (criterion === 'author') {
+    news.find({}, {},
+      {
+        skip: Number(req.query.skip),
+        limit: Number(req.query.limit),
+        sort: { author: 1 },
+      },
+    (error, n) => (error ? res.sendStatus(500) : res.json(n)));
+  } else if (criterion === 'title') {
+    news.find({}, {},
+      {
+        skip: Number(req.query.skip),
+        limit: Number(req.query.limit),
+        sort: { title: 1 },
+      },
+    (error, n) => (error ? res.sendStatus(500) : res.json(n)));
+  } else if (criterion === 'date') {
+    news.find({}, {},
+      {
+        skip: Number(req.query.skip),
+        limit: Number(req.query.limit),
+        sort: { date: 1 },
+      },
+    (error, n) => (error ? res.sendStatus(500) : res.json(n)));
+  } else {
+    news.find({}, {},
+      {
+        skip: Number(req.query.skip),
+        limit: Number(req.query.limit),
+        sort: { $natural: -1 },
+      },
+      (error, n) => (error ? res.sendStatus(500) : res.json(n)));
+  }
 });
 
 //  For getting new  //
@@ -275,5 +306,5 @@ app.get('/changeProfile', (req, res) => {
 const port = '7777';
 app.listen(port, () => {
   console.log(`STARLING NEWS listening on port ${port}!`);
-  console.log(`Click "Ctrl + LMC" on this link:"http://localhost:${port}"`);
+  console.log(`Click "Ctrl + LMC" on ${port} in this link:"http://localhost:${port}"`);
 });
