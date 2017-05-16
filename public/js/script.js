@@ -311,8 +311,8 @@ function startApp() {
   function load(){ 
     document.querySelector('.loader').style.display = 'none';
     document.querySelector('.wrapper').style.display = 'block'
-  } 
-  setTimeout(load, 2000);
+  }
+  setTimeout(load, 1000 + Math.random() * 1000);
   usersService.getCurrentUser()
     .then((user) => {
       console.log(user);

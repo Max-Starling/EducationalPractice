@@ -4,7 +4,6 @@ const usersService = (function () {
 
   //  Check user  //
   function checkUser(username) {
-    if (username) {
       return new Promise((resolve, reject) => {
         xhr.open('GET', `/checkUser?username=${username}`);
         xhr.setRequestHeader('content-type', 'application/json');
@@ -13,10 +12,6 @@ const usersService = (function () {
           (xhr.status === 200 ? resolve(JSON.parse(xhr.responseText)) : reject());
         xhr.onerror = () => reject(new Error('Error'));
       });
-    }
-    return new Promise((resolve, reject) => {
-      xhr.onerror = () => reject(new Error('Error'));
-    });
   }
 
   //  Register new  user //
