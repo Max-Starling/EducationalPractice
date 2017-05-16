@@ -308,6 +308,11 @@ function renderNews(skip, limit) {
 function startApp() {
   console.log('start app');
   newRenderer.init();
+  function load(){ 
+    document.querySelector('.loader').style.display = 'none';
+    document.querySelector('.wrapper').style.display = 'block'
+  } 
+  setTimeout(load, 2000);
   usersService.getCurrentUser()
     .then((user) => {
       console.log(user);

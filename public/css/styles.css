@@ -389,6 +389,7 @@ input{
 	padding-bottom: 2vw;
 	background: white;
 	border: 0.2vw solid #cecece;
+	color: #575757;
 	box-shadow: 0 0 10vw rgba(0,0,0,0.5);
 	/*z-index: 2000;*/
 }
@@ -397,16 +398,18 @@ input{
 	width: 100%;
 }
 .add-new-button{
-	height: 2vw;
-	width: 2vw;
-	margin-bottom: 20px;
-	margin-left: 44vw;
-	opacity: 0.8;
+	height: 100%;
+	width: 16%;
+	border: 0.03vw solid #b3b3b3;
+	opacity: 1;
 	visibility: hidden;
+	color:#565656;
 	cursor: cell;
+	float:right;
+	background: radial-gradient(circle at 20% 33%, #f0f0f0, #eeeeee);
 }
 .add-new-button:hover{
-	opacity: 1;
+	opacity: 0.8;
 }
 .content{
 	display: none;
@@ -460,3 +463,26 @@ a{
 	cursor: url(../images/elements/PF3C_zlk_Click2.cur), pointer;
 }
 
+.loader{
+	background-color: white;
+	height: 100%;
+	width: 100%;
+}
+.loading{
+	color:#ada77c;
+	font-size: 2.4vw;
+}
+.SN {
+	padding-top:16.8vw;
+	font-size: 3.6vw;
+	font-family: 'Ribeye Marrow', cursive;
+}
+.spiner {
+	height: 5vw;
+	margin-right: 0.5vw;
+}
+
+.add-new-text {
+	font-size: 1.2vw;
+	height: 80%; 
+}

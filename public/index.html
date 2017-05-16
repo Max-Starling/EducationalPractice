@@ -5,16 +5,20 @@
 	<title>STARLING NEWS</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin"/>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Underdog"/>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ribeye+Marrow">
 	<link rel="shortcut icon" type="image/x-icon" href="images/elements/favicon5.ico" >
 	<link rel="stylesheet" type="text/css" href="css/default.css"/>
 	<link rel="stylesheet" type="text/css" href="css/elements.css"/>
 	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="css/modal-styles.css"/>
-	<style>
-</style>
 </head>
 <body>
-	<div class="wrapper">
+	<div class="loader">
+		<p class="SN">STARLING NEWS</p>
+		<p class="loading">Loading... Wait a bit, please.</p>
+		<img class ="spiner" src="images/elements/default.svg">
+	</div>
+	<div class="wrapper" style="display:none">
 		<!-- //  Right panel  // -->
 		<div class="right-panel">	
 			<div class="menu">
@@ -113,7 +117,9 @@
 					<div class="quote"></div>
 				</div>
 				<div class="button-panel">
-					<img class="add-new-button md-trigger1" src="images/elements/add.png"  onmousedown="newsModal.addNew()" data-modal="md-add"><img>
+					<div class="add-new-button md-trigger1" data-modal="md-add" onmousedown="newsModal.addNew()">
+						<p class="add-new-text">ADD NEW</p>
+					</div>
 				</div>
 				<div class="news-block">
 					<div class="article-list"></div>
