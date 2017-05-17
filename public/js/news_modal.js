@@ -58,11 +58,13 @@ newRenderer, newsService, currentUser, renderNews */
         content: '',
         img: 'images/news/default_img.jpg',
       };
-      if (n.img) {
+      console.log(n.img);
+      if (inputURL.value) {
         n.img = inputURL.value.toString();
       } else {
         n.img = 'images/news/default_img.jpg';
       }
+      console.log(n.img);
       n.title = inputTitle.value.toString();
       n.summary = inputDescription.value.toString();
       n.content = inputContent.value.toString();

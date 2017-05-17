@@ -156,7 +156,7 @@ app.get('/newsSize', (req, res) => {
   news.count({}, ((error, count) => (error ? res.sendStatus(500) : res.json(count))));
 });
 
-//  For adding new  //
+//  For posting new  //
 app.post('/postNew', (req, res) => {
   const n = {
     title: req.body.title,
