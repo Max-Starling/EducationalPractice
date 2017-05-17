@@ -81,7 +81,7 @@ app.get('/news', (req, res) => {
   const filter = req.query.filter;
   const reg = `^${filter}`;
   if (criterion === 'author') {
-    news.find({ author: { $regex: reg } }, {},
+    news.find({ author: { $regex: reg, $options: 'i' } }, {},
       {
         skip: Number(req.query.skip),
         limit: Number(req.query.limit),
@@ -89,7 +89,7 @@ app.get('/news', (req, res) => {
       },
     (error, n) => (error ? res.sendStatus(500) : res.json(n)));
   } else if (criterion === 'title') {
-    news.find({ title: { $regex: reg } }, {},
+    news.find({ title: { $regex: reg, $options: 'i' } }, {},
       {
         skip: Number(req.query.skip),
         limit: Number(req.query.limit),
@@ -97,7 +97,7 @@ app.get('/news', (req, res) => {
       },
     (error, n) => (error ? res.sendStatus(500) : res.json(n)));
   } else if (criterion === 'date') {
-    news.find({ date: { $regex: reg } }, {},
+    news.find({ date: { $regex: reg, $options: 'i' } }, {},
       {
         skip: Number(req.query.skip),
         limit: Number(req.query.limit),
