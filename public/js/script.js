@@ -7,7 +7,6 @@ const currentUser = {
 };
 const newModel = (function () {
   function validateNew(n) {
-    console.log(n);
     /* ID*/
     if (
       !n.title ||
@@ -23,167 +22,8 @@ const newModel = (function () {
     }
     return true;
   }
-  function sortNews(news, criterion) {
-    news.sort((x, y) => {
-      if (x.createdAt < y.createdAt) {
-        return 1;
-      } else if (x.createdAt > y.createdAt) {
-        return -1;
-      }
-    });
-    if (criterion === 'title') {
-      news.sort((x, y) => {
-        if (x.title > y.title) {
-          return 1;
-        } else if (x.title < y.title) {
-          return -1;
-        }
-      });
-    }
-    if (criterion === 'author') {
-      news.sort((x, y) => {
-        if (x.author > y.author) {
-          return 1;
-        } else if (x.author < y.author) {
-          return -1;
-        }
-      });
-    }
-    if (criterion === 'textsize') {
-      news.sort((x, y) => {
-        if (x.content.length < y.content.length) {
-          return 1;
-        } else if (x.content.length > y.content.length) {
-          return -1;
-        }
-      });
-    }
-  }
-  function searchNews(inputValue, news, criterion) {
-    let occurrenceArray = [];
-    function unique(arr) {
-      const obj = {};
-      for (let i = 0; i < arr.length; i++) {
-        const str = arr[i];
-        obj[str] = true; // запомнить строку в виде свойства объекта
-      }
-      return Object.keys(obj);
-    }
-
-    if (criterion === 'title') {
-      let occurrenceArray = [];
-      news.map(x => x.title).some((element) => {
-        if (
-          element
-            .toString()
-            .toLowerCase()
-            .indexOf(inputValue.toString().toLowerCase()) >= 0
-        ) {
-          // console.log(element)
-          occurrenceArray.push(element);
-        }
-      });
-      occurrenceArray = unique(occurrenceArray);
-      return occurrenceArray;
-    }
-    if (criterion === 'author') {
-      news.map(x => x.author).some((element) => {
-        if (
-          element
-            .toString()
-            .toLowerCase()
-            .indexOf(inputValue.toString().toLowerCase()) >= 0
-        ) {
-          occurrenceArray.push(element);
-        }
-      });
-      occurrenceArray = unique(occurrenceArray);
-      return occurrenceArray;
-    }
-    if (criterion === 'date' || !criterion) {
-      /* news.map(x => x.createdAt).some(
-                function(element){
-                    console.log(element.toString().toLowerCase());
-  if(element.toString().toLowerCase().indexOf(inputValue.toString().toLowerCase()) >= 0){
-                        occurrenceArray.push(element);
-                    }
-                }
-            );*/
-      // occurrenceArray = unique(occurrenceArray);
-      occurrenceArray.push(inputValue);
-
-      return occurrenceArray;
-    }
-  }
-  function getAuthors() {
-    return newsService.getNews().map(x => x.author);
-  }
-  function getNews(skip, top, criterion, value) {
-    //  Default //
-    if (!skip) {
-      skip = 0;
-    }
-    if (!top) {
-      top = 8;
-    }
-    let out;
-    newsService.getNews()
-      .then((news) => {
-        news.forEach((n) => {
-          n.createdAt = new Date(n.createdAt);
-        });
-        out = news;
-        sortNews(out);
-        if (criterion && value) {
-          //  Title  //
-          if (criterion === 'title') {
-            out = out.filter(n => value === n.title);
-          }
-          //  Author  //
-          if (criterion === 'author') {
-            out = out.filter(n => value === n.author);
-          }
-          //  Date  //
-          if (criterion === 'date') {
-            // date = new Date(value);
-            out = out.filter(
-              n =>
-                n.createdAt
-                  .toString()
-                  .toLowerCase()
-                  .indexOf(value.toString().toLowerCase()) >= 0,
-            );
-          }
-        }
-        console.log(skip, top);
-        return out.slice(skip, skip + top);
-      })
-      .catch((reason) => {
-        console.log(`Handle rejected promise, because: ${reason}.`);
-        return false;
-      });
-    return true;
-  }
-  function addNew(n) {
-    if (validateNew(n)) {
-      newsService.addNew(n);
-    }
-  }
-  function removeNew(ID) {
-    newsService.removeNew(ID);
-  }
-  function editNew(ID, n) {
-    newsService.editNew(ID, n);
-  }
   return {
-    getNews,
-    editNew,
-    removeNew,
     validateNew,
-    sortNews,
-    searchNews,
-    addNew,
-    getAuthors,
   };
 }());
 
@@ -253,51 +93,33 @@ const newRenderer = (function () {
   function removeNewFromDom(node) {
     newsList.removeChild(node);
   }
-
-  return {
-    init,
-    formatDate,
-    insertNewsInDOM,
-    insertNewInDOM,
-    renderNew,
-    removeNewsFromDom,
-    removeNewFromDom,
-  };
-}());
-function renderNews(skip, limit) {
-  newsService.getNews(skip, limit, 'date')
-    .then((news) => {
-      news.forEach((n) => {
-        n.createdAt = new Date(n.createdAt);
+  function getNews(skip, limit, criterion, filter) {
+    newsService.getNews(skip, limit, criterion, filter)
+      .then((news) => {
+        news.forEach((n) => {
+          n.createdAt = new Date(n.createdAt);
+        });
+        // newModel.sortNews(news);
+        newRenderer.insertNewsInDOM(news);
       });
-      // newModel.sortNews(news);
-      newRenderer.insertNewsInDOM(news);
-    });
-}
-function startApp() {
-  console.log('start app');
-  newRenderer.init();
-  function load() {
-    document.querySelector('.loader').style.display = 'none';
-    document.querySelector('.wrapper').style.display = 'block';
-    const modals = document.querySelectorAll('.md-default');
-    [].forEach.call(modals, (m) => {
-      m.style.display = 'block';
-    });
-    document.querySelector('.fisrt-overlay-layer').style.display = 'block';
-    document.querySelector('.second-overlay-layer').style.display = 'block';
   }
-  setTimeout(load, 1000 + (Math.random() * 1000));
-  usersService.getCurrentUser()
-    .then((user) => {
-      console.log(user);
-      if (user) {
-        usersModal.switchMode(user);
-      }
-    });
-  newsService.getSize()
+
+  function sortNews(skip, limit, criterion) {
+    newsService.sortNews(skip, limit, criterion)
+      .then((news) => {
+        news.forEach((n) => {
+          n.createdAt = new Date(n.createdAt);
+        });
+        // newModel.sortNews(news);
+        newRenderer.insertNewsInDOM(news);
+      });
+  }
+
+  function loadNews(action, criterion, filter) {
+    newsService.getSize()
     .then((length) => {
       console.log(length);
+      newRenderer.removeNewsFromDom();
       let limit;
       if (document.documentElement.clientWidth /
           document.documentElement.clientHeight >= 4 / 3) {
@@ -305,7 +127,14 @@ function startApp() {
       } else {
         limit = 20;
       }
-      renderNews(0, limit);
+      if (action === 'sort' && criterion) {
+        sortNews(0, limit, criterion);
+      } else if (action === 'search' && criterion && filter) {
+        console.log(criterion, filter);
+        getNews(0, limit, criterion, filter);
+      } else {
+        getNews(0, limit);
+      }
       let scrollValue = 0;
       let renderValue = 0;
 
@@ -314,7 +143,13 @@ function startApp() {
           console.log(scrollValue);
           scrollValue += 200;
           if (limit + renderValue < length) {
-            renderNews(limit + renderValue, 4);
+            if (action === 'sort' && criterion) {
+              sortNews(limit + renderValue, 4, criterion);
+            } else if (action === 'search' && criterion) {
+              getNews(limit + renderValue, 4, criterion, filter);
+            } else {
+              getNews(limit + renderValue, 4);
+            }
             console.log(limit + renderValue, limit + renderValue + 4);
             renderValue += 4;
           }
@@ -326,5 +161,43 @@ function startApp() {
     })
     .catch(reason =>
       console.log(`Handle rejected promise, because: ${reason}.`));
+  }
+  return {
+    init,
+    formatDate,
+    insertNewsInDOM,
+    insertNewInDOM,
+    renderNew,
+    removeNewsFromDom,
+    removeNewFromDom,
+    getNews,
+    sortNews,
+    loadNews,
+  };
+}());
+
+function load() {
+  document.querySelector('.loader').style.display = 'none';
+  document.querySelector('.wrapper').style.display = 'block';
+  const modals = document.querySelectorAll('.md-default');
+  [].forEach.call(modals, (m) => {
+    m.style.display = 'block';
+  });
+  document.querySelector('.fisrt-overlay-layer').style.display = 'block';
+  document.querySelector('.second-overlay-layer').style.display = 'block';
+}
+
+function startApp() {
+  console.log('start app');
+  newRenderer.init();
+  setTimeout(load, 1000 + (Math.random() * 1000));
+  usersService.getCurrentUser()
+    .then((user) => {
+      console.log(user);
+      if (user) {
+        usersModal.switchMode(user);
+      }
+    });
+  newRenderer.loadNews();
 }
 document.addEventListener('DOMContentLoaded', startApp);

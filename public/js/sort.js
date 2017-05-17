@@ -1,4 +1,4 @@
-/* global document, event, window, classie, newModel, newRenderer, newsModal*/
+/* global document, event, window, classie, newModel, newRenderer, newsModal, newsService*/
 const criterionSortArray = [];
 function sort(sortByCriterion, criterion) {
   sortByCriterion.removeEventListener('click', {});
@@ -11,14 +11,10 @@ function sort(sortByCriterion, criterion) {
           item.value = 'off';
         }
       });
-      newRenderer.removeNewsFromDom();
-      const news = newModel.getNews();
-      newModel.sortNews(news, criterion);
-      newRenderer.insertNewsInDOM(news);
+      newRenderer.loadNews('sort', criterion);
     } else {
       sortByCriterion.value = 'off';
-      newRenderer.removeNewsFromDom();
-      newRenderer.insertNewsInDOM(newModel.getNews());
+      newRenderer.loadNews();
     }
   });
 }
@@ -33,5 +29,5 @@ sort(sortByAuthor, 'author');
 criterionSortArray.push(sortByAuthor);
 
 const sortByTextsize = sortBlock.querySelectorAll('.check')[2];
-sort(sortByTextsize, 'textsize');
+sort(sortByTextsize, 'date');
 criterionSortArray.push(sortByTextsize);

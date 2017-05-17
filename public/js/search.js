@@ -1,9 +1,5 @@
 /* global document, event, window, classie,
 newsService, newModel, newRenderer, newsModal */
-function showSearchResult(criterion, value) {
-  const news = newModel.getNews(0, newModel.getLength(), criterion, value);
-  newRenderer.insertNewsInDOM(news);
-}
 
 const searchBlock = document.querySelector('.search-block');
 const criterionSearchArray = [];
@@ -32,34 +28,14 @@ function search(state, searchByCriterion, criterionSearch) {
       form.searchin.placeholder = 'please select a criterion';
     };
   } else {
-    form.onsubmit = function (event) {
+    form.onsubmit = (event) => {
       event.preventDefault();
       const searchIn = document.forms.searchform.searchin;
       if (!searchIn.value) {
-        newRenderer.removeNewsFromDom();
-        newsService.getNews()
-          .then((n) => {
-            n.forEach((i) => {
-              i.createdAt = new Date(i.createdAt);
-            });
-            newRenderer.insertNewsInDOM(n);
-          });
-      } else {
-        let occurrenceArray;
-        if (criterionSearch) {
-          occurrenceArray = newModel.searchNews(
-            searchIn.value,
-            newsService.getNews(),
-            criterionSearch,
-          );
-          newRenderer.removeNewsFromDom();
-          occurrenceArray.forEach((el) => {
-            showSearchResult(criterionSearch, el);
-          });
-        } else {
-          newRenderer.removeNewsFromDom();
-          newRenderer.insertNewsInDOM();
-        }
+        newRenderer.loadNews();
+      } else if (criterionSearch) {
+        console.log(criterionSearch, searchIn.value);
+        newRenderer.loadNews('search', criterionSearch, searchIn.value);
       }
       searchIn.value = '';
     };

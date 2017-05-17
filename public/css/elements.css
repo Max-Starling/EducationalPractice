@@ -172,7 +172,7 @@ textarea::selection{
   width: 86%;
 	background: radial-gradient(circle at 50% 33%, white, #e7e7e7); 
   margin: 1vw 1vw;
-  border: 0.14vw solid #cecece;
+  border: 0.12vw solid #cecece;
 	
 }
 

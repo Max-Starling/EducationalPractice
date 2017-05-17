@@ -75,24 +75,50 @@ app.get('/checkUser', (req, res) => {
     ((error, u) => (error ? res.sendStatus(500) : res.json(u))));
 });
 
-
-
+//  For getting news  //
 app.get('/news', (req, res) => {
+  const criterion = req.query.criterion;
   const filter = req.query.filter;
-  // if (filter === 'author') {
-  news.find({}, {},
-    {
-      skip: Number(req.query.skip),
-      limit: Number(req.query.limit),
-      sort: { $natural: -1 },
-    },
-  (error, n) => (error ? res.sendStatus(500) : res.json(n)));
-  // }
+  const reg = `^${filter}`;
+  if (criterion === 'author') {
+    news.find({ author: { $regex: reg } }, {},
+      {
+        skip: Number(req.query.skip),
+        limit: Number(req.query.limit),
+        sort: { $natural: -1 },
+      },
+    (error, n) => (error ? res.sendStatus(500) : res.json(n)));
+  } else if (criterion === 'title') {
+    news.find({ title: { $regex: reg } }, {},
+      {
+        skip: Number(req.query.skip),
+        limit: Number(req.query.limit),
+        sort: { $natural: -1 },
+      },
+    (error, n) => (error ? res.sendStatus(500) : res.json(n)));
+  } else if (criterion === 'date') {
+    news.find({ date: { $regex: reg } }, {},
+      {
+        skip: Number(req.query.skip),
+        limit: Number(req.query.limit),
+        sort: { $natural: -1 },
+      },
+    (error, n) => (error ? res.sendStatus(500) : res.json(n)));
+  } else {
+    news.find({}, {},
+      {
+        skip: Number(req.query.skip),
+        limit: Number(req.query.limit),
+        sort: { $natural: -1 },
+      },
+    (error, n) => (error ? res.sendStatus(500) : res.json(n)));
+  }
 });
+
 //  For sorting news  //
 app.get('/sort', (req, res) => {
   const criterion = req.query.criterion;
-  console.log(criterion);
+  console.log(req.query.criterion);
   if (criterion === 'author') {
     news.find({}, {},
       {
@@ -107,14 +133,6 @@ app.get('/sort', (req, res) => {
         skip: Number(req.query.skip),
         limit: Number(req.query.limit),
         sort: { title: 1 },
-      },
-    (error, n) => (error ? res.sendStatus(500) : res.json(n)));
-  } else if (criterion === 'date') {
-    news.find({}, {},
-      {
-        skip: Number(req.query.skip),
-        limit: Number(req.query.limit),
-        sort: { date: 1 },
       },
     (error, n) => (error ? res.sendStatus(500) : res.json(n)));
   } else {
@@ -220,17 +238,14 @@ passport.use('logIn',
         if (error) {
           return done(null, false, { message: error });
         } else if (!user) {
-          console.log('We cant found this user in database.');
           return done(null, false, {
             message: 'We cant found this user in database.',
           });
         } else if (password !== user.password) {
-          console.log('User was fount, but password is wrong.');
           return done(null, false, {
             message: 'User was fount, but password is wrong.',
           });
         }
-        console.log('You was successfully authorized.');
         return done(null, user, { message: 'You was successfully authorized.' });
       });
     }));
