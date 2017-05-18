@@ -4,14 +4,14 @@ const usersService = (function () {
 
   //  Check user  //
   function checkUser(username) {
-      return new Promise((resolve, reject) => {
-        xhr.open('GET', `/checkUser?username=${username}`);
-        xhr.setRequestHeader('content-type', 'application/json');
-        xhr.send();
-        xhr.onload = () =>
-          (xhr.status === 200 ? resolve(JSON.parse(xhr.responseText)) : reject());
-        xhr.onerror = () => reject(new Error('Error'));
-      });
+    return new Promise((resolve, reject) => {
+      xhr.open('GET', `/checkUser?username=${username}`);
+      xhr.setRequestHeader('content-type', 'application/json');
+      xhr.send();
+      xhr.onload = () =>
+        (xhr.status === 200 ? resolve(JSON.parse(xhr.responseText)) : reject());
+      xhr.onerror = () => reject(new Error('Error'));
+    });
   }
 
   //  Register new  user //
@@ -26,6 +26,29 @@ const usersService = (function () {
     });
   }
 
+  //  Check rights  //
+  function checkRights(required) {
+    return new Promise((resolve, reject) => {
+      xhr.open('GET', `/checkRights?required=${required}`);
+      xhr.send();
+      xhr.onload = () =>
+        (xhr.status === 200 ? resolve(JSON.parse(xhr.responseText)) : reject());
+      xhr.onerror = () => reject(new Error('Error'));
+    });
+  }
+
+  //  Get rights  //
+  function getRights(required) {
+    return new Promise((resolve, reject) => {
+      xhr.open('GET', '/getRights');
+      xhr.send();
+      xhr.onload = () =>
+        (xhr.status === 200 ? resolve(JSON.parse(xhr.responseText)) : reject());
+      xhr.onerror = () => reject(new Error('Error'));
+    });
+  }
+
+
   //  Get current user  //
   function getCurrentUser() {
     return new Promise((resolve, reject) => {
@@ -37,7 +60,7 @@ const usersService = (function () {
     });
   }
 
-  //  Get current user  //
+  //  Check password  //
   function checkPassword(inputPassword) {
     return new Promise((resolve, reject) => {
       xhr.open('GET', `/checkPassword?inputPassword=${inputPassword}`);
@@ -127,5 +150,7 @@ const usersService = (function () {
     changeImage,
     checkUser,
     checkPassword,
+    checkRights,
+    getRights,
   };
 }());

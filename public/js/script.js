@@ -5,27 +5,6 @@ const currentUser = {
   rank: 'Guest',
   img: 'images/users/guest_photo.jpg',
 };
-const newModel = (function () {
-  function validateNew(n) {
-    /* ID*/
-    if (
-      !n.title ||
-      n.title.length === 0 ||
-      !n.summary ||
-      n.summary.length === 0 ||
-      !n.createdAt ||
-      !n.author ||
-      !n.content ||
-      n.content.length === 0
-    ) {
-      return false;
-    }
-    return true;
-  }
-  return {
-    validateNew,
-  };
-}());
 
 const newRenderer = (function () {
   let newTemplate;
@@ -70,6 +49,7 @@ const newRenderer = (function () {
     t.content.querySelector('.new-list-item-date').textContent = formatDate(
       n.createdAt,
     );
+    t.content.querySelector('.new-list-item').dataset.rights = n.rights;
     return t.content.querySelector('.new-list-item').cloneNode(true);
   }
 
@@ -78,7 +58,6 @@ const newRenderer = (function () {
     return news.map(n => renderNew(n));
   }
   function insertNewInDOM(n) {
-    // newsList.appendChild(n);
     newsList.insertBefore(n, newsList.firstChild);
   }
   function insertNewsInDOM(news) {
@@ -99,7 +78,6 @@ const newRenderer = (function () {
         news.forEach((n) => {
           n.createdAt = new Date(n.createdAt);
         });
-        // newModel.sortNews(news);
         newRenderer.insertNewsInDOM(news);
       });
   }
@@ -110,7 +88,6 @@ const newRenderer = (function () {
         news.forEach((n) => {
           n.createdAt = new Date(n.createdAt);
         });
-        // newModel.sortNews(news);
         newRenderer.insertNewsInDOM(news);
       });
   }
@@ -155,9 +132,7 @@ const newRenderer = (function () {
           }
         }
       }
-      document.querySelector('.large-container').onscroll = function () {
-        onScroll();
-      };
+      document.querySelector('.large-container').onscroll = onScroll;
     })
     .catch(reason =>
       console.log(`Handle rejected promise, because: ${reason}.`));

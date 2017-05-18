@@ -39,8 +39,7 @@ const newsModel = new mongoose.Schema({
   author: String,
   content: String,
   img: String,
-}, {
-  autoIndex: process.env.mode === 'development',
+  rights: String,
 });
 const news = mongoDB.model('news', newsModel);
 
@@ -158,6 +157,7 @@ app.get('/newsSize', (req, res) => {
 
 //  For posting new  //
 app.post('/postNew', (req, res) => {
+  console.log(req.body.rights);
   const n = {
     title: req.body.title,
     summary: req.body.summary,
@@ -165,6 +165,7 @@ app.post('/postNew', (req, res) => {
     author: req.body.author,
     content: req.body.content,
     img: req.body.img,
+    rights: req.body.rights,
   };
   const post = new news(n);
   post.save()
@@ -269,6 +270,42 @@ app.get('/currentUser', (req, res) => {
       img: pass.user.img,
       rank: pass.user.rank,
     });
+  } else {
+    res.json(false);
+  }
+});
+
+//  For geting rights  //
+app.get('/getRights', (req, res) => {
+  const rank = req.session.passport.user.rank;
+  let rights;
+  switch (rank) {
+    case 'Guest': rights = 0; break;
+    case 'User': rights = 1; break;
+    case 'Moderator': rights = 2; break;
+    case 'Administrator': rights = 3; break;
+    default: rights = 0; break;
+  }
+  res.json(rights);
+});
+
+//  For cheking rights  //
+app.get('/checkRights', (req, res) => {
+  const rank = req.session.passport.user.rank;
+  if (rank) {
+    let rights;
+    switch (rank) {
+      case 'Guest': rights = 0; break;
+      case 'User': rights = 1; break;
+      case 'Moderator': rights = 2; break;
+      case 'Administrator': rights = 3; break;
+      default: rights = 0; break;
+    }
+    if (Number(req.query.required) <= Number(rights)) {
+      res.json(true);
+    } else {
+      res.json(false);
+    }
   } else {
     res.json(false);
   }

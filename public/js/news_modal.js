@@ -1,6 +1,79 @@
 /* global document, event, window, classie, newModel,
-newRenderer, newsService, currentUser, renderNews */
+newRenderer, newsService, currentUser, renderNews, usersService */
 (function (window) {
+  /**
+   * VALIDATE POSTING NEW
+   */
+  function validatePostingNew(n) {
+    // const regexp = '/[A-Za-zА-Яа-я0-9]/';
+    if (n.title) {
+      if (n.title.length > 24) {
+        return false;
+      }
+    } else {
+      return false;
+    }
+    if (n.img) {
+      if (n.img.length > 100) {
+        return false;
+      }
+    }
+    if (n.summary) {
+      if (n.summary.length > 80) {
+        return false;
+      }
+    } else {
+      return false;
+    }
+    if (n.content) {
+      if (n.content.length > 1280) {
+        return false;
+      }
+    } else {
+      return false;
+    }
+    if (!n.createdAt) {
+      return false;
+    }
+    if (!n.author) {
+      return false;
+    }
+    return true;
+  }
+  /**
+   * VALIDATE EDITING NEW
+   */
+  function validateEditingNew(n) {
+    // const reg = '/[A-Za-zА-Яа-я0-9]/';
+    console.log(n);
+    if (n.title) {
+      if (n.title.length > 24) {
+        return false;
+      }
+    }
+    if (n.img) {
+      if (n.img.length > 300) {
+        return false;
+      }
+    }
+    if (n.summary) {
+      if (n.summary.length > 80) {
+        return false;
+      }
+    }
+    if (n.content) {
+      if (n.content.length > 1280) {
+        return false;
+      }
+    }
+    if (!n.createdAt) {
+      return false;
+    }
+    if (!n.author) {
+      return false;
+    }
+    return true;
+  }
   /**
    * ADD NEW
    */
@@ -57,27 +130,31 @@ newRenderer, newsService, currentUser, renderNews */
         author: currentUser.username,
         content: '',
         img: 'images/news/default_img.jpg',
+        rights: '0',
       };
-      console.log(n.img);
       if (inputURL.value) {
         n.img = inputURL.value.toString();
       } else {
         n.img = 'images/news/default_img.jpg';
       }
-      console.log(n.img);
       n.title = inputTitle.value.toString();
       n.summary = inputDescription.value.toString();
       n.content = inputContent.value.toString();
-      if (newModel.validateNew(n)) {
-        newsService.addNew(n).then((post) => {
-          console.log('post', post);
-          if (!post.img) {
-            post.img = 'images/news/default_img.jpg';
-          }
-          post.createdAt = new Date(post.createdAt);
-          newRenderer.insertNewInDOM(newRenderer.renderNew(post));
-        });
-      }
+      usersService.getRights()
+      .then((r) => {
+        console.log(r);
+        n.rights = r;
+        if (validatePostingNew(n)) {
+          newsService.addNew(n).then((post) => {
+            console.log('post', post);
+            if (!post.img) {
+              post.img = 'images/news/default_img.jpg';
+            }
+            post.createdAt = new Date(post.createdAt);
+            newRenderer.insertNewInDOM(newRenderer.renderNew(post));
+          });
+        }
+      });
       event.stopImmediatePropagation();
       if (!n.title) {
         inputTitle.style.color = '#8b1500';
@@ -154,6 +231,7 @@ newRenderer, newsService, currentUser, renderNews */
       n.title = inputTitle.value.toString();
       n.summary = inputDescription.value.toString();
       n.content = inputContent.value.toString();
+      // if (validateEditingNew(n)) {
       newsService.editNew(ID, n)
         .then(() => {
           target.querySelector('.new-list-item-img').src = n.img;
@@ -164,6 +242,7 @@ newRenderer, newsService, currentUser, renderNews */
         .catch((reason) => {
           console.log(`Handle rejected promise, because: ${reason}.`);
         });
+      // }
     };
     const el = document.querySelector('.md-trigger9');
     const modal = document.querySelector(`#${el.getAttribute('data-modal')}`);
@@ -221,7 +300,6 @@ newRenderer, newsService, currentUser, renderNews */
       buttonNo.style.display = 'inline-block';
       buttonSure.style.display = 'none';
       buttonYes.onclick = function (event) {
-        console.log(newID);
         newsService.getNew(newID)
           .then(() => {
             newsService.removeNew(newID);
@@ -229,14 +307,9 @@ newRenderer, newsService, currentUser, renderNews */
             newsService.getSize()
               .then((length) => {
                 if (length > 7) {
-                  renderNews(7, 7);
+                  newRenderer.getNews(7, 7);
                 }
-              })
-              .catch(reason =>
-                console.log(`Handle rejected promise, because: ${reason}.`));
-          })
-          .catch((reason) => {
-            console.log(`Handle rejected promise, because: ${reason}.`);
+              });
           });
         removeModalHandler();
         classie.remove(parentModal, parentModalShow);
@@ -276,29 +349,22 @@ newRenderer, newsService, currentUser, renderNews */
     const overlay = document.querySelector('.fisrt-overlay-layer');
 
     const modalContent = document.querySelector('.md-content');
-    const modalText = modalContent.querySelector('.md-text');
     const target = event.currentTarget;
 
-    const ID = event.currentTarget.dataset.ID;
-    console.log(event.currentTarget.dataset);
-    console.log(ID);
-    const author = modalText.querySelector('.new-list-item-author');
-    const a = target.querySelector('.author');
-    author.textContent = a.textContent;
+    const ID = target.dataset.ID;
+    const rights = target.dataset.rights;
 
-    const content = modalText.querySelector('.md-list-item-content');
-    const c = target.querySelector('.content');
-    content.textContent = c.textContent;
+    const author = modalContent.querySelector('.new-list-item-author');
+    author.textContent = target.querySelector('.author').textContent;
 
-    const date = modalText.querySelector('.new-list-item-date');
-    const d = target.querySelector('.date');
-    date.textContent = d.textContent;
+    const content = modalContent.querySelector('.md-list-item-content');
+    content.textContent = target.querySelector('.content').textContent;
 
-    const title = modalText.querySelector('.md-list-item-title');
-    const t = target.querySelector('.title');
-    title.textContent = t.textContent;
+    const date = modalContent.querySelector('.new-list-item-date');
+    date.textContent = target.querySelector('.date').textContent;
 
-    const sd = target.querySelector('.description');
+    const title = modalContent.querySelector('.md-list-item-title');
+    title.textContent = target.querySelector('.title').textContent;
 
     const img = modalContent.querySelector('.md-list-item-img');
     const i = target.querySelector('.new-list-item-img').src;
@@ -308,14 +374,24 @@ newRenderer, newsService, currentUser, renderNews */
       img.style.display = 'inline-block';
       img.src = i;
     }
-    const modal = document.querySelector(`#${target.getAttribute('data-modal')}`);
-    console.log('target', target);
-    const edit = modal.querySelector('.md-trigger9');
-    edit.addEventListener('click', editNew(modal, 'md-show', ID, target));
 
-    const close = modal.querySelector('.md-trigger7');
-    close.addEventListener('click',
-      notice('Are you sure want to delete this?', modal, 'md-show', ID, target));
+    const modal = document.querySelector(`#${target.getAttribute('data-modal')}`);
+    console.log('target', target.dataset);
+
+    const edit = modal.querySelector('.md-trigger9');
+    const del = modal.querySelector('.md-trigger7');
+    usersService.checkRights(rights)
+      .then((state) => {
+        console.log(state);
+        if (state) {
+          edit.addEventListener('click', editNew(modal, 'md-show', ID, target));
+          del.addEventListener('click', notice('Are you sure want to delete this?', modal, 'md-show', ID, target));
+        } else {
+          del.removeEventListener('click', {});
+          del.addEventListener('click', notice('Sorry, You do not have enough rights.'));
+          edit.onclick = () => del.click();
+        }
+      });
     function removeModalHandler() {
       classie.remove(modal, 'md-show');
     }
