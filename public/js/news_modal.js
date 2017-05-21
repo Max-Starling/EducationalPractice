@@ -380,16 +380,22 @@ newRenderer, newsService, currentUser, renderNews, usersService */
 
     const edit = modal.querySelector('.md-trigger9');
     const del = modal.querySelector('.md-trigger7');
-    usersService.checkRights(rights)
-      .then((state) => {
-        console.log(state);
-        if (state) {
-          edit.addEventListener('click', editNew(modal, 'md-show', ID, target));
-          del.addEventListener('click', notice('Are you sure want to delete this?', modal, 'md-show', ID, target));
-        } else {
-          del.removeEventListener('click', {});
-          del.addEventListener('click', notice('Sorry, You do not have enough rights.'));
-          edit.onclick = () => del.click();
+    usersService.getCurrentUser()
+      .then((u) => {
+        if (u) {
+          usersService.checkRights(rights)
+            .then((state) => {
+              console.log(state);
+              console.log(u.username, author.textContent);
+              if (state || (u.username === author.textContent)) {
+                edit.addEventListener('click', editNew(modal, 'md-show', ID, target));
+                del.addEventListener('click', notice('Are you sure want to delete this?', modal, 'md-show', ID, target));
+              } else {
+                del.removeEventListener('click', {});
+                del.addEventListener('click', notice('Sorry, You do not have enough rights.'));
+                edit.onclick = () => del.click();
+              }
+            });
         }
       });
     function removeModalHandler() {

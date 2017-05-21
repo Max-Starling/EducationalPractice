@@ -165,7 +165,6 @@ function load() {
 function startApp() {
   console.log('start app');
   newRenderer.init();
-  setTimeout(load, 1000 + (Math.random() * 1000));
   usersService.getCurrentUser()
     .then((user) => {
       console.log(user);
@@ -176,3 +175,7 @@ function startApp() {
   newRenderer.loadNews();
 }
 document.addEventListener('DOMContentLoaded', startApp);
+
+window.onload = () => {
+  setTimeout(load, 1000 + (Math.random() * 1000));
+};

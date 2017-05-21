@@ -301,7 +301,7 @@ app.get('/checkRights', (req, res) => {
       case 'Administrator': rights = 3; break;
       default: rights = 0; break;
     }
-    if (Number(req.query.required) <= Number(rights)) {
+    if (Number(req.query.required) < Number(rights)) {
       res.json(true);
     } else {
       res.json(false);
