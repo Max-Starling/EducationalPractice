@@ -4,10 +4,10 @@
 * https://max-starling.github.io/EducationalPractice/public
 * https://www.npmjs.com/package/myeducationalpractice
 * localhost:7777
-* mongodb://localhost/StarlingNews
 
 Насчёт базы данных:
-======================================= 
+=======================================
+* mongodb://localhost/StarlingNews 
 * В папке private лежит ещё две папки.
 * В одной из них 3 файла для mongoshell, в другой - 3 для mongoexport. 
 * Что Яне и Владу (а, возможно, и кому-то ещё) удобнее, то пусть и используют. 
