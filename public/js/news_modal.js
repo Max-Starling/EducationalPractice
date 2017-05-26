@@ -252,11 +252,15 @@ newRenderer, newsService, currentUser, renderNews, usersService */
     function removeParentModalHandler() {
       classie.remove(parentModal, parentModalShow);
     }
-    el.addEventListener('click', () => {
-      classie.add(modal, 'md-show8');
-      overlay.removeEventListener('click', removeModalHandler);
-      overlay.addEventListener('click', removeModalHandler);
-    });
+    // el.addEventListener('click', () => {
+    //  classie.add(modal, 'md-show8');
+    //  overlay.removeEventListener('click', removeModalHandler);
+    //  overlay.addEventListener('click', removeModalHandler);
+    // });
+    classie.add(modal, 'md-show8');
+    overlay.removeEventListener('click', removeModalHandler);
+    overlay.addEventListener('click', removeModalHandler);
+
     const close = modal.querySelector('.md-close');
     close.addEventListener('click', (ev) => {
       ev.stopPropagation();
@@ -285,11 +289,14 @@ newRenderer, newsService, currentUser, renderNews, usersService */
       classie.remove(modal, 'md-show6');
     }
 
-    el.addEventListener('click', () => {
-      classie.add(modal, 'md-show6');
-      overlay.removeEventListener('click', removeModalHandler);
-      overlay.addEventListener('click', removeModalHandler);
-    });
+    // el.addEventListener('click', () => {
+    //  classie.add(modal, 'md-show6');
+    //  overlay.removeEventListener('click', removeModalHandler);
+    //  overlay.addEventListener('click', removeModalHandler);
+    // });
+    classie.add(modal, 'md-show6');
+    overlay.removeEventListener('click', removeModalHandler);
+    overlay.addEventListener('click', removeModalHandler);
 
     const buttonYes = modal.querySelector('.button-yes');
     const buttonSure = modal.querySelector('.button-sure');
@@ -388,12 +395,11 @@ newRenderer, newsService, currentUser, renderNews, usersService */
               console.log(state);
               console.log(u.username, author.textContent);
               if (state || (u.username === author.textContent)) {
-                edit.addEventListener('click', editNew(modal, 'md-show', ID, target));
-                del.addEventListener('click', notice('Are you sure want to delete this?', modal, 'md-show', ID, target));
+                edit.addEventListener('click', () => editNew(modal, 'md-show', ID, target));
+                del.addEventListener('click', () => notice('Are you sure want to delete this?', modal, 'md-show', ID, target));
               } else {
-                del.removeEventListener('click', {});
-                del.addEventListener('click', notice('Sorry, You do not have enough rights.'));
-                edit.onclick = () => del.click();
+                del.addEventListener('click', () => notice('Sorry, You do not have enough rights.'));
+                edit.addEventListener('click', () => notice('Sorry, You do not have enough rights.'));
               }
             });
         }

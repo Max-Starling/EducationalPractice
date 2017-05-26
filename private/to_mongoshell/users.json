@@ -1,56 +1,96 @@
-{
-    "_id": ObjectId("59147e25fecc8c0b1cdebbe2"),
-    "__v": NumberInt(0),
-    "username": "MaxStarling",
-    "password": "onthetopofthew",
-    "rank": "Administrator",
-    "img": "images/users/MaxStarling.jpg"
+{ 
+    "_id" : ObjectId("59147e25fecc8c0b1cdebbe2"), 
+    "__v" : NumberInt(0), 
+    "username" : "MaxStarling", 
+    "password" : "onthetopofthew", 
+    "rank" : "Administrator", 
+    "img" : "images/users/MaxStarling.jpg"
 }
-{
-    "_id": ObjectId("59147e25fecc8c0b1cdebbe3"),
-    "__v": NumberInt(0),
-    "username": "Tanya",
-    "password": "tata",
-    "rank": "Moderator",
-    "img": "images/users/Tanya.jpg"
+{ 
+    "_id" : ObjectId("59147e25fecc8c0b1cdebbe3"), 
+    "__v" : NumberInt(0), 
+    "username" : "Tanya", 
+    "password" : "tata", 
+    "rank" : "Moderator", 
+    "img" : "images/users/Tanya.jpg"
 }
-{
-    "_id": ObjectId("59147e25fecc8c0b1cdebbe4"),
-    "__v": NumberInt(0),
-    "username": "danilyanich",
-    "password": "dankr",
-    "rank": "Moderator",
-    "img": "images/users/danilyanich.jpg"
+{ 
+    "_id" : ObjectId("59147e25fecc8c0b1cdebbe4"), 
+    "__v" : NumberInt(0), 
+    "username" : "danilyanich", 
+    "password" : "dankr", 
+    "rank" : "Moderator", 
+    "img" : "images/users/danilyanich.jpg"
 }
-{
-    "_id": ObjectId("59147e25fecc8c0b1cdebbe5"),
-    "__v": NumberInt(0),
-    "username": "Morty",
-    "password": "morty",
-    "rank": "User",
-    "img": "images/users/Morty.gif"
+{ 
+    "_id" : ObjectId("59147e25fecc8c0b1cdebbe5"), 
+    "__v" : NumberInt(0), 
+    "username" : "Morty", 
+    "password" : "morty", 
+    "rank" : "User", 
+    "img" : "images/users/Morty.gif"
 }
-{
-    "_id": ObjectId("59176db163271b0fcc83775e"),
-    "username": "Rick",
-    "password": "rick",
-    "rank": "User",
-    "img": "",
-    "__v": NumberInt(0)
+{ 
+    "_id" : ObjectId("59176db163271b0fcc83775e"), 
+    "username" : "Rick", 
+    "password" : "rick", 
+    "rank" : "User", 
+    "img" : "http://localhost:7777/images/news/picture25.jpg", 
+    "__v" : NumberInt(0)
 }
-{
-    "_id": ObjectId("59176eee89e6be1b305c76b5"),
-    "username": "Morty",
-    "password": "mort",
-    "rank": "User",
-    "img": "",
-    "__v": NumberInt(0)
+{ 
+    "_id" : ObjectId("59176eee89e6be1b305c76b5"), 
+    "username" : "Morty", 
+    "password" : "mort", 
+    "rank" : "User", 
+    "img" : "", 
+    "__v" : NumberInt(0)
 }
-{
-    "_id": ObjectId("59176f0d89e6be1b305c76b6"),
-    "username": "Vlad160",
-    "password": "vladislove",
-    "rank": "User",
-    "img": "",
-    "__v": NumberInt(0)
+{ 
+    "_id" : ObjectId("59176f0d89e6be1b305c76b6"), 
+    "username" : "Vlad160", 
+    "password" : "vladislove", 
+    "rank" : "User", 
+    "img" : "", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5919ab3accee4815cccc1e65"), 
+    "username" : "Username", 
+    "password" : "password", 
+    "rank" : "User", 
+    "img" : "", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("591a1f5481ef9e0e9460265f"), 
+    "username" : "Dary", 
+    "password" : "traveler", 
+    "rank" : "User", 
+    "img" : "", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("591a1f5d81ef9e0e94602660"), 
+    "username" : "Dasha", 
+    "password" : "1234", 
+    "rank" : "User", 
+    "img" : "", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("591a1f8f81ef9e0e94602661"), 
+    "username" : "Home", 
+    "password" : "", 
+    "rank" : "User", 
+    "img" : "", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("591a1f9a81ef9e0e94602662"), 
+    "username" : "1234", 
+    "password" : "", 
+    "rank" : "User", 
+    "img" : "", 
+    "__v" : NumberInt(0)
 }
